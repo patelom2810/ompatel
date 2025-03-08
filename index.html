@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Om Patel - Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" type="image/png" href="img/logo.png">
-
     <style>
         /* Reset and Base Styles */
         * {
@@ -1008,7 +1006,8 @@
         }
 
         .submit-btn {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
             padding: 12px 30px;
             background-color: #17a2b8;
             color: white;
@@ -1026,26 +1025,59 @@
             box-shadow: 0 5px 15px rgba(23, 162, 184, 0.3);
         }
 
-        /* Success message */
-        .success-message {
-            display: none;
-            background-color: #d4edda;
-            color: #155724;
-            padding: 15px;
-            border-radius: 5px;
-            margin-bottom: 20px;
-            text-align: center;
+        .submit-btn:disabled {
+            background-color: #8fd0db;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
         }
 
-        /* Error message */
-        .error-message {
+        .submit-btn-text {
+            margin-right: 10px;
+        }
+
+        /* Loading spinner */
+        .spinner {
             display: none;
-            background-color: #f8d7da;
-            color: #721c24;
-            padding: 15px;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 20px;
             border-radius: 5px;
-            margin-bottom: 20px;
-            text-align: center;
+            color: white;
+            font-weight: 500;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            z-index: 9999;
+            transform: translateY(-100px);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .notification.success {
+            background-color: #28a745;
+        }
+
+        .notification.error {
+            background-color: #dc3545;
+        }
+
+        .notification.show {
+            transform: translateY(0);
+            opacity: 1;
         }
 
         /* Footer */
@@ -1292,6 +1324,11 @@
     </style>
 </head>
 <body>
+    <!-- Notification -->
+    <div id="notification" class="notification">
+        <span id="notification-message"></span>
+    </div>
+
     <!-- Back to Top Button -->
     <div class="back-to-top">
         <i class="fas fa-arrow-up"></i>
@@ -1324,7 +1361,7 @@
         <div class="container">
             <div class="hero-image">
                 <div class="image-container">
-                    <img src="img/profile.jpg" alt="Om Patel" class="profile-image">
+                    <img src="/placeholder.svg?height=400&width=400" alt="Om Patel" class="profile-image">
                 </div>
             </div>
             <div class="hero-content">
@@ -1477,7 +1514,7 @@
             <h2 class="section-title">Projects</h2>
             <div class="projects-grid">
                 <div class="project-card">
-                    <img src="img/PARKING.png" alt="Parking Management System" class="project-image">
+                    <img src="/placeholder.svg?height=200&width=300" alt="Parking Management System" class="project-image">
                     <div class="project-content">
                         <h3 class="project-title">Parking Management System</h3>
                         <p class="project-description">Offline Parking Management System designed for seamless, efficient, and secure parking operations without internet dependency!</p>
@@ -1489,7 +1526,7 @@
                     </div>
                 </div>
                 <div class="project-card">
-                    <img src="img/JWELERY.png" alt="Jewelry E-commerce Website" class="project-image">
+                    <img src="/placeholder.svg?height=200&width=300" alt="Jewelry E-commerce Website" class="project-image">
                     <div class="project-content">
                         <h3 class="project-title">Jewelry E-commerce Website</h3>
                         <p class="project-description">Jewelry e-commerce website that blends elegance with technology, delivering a seamless shopping experience.</p>
@@ -1502,7 +1539,7 @@
                     </div>
                 </div>
                 <div class="project-card">
-                    <img src="img/shop.png" alt="Store Management System" class="project-image">
+                    <img src="/placeholder.svg?height=200&width=300" alt="Store Management System" class="project-image">
                     <div class="project-content">
                         <h3 class="project-title">Simple Store Management</h3>
                         <p class="project-description">Simple Store management with bill and sales report functionality.</p>
@@ -1571,30 +1608,31 @@
                 </div>
                 
                 <div class="contact-form">
-                    <div id="success-message" class="success-message">Your message has been sent successfully!</div>
-                    <div id="error-message" class="error-message">There was an error sending your message. Please try again.</div>
-                    <form id="contactForm">
+                    <form id="contactForm" action="https://formspree.io/f/omashwin28@gmail.com" method="POST">
                         <div class="form-group">
                             <label for="name">Your Name</label>
-                            <input type="text" id="name" class="form-control" required>
+                            <input type="text" id="name" name="name" class="form-control" required>
                         </div>
                         
                         <div class="form-group">
                             <label for="email">Your Email</label>
-                            <input type="email" id="email" class="form-control" required>
+                            <input type="email" id="email" name="email" class="form-control" required>
                         </div>
                         
                         <div class="form-group">
                             <label for="subject">Subject</label>
-                            <input type="text" id="subject" class="form-control" required>
+                            <input type="text" id="subject" name="subject" class="form-control" required>
                         </div>
                         
                         <div class="form-group">
                             <label for="message">Message</label>
-                            <textarea id="message" class="form-control" required></textarea>
+                            <textarea id="message" name="message" class="form-control" required></textarea>
                         </div>
                         
-                        <button type="submit" class="submit-btn">Send Message</button>
+                        <button type="submit" class="submit-btn" id="submit-btn">
+                            <span class="submit-btn-text">Send Message</span>
+                            <span class="spinner" id="spinner"></span>
+                        </button>
                     </form>
                 </div>
             </div>
@@ -1670,6 +1708,21 @@
             setTimeout(typeWriter, typingSpeed);
         }
 
+        // Show notification function
+        function showNotification(message, type) {
+            const notification = document.getElementById('notification');
+            const notificationMessage = document.getElementById('notification-message');
+            
+            notification.className = 'notification ' + type;
+            notificationMessage.textContent = message;
+            notification.classList.add('show');
+            
+            // Hide notification after 5 seconds
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 5000);
+        }
+
         // Start the typewriter effect when the page loads
         window.addEventListener('DOMContentLoaded', function() {
             setTimeout(typeWriter, 1000); // Start after 1 second
@@ -1724,64 +1777,47 @@
                 });
             });
 
-            // Contact form submission with Gmail API integration
+            // Contact form submission
             const contactForm = document.getElementById('contactForm');
-            const successMessage = document.getElementById('success-message');
-            const errorMessage = document.getElementById('error-message');
+            const submitBtn = document.getElementById('submit-btn');
+            const spinner = document.getElementById('spinner');
             
             if (contactForm) {
                 contactForm.addEventListener('submit', function(e) {
                     e.preventDefault();
                     
-                    const name = document.getElementById('name').value;
-                    const email = document.getElementById('email').value;
-                    const subject = document.getElementById('subject').value;
-                    const message = document.getElementById('message').value;
+                    // Show spinner and disable button
+                    spinner.style.display = 'inline-block';
+                    submitBtn.disabled = true;
                     
-                    // Create form data for the email service
-                    const formData = {
-                        name: name,
-                        email: email,
-                        subject: subject,
-                        message: message,
-                        recipient: 'omashwin28@gmail.com'
-                    };
+                    const formData = new FormData(contactForm);
                     
-                    // Send the form data to your email service
-                    fetch('https://formsubmit.co/omashwin28@gmail.com', {
+                    // Send form data using fetch API
+                    fetch('https://formspree.io/f/xbjnkdvp', {
                         method: 'POST',
+                        body: formData,
                         headers: {
-                            'Content-Type': 'application/json',
                             'Accept': 'application/json'
-                        },
-                        body: JSON.stringify(formData)
+                        }
                     })
                     .then(response => {
                         if (response.ok) {
-                            // Show success message
-                            successMessage.style.display = 'block';
-                            errorMessage.style.display = 'none';
+                            // Show success notification
+                            showNotification('Your message has been sent successfully!', 'success');
                             contactForm.reset();
-                            
-                            // Hide success message after 5 seconds
-                            setTimeout(() => {
-                                successMessage.style.display = 'none';
-                            }, 5000);
                         } else {
                             throw new Error('Network response was not ok');
                         }
                     })
                     .catch(error => {
-                        // Show error message
-                        errorMessage.style.display = 'block';
-                        successMessage.style.display = 'none';
-                        
-                        // Hide error message after 5 seconds
-                        setTimeout(() => {
-                            errorMessage.style.display = 'none';
-                        }, 5000);
-                        
+                        // Show error notification
+                        showNotification('There was an error sending your message. Please try again.', 'error');
                         console.error('Error:', error);
+                    })
+                    .finally(() => {
+                        // Hide spinner and enable button
+                        spinner.style.display = 'none';
+                        submitBtn.disabled = false;
                     });
                 });
             }
