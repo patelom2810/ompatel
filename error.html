@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found | Om Patel</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            padding: 20px 0;
+            border-bottom: 1px solid #eaeaea;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: rgb(192, 166, 49);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #17a2b8;
+            transition: width 0.5s ease;
+        }
+
+        .logo:hover::after {
+            width: 100%;
+        }
+
+        /* 404 Content Styles */
+        .error-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .error-code {
+            font-size: 120px;
+            font-weight: 700;
+            color: #17a2b8;
+            margin-bottom: 20px;
+            position: relative;
+            text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
+        }
+
+        .error-code::after {
+            content: '{404}';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            color: rgba(23, 162, 184, 0.1);
+            font-size: 180px;
+            z-index: -1;
+            transform: translateY(-20px);
+        }
+
+        .error-title {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .error-message {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 40px;
+            max-width: 600px;
+        }
+
+        .terminal {
+            background-color: #282c34;
+            border-radius: 8px;
+            padding: 20px;
+            width: 100%;
+            max-width: 700px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .terminal-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #3e4451;
+        }
+
+        .terminal-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .terminal-button {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .terminal-button.red {
+            background-color: #ff5f56;
+        }
+
+        .terminal-button.yellow {
+            background-color: #ffbd2e;
+        }
+
+        .terminal-button.green {
+            background-color: #27c93f;
+        }
+
+        .terminal-title {
+            margin-left: 15px;
+            font-size: 14px;
+            color: #abb2bf;
+            font-family: 'Source Code Pro', monospace;
+        }
+
+        .terminal-body {
+            color: #abb2bf;
+            font-family: 'Source Code Pro', monospace;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .terminal-line {
+            display: flex;
+            margin-bottom: 10px;
+        }
+
+        .terminal-prompt {
+            color: #98c379;
+            margin-right: 10px;
+        }
+
+        .terminal-command {
+            color: #e5c07b;
+        }
+
+        .terminal-output {
+            color: #abb2bf;
+            padding-left: 20px;
+        }
+
+        .terminal-error {
+            color: #e06c75;
+        }
+
+        .terminal-cursor {
+            display: inline-block;
+            width: 10px;
+            height: 18px;
+            background-color: #abb2bf;
+            animation: blink 1s infinite;
+            vertical-align: middle;
+            margin-left: 5px;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .buttons-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            padding: 12px 25px;
+            background-color: #17a2b8;
+            border-radius: 30px;
+            color: white;
+            font-weight: 500;
+            transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            text-decoration: none;
+        }
+
+        .button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #138496;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+            z-index: -1;
+        }
+
+        .button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(23, 162, 184, 0.3);
+        }
+
+        .button:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .button i {
+            margin-right: 10px;
+        }
+
+        .button.secondary {
+            background-color: transparent;
+            border: 2px solid #17a2b8;
+            color: #17a2b8;
+        }
+
+        .button.secondary::before {
+            background-color: #17a2b8;
+        }
+
+        .button.secondary:hover {
+            color: white;
+        }
+
+        /* Glitch Animation */
+        .glitch-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
+        .glitch {
+            position: relative;
+            animation: glitch-skew 1s infinite linear alternate-reverse;
+        }
+
+        .glitch::before,
+        .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .glitch::before {
+            left: 2px;
+            text-shadow: -2px 0 #ff00c1;
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim 5s infinite linear alternate-reverse;
+        }
+
+        .glitch::after {
+            left: -2px;
+            text-shadow: -2px 0 #00fff9, 2px 2px #ff00c1;
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim2 5s infinite linear alternate-reverse;
+        }
+
+        @keyframes glitch-anim {
+            0% {
+                clip: rect(31px, 9999px, 94px, 0);
+                transform: skew(0.85deg);
+            }
+            5% {
+                clip: rect(70px, 9999px, 71px, 0);
+                transform: skew(0.17deg);
+            }
+            10% {
+                clip: rect(75px, 9999px, 92px, 0);
+                transform: skew(0.4deg);
+            }
+            15% {
+                clip: rect(66px, 9999px, 91px, 0);
+                transform: skew(0.29deg);
+            }
+            20% {
+                clip: rect(41px, 9999px, 74px, 0);
+                transform: skew(0.67deg);
+            }
+            25% {
+                clip: rect(38px, 9999px, 32px, 0);
+                transform: skew(0.95deg);
+            }
+            30% {
+                clip: rect(8px, 9999px, 13px, 0);
+                transform: skew(0.29deg);
+            }
+            35% {
+                clip: rect(53px, 9999px, 5px, 0);
+                transform: skew(0.34deg);
+            }
+            40% {
+                clip: rect(33px, 9999px, 40px, 0);
+                transform: skew(0.6deg);
+            }
+            45% {
+                clip: rect(62px, 9999px, 61px, 0);
+                transform: skew(0.52deg);
+            }
+            50% {
+                clip: rect(93px, 9999px, 62px, 0);
+                transform: skew(0.06deg);
+            }
+            55% {
+                clip: rect(54px, 9999px, 30px, 0);
+                transform: skew(0.6deg);
+            }
+            60% {
+                clip: rect(74px, 9999px, 61px, 0);
+                transform: skew(0.54deg);
+            }
+            65% {
+                clip: rect(40px, 9999px, 31px, 0);
+                transform: skew(0.94deg);
+            }
+            70% {
+                clip: rect(2px, 9999px, 14px, 0);
+                transform: skew(0.01deg);
+            }
+            75% {
+                clip: rect(19px, 9999px, 55px, 0);
+                transform: skew(0.64deg);
+            }
+            80% {
+                clip: rect(34px, 9999px, 22px, 0);
+                transform: skew(0.43deg);
+            }
+            85% {
+                clip: rect(59px, 9999px, 71px, 0);
+                transform: skew(0.08deg);
+            }
+            90% {
+                clip: rect(23px, 9999px, 25px, 0);
+                transform: skew(0.01deg);
+            }
+            95% {
+                clip: rect(69px, 9999px, 43px, 0);
+                transform: skew(0.42deg);
+            }
+            100% {
+                clip: rect(95px, 9999px, 100px, 0);
+                transform: skew(0.05deg);
+            }
+        }
+
+        @keyframes glitch-anim2 {
+            0% {
+                clip: rect(65px, 9999px, 65px, 0);
+                transform: skew(0.16deg);
+            }
+            5% {
+                clip: rect(8px, 9999px, 7px, 0);
+                transform: skew(0.07deg);
+            }
+            10% {
+                clip: rect(61px, 9999px, 97px, 0);
+                transform: skew(0.06deg);
+            }
+            15% {
+                clip: rect(38px, 9999px, 53px, 0);
+                transform: skew(0.14deg);
+            }
+            20% {
+                clip: rect(45px, 9999px, 91px, 0);
+                transform: skew(0.02deg);
+            }
+            25% {
+                clip: rect(64px, 9999px, 91px, 0);
+                transform: skew(0.86deg);
+            }
+            30% {
+                clip: rect(57px, 9999px, 16px, 0);
+                transform: skew(0.4deg);
+            }
+            35% {
+                clip: rect(4px, 9999px, 5px, 0);
+                transform: skew(0.02deg);
+            }
+            40% {
+                clip: rect(89px, 9999px, 98px, 0);
+                transform: skew(0.07deg);
+            }
+            45% {
+                clip: rect(34px, 9999px, 70px, 0);
+                transform: skew(0.89deg);
+            }
+            50% {
+                clip: rect(26px, 9999px, 13px, 0);
+                transform: skew(0.79deg);
+            }
+            55% {
+                clip: rect(76px, 9999px, 22px, 0);
+                transform: skew(0.69deg);
+            }
+            60% {
+                clip: rect(81px, 9999px, 38px, 0);
+                transform: skew(0.13deg);
+            }
+            65% {
+                clip: rect(31px, 9999px, 81px, 0);
+                transform: skew(0.68deg);
+            }
+            70% {
+                clip: rect(85px, 9999px, 95px, 0);
+                transform: skew(0.27deg);
+            }
+            75% {
+                clip: rect(69px, 9999px, 23px, 0);
+                transform: skew(0.89deg);
+            }
+            80% {
+                clip: rect(32px, 9999px, 62px, 0);
+                transform: skew(0.07deg);
+            }
+            85% {
+                clip: rect(82px, 9999px, 42px, 0);
+                transform: skew(0.12deg);
+            }
+            90% {
+                clip: rect(67px, 9999px, 95px, 0);
+                transform: skew(0.34deg);
+            }
+            95% {
+                clip: rect(40px, 9999px, 30px, 0);
+                transform: skew(0.71deg);
+            }
+            100% {
+                clip: rect(35px, 9999px, 63px, 0);
+                transform: skew(0.01deg);
+            }
+        }
+
+        @keyframes glitch-skew {
+            0% {
+                transform: skew(1deg);
+            }
+            10% {
+                transform: skew(0deg);
+            }
+            20% {
+                transform: skew(1deg);
+            }
+            30% {
+                transform: skew(-1deg);
+            }
+            40% {
+                transform: skew(0deg);
+            }
+            50% {
+                transform: skew(-1deg);
+            }
+            60% {
+                transform: skew(0deg);
+            }
+            70% {
+                transform: skew(1deg);
+            }
+            80% {
+                transform: skew(-1deg);
+            }
+            90% {
+                transform: skew(0deg);
+            }
+            100% {
+                transform: skew(-1deg);
+            }
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        .footer-bottom {
+            padding-top: 10px;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .error-code {
+                font-size: 80px;
+            }
+            
+            .error-code::after {
+                font-size: 120px;
+            }
+            
+            .error-title {
+                font-size: 24px;
+            }
+            
+            .error-message {
+                font-size: 16px;
+            }
+            
+            .terminal {
+                padding: 15px;
+            }
+            
+            .terminal-body {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .error-code {
+                font-size: 60px;
+            }
+            
+            .error-code::after {
+                font-size: 90px;
+            }
+            
+            .buttons-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .terminal-body {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header id="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">Om Patel!</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 404 Error Section -->
+    <div class="error-container">
+        <div class="glitch-wrapper">
+            <h1 class="error-code glitch" data-text="404">404</h1>
+        </div>
+        <h2 class="error-title">Page Not Found</h2>
+        <p class="error-message">Oops! The page you're looking for seems to have been moved, deleted, or never existed in the first place. Let's debug this together.</p>
+        
+        <div class="terminal">
+            <div class="terminal-header">
+                <div class="terminal-buttons">
+                    <div class="terminal-button red"></div>
+                    <div class="terminal-button yellow"></div>
+                    <div class="terminal-button green"></div>
+                </div>
+                <div class="terminal-title">om-patel-terminal</div>
+            </div>
+            <div class="terminal-body">
+                <div class="terminal-line">
+                    <span class="terminal-prompt">om@portfolio:~$</span>
+                    <span class="terminal-command">find /path/to/page</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="terminal-output terminal-error">Error 404: Page not found in the directory</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="terminal-prompt">om@portfolio:~$</span>
+                    <span class="terminal-command">git checkout main</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="terminal-output">Switched to branch 'main'</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="terminal-prompt">om@portfolio:~$</span>
+                    <span class="terminal-command">navigate --to homepage</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="terminal-output">Redirecting to homepage...</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="terminal-prompt">om@portfolio:~$</span>
+                    <span class="terminal-cursor"></span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="buttons-container">
+            <a href="index.html" class="button">
+                <i class="fas fa-home"></i>
+                Back to Homepage
+            </a>
+            <a href="javascript:history.back()" class="button secondary">
+                <i class="fas fa-arrow-left"></i>
+                Go Back
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 Om Patel. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Terminal typing animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const terminalLines = document.querySelectorAll('.terminal-line');
+            
+            // Hide all lines initially except the first one
+            for (let i = 1; i < terminalLines.length; i++) {
+                terminalLines[i].style.display = 'none';
+            }
+            
+            // Show lines one by one with a delay
+            let lineIndex = 1;
+            const interval = setInterval(() => {
+                if (lineIndex < terminalLines.length) {
+                    terminalLines[lineIndex].style.display = 'flex';
+                    lineIndex++;
+                } else {
+                    clearInterval(interval);
+                }
+            }, 800);
+        });
+    </script>
+</body>
+</html>
+
