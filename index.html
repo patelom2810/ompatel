@@ -5,15 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Om Patel - Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" type="image/png" href="img/logo.png">
-
+    <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         /* Reset and Base Styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Poppins', sans-serif;
         }
 
         html {
@@ -39,6 +41,8 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+            
+
         }
 
         /* Header Styles */
@@ -236,6 +240,7 @@
             }
         }
 
+        /* Enhanced Profile Image Animation */
         .image-container {
             position: relative;
             width: 400px;
@@ -243,36 +248,41 @@
             border-radius: 50%;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
+
+        .image-container:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(23, 162, 184, 0.25);
         }
 
         .image-container::before {
             content: '';
             position: absolute;
-            top: -5px;
-            left: -5px;
-            right: -5px;
-            bottom: -5px;
+            inset: -2px;
             border-radius: 50%;
-            background: linear-gradient(45deg, #17a2b8, transparent, #17a2b8, transparent);
+            background: conic-gradient(
+                from 0deg,
+                #17a2b8,
+                rgba(23, 162, 184, 0.3),
+                #17a2b8,
+                rgba(23, 162, 184, 0.3),
+                #17a2b8
+            );
             z-index: -1;
-            animation: animateBorder 8s linear infinite;
+            animation: spin 4s linear infinite;
         }
 
         .image-container::after {
             content: '';
             position: absolute;
-            inset: 0;
+            inset: 6px;
             border-radius: 50%;
-            padding: 5px;
-            background: linear-gradient(315deg, #17a2b8, transparent);
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            mask-composite: exclude;
-            opacity: 0.7;
-            animation: rotateBorder 4s linear infinite;
+            background: white;
+            z-index: -1;
         }
 
-        @keyframes animateBorder {
+        @keyframes spin {
             0% {
                 transform: rotate(0deg);
             }
@@ -281,21 +291,12 @@
             }
         }
 
-        @keyframes rotateBorder {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(-360deg);
-            }
-        }
-
         .profile-image {
             width: 100%;
             height: 100%;
             object-fit: cover;
             border-radius: 50%;
-            transition: transform 0.5s ease;
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         .image-container:hover .profile-image {
@@ -695,6 +696,14 @@
             transition-delay: 0.4s;
         }
 
+        .timeline-item:nth-child(3) {
+            transition-delay: 0.6s;
+        }
+
+        .timeline-item:nth-child(4) {
+            transition-delay: 0.8s;
+        }
+
         .timeline-item:nth-child(odd) {
             left: 0;
         }
@@ -791,6 +800,10 @@
 
         .projects.visible .project-card:nth-child(3) {
             animation-delay: 0.6s;
+        }
+        
+        .projects.visible .project-card:nth-child(4) {
+            animation-delay: 0.8s;
         }
 
         @keyframes fadeInUp {
@@ -1026,28 +1039,6 @@
             box-shadow: 0 5px 15px rgba(23, 162, 184, 0.3);
         }
 
-        /* Success message */
-        .success-message {
-            display: none;
-            background-color: #d4edda;
-            color: #155724;
-            padding: 15px;
-            border-radius: 5px;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        /* Error message */
-        .error-message {
-            display: none;
-            background-color: #f8d7da;
-            color: #721c24;
-            padding: 15px;
-            border-radius: 5px;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
         /* Footer */
         footer {
             background-color: #333;
@@ -1193,6 +1184,7 @@
 
             .about-content {
                 flex-direction: column;
+                
             }
 
             .timeline::after {
@@ -1265,6 +1257,12 @@
             .section-title {
                 font-size: 30px;
             }
+            .about-info {
+    display: block;
+}
+.container {
+display:block;
+}
         }
 
         @media (max-width: 576px) {
@@ -1345,7 +1343,7 @@
                     <a href="https://github.com/patelom2810" class="social-link" aria-label="GitHub">
                         <i class="fab fa-github"></i>
                     </a>
-                    <a href="#" class="social-link" aria-label="Twitter">
+                    <a href="error.html" class="social-link" aria-label="Twitter">
                         <i class="fab fa-twitter"></i>
                     </a>
                     <a href="https://www.instagram.com/ommpatel28?igsh=MXZjMm1taWt1MmVmOA==" class="social-link" aria-label="Instagram">
@@ -1383,7 +1381,7 @@
                         </div>
                         <div class="info-item">
                             <i class="fas fa-phone"></i>
-                            <span>+91 90542 03388</span>
+                            <span>+91 9054 203388</span>
                         </div>
                         <div class="info-item">
                             <i class="fas fa-map-marker-alt"></i>
@@ -1476,6 +1474,23 @@
         <div class="container">
             <h2 class="section-title">Projects</h2>
             <div class="projects-grid">
+                <!-- New Sticky Notes Project -->
+                <div class="project-card">
+                    <img src="https://sjc.microlink.io/PaLKoakSNYOyxGZA4PHp936TDW7nhkn8P33nZxJKRFJToCMimx4ZaKPpJCQULqEagKTtKhOLnw9s3mM9GZ1MSA.jpeg" alt="Sticky Notes Application" class="project-image">
+                    <div class="project-content">
+                        <h3 class="project-title">Sticky Notes</h3>
+                        <p class="project-description">A colorful and intuitive sticky notes application that helps you organize your thoughts and tasks with customizable notes.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">html</span>
+                            <span class="project-tag">CSS</span>
+                            <span class="project-tag">JavaScript</span>
+                            
+                            
+                        </div>
+                        <a href="https://stickynotes-mu.vercel.app/" class="project-link" target="_blank">View Project</a>
+                    </div>
+                </div>
+                
                 <div class="project-card">
                     <img src="img/PARKING.png" alt="Parking Management System" class="project-image">
                     <div class="project-content">
@@ -1502,19 +1517,21 @@
                     </div>
                 </div>
                 <div class="project-card">
-                    <img src="img/shop.png" alt="Store Management System" class="project-image">
+                    <img src="img/shop.png" alt="Dairy Farm Store Management System" class="project-image">
                     <div class="project-content">
-                        <h3 class="project-title">Simple Store Management</h3>
+                        <h3 class="project-title">Dairy Farm Store Management</h3>
                         <p class="project-description">Simple Store management with bill and sales report functionality.</p>
                         <div class="project-tags">
                             <span class="project-tag">HTML</span>
                             <span class="project-tag">CSS</span>
+                            <span class="project-tag">JavaScript</span>
                             <span class="project-tag">PHP</span>
                             <span class="project-tag">MySQL</span>
                         </div>
-                        <a href="#" class="project-link">View Project</a>
+                        <a href="https://github.com/patelom2810/DAIRYFARMSHOP" class="project-link">View Project</a>
                     </div>
                 </div>
+                
             </div>
         </div>
     </section>
@@ -1549,7 +1566,7 @@
                             <i class="fas fa-phone"></i>
                             <div class="contact-item-content">
                                 <h4>Phone</h4>
-                                <p>+91 90542 03388</p>
+                                <p>+91 9054 203388</p>
                             </div>
                         </div>
                     </div>
@@ -1561,7 +1578,7 @@
                         <a href="https://github.com/patelom2810" class="social-link" aria-label="GitHub">
                             <i class="fab fa-github"></i>
                         </a>
-                        <a href="#" class="social-link" aria-label="Twitter">
+                        <a href="error.html" class="social-link" aria-label="Twitter">
                             <i class="fab fa-twitter"></i>
                         </a>
                         <a href="https://www.instagram.com/ommpatel28?igsh=MXZjMm1taWt1MmVmOA==" class="social-link" aria-label="Instagram">
@@ -1571,8 +1588,6 @@
                 </div>
                 
                 <div class="contact-form">
-                    <div id="success-message" class="success-message">Your message has been sent successfully!</div>
-                    <div id="error-message" class="error-message">There was an error sending your message. Please try again.</div>
                     <form id="contactForm">
                         <div class="form-group">
                             <label for="name">Your Name</label>
@@ -1616,10 +1631,10 @@
                     <a href="https://github.com/patelom2810" aria-label="GitHub">
                         <i class="fab fa-github"></i>
                     </a>
-                    <a href="#" aria-label="Twitter">
+                    <a href="error.html" aria-label="Twitter">
                         <i class="fab fa-twitter"></i>
                     </a>
-                    <a href="https://www.instagram.com/ommpatel28?igsh=MXZjMm1taWt1MmVmOA==" aria-label="Instagram">
+                    <a href="https://www.instagram.com/ommpatel28?igsh=MXZjMm1taWt1MmVmOA==s" aria-label="Instagram">
                         <i class="fab fa-instagram"></i>
                     </a>
                 </div>
@@ -1633,7 +1648,7 @@
     <script>
         // Typewriter effect
         const typewriterElement = document.getElementById('typewriter');
-        const professions = ['Developer', 'Designer'];
+        const professions = ['Developer', 'Designer', 'Full-Stack Developer'];
         let currentProfessionIndex = 0;
         let currentCharIndex = 0;
         let isDeleting = false;
@@ -1724,65 +1739,13 @@
                 });
             });
 
-            // Contact form submission with Gmail API integration
+            // Contact form submission
             const contactForm = document.getElementById('contactForm');
-            const successMessage = document.getElementById('success-message');
-            const errorMessage = document.getElementById('error-message');
-            
             if (contactForm) {
                 contactForm.addEventListener('submit', function(e) {
                     e.preventDefault();
-                    
-                    const name = document.getElementById('name').value;
-                    const email = document.getElementById('email').value;
-                    const subject = document.getElementById('subject').value;
-                    const message = document.getElementById('message').value;
-                    
-                    // Create form data for the email service
-                    const formData = {
-                        name: name,
-                        email: email,
-                        subject: subject,
-                        message: message,
-                        recipient: 'omashwin28@gmail.com'
-                    };
-                    
-                    // Send the form data to your email service
-                    fetch('https://formsubmit.co/omashwin28@gmail.com', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'Accept': 'application/json'
-                        },
-                        body: JSON.stringify(formData)
-                    })
-                    .then(response => {
-                        if (response.ok) {
-                            // Show success message
-                            successMessage.style.display = 'block';
-                            errorMessage.style.display = 'none';
-                            contactForm.reset();
-                            
-                            // Hide success message after 5 seconds
-                            setTimeout(() => {
-                                successMessage.style.display = 'none';
-                            }, 5000);
-                        } else {
-                            throw new Error('Network response was not ok');
-                        }
-                    })
-                    .catch(error => {
-                        // Show error message
-                        errorMessage.style.display = 'block';
-                        successMessage.style.display = 'none';
-                        
-                        // Hide error message after 5 seconds
-                        setTimeout(() => {
-                            errorMessage.style.display = 'none';
-                        }, 5000);
-                        
-                        console.error('Error:', error);
-                    });
+                    alert('Thank you for your message! I will get back to you soon.');
+                    contactForm.reset();
                 });
             }
         });
@@ -1842,3 +1805,4 @@
     </script>
 </body>
 </html>
+
