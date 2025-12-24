@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Om Patel - Portfolio</title>
+    <!-- Poppins Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Back to Top Button -->
+    <div class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Header Section -->
+    <header id="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Om Patel<span class="dot">.</span></div>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <nav id="nav">
+                    <ul>
+                        <li class="active"><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#skills">Skills</a></li>
+                        <li><a href="#education">Education</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <!-- Floating Background Shapes -->
+        <div class="bg-shape bg-shape-1"></div>
+        <div class="bg-shape bg-shape-2"></div>
+
+        <div class="hero-container">
+            <!-- Row 1: Planning -->
+            <div class="hero-row">
+                <span class="hero-text-large">Planning</span>
+                <!-- Arrow Circle -->
+                <div class="shape-circle arrow-circle hover-scale">
+                    <i class="fas fa-arrow-right" style="transform: rotate(-45deg);"></i>
+                </div>
+                <!-- Toggle Pill -->
+                <div class="shape-pill toggle-pill hover-rotate">
+                    <div class="toggle-circle">
+                        <i class="fas fa-check"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 2: Unique -->
+            <div class="hero-row">
+                <!-- Connect Line Path -->
+                <svg class="dashed-connector"
+                    style="width: 600px; height: 300px; left: 10%; top: -20px; z-index: -1; opacity: 0.4;">
+                    <path d="M50,80 C150,80 150,200 250,200 S400,100 550,150" fill="none" stroke="var(--primary-color)"
+                        stroke-width="3" stroke-dasharray="10, 10" />
+                </svg>
+
+                <!-- Profile Photo Circle (Replaces Rocket) -->
+                <div class="shape-circle profile-circle hover-scale">
+                    <img src="img/profile.jpg" alt="Om Patel">
+                </div>
+                <span class="hero-text-large">unique</span>
+                <!-- Green Switch -->
+                <div class="shape-pill switch-pill-green">
+                    <div class="switch-circle-green"></div>
+                </div>
+            </div>
+
+            <!-- Row 3: Projects -->
+            <div class="hero-row">
+                <!-- Command Pill -->
+                <div class="shape-pill command-pill hover-scale">
+                    <div class="command-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                </div>
+                <span class="hero-text-large text-gradient">projects.</span>
+            </div>
+
+            <p class="hero-intro">
+                I'm <strong>Om Patel</strong>, a creative Full-Stack Developer passionate about designing unique digital
+                experiences and AI solutions.
+            </p>
+
+            <div class="flex-center" style="gap: 20px; flex-wrap: wrap;">
+                <a href="#projects" class="download-cv" style="text-decoration: none;">
+                    View Work <i class="fas fa-eye"></i>
+                </a>
+                <a href="#contact" class="download-cv"
+                    style="background: white; color: var(--text-color); border: 2px solid #eee;">
+                    Contact Me <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+
+            <div class="social-links" style="margin-top: 30px; justify-content: center;">
+                <a href="https://www.linkedin.com/in/om-patel-1a929831b" class="social-link" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://github.com/patelom2810" class="social-link" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="error.html" class="social-link" aria-label="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://www.instagram.com/ommpatel28?igsh=MXZjMm1taWt1MmVmOA==" class="social-link"
+                    aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- About Me (Minimal Split Layout) -->
+    <section id="about" class="about-bento">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-minimal-wrapper text-center">
+                <div class="about-min-content full-width">
+                    <div class="status-badge">
+                        <span class="pulse-dot"></span>
+                        <span>Currently finding for job</span>
+                    </div>
+                    <h3 class="about-greeting">Hello there!</h3>
+                    <h2 class="about-headline">
+                        My name is <span class="highlight-text">Om Patel</span> and I <span
+                            class="highlight-text">analyze data</span> and <span class="highlight-text">build AI
+                            models</span> (most of the time).
+                    </h2>
+                    <p class="about-description mx-auto">
+                        Transforming complex data into actionable insights. I am a Data Analyst & AiML Engineer
+                        passionate about leveraging statistical modeling and machine learning to drive decision-making.
+                        <br><br>
+                        Currently based in Khambhat, India, working on impactful projects that blend design and
+                        functionality.
+                    </p>
+                    <div class="about-action">
+                        <a href="#contact" class="btn-glass-unique">Let's Talk <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">Skills</h2>
+
+            <div class="skills-grid-new">
+                <!-- Data Visualization & Analysis -->
+                <div class="skill-card" style="--progress: 90%;">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg" alt="PowerBI">
+                    <div class="skill-info">
+                        <span class="skill-name">PowerBI</span>
+                        <span class="skill-percentage">90%</span>
+                    </div>
+                </div>
+                <div class="skill-card" style="--progress: 85%;">
+                    <img src="img/tableau.jpg" alt="Tableau">
+                    <div class="skill-info">
+                        <span class="skill-name">Tableau</span>
+                        <span class="skill-percentage">85%</span>
+                    </div>
+                </div>
+                <div class="skill-card" style="--progress: 85%;">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/60/Microsoft_Office_Excel_%282025%E2%80%93present%29.svg"
+                        alt="Excel">
+                    <div class="skill-info">
+                        <span class="skill-name">Excel</span>
+                        <span class="skill-percentage">85%</span>
+                    </div>
+                </div>
+
+                <!-- Programming & AI -->
+                <div class="skill-card" style="--progress: 80%;">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
+                        alt="Python">
+                    <div class="skill-info">
+                        <span class="skill-name">Python</span>
+                        <span class="skill-percentage">80%</span>
+                    </div>
+                </div>
+                <div class="skill-card" style="--progress: 65%;">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg"
+                        alt="Pandas">
+                    <div class="skill-info">
+                        <span class="skill-name">Pandas</span>
+                        <span class="skill-percentage">65%</span>
+                    </div>
+                </div>
+                <!-- NumPy Added -->
+                <div class="skill-card" style="--progress: 70%;">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" alt="NumPy">
+                    <div class="skill-info">
+                        <span class="skill-name">NumPy</span>
+                        <span class="skill-percentage">70%</span>
+                    </div>
+                </div>
+                <div class="skill-card" style="--progress: 60%;">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg"
+                        alt="TensorFlow">
+                    <div class="skill-info">
+                        <span class="skill-name">TensorFlow</span>
+                        <span class="skill-percentage">60%</span>
+                    </div>
+                </div>
+
+                <!-- Database & Backend -->
+                <div class="skill-card" style="--progress: 75%;">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="SQL">
+                    <div class="skill-info">
+                        <span class="skill-name">SQL</span>
+                        <span class="skill-percentage">75%</span>
+                    </div>
+                </div>
+                <div class="skill-card" style="--progress: 70%;">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg"
+                        alt="MongoDB">
+                    <div class="skill-info">
+                        <span class="skill-name">MongoDB</span>
+                        <span class="skill-percentage">70%</span>
+                    </div>
+                </div>
+                <div class="skill-card" style="--progress: 70%;">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg"
+                        alt="Firebase">
+                    <div class="skill-info">
+                        <span class="skill-name">Firebase</span>
+                        <span class="skill-percentage">70%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="education">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2021</div>
+                        <h3 class="timeline-title">Higher Secondary: Science</h3>
+                        <p class="timeline-description">Focus on Physics, Chemistry, Maths.<br>Final
+                            Grade: 50%
+                        </p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="cap-icon"><i class="fas fa-graduation-cap"></i></div>
+                        <div class="timeline-date">2022 - 2025</div>
+                        <h3 class="timeline-title">Bachelor of Computer Application & IT</h3>
+                        <p class="timeline-description">Science Academy, Gujarat University<br>GPA: 8.0
+                        </p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2025 - 2027</div>
+                        <h3 class="timeline-title">Masters of Computer Application & IT</h3>
+                        <p class="timeline-description">Specialization in Data Analytics &
+                            AI/ML<br>Status: In
+                            Progress
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">My Projects</h2>
+
+            <div class="project-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="data-analysis">Data Analysis</button>
+                <button class="filter-btn" data-filter="visualization">Visualization</button>
+            </div>
+
+            <div class="projects-grid">
+                <!-- Data Viz - Blinkit Dashboard -->
+                <div class="project-card" data-category="visualization data-analysis">
+                    <div class="project-image-wrapper">
+                        <img src="img/blinkit.png" alt="Blinkit Dashboard" class="project-image">
+                        <div class="project-overlay">
+                            <a href="#" class="project-link" target="_blank" title="View Code"><i
+                                    class="fab fa-github"></i></a>
+                            <a href="#" class="project-link" target="_blank" title="Live Demo"><i
+                                    class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Blinkit Analysis</h3>
+                        <p class="project-description">Comprehensive sales and outlet performance
+                            dashboard.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">PowerBI</span>
+                            <span class="project-tag">Data Cleaning</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Data Viz - Pizza Sales -->
+                <div class="project-card" data-category="visualization data-analysis">
+                    <div class="project-image-wrapper">
+                        <img src="img/pizza_sales.png" alt="Pizza Sales Dashboard" class="project-image">
+                        <div class="project-overlay">
+                            <a href="#" class="project-link" target="_blank" title="View Code"><i
+                                    class="fab fa-github"></i></a>
+                            <a href="#" class="project-link" target="_blank" title="Live Demo"><i
+                                    class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Pizza Sales</h3>
+                        <p class="project-description">Visualizing daily trends and top-selling pizza
+                            categories.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">PowerBI</span>
+                            <span class="project-tag">SQL</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="web_projects.html" class="btn-outline">
+                    View Web Development Work <i class="fas fa-arrow-right" style="margin-left: 8px;"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Get in Touch Section (Premium Glass) -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div>
+                        <h3>Let's Connect</h3>
+                        <p>Feel free to reach out for collaborations, job opportunities, or just a
+                            friendly
+                            hello! I'm
+                            always open to discussing new projects and ideas.</p>
+                    </div>
+
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="icon-circle"><i class="fas fa-map-marker-alt"></i></div>
+                            <div class="contact-item-content">
+                                <h4>Location</h4>
+                                <p>Khambhat, India</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="icon-circle"><i class="fas fa-envelope"></i></div>
+                            <div class="contact-item-content">
+                                <h4>Email</h4>
+                                <p>omashwin28@gmail.com</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="icon-circle"><i class="fas fa-phone"></i></div>
+                            <div class="contact-item-content">
+                                <h4>Phone</h4>
+                                <p>+91 9054 203388</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="social-links big">
+                        <a href="https://www.linkedin.com/in/om-patel-1a929831b" class="social-link"
+                            aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://github.com/patelom2810" class="social-link" aria-label="GitHub"><i
+                                class="fab fa-github"></i></a>
+                        <a href="error.html" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/ommpatel28?igsh=MXZjMm1taWt1MmVmOA==" class="social-link"
+                            aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <div class="contact-form-wrapper">
+                    <form id="contactForm" action="https://formsubmit.co/omashwin28@gmail.com" method="POST">
+                        <!-- FormSubmit Configuration -->
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_subject" value="New Contact from Portfolio">
+
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" class="form-control" placeholder=" " required>
+                            <label for="name" class="floating-label">Your Name</label>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" class="form-control" placeholder=" " required>
+                            <label for="email" class="floating-label">Your Email</label>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" id="subject" name="subject" class="form-control" placeholder=" "
+                                required>
+                            <label for="subject" class="floating-label">Subject</label>
+                        </div>
+
+                        <div class="form-group">
+                            <textarea id="message" name="message" class="form-control" rows="4" placeholder=" "
+                                required></textarea>
+                            <label for="message" class="floating-label">Message</label>
+                        </div>
+
+                        <button type="submit" class="submit-btn" id="submitBtn">Send Message <i
+                                class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <h3 class="footer-title">Om Patel</h3>
+                <p class="footer-text">
+                    Thank you for visiting my portfolio. Looking forward to connecting with you!
+                </p>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Om Patel. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Typewriter effect
+        const typewriterElement = document.getElementById('typewriter');
+        const professions = ['Developer', 'Designer', 'Freelancer'];
+        let currentProfessionIndex = 0;
+        let currentCharIndex = 0;
+        let isDeleting = false;
+        let typingSpeed = 100;
+
+        function typeWriter() {
+            const currentProfession = professions[currentProfessionIndex];
+
+            if (isDeleting) {
+                typewriterElement.textContent = currentProfession.substring(0, currentCharIndex - 1);
+                currentCharIndex--;
+                typingSpeed = 50;
+            } else {
+                typewriterElement.textContent = currentProfession.substring(0, currentCharIndex + 1);
+                currentCharIndex++;
+                typingSpeed = 100;
+            }
+
+            if (!isDeleting && currentCharIndex === currentProfession.length) {
+                isDeleting = true;
+                typingSpeed = 2000;
+            }
+            else if (isDeleting && currentCharIndex === 0) {
+                isDeleting = false;
+                currentProfessionIndex = (currentProfessionIndex + 1) % professions.length;
+                typingSpeed = 500;
+            }
+
+            setTimeout(typeWriter, typingSpeed);
+        }
+
+        window.addEventListener('DOMContentLoaded', function () {
+            setTimeout(typeWriter, 1000);
+
+            checkSections();
+
+            // Mobile menu
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const nav = document.getElementById('nav');
+
+            mobileMenuBtn.addEventListener('click', function () {
+                nav.classList.toggle('active');
+                const icon = this.querySelector('i');
+                if (nav.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+
+            document.querySelectorAll('nav ul li a').forEach(link => {
+                link.addEventListener('click', function () {
+                    nav.classList.remove('active');
+                    const icon = mobileMenuBtn.querySelector('i');
+                    icon.classList.add('fa-bars');
+                    icon.classList.remove('fa-times');
+                });
+            });
+
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', function () {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            const backToTopBtn = document.querySelector('.back-to-top');
+            window.addEventListener('scroll', function () {
+                if (window.scrollY > 300) {
+                    backToTopBtn.classList.add('visible');
+                } else {
+                    backToTopBtn.classList.remove('visible');
+                }
+            });
+
+            backToTopBtn.addEventListener('click', function () {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // Contact form
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    alert('Thank you for your message! I will get back to you soon.');
+                    contactForm.reset();
+                });
+            }
+        });
+
+        // Intersection Observer for animations
+        function checkSections() {
+            const sections = document.querySelectorAll('section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            sections.forEach(section => observer.observe(section));
+        }
+
+        // Active link
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav ul li');
+
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(li => {
+                li.classList.remove('active');
+                if (li.querySelector('a').getAttribute('href') === `#${current}`) {
+                    li.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

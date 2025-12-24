@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Data Not Found</title>
+    <!-- Poppins Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            /* Matched with style.css */
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --accent: #f72585;
+            --text-color: #333;
+            --bg-color: #f8f9fa;
+
+            /* Error Page Specifics */
+            --light: #ffffff;
+            --light-bg: #f8f9fa;
+            --dark: #1e293b;
+            --error: #ef476f;
+            --success: #06d6a0;
+            --warning: #ffd166;
+            --info: #4cc9f0;
+            /* Kept cyan for info/charts */
+            --gray-100: #f1f5f9;
+            --gray-200: #e2e8f0;
+            --gray-300: #cbd5e1;
+            --gray-400: #94a3b8;
+            --gray-500: #64748b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light-bg);
+            color: var(--dark);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .background-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                radial-gradient(circle, rgba(67, 97, 238, 0.1) 1px, transparent 1px),
+                linear-gradient(to right, rgba(67, 97, 238, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(67, 97, 238, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px, 25px 25px, 25px 25px;
+            z-index: -1;
+            opacity: 0.5;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 90%;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .error-container {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            font-size: 10rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
+            position: relative;
+            letter-spacing: -5px;
+            line-height: 1;
+            filter: drop-shadow(0 10px 15px rgba(67, 97, 238, 0.2));
+        }
+
+        .glitch-effect {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            mix-blend-mode: multiply;
+            opacity: 0.8;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 700;
+        }
+
+        p {
+            font-size: 1.25rem;
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
+            color: var(--gray-500);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            box-shadow: 0 10px 25px rgba(67, 97, 238, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(67, 97, 238, 0.4);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn svg {
+            margin-right: 8px;
+        }
+
+        .data-visualization {
+            position: relative;
+            height: 400px;
+            width: 100%;
+            max-width: 900px;
+            margin: 3rem auto;
+            border-radius: 16px;
+            background-color: var(--light);
+            box-shadow: 0 20px 60px rgba(67, 97, 238, 0.15),
+                0 5px 15px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            border: 1px solid rgba(67, 97, 238, 0.1);
+        }
+
+        .chart-container {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 70%;
+            padding: 20px;
+        }
+
+        .chart-bar {
+            position: absolute;
+            bottom: 0;
+            width: 3%;
+            background: linear-gradient(to top, var(--primary), var(--accent));
+            border-radius: 5px 5px 0 0;
+            transition: height 0.5s ease;
+        }
+
+        .chart-line {
+            position: absolute;
+            height: 2px;
+            background-color: var(--accent);
+            transform-origin: left center;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        .data-point {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            box-shadow: 0 0 10px var(--accent);
+            transform: scale(0);
+            animation: pulse 3s infinite;
+        }
+
+        .anomaly {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--error), transparent 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: anomalyPulse 3s infinite;
+            box-shadow: 0 0 30px var(--error);
+            z-index: 2;
+        }
+
+        .anomaly::before {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 2px solid var(--error);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: ripple 3s infinite;
+            opacity: 0.7;
+        }
+
+        .anomaly::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 1px solid var(--error);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: ripple 3s infinite 0.5s;
+            opacity: 0.5;
+        }
+
+        .chart-labels {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 30px;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            color: var(--gray-400);
+            font-size: 0.8rem;
+        }
+
+        .y-axis {
+            position: absolute;
+            left: 20px;
+            height: 70%;
+            width: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            color: var(--gray-400);
+            font-size: 0.8rem;
+        }
+
+        .y-axis-label {
+            position: relative;
+        }
+
+        .y-axis-label::after {
+            content: '';
+            position: absolute;
+            width: 5px;
+            height: 1px;
+            background-color: var(--gray-300);
+            top: 50%;
+            left: 100%;
+        }
+
+        .x-axis {
+            position: absolute;
+            bottom: 10px;
+            left: 50px;
+            right: 20px;
+            height: 1px;
+            background-color: var(--gray-300);
+        }
+
+        .y-axis-line {
+            position: absolute;
+            left: 50px;
+            top: 30%;
+            bottom: 30px;
+            width: 1px;
+            background-color: var(--gray-300);
+        }
+
+        .dashboard-header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background-color: var(--light);
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            border-bottom: 1px solid rgba(67, 97, 238, 0.1);
+        }
+
+        .dashboard-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .dashboard-controls {
+            margin-left: auto;
+            display: flex;
+            gap: 10px;
+        }
+
+        .control-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: var(--error);
+        }
+
+        .control-dot:nth-child(2) {
+            background-color: var(--warning);
+        }
+
+        .control-dot:nth-child(3) {
+            background-color: var(--success);
+        }
+
+        .floating-stats {
+            position: absolute;
+            top: 70px;
+            right: 20px;
+            background-color: var(--light);
+            border-radius: 12px;
+            padding: 15px;
+            border: 1px solid rgba(67, 97, 238, 0.1);
+            width: 150px;
+            box-shadow: 0 10px 30px rgba(67, 97, 238, 0.1);
+        }
+
+        .stat-item {
+            margin-bottom: 10px;
+            font-size: 0.8rem;
+        }
+
+        .stat-label {
+            color: var(--gray-400);
+            margin-bottom: 3px;
+        }
+
+        .stat-value {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .error-code {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            font-family: monospace;
+            font-size: 0.8rem;
+            color: var(--error);
+            opacity: 0.8;
+        }
+
+        .data-cards {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .data-card {
+            background-color: var(--light);
+            border-radius: 12px;
+            padding: 20px;
+            width: 180px;
+            text-align: left;
+            box-shadow: 0 10px 30px rgba(67, 97, 238, 0.1);
+            border: 1px solid rgba(67, 97, 238, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .data-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(67, 97, 238, 0.15);
+        }
+
+        .card-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .card-title {
+            font-size: 0.9rem;
+            color: var(--gray-500);
+            margin-bottom: 5px;
+        }
+
+        .card-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            opacity: 0.3;
+        }
+
+        .grid-lines {
+            position: absolute;
+            top: 60px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+        }
+
+        .grid-line {
+            position: absolute;
+            background-color: var(--gray-200);
+            opacity: 0.5;
+        }
+
+        .grid-line-horizontal {
+            left: 0;
+            right: 0;
+            height: 1px;
+        }
+
+        .grid-line-vertical {
+            top: 0;
+            bottom: 0;
+            width: 1px;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(0);
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.7;
+                transform: scale(1);
+            }
+
+            100% {
+                transform: scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        @keyframes anomalyPulse {
+            0% {
+                opacity: 0.5;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0.5;
+            }
+        }
+
+        @keyframes ripple {
+            0% {
+                transform: translate(-50%, -50%) scale(0.8);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translate(-50%, -50%) scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        @keyframes glitch {
+            0% {
+                transform: translate(0);
+            }
+
+            20% {
+                transform: translate(-5px, 5px);
+            }
+
+            40% {
+                transform: translate(-5px, -5px);
+            }
+
+            60% {
+                transform: translate(5px, 5px);
+            }
+
+            80% {
+                transform: translate(5px, -5px);
+            }
+
+            100% {
+                transform: translate(0);
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .floating-element {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 8rem;
+            }
+
+            .data-visualization {
+                height: 350px;
+            }
+
+            .data-cards {
+                gap: 15px;
+            }
+
+            .data-card {
+                width: 160px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 6rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .data-visualization {
+                height: 300px;
+            }
+
+            .floating-stats {
+                display: none;
+            }
+
+            .data-cards {
+                gap: 10px;
+            }
+
+            .data-card {
+                width: 140px;
+                padding: 15px;
+            }
+
+            .card-icon {
+                width: 35px;
+                height: 35px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 5rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+
+            .data-visualization {
+                height: 250px;
+            }
+
+            .dashboard-header {
+                height: 50px;
+            }
+
+            .y-axis,
+            .chart-labels {
+                font-size: 0.7rem;
+            }
+
+            .data-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .data-card {
+                width: 80%;
+                max-width: 200px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            h1 {
+                font-size: 4rem;
+            }
+
+            .data-visualization {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background-grid"></div>
+    <div class="particles" id="particles"></div>
+
+    <div class="container">
+        <div class="error-container floating-element">
+            <h1>404</h1>
+            <div class="glitch-effect"></div>
+        </div>
+        <h2>Data Point Not Found</h2>
+        <p>The requested resource couldn't be located in our data warehouse. Our machine learning algorithms detected an
+            anomaly in the data flow. Please return to the dashboard to continue your analysis.</p>
+
+        <div class="data-cards">
+            <div class="data-card">
+                <div class="card-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                    </svg>
+                </div>
+                <div class="card-title">Error Code</div>
+                <div class="card-value">404</div>
+            </div>
+            <div class="data-card">
+                <div class="card-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="8" x2="12" y2="12"></line>
+                        <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                    </svg>
+                </div>
+                <div class="card-title">Status</div>
+                <div class="card-value">Not Found</div>
+            </div>
+            <div class="data-card">
+                <div class="card-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                    </svg>
+                </div>
+                <div class="card-title">Confidence</div>
+                <div class="card-value">100%</div>
+            </div>
+        </div>
+
+        <div class="data-visualization">
+            <div class="dashboard-header">
+                <div class="dashboard-title">Data Anomaly Visualization</div>
+                <div class="dashboard-controls">
+                    <div class="control-dot"></div>
+                    <div class="control-dot"></div>
+                    <div class="control-dot"></div>
+                </div>
+            </div>
+
+            <div class="grid-lines" id="grid-lines"></div>
+
+            <div class="y-axis">
+                <div class="y-axis-label">100%</div>
+                <div class="y-axis-label">75%</div>
+                <div class="y-axis-label">50%</div>
+                <div class="y-axis-label">25%</div>
+                <div class="y-axis-label">0%</div>
+            </div>
+
+            <div class="y-axis-line"></div>
+            <div class="x-axis"></div>
+
+            <div class="chart-container" id="chart-container">
+                <!-- Chart bars will be added by JavaScript -->
+            </div>
+
+            <div class="anomaly"></div>
+
+            <div class="floating-stats">
+                <div class="stat-item">
+                    <div class="stat-label">Error Rate</div>
+                    <div class="stat-value">100%</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">Status</div>
+                    <div class="stat-value">Not Found</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">Path</div>
+                    <div class="stat-value">Unknown</div>
+                </div>
+            </div>
+
+            <div class="error-code">ERR_DATA_NOT_FOUND</div>
+        </div>
+
+        <a href="index.html" class="btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+            Return to Dashboard
+        </a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Create background particles
+            createParticles();
+
+            // Create grid lines
+            createGridLines();
+
+            // Create chart bars
+            createChartBars();
+
+            // Create data points
+            createDataPoints();
+
+            // Add glitch effect to 404
+            setInterval(glitchEffect, 3000);
+
+            // Make visualization interactive
+            const visualization = document.querySelector('.data-visualization');
+            visualization.addEventListener('click', function (e) {
+                if (e.target.classList.contains('chart-container') || e.target.classList.contains('data-visualization')) {
+                    createInteractiveDataPoint(e);
+                }
+            });
+        });
+
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = Math.min(window.innerWidth / 10, 100); // Responsive particle count
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+
+                // Random position
+                const x = Math.random() * 100;
+                const y = Math.random() * 100;
+                particle.style.left = `${x}%`;
+                particle.style.top = `${y}%`;
+
+                // Random size
+                const size = Math.random() * 3 + 1;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+
+                // Random opacity
+                particle.style.opacity = Math.random() * 0.3 + 0.1;
+
+                // Animation
+                const duration = Math.random() * 20 + 10;
+                particle.style.animation = `pulse ${duration}s infinite`;
+                particle.style.animationDelay = `${Math.random() * 10}s`;
+
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        function createGridLines() {
+            const gridContainer = document.getElementById('grid-lines');
+            const horizontalLines = 8;
+            const verticalLines = 12;
+
+            // Create horizontal grid lines
+            for (let i = 1; i < horizontalLines; i++) {
+                const line = document.createElement('div');
+                line.classList.add('grid-line', 'grid-line-horizontal');
+                line.style.top = `${(i / horizontalLines) * 100}%`;
+                gridContainer.appendChild(line);
+            }
+
+            // Create vertical grid lines
+            for (let i = 1; i < verticalLines; i++) {
+                const line = document.createElement('div');
+                line.classList.add('grid-line', 'grid-line-vertical');
+                line.style.left = `${(i / verticalLines) * 100}%`;
+                gridContainer.appendChild(line);
+            }
+        }
+
+        function createChartBars() {
+            const chartContainer = document.getElementById('chart-container');
+            const barCount = 30; // Number of bars
+            const barWidth = 100 / barCount; // Width in percentage
+
+            for (let i = 0; i < barCount; i++) {
+                const bar = document.createElement('div');
+                bar.classList.add('chart-bar');
+
+                // Position
+                bar.style.left = `${i * barWidth}%`;
+                bar.style.width = `${barWidth * 0.7}%`;
+
+                // Height - create a pattern with a gap in the middle (anomaly)
+                let height;
+                const middle = barCount / 2;
+                const distFromMiddle = Math.abs(i - middle);
+
+                if (distFromMiddle < 3) {
+                    // Create a dip near the middle (anomaly)
+                    height = 10 + (distFromMiddle * 10);
+                } else {
+                    // Normal data pattern
+                    height = 50 + Math.sin(i * 0.5) * 30;
+                }
+
+                bar.style.height = `${height}%`;
+
+                // Add some randomness
+                setTimeout(() => {
+                    bar.style.height = `${parseFloat(bar.style.height) + (Math.random() * 10 - 5)}%`;
+                }, 1000 + i * 100);
+
+                chartContainer.appendChild(bar);
+
+                // Add animation for continuous data movement
+                setInterval(() => {
+                    const newHeight = parseFloat(bar.style.height) + (Math.random() * 6 - 3);
+                    bar.style.height = `${Math.max(5, Math.min(95, newHeight))}%`;
+                }, 2000 + Math.random() * 1000);
+            }
+        }
+
+        function createDataPoints() {
+            const visualization = document.querySelector('.data-visualization');
+            const numPoints = 20;
+
+            for (let i = 0; i < numPoints; i++) {
+                const point = document.createElement('div');
+                point.classList.add('data-point');
+
+                // Random position but avoid center where anomaly is
+                let x, y;
+                do {
+                    x = Math.random() * 100;
+                    y = Math.random() * 100;
+                } while (Math.abs(x - 50) < 20 && Math.abs(y - 50) < 20);
+
+                point.style.left = `${x}%`;
+                point.style.top = `${y}%`;
+
+                // Random delay for animation
+                point.style.animationDelay = `${Math.random() * 5}s`;
+
+                visualization.appendChild(point);
+
+                // Connect some points with lines
+                if (i > 0 && Math.random() > 0.3) {
+                    setTimeout(() => {
+                        connectPoints(
+                            { x, y },
+                            {
+                                x: parseFloat(document.querySelectorAll('.data-point')[i - 1].style.left),
+                                y: parseFloat(document.querySelectorAll('.data-point')[i - 1].style.top)
+                            },
+                            visualization
+                        );
+                    }, 1000);
+                }
+            }
+        }
+
+        function connectPoints(point1, point2, parent) {
+            const x1 = point1.x;
+            const y1 = point1.y;
+            const x2 = point2.x;
+            const y2 = point2.y;
+
+            const length = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+            const angle = Math.atan2(y2 - y1, x2 - x1) * 180 / Math.PI;
+
+            const line = document.createElement('div');
+            line.classList.add('chart-line');
+            line.style.width = `${length}%`;
+            line.style.left = `${x1}%`;
+            line.style.top = `${y1}%`;
+            line.style.transform = `rotate(${angle}deg)`;
+
+            parent.appendChild(line);
+
+            // Animate line appearance
+            setTimeout(() => {
+                line.style.opacity = '0.5';
+            }, 100);
+        }
+
+        function createInteractiveDataPoint(e) {
+            const visualization = document.querySelector('.data-visualization');
+            const rect = visualization.getBoundingClientRect();
+            const x = ((e.clientX - rect.left) / rect.width) * 100;
+            const y = ((e.clientY - rect.top) / rect.height) * 100;
+
+            const point = document.createElement('div');
+            point.classList.add('data-point');
+            point.style.left = `${x}%`;
+            point.style.top = `${y}%`;
+            point.style.animationDelay = '0s';
+            point.style.backgroundColor = 'var(--info)';
+            point.style.width = '15px';
+            point.style.height = '15px';
+
+            visualization.appendChild(point);
+
+            // Connect to random existing points and to anomaly
+            setTimeout(() => {
+                const dataPoints = document.querySelectorAll('.data-point');
+                const randomPoints = Array.from(dataPoints)
+                    .sort(() => 0.5 - Math.random())
+                    .slice(0, 2);
+
+                randomPoints.forEach(randomPoint => {
+                    if (randomPoint !== point) {
+                        connectPoints(
+                            { x, y },
+                            {
+                                x: parseFloat(randomPoint.style.left),
+                                y: parseFloat(randomPoint.style.top)
+                            },
+                            visualization
+                        );
+                    }
+                });
+
+                // Connect to anomaly
+                connectPoints(
+                    { x, y },
+                    { x: 50, y: 50 },
+                    visualization
+                );
+            }, 100);
+        }
+
+        function glitchEffect() {
+            const h1 = document.querySelector('h1');
+            h1.style.animation = 'glitch 0.5s ease';
+
+            setTimeout(() => {
+                h1.style.animation = '';
+            }, 500);
+        }
+    </script>
+</body>
+
+</html>
