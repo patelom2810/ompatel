@@ -2417,3 +2417,116 @@ textarea.form-control {
         font-size: 2.5rem;
     }
 }
+
+/* =========================================
+   Contact Section Responsiveness (Fixed)
+   ========================================= */
+
+/* Tablet (991px and below) */
+@media (max-width: 991px) {
+    .contact-container {
+        grid-template-columns: 1fr;
+        gap: 0;
+        /* Remove gap as we are stacking */
+        padding: 30px;
+    }
+
+    .contact-info {
+        padding: 30px;
+        padding-bottom: 30px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .contact-form-wrapper {
+        padding: 30px;
+    }
+}
+
+/* Mobile (768px and below) */
+@media (max-width: 768px) {
+    .contact {
+        padding: 50px 0;
+    }
+
+    .contact-container {
+        padding: 20px;
+        border-radius: 20px;
+        gap: 0;
+        width: 100%;
+        /* Ensure it doesn't overflow */
+        box-sizing: border-box;
+    }
+
+    .contact-info {
+        padding: 20px;
+    }
+
+    .contact-info h3 {
+        font-size: 1.8rem;
+    }
+
+    .contact-info p {
+        font-size: 0.95rem;
+    }
+
+    .contact-form-wrapper {
+        padding: 20px;
+        /* Reduced from 50px */
+    }
+
+    .contact-item {
+        padding: 12px 15px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-control {
+        padding: 12px 15px;
+    }
+
+    .submit-btn {
+        padding: 15px;
+        font-size: 1rem;
+    }
+}
+
+/* Small Mobile (480px and below) */
+@media (max-width: 480px) {
+    .contact-container {
+        padding: 15px;
+        /* Even smaller padding */
+    }
+
+    .contact-info,
+    .contact-form-wrapper {
+        padding: 15px;
+        /* Tight padding for very small screens */
+    }
+
+    .contact-info h3 {
+        font-size: 1.5rem;
+    }
+
+    .contact-details {
+        margin-top: 20px;
+    }
+
+    .contact-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        text-align: left;
+    }
+
+    .icon-circle {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    .floating-label {
+        font-size: 0.9rem;
+    }
+}
