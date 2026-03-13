@@ -21,27 +21,31 @@
         <i class="fas fa-arrow-up"></i>
     </div>
 
-    <!-- Header Section -->
-    <header id="header">
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">Om Patel<span class="dot">.</span></div>
-                <button class="mobile-menu-btn">
-                    <i class="fas fa-bars"></i>
-                </button>
-                <nav id="nav">
-                    <ul>
-                        <li class="active"><a href="#home">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#skills">Skills</a></li>
-                        <li><a href="#education">Education</a></li>
-                        <li><a href="#projects">Projects</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-    </header>
+
+    <!-- Glassy Navigation Dock -->
+    <div class="glassy-nav-container">
+        <nav class="glassy-nav">
+            <a href="#home" class="nav-item active" data-tooltip="Home">
+                <i class="fas fa-home"></i>
+            </a>
+            <a href="#about" class="nav-item" data-tooltip="About">
+                <i class="fas fa-user"></i>
+            </a>
+            
+            <a href="#home" class="nav-profile-wrapper">
+                <div class="nav-profile">
+                    <img src="img/profile.jpg" alt="Om Patel">
+                </div>
+            </a>
+
+            <a href="projects.html" class="nav-item" data-tooltip="Projects">
+                <i class="fas fa-briefcase"></i>
+            </a>
+            <a href="#contact" class="nav-item" data-tooltip="Contact">
+                <i class="fas fa-envelope"></i>
+            </a>
+        </nav>
+    </div>
 
     <!-- Hero Section -->
     <!-- Hero Section -->
@@ -301,61 +305,13 @@
         <div class="container">
             <h2 class="section-title">My Projects</h2>
 
-            <div class="project-filters">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="data-analysis">Data Analysis</button>
-                <button class="filter-btn" data-filter="visualization">Visualization</button>
-            </div>
-
-            <div class="projects-grid">
-                <!-- Data Viz - Blinkit Dashboard -->
-                <div class="project-card" data-category="visualization data-analysis">
-                    <div class="project-image-wrapper">
-                        <img src="img/blinkit.png" alt="Blinkit Dashboard" class="project-image">
-                        <div class="project-overlay">
-                            <a href="#" class="project-link" target="_blank" title="View Code"><i
-                                    class="fab fa-github"></i></a>
-                            <a href="#" class="project-link" target="_blank" title="Live Demo"><i
-                                    class="fas fa-external-link-alt"></i></a>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Blinkit Analysis</h3>
-                        <p class="project-description">Comprehensive sales and outlet performance
-                            dashboard.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">PowerBI</span>
-                            <span class="project-tag">Data Cleaning</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Data Viz - Pizza Sales -->
-                <div class="project-card" data-category="visualization data-analysis">
-                    <div class="project-image-wrapper">
-                        <img src="img/pizza_sales.png" alt="Pizza Sales Dashboard" class="project-image">
-                        <div class="project-overlay">
-                            <a href="#" class="project-link" target="_blank" title="View Code"><i
-                                    class="fab fa-github"></i></a>
-                            <a href="#" class="project-link" target="_blank" title="Live Demo"><i
-                                    class="fas fa-external-link-alt"></i></a>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Pizza Sales</h3>
-                        <p class="project-description">Visualizing daily trends and top-selling pizza
-                            categories.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">PowerBI</span>
-                            <span class="project-tag">SQL</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div style="text-align: center; margin-top: 50px;">
-                <a href="web_projects.html" class="btn-outline">
-                    View Web Development Work <i class="fas fa-arrow-right" style="margin-left: 8px;"></i>
+            <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+                <p style="font-size: 1.2rem; color: #666; margin-bottom: 40px;">
+                    I've worked on a variety of projects ranging from data visualization dashboards to full-stack web applications.
+                    Check out my complete portfolio to see what I've been building.
+                </p>
+                <a href="projects.html" class="btn-outline">
+                    View Complete Portfolio <i class="fas fa-arrow-right" style="margin-left: 8px;"></i>
                 </a>
             </div>
         </div>

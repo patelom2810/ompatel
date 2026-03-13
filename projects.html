@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Om Patel - Projects</title>
+    <!-- Poppins Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js" defer></script>
+</head>
+
+<body>
+    <!-- Back to Top Button -->
+    <div class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+
+    <!-- Glassy Navigation Dock -->
+    <div class="glassy-nav-container">
+        <nav class="glassy-nav">
+            <a href="index.html#home" class="nav-item" data-tooltip="Home">
+                <i class="fas fa-home"></i>
+            </a>
+            <a href="index.html#about" class="nav-item" data-tooltip="About">
+                <i class="fas fa-user"></i>
+            </a>
+            
+            <a href="index.html" class="nav-profile-wrapper">
+                <div class="nav-profile">
+                    <img src="img/profile.jpg" alt="Om Patel">
+                </div>
+            </a>
+
+            <a href="projects.html" class="nav-item active" data-tooltip="Projects">
+                <i class="fas fa-briefcase"></i>
+            </a>
+            <a href="index.html#contact" class="nav-item" data-tooltip="Contact">
+                <i class="fas fa-envelope"></i>
+            </a>
+        </nav>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="web-hero">
+        <!-- Floating Code Symbols -->
+        <div class="floating-code code-1">&lt;/&gt;</div>
+        <div class="floating-code code-2">{ }</div>
+        <div class="floating-code code-3">#root</div>
+        <div class="floating-code code-4">Array()</div>
+
+        <div class="container web-hero-content">
+            <span class="web-badge">Portfolio Showcase</span>
+            <h1 class="web-title">
+                Explore My <span class="text-gradient">Projects</span>
+            </h1>
+            <p class="web-subtitle">
+                A collection of my work in Web Development, Data Analysis, and Visualization.
+            </p>
+
+            <a href="index.html" class="btn-outline" style="margin-top: 20px;">
+                <i class="fas fa-arrow-left" style="margin-right: 8px;"></i> Back to Home
+            </a>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects bg-tech-pattern">
+        <div class="container">
+            
+            <!-- Filter removed as requested -->
+
+            <div class="projects-grid">
+                
+                <!-- CleanItUp! (Data/AI) -->
+                <div class="project-card" data-category="data web">
+                    <div class="project-image-wrapper">
+                        <div class="project-thumb bg-gradient-7">
+                            <i class="fas fa-magic"></i>
+                        </div>
+                        <div class="project-overlay">
+                            <a href="https://cleanitup.netlify.app" class="project-link" target="_blank"
+                                title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">CleanItUp!</h3>
+                        <p class="project-description">The ultimate data cleaning platform. Transform messy datasets with AI-powered tools.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">AI</span>
+                            <span class="project-tag">Data Cleaning</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Blinkit Analysis (Data) -->
+                <div class="project-card" data-category="data">
+                    <div class="project-image-wrapper">
+                        <img src="img/blinkit.png" alt="Blinkit Dashboard" class="project-image">
+                        <div class="project-overlay">
+                            <a href="#" class="project-link" target="_blank" title="View Code"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Blinkit Analysis</h3>
+                        <p class="project-description">Comprehensive sales and outlet performance dashboard.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">PowerBI</span>
+                            <span class="project-tag">Data Vis</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ClipDrop (Tool) -->
+                <div class="project-card" data-category="web">
+                    <div class="project-image-wrapper">
+                        <div class="project-thumb bg-gradient-5">
+                            <i class="fas fa-share-alt"></i>
+                        </div>
+                        <div class="project-overlay">
+                            <a href="https://clipdrop.netlify.app" class="project-link" target="_blank"
+                                title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">ClipDrop</h3>
+                        <p class="project-description">Secure peer-to-peer file transfer. Fast, encrypted, and no registration required.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">WebRTC</span>
+                            <span class="project-tag">Security</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ClipChain (Tool) -->
+                <div class="project-card" data-category="web">
+                    <div class="project-image-wrapper">
+                        <div class="project-thumb bg-gradient-1">
+                            <i class="fas fa-link"></i>
+                        </div>
+                        <div class="project-overlay">
+                            <a href="https://clipchain.netlify.app" class="project-link" target="_blank"
+                                title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">ClipChain</h3>
+                        <p class="project-description">Universal clipboard tool. Sync detailed text and code snippets across devices in real-time.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Utility</span>
+                            <span class="project-tag">Real-time</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- CodeVault (Tool) -->
+                <div class="project-card" data-category="web">
+                    <div class="project-image-wrapper">
+                        <div class="project-thumb bg-gradient-8">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="project-overlay">
+                            <a href="https://codevaultt.netlify.app" class="project-link" target="_blank"
+                                title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">CodeVault</h3>
+                        <p class="project-description">Ultimate code snippet manager with real-time collaboration features.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Developer Tool</span>
+                            <span class="project-tag">Snippets</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DeveloperZip (Tool) -->
+                <div class="project-card" data-category="web">
+                    <div class="project-image-wrapper">
+                        <div class="project-thumb bg-gradient-3">
+                            <i class="fas fa-folder-open"></i>
+                        </div>
+                        <div class="project-overlay">
+                            <a href="https://devloperzip.netlify.app" class="project-link" target="_blank"
+                                title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">DeveloperZip</h3>
+                        <p class="project-description">Create, organize, and download project folder structures instantly.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Productivity</span>
+                            <span class="project-tag">File System</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stick Notes (Web) -->
+                 <div class="project-card" data-category="web">
+                    <div class="project-image-wrapper">
+                        <img src="img/sticky.png" alt="Sticky Notes Application" class="project-image">
+                        <div class="project-overlay">
+                            <a href="https://github.com/patelom2810" class="project-link" target="_blank"
+                                title="View Code"><i class="fab fa-github"></i></a>
+                            <a href="https://stickynotes-mu.vercel.app/" class="project-link" target="_blank"
+                                title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Sticky Notes</h3>
+                        <p class="project-description">A colorful and intuitive sticky notes application for quick thoughts.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">React</span>
+                            <span class="project-tag">UI/UX</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Zaayka Junction (Web) -->
+                <div class="project-card" data-category="web">
+                    <div class="project-image-wrapper">
+                        <div class="project-thumb bg-gradient-9">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <div class="project-overlay">
+                            <a href="https://zaaykajunctionui.netlify.app" class="project-link" target="_blank"
+                                title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Zaayka Junction</h3>
+                        <p class="project-description">Discover flavors from every state. A culinary community for food lovers.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Community</span>
+                            <span class="project-tag">Food</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stock Report (Web) -->
+                <div class="project-card" data-category="web">
+                    <div class="project-image-wrapper">
+                        <div class="project-thumb bg-gradient-4">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="project-overlay">
+                            <a href="https://storckreport.netlify.app" class="project-link" target="_blank"
+                                title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Stock Manager</h3>
+                        <p class="project-description">Efficient stock management system with export to Excel/PDF capabilities.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Management</span>
+                            <span class="project-tag">Dashboard</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pizza Sales (Data) -->
+                <div class="project-card" data-category="data">
+                    <div class="project-image-wrapper">
+                        <img src="img/pizza_sales.png" alt="Pizza Sales Dashboard" class="project-image">
+                        <div class="project-overlay">
+                            <a href="#" class="project-link" target="_blank" title="View Code"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Pizza Sales</h3>
+                        <p class="project-description">Visualizing daily trends and top-selling pizza categories.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">PowerBI</span>
+                            <span class="project-tag">SQL</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Get in Touch Section (Premium Glass) -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div>
+                        <h3>Let's Connect</h3>
+                        <p>Feel free to reach out for collaborations, job opportunities, or just a
+                            friendly
+                            hello! I'm
+                            always open to discussing new projects and ideas.</p>
+                    </div>
+
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="icon-circle"><i class="fas fa-map-marker-alt"></i></div>
+                            <div class="contact-item-content">
+                                <h4>Location</h4>
+                                <p>Khambhat, India</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="icon-circle"><i class="fas fa-envelope"></i></div>
+                            <div class="contact-item-content">
+                                <h4>Email</h4>
+                                <p>omashwin28@gmail.com</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="icon-circle"><i class="fas fa-phone"></i></div>
+                            <div class="contact-item-content">
+                                <h4>Phone</h4>
+                                <p>+91 9054 203388</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="social-links big">
+                        <a href="https://www.linkedin.com/in/om-patel-1a929831b" class="social-link"
+                            aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://github.com/patelom2810" class="social-link" aria-label="GitHub"><i
+                                class="fab fa-github"></i></a>
+                        <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/ommpatel28?igsh=MXZjMm1taWt1MmVmOA==" class="social-link"
+                            aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <div class="contact-form-wrapper">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" id="name" class="form-control" placeholder=" " required>
+                            <label for="name" class="floating-label">Your Name</label>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="email" id="email" class="form-control" placeholder=" " required>
+                            <label for="email" class="floating-label">Your Email</label>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" id="subject" class="form-control" placeholder=" " required>
+                            <label for="subject" class="floating-label">Subject</label>
+                        </div>
+
+                        <div class="form-group">
+                            <textarea id="message" class="form-control" rows="4" placeholder=" " required></textarea>
+                            <label for="message" class="floating-label">Message</label>
+                        </div>
+
+                        <button type="submit" class="submit-btn">Send Message <i
+                                class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <h3 class="footer-title">Om Patel</h3>
+                <p class="footer-text">
+                    Thank you for visiting my portfolio. Looking forward to connecting with you!
+                </p>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Om Patel. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

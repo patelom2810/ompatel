@@ -25,6 +25,7 @@ body {
     color: var(--text-color);
     line-height: 1.6;
     overflow-x: hidden;
+    padding-bottom: 120px; /* Space for the bottom dock */
 }
 
 /* Custom Utilities for Playful Hero */
@@ -234,7 +235,7 @@ header.scrolled {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-top: 100px;
+    /* padding-top: 100px; Removed for better centering without header */
     padding-bottom: 50px;
     background-image: radial-gradient(circle at 10% 20%, rgba(67, 97, 238, 0.03) 0%, transparent 20%),
         radial-gradient(circle at 90% 80%, rgba(247, 37, 133, 0.03) 0%, transparent 20%);
@@ -1001,6 +1002,32 @@ header.scrolled {
     overflow: hidden;
 }
 
+/* Icon Thumbnails for Projects without Images */
+.project-thumb {
+    position: relative;
+    height: 240px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5rem;
+    color: white;
+    transition: transform 0.8s ease;
+}
+
+.project-card:hover .project-thumb {
+    transform: scale(1.1);
+}
+
+.bg-gradient-1 { background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%); }
+.bg-gradient-2 { background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%); color: #2d3436 !important; }
+.bg-gradient-3 { background: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%); }
+.bg-gradient-4 { background: linear-gradient(120deg, #f093fb 0%, #f5576c 100%); }
+.bg-gradient-5 { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+.bg-gradient-6 { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); color: #2d3436 !important; }
+.bg-gradient-7 { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+.bg-gradient-8 { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+.bg-gradient-9 { background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%); }
+
 .project-image {
     width: 100%;
     height: 100%;
@@ -1262,7 +1289,7 @@ footer {
     }
 
     .hero {
-        padding-top: 120px;
+        /* padding-top: 120px; Removed for better centering */
         text-align: center;
     }
 
@@ -2529,4 +2556,155 @@ textarea.form-control {
     .floating-label {
         font-size: 0.9rem;
     }
+}
+ 
+
+/* =========================================
+   Glassy Dock Navigation
+   ========================================= */
+.glassy-nav-container {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+}
+
+.glassy-nav {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 10px 20px;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.glassy-nav:hover {
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.nav-item {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color: #4361ee;
+    font-size: 1.2rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.nav-item:hover, .nav-item.active {
+    background: #4361ee;
+    color: white;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(67, 97, 238, 0.3);
+}
+
+/* Tooltip */
+.nav-item::before {
+    content: attr(data-tooltip);
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.75rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.nav-item:hover::before {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+.nav-profile-wrapper {
+    position: relative;
+    margin: 0 10px;
+}
+
+.nav-profile {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 4px solid white;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s ease;
+    transform: translateY(-15px); /* Pop out slightly */
+}
+
+.nav-profile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.nav-profile-wrapper:hover .nav-profile {
+    transform: translateY(-20px) scale(1.1);
+    border-color: #4361ee;
+}
+
+/* Hide original Mobile Menu Btn */
+.mobile-menu-btn {
+    display: none !important;
+}
+
+@media (max-width: 768px) {
+    .glassy-nav-container {
+        bottom: 20px;
+        width: 90%;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .glassy-nav {
+        gap: 10px;
+        padding: 10px;
+        width: 100%;
+        justify-content: space-around;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        background: rgba(255, 255, 255, 0.4);
+    }
+    
+    .nav-item {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+    
+    .nav-profile {
+        width: 50px;
+        height: 50px;
+         transform: translateY(-10px);
+    }
+}
+
+/* =========================================
+   Professional UI Grid Background
+   ========================================= */
+body {
+    /* Main Background Color */
+    background-color: #f8f9fa;
+    /* Small light gray dots (5px virtual box distance approx) */
+    background-image: radial-gradient(#cbd5e1 1.5px, transparent 1.5px);
+    background-size: 20px 20px; /* Small distance */
+    background-position: 0 0;
+    /* Maintain pattern on scroll */
+    background-attachment: fixed;
 }
