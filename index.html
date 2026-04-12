@@ -59,10 +59,16 @@
     <!-- Hero Section -->
     <!-- Hero Section -->
     <section id="home" class="hero-split" style="min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 100px 20px; background-color: #F8FAFC; position: relative; overflow: hidden;">
-        <!-- Background decorative elements (GroVest aesthetic) -->
-        <div style="position: absolute; top: -10vh; left: -10vw; width: 50vw; height: 50vw; max-width: 800px; max-height: 800px; background: radial-gradient(circle, rgba(198, 245, 100, 0.45) 0%, rgba(198, 245, 100, 0) 70%); border-radius: 50%; filter: blur(60px); z-index: 0;"></div>
-        <div style="position: absolute; top: 5%; right: -10vw; width: 60vw; height: 60vw; max-width: 900px; max-height: 900px; background: radial-gradient(circle, rgba(255, 198, 69, 0.3) 0%, rgba(255, 198, 69, 0) 70%); border-radius: 50%; filter: blur(80px); z-index: 0;"></div>
-        <div style="position: absolute; bottom: -20vh; left: 10vw; width: 40vw; height: 40vw; max-width: 600px; max-height: 600px; background: radial-gradient(circle, rgba(65, 105, 225, 0.15) 0%, rgba(65, 105, 225, 0) 70%); border-radius: 50%; filter: blur(70px); z-index: 0;"></div>
+        <!-- Background decorative blobs (static wavy organic shapes) -->
+        <svg style="position:absolute;top:-5%;left:-8%;width:65vw;max-width:850px;z-index:0;opacity:0.55;filter:blur(55px);" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+          <path fill="rgba(198,245,100,0.7)" d="M430,280Q410,360,340,400Q270,440,200,400Q130,360,110,280Q90,200,150,140Q210,80,300,70Q390,60,430,140Q470,220,430,280Z"/>
+        </svg>
+        <svg style="position:absolute;top:0;right:-10%;width:60vw;max-width:800px;z-index:0;opacity:0.45;filter:blur(65px);" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+          <path fill="rgba(255,198,69,0.6)" d="M450,300Q430,390,360,430Q290,470,210,430Q130,390,110,300Q90,210,155,150Q220,90,310,80Q400,70,445,155Q490,240,450,300Z"/>
+        </svg>
+        <svg style="position:absolute;bottom:-10%;left:5%;width:45vw;max-width:600px;z-index:0;opacity:0.35;filter:blur(60px);" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+          <path fill="rgba(65,105,225,0.5)" d="M410,290Q390,370,320,415Q250,460,180,415Q110,370,95,290Q80,210,145,155Q210,100,300,90Q390,80,425,160Q460,240,410,290Z"/>
+        </svg>
 
         <div class="hero-split-container" style="max-width: 1200px; width: 100%; display: grid; grid-template-columns: 1fr 1.1fr; gap: 30px; align-items: center; position: relative; z-index: 10;">
             
@@ -77,17 +83,17 @@
                     Data Analyst & AI/ML Developer passionate about transforming complex data into meaningful insights and intelligent solutions.
                 </p>
                 
-                <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 10px;">
-                    <a href="mailto:patelom2810@gmail.com" style="background: #ffffff; color: #4169E1; padding: 12px 28px; border-radius: 12px; font-weight: 600; display: flex; align-items: center; gap: 12px; font-size: 1rem; transition: all 0.3s; text-decoration: none; border: 2px solid rgba(65, 105, 225, 0.2); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);" onmouseover="this.style.boxShadow='0 12px 25px rgba(65, 105, 225, 0.15)'; this.style.borderColor='#4169E1'; this.style.transform='translateY(-2px)';" onmouseout="this.style.boxShadow='0 8px 20px rgba(0, 0, 0, 0.05)'; this.style.borderColor='rgba(65, 105, 225, 0.2)'; this.style.transform='translateY(0)';">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Gmail_icon_%282020%29.svg" alt="Gmail" style="width: 20px; height: 20px; object-fit: contain;"> patelom2810@gmail.com
+                <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 10px;">
+                    <a href="mailto:patelom2810@gmail.com" style="background: #ffffff; color: #4169E1; padding: 10px 20px; border-radius: 12px; font-weight: 600; display: flex; align-items: center; gap: 10px; font-size: 0.92rem; transition: all 0.3s; text-decoration: none; border: 2px solid rgba(65, 105, 225, 0.2); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);" onmouseover="this.style.boxShadow='0 12px 25px rgba(65, 105, 225, 0.15)'; this.style.borderColor='#4169E1'; this.style.transform='translateY(-2px)';" onmouseout="this.style.boxShadow='0 8px 20px rgba(0, 0, 0, 0.05)'; this.style.borderColor='rgba(65, 105, 225, 0.2)'; this.style.transform='translateY(0)';">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Gmail_icon_%282020%29.svg" alt="Gmail" style="width: 18px; height: 18px; object-fit: contain;"> <span class="btn-email-label">patelom2810@gmail.com</span><span class="btn-email-short" style="display:none;">Gmail</span>
                     </a>
                     
-                    <a href="https://www.linkedin.com/in/om-patel-1a929831b" target="_blank" style="background: #ffffff; color: #0077B5; padding: 12px 28px; border-radius: 12px; font-weight: 600; display: flex; align-items: center; gap: 12px; font-size: 1rem; transition: all 0.3s; text-decoration: none; border: 2px solid rgba(0, 119, 181, 0.2); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);" onmouseover="this.style.boxShadow='0 12px 25px rgba(0, 119, 181, 0.15)'; this.style.borderColor='#0077B5'; this.style.transform='translateY(-2px)';" onmouseout="this.style.boxShadow='0 8px 20px rgba(0, 0, 0, 0.05)'; this.style.borderColor='rgba(0, 119, 181, 0.2)'; this.style.transform='translateY(0)';">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn" style="width: 20px; height: 20px; object-fit: contain;"> LinkedIn
+                    <a href="https://www.linkedin.com/in/om-patel-1a929831b" target="_blank" style="background: #ffffff; color: #0077B5; padding: 10px 20px; border-radius: 12px; font-weight: 600; display: flex; align-items: center; gap: 10px; font-size: 0.92rem; transition: all 0.3s; text-decoration: none; border: 2px solid rgba(0, 119, 181, 0.2); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);" onmouseover="this.style.boxShadow='0 12px 25px rgba(0, 119, 181, 0.15)'; this.style.borderColor='#0077B5'; this.style.transform='translateY(-2px)';" onmouseout="this.style.boxShadow='0 8px 20px rgba(0, 0, 0, 0.05)'; this.style.borderColor='rgba(0, 119, 181, 0.2)'; this.style.transform='translateY(0)';">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn" style="width: 18px; height: 18px; object-fit: contain;"> LinkedIn
                     </a>
                     
-                    <a href="https://github.com/patelom2810" target="_blank" style="background: #ffffff; color: #181717; padding: 12px 28px; border-radius: 12px; font-weight: 600; display: flex; align-items: center; gap: 12px; font-size: 1rem; transition: all 0.3s; text-decoration: none; border: 2px solid rgba(24, 23, 23, 0.2); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);" onmouseover="this.style.boxShadow='0 12px 25px rgba(24, 23, 23, 0.15)'; this.style.borderColor='#181717'; this.style.transform='translateY(-2px)';" onmouseout="this.style.boxShadow='0 8px 20px rgba(0, 0, 0, 0.05)'; this.style.borderColor='rgba(24, 23, 23, 0.2)'; this.style.transform='translateY(0)';">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" style="width: 20px; height: 20px; object-fit: contain;"> GitHub
+                    <a href="https://github.com/patelom2810" target="_blank" style="background: #ffffff; color: #181717; padding: 10px 20px; border-radius: 12px; font-weight: 600; display: flex; align-items: center; gap: 10px; font-size: 0.92rem; transition: all 0.3s; text-decoration: none; border: 2px solid rgba(24, 23, 23, 0.2); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);" onmouseover="this.style.boxShadow='0 12px 25px rgba(24, 23, 23, 0.15)'; this.style.borderColor='#181717'; this.style.transform='translateY(-2px)';" onmouseout="this.style.boxShadow='0 8px 20px rgba(0, 0, 0, 0.05)'; this.style.borderColor='rgba(24, 23, 23, 0.2)'; this.style.transform='translateY(0)';">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" style="width: 18px; height: 18px; object-fit: contain;"> GitHub
                     </a>
                 </div>
             </div>
@@ -173,29 +179,6 @@
                 0% { transform: translateY(0px) var(--base-transform, ); }
                 50% { transform: translateY(-15px) var(--base-transform, ); }
                 100% { transform: translateY(0px) var(--base-transform, ); }
-            }
-            @media (max-width: 990px) {
-                .hero-split-container {
-                    grid-template-columns: 1fr;
-                    text-align: center;
-                    padding-top: 40px;
-                }
-                .hero-left {
-                    padding-right: 0 !important;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                }
-                .hero-right-capsules {
-                    justify-content: center !important;
-                    height: auto !important;
-                    padding: 40px 0;
-                    flex-wrap: wrap;
-                }
-                .capsule-col {
-                    transform: none !important;
-                    animation: none !important;
-                }
             }
         </style>
     </section>
@@ -435,8 +418,6 @@
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <!-- Premium Watermark Cap Icon -->
-                        <i class="fas fa-graduation-cap" style="position: absolute; top: -15px; right: -15px; font-size: 8rem; color: #4169E1; opacity: 0.12; transform: rotate(15deg); pointer-events: none;"></i>
                         <div class="timeline-date">2025 – 2027</div>
                         <h3 class="timeline-title">Master of Science (MSc) – Information Technology</h3>
                         <p class="timeline-description">GLS University, Ahmedabad, Gujarat<br>Status: Pursuing
@@ -457,8 +438,6 @@
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <!-- Premium Watermark Cap Icon -->
-                        <i class="fas fa-graduation-cap" style="position: absolute; top: -15px; right: -15px; font-size: 8rem; color: #F39C12; opacity: 0.12; transform: rotate(15deg); pointer-events: none;"></i>
                         <div class="timeline-date">2021</div>
                         <h3 class="timeline-title">CLASS XII (Science Stream)</h3>
                         <p class="timeline-description">Bits Education High School, Khambhat<br>Percentage: 49%
@@ -498,7 +477,7 @@
     </section>
 
     <!-- Footer -->
-    <footer id="contact" style="padding: 60px 30px 40px; width: 100%; font-family: 'Poppins', sans-serif; background: transparent; border-top: none;">
+    <footer id="contact" style="padding: 60px 30px 60px; width: 100%; font-family: 'Poppins', sans-serif; background: transparent; border-top: none;">
         <div style="max-width: 900px; margin: 0 auto; width: 100%;">
             <!-- Section Tag -->
             <div style="margin-bottom: 1.2rem;">
@@ -509,12 +488,24 @@
                 Let's connect to build<br/>something meaningful.
             </h2>
             <!-- Subtext -->
-            <p style="font-size: 1rem; color: #4a5568; margin-bottom: 2rem; max-width: 36rem; line-height: 1.7;">
+            <p style="font-size: 1rem; color: #4a5568; margin-bottom: 2.5rem; max-width: 36rem; line-height: 1.7;">
                 Open to Data Engineering, AI/ML, and Data Analyst opportunities. Based in Gujarat, India &mdash; open to remote and relocation.
             </p>
+            <!-- Contact Buttons -->
+            <div style="display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 3rem;">
+                <a href="mailto:patelom2810@gmail.com" style="background: #ffffff; color: #4169E1; padding: 12px 24px; border-radius: 12px; font-weight: 600; display: flex; align-items: center; gap: 10px; font-size: 0.95rem; transition: all 0.3s; text-decoration: none; border: 2px solid rgba(65, 105, 225, 0.2); box-shadow: 0 4px 15px rgba(0,0,0,0.05);" onmouseover="this.style.borderColor='#4169E1'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 20px rgba(65,105,225,0.12)';" onmouseout="this.style.borderColor='rgba(65,105,225,0.2)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(0,0,0,0.05)';">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Gmail_icon_%282020%29.svg" alt="Gmail" style="width: 20px; height: 20px;"> patelom2810@gmail.com
+                </a>
+                <a href="https://www.linkedin.com/in/om-patel-1a929831b" target="_blank" style="background: #ffffff; color: #0077B5; padding: 12px 24px; border-radius: 12px; font-weight: 600; display: flex; align-items: center; gap: 10px; font-size: 0.95rem; transition: all 0.3s; text-decoration: none; border: 2px solid rgba(0,119,181,0.2); box-shadow: 0 4px 15px rgba(0,0,0,0.05);" onmouseover="this.style.borderColor='#0077B5'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 20px rgba(0,119,181,0.12)';" onmouseout="this.style.borderColor='rgba(0,119,181,0.2)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(0,0,0,0.05)';">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn" style="width: 20px; height: 20px;"> LinkedIn
+                </a>
+                <a href="https://github.com/patelom2810" target="_blank" style="background: #ffffff; color: #181717; padding: 12px 24px; border-radius: 12px; font-weight: 600; display: flex; align-items: center; gap: 10px; font-size: 0.95rem; transition: all 0.3s; text-decoration: none; border: 2px solid rgba(24,23,23,0.2); box-shadow: 0 4px 15px rgba(0,0,0,0.05);" onmouseover="this.style.borderColor='#181717'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 20px rgba(0,0,0,0.1)';" onmouseout="this.style.borderColor='rgba(24,23,23,0.2)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(0,0,0,0.05)';">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" style="width: 20px; height: 20px;"> GitHub
+                </a>
+            </div>
             <!-- Bottom Row -->
-            <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; padding-top: 2rem;">
-                <p style="color: #4169E1; font-family: 'Poppins', monospace; font-size: 0.8rem; letter-spacing: 0.05em; margin: 0;">&copy; 2026 Om Patel</p>
+            <div style="border-top: 1px solid rgba(0,0,0,0.06); padding-top: 1.5rem;">
+                <p style="color: #94a3b8; font-size: 0.82rem; letter-spacing: 0.03em; margin: 0;">&copy; 2026 Om Patel &mdash; Built with passion.</p>
             </div>
         </div>
     </footer>

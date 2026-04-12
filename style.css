@@ -1576,41 +1576,65 @@ footer {
         display: flex !important;
         flex-direction: column-reverse !important;
         text-align: center;
-        gap: 50px !important;
+        gap: 30px !important;
+        padding: 0 16px;
     }
-    
+
     .hero-left {
         padding-right: 0 !important;
         display: flex;
         flex-direction: column;
         align-items: center;
+        width: 100%;
     }
-    
-    .hero-left .pulse-indicator {
-        margin: 0 auto 20px auto !important;
+
+    .hero-left h1 {
+        font-size: clamp(2.4rem, 9vw, 3.5rem) !important;
     }
-    
+
+    .hero-left p {
+        font-size: 0.97rem !important;
+        max-width: 90vw !important;
+    }
+
+    /* Button row: wrap neatly and center */
     .hero-left div[style*="display: flex"] {
         justify-content: center !important;
+        flex-wrap: wrap !important;
+        gap: 10px !important;
     }
 
     .hero-right-capsules {
+        width: 100% !important;
         justify-content: center !important;
-        transform: scale(0.75);
+        transform: scale(0.72);
         transform-origin: center top;
-        height: 350px !important;
+        height: 320px !important;
+        margin: 0 auto;
+        overflow: visible;
     }
-    
+
     .hero-split {
-        padding-top: 140px !important;
+        padding-top: 110px !important;
+        padding-bottom: 80px !important;
     }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 480px) {
     .hero-right-capsules {
-        transform: scale(0.55);
-        height: 280px !important;
-        margin-left: -5%;
+        transform: scale(0.52);
+        height: 260px !important;
+        transform-origin: center top;
+    }
+
+    /* On very small screens, make email button show icon only or truncate */
+    .hero-left a[href^="mailto"] span,
+    .hero-left a[href^="mailto"] {
+        font-size: 0.82rem !important;
+    }
+
+    .hero-left h1 {
+        font-size: clamp(2rem, 10vw, 2.8rem) !important;
     }
 }
 
@@ -2775,9 +2799,9 @@ textarea.form-control {
 /* Tech Grid Background for Projects */
 .bg-tech-pattern {
     background-image:
-        radial-gradient(var(--gray-200, #e2e8f0) 1px, transparent 1px);
-    background-size: 40px 40px;
-    background-color: var(--light-bg);
+        radial-gradient(rgba(0, 0, 0, 0.06) 1px, transparent 1px);
+    background-size: 30px 30px;
+    background-color: #F8FAFC;
 }
 
 @media (max-width: 768px) {
