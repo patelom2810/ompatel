@@ -59,15 +59,26 @@
 
     <!-- Primer-Style Hero Section -->
     <section class="primer-hero">
+        <!-- Same coloured blob backgrounds as index hero -->
+        <svg style="position:absolute;top:-5%;left:-8%;width:65vw;max-width:850px;z-index:0;opacity:0.5;filter:blur(55px);pointer-events:none;" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+          <path fill="rgba(198,245,100,0.7)" d="M430,280Q410,360,340,400Q270,440,200,400Q130,360,110,280Q90,200,150,140Q210,80,300,70Q390,60,430,140Q470,220,430,280Z"/>
+        </svg>
+        <svg style="position:absolute;top:0;right:-10%;width:60vw;max-width:800px;z-index:0;opacity:0.4;filter:blur(65px);pointer-events:none;" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+          <path fill="rgba(255,198,69,0.6)" d="M450,300Q430,390,360,430Q290,470,210,430Q130,390,110,300Q90,210,155,150Q220,90,310,80Q400,70,445,155Q490,240,450,300Z"/>
+        </svg>
+        <svg style="position:absolute;bottom:-10%;left:5%;width:45vw;max-width:600px;z-index:0;opacity:0.3;filter:blur(60px);pointer-events:none;" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+          <path fill="rgba(65,105,225,0.5)" d="M410,290Q390,370,320,415Q250,460,180,415Q110,370,95,290Q80,210,145,155Q210,100,300,90Q390,80,425,160Q460,240,410,290Z"/>
+        </svg>
+
         <!-- Floating Tech Particles -->
         <div class="particle-icon p-1"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python"></div>
         <div class="particle-icon p-2"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React"></div>
         <div class="particle-icon p-3"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS"></div>
         <div class="particle-icon p-4"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="SQL"></div>
-        <div class="particle-icon p-5"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript"></div>
+        <div class="particle-icon p-5"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" style="width:100%;height:100%;object-fit:contain;transform:scale(1.25);"></div>
         <div class="particle-icon p-6"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub"></div>
         <div class="particle-icon p-7"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML"></div>
-        <div class="particle-icon p-8"><img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg" alt="PowerBI"></div>
+        <div class="particle-icon p-8" style="padding: 10px;"><img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg" alt="PowerBI" style="width:100%;height:100%;object-fit:contain;transform:scale(1.3);"></div>
 
         <!-- Floating Labels -->
         <div class="primer-label l-1">
@@ -109,27 +120,29 @@
             <div class="projects-grid">
                 
                 <!-- E-Game Scout -->
-                <div class="project-card" data-category="data web">
+                <div class="project-card" data-category="data web" style="background: #0a0a0f; border: 1px solid rgba(77,232,216,0.15); background-image: linear-gradient(rgba(77,232,216,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(77,232,216,0.04) 1px, transparent 1px); background-size: 28px 28px;">
                     <div class="project-image-wrapper">
-                        <div class="project-thumb" style="background: #000; overflow: hidden; display: flex; justify-content: center; align-items: center;">
-                            <img src="img/egs-logo.png" alt="E-Game Scout Logo" style="width: 100%; height: 100%; object-fit: cover;">
+                        <div class="project-thumb" style="background: #000; overflow: hidden; display: flex; justify-content: center; align-items: center; position: relative;">
+                            <!-- Grid overlay on thumb -->
+                            <div style="position: absolute; inset: 0; background-image: linear-gradient(rgba(77,232,216,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(77,232,216,0.06) 1px, transparent 1px); background-size: 20px 20px; pointer-events: none; z-index: 1;"></div>
+                            <img src="img/egs-logo.png" alt="E-Game Scout Logo" style="width: 100%; height: 100%; object-fit: cover; position: relative; z-index: 2;">
                         </div>
                         <div class="project-overlay">
                             <a href="http://13.232.179.239:8000/" class="project-link" target="_blank"
                                 title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
                         </div>
                     </div>
-                    <div class="project-content">
+                    <div class="project-content" style="background: transparent;">
                         <div style="margin-bottom: 10px;">
-                            <img src="img/egs-name.png" alt="EGAMESCOUT" style="height: 30px; object-fit: contain;">
+                            <span style="font-family: 'Poppins', sans-serif; font-size: 0.78rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #ffffff; line-height: 1;">EGAME</span><span style="font-family: 'Poppins', sans-serif; font-size: 0.78rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; background: linear-gradient(90deg, #00f5d4 0%, #c77dff 55%, #ff2d78 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1;">SCOUT</span>
                         </div>
                         <h3 class="project-title" style="display: none;">E-Game Scout</h3>
-                        <p class="project-description">Esports Talent Discovery Platform bridging grassroots players and pro organizations with tournament management and AI analytics.</p>
+                        <p class="project-description" style="color: #94a3b8;">Esports Talent Discovery Platform bridging grassroots players and pro organizations with tournament management and AI analytics.</p>
                         <div class="project-tags">
-                            <span class="project-tag">Django</span>
-                            <span class="project-tag">AWS EC2</span>
-                            <span class="project-tag">AI</span>
-                            <span class="project-tag">Tailwind</span>
+                            <span class="project-tag" style="background: rgba(77,232,216,0.1); color: #4de8d8; border: 1px solid rgba(77,232,216,0.25);">Django</span>
+                            <span class="project-tag" style="background: rgba(240,90,138,0.1); color: #f05a8a; border: 1px solid rgba(240,90,138,0.25);">AWS EC2</span>
+                            <span class="project-tag" style="background: rgba(176,127,212,0.1); color: #b07fd4; border: 1px solid rgba(176,127,212,0.25);">AI</span>
+                            <span class="project-tag" style="background: rgba(77,232,216,0.1); color: #4de8d8; border: 1px solid rgba(77,232,216,0.25);">Tailwind</span>
                         </div>
                     </div>
                 </div>
@@ -137,8 +150,21 @@
                 <!-- CleanItUp! (Data/AI) -->
                 <div class="project-card" data-category="data web">
                     <div class="project-image-wrapper">
-                        <div class="project-thumb bg-gradient-7">
-                            <i class="fas fa-magic"></i>
+                        <div class="project-thumb bg-gradient-7" style="position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center;">
+                            <!-- Excel logo - background left -->
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/6/60/Microsoft_Office_Excel_%282025%E2%80%93present%29.svg"
+                                 alt="Excel"
+                                 style="position:absolute; width:75px; height:75px; object-fit:contain; top:12%; left:8%; opacity:0.22; transform:rotate(-12deg); filter:drop-shadow(0 4px 8px rgba(0,0,0,0.2));">
+                            <!-- CSV text badge - top right -->
+                            <div style="position:absolute; top:10%; right:8%; opacity:0.2; transform:rotate(10deg); font-family:'Poppins',sans-serif; font-weight:800; font-size:1.4rem; color:#1a1a2e; letter-spacing:0.08em; line-height:1; background:rgba(255,255,255,0.6); padding:4px 10px; border-radius:8px;">.CSV</div>
+                            <!-- Excel logo - bottom right -->
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/6/60/Microsoft_Office_Excel_%282025%E2%80%93present%29.svg"
+                                 alt="Excel"
+                                 style="position:absolute; width:55px; height:55px; object-fit:contain; bottom:10%; right:10%; opacity:0.18; transform:rotate(8deg); filter:drop-shadow(0 4px 8px rgba(0,0,0,0.15));">
+                            <!-- CSV badge bottom left -->
+                            <div style="position:absolute; bottom:12%; left:10%; opacity:0.15; transform:rotate(-8deg); font-family:'Poppins',sans-serif; font-weight:800; font-size:1rem; color:#1a1a2e; letter-spacing:0.08em; background:rgba(255,255,255,0.5); padding:3px 8px; border-radius:6px;">.CSV</div>
+                            <!-- Main icon -->
+                            <i class="fas fa-magic" style="position:relative; z-index:2;"></i>
                         </div>
                         <div class="project-overlay">
                             <a href="https://cleanitup.netlify.app" class="project-link" target="_blank"
@@ -158,8 +184,23 @@
                 <!-- Blinkit Analysis (Data) -->
                 <div class="project-card" data-category="data">
                     <div class="project-image-wrapper">
-                        <div class="project-thumb bg-gradient-2" aria-label="Blinkit Dashboard preview">
-                            <i class="fas fa-basket-shopping"></i>
+                        <div class="project-thumb bg-gradient-2" aria-label="Blinkit Dashboard preview" style="position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center;">
+                            <!-- Blinkit logo - large background left -->
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Blinkit-yellow-app-icon.svg"
+                                 alt="Blinkit"
+                                 style="position:absolute; width:90px; height:90px; object-fit:contain; top:8%; left:6%; opacity:0.2; transform:rotate(-10deg); filter:drop-shadow(0 4px 10px rgba(0,0,0,0.15));">
+                            <!-- Blinkit logo - smaller top right -->
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Blinkit-yellow-app-icon.svg"
+                                 alt="Blinkit"
+                                 style="position:absolute; width:55px; height:55px; object-fit:contain; top:8%; right:8%; opacity:0.15; transform:rotate(8deg);">
+                            <!-- Blinkit logo - bottom right -->
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Blinkit-yellow-app-icon.svg"
+                                 alt="Blinkit"
+                                 style="position:absolute; width:65px; height:65px; object-fit:contain; bottom:8%; right:6%; opacity:0.18; transform:rotate(12deg);">
+                            <!-- Blinkit wordmark text -->
+                            <div style="position:absolute; bottom:10%; left:8%; opacity:0.18; font-family:'Poppins',sans-serif; font-weight:800; font-size:1.1rem; color:#1a1a2e; letter-spacing:0.04em; transform:rotate(-5deg);">blinkit</div>
+                            <!-- Main icon -->
+                            <i class="fas fa-basket-shopping" style="position:relative; z-index:2;"></i>
                         </div>
                         <div class="project-overlay">
                             <a href="#" class="project-link" target="_blank" title="View Code"><i class="fab fa-github"></i></a>

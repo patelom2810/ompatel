@@ -1,13 +1,11 @@
 // Main JS file
 console.log("Portfolio UI Loaded");
 
-/* =========================================
-   Project Filtering Logic (Bulletproof)
-   ========================================= */
 document.addEventListener('DOMContentLoaded', () => {
-    const backToTopBtn = document.querySelector('.back-to-top');
 
-    // --- Scroll Reveal Animation (Sections Only) ---
+    /* =========================================
+       Scroll Reveal Animation (Sections Only)
+       ========================================= */
     const sections = document.querySelectorAll('section');
 
     const revealSection = (entries, observer) => {
@@ -33,37 +31,54 @@ document.addEventListener('DOMContentLoaded', () => {
        Project Filtering & Animation Logic
        ========================================= */
     const projectCards = document.querySelectorAll('.project-card');
+    const filterBtns = document.querySelectorAll('.filter-btn');
 
-    const animateProjects = () => {
+    const applyFilter = (filter) => {
         let visibleCount = 0;
 
         projectCards.forEach((card) => {
-            // MATCHES: Show it immediately with animation
-            card.classList.remove('hidden');
-            card.style.display = 'block';
+            const categories = (card.getAttribute('data-category') || '').split(' ');
+            const matches = filter === 'all' || categories.includes(filter);
 
-            // Staggered Animation
-            const delay = visibleCount * 100; // 100ms stagger
-            visibleCount++;
-
-            // Immediate set for "start" position
-            if (card.style.opacity === '0' || !card.style.opacity) {
+            if (matches) {
+                card.style.display = '';
+                card.style.animation = 'none';
                 card.style.opacity = '0';
-                card.style.transform = 'translateY(20px)';
+                const delay = visibleCount * 70;
+                visibleCount++;
+                setTimeout(() => {
+                    card.style.animation = `card-in 0.45s cubic-bezier(0.22,1,0.36,1) ${delay}ms both`;
+                }, 10);
+            } else {
+                card.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
+                card.style.opacity = '0';
+                card.style.transform = 'scale(0.94)';
+                setTimeout(() => {
+                    card.style.display = 'none';
+                    card.style.transform = '';
+                }, 220);
             }
-
-            // Animate In with Delay
-            setTimeout(() => {
-                card.style.opacity = '1';
-                card.style.transform = 'translateY(0) scale(1)';
-            }, delay);
         });
     };
 
-    // Initial Trigger (Staggered Load)
+    // Filter button click handler
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            applyFilter(btn.getAttribute('data-filter'));
+        });
+    });
+
+    // Initial load — show all with stagger
     setTimeout(() => {
-        animateProjects();
+        applyFilter('all');
     }, 100);
+
+    /* =========================================
+       Back to Top Button
+       ========================================= */
+    const backToTopBtn = document.querySelector('.back-to-top');
 
     if (backToTopBtn) {
         const toggleBackToTop = () => {
@@ -74,10 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
         toggleBackToTop();
 
         backToTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     }
 
@@ -91,7 +103,6 @@ document.addEventListener('DOMContentLoaded', () => {
         contactForm.addEventListener('submit', function (e) {
             e.preventDefault();
 
-            // Show loading state
             const originalBtnText = submitBtn.innerHTML;
             submitBtn.innerHTML = 'Sending... <i class="fas fa-spinner fa-spin"></i>';
             submitBtn.disabled = true;
@@ -103,16 +114,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 body: formData
             })
                 .then(response => response.json())
-                .then(data => {
+                .then(() => {
                     alert("Message Sent Successfully! I'll get back to you soon. 🚀");
                     contactForm.reset();
                 })
-                .catch(error => {
-                    console.error('Error:', error);
+                .catch(() => {
                     alert("Something went wrong. Please try again or email me directly.");
                 })
                 .finally(() => {
-                    // Reset button
                     submitBtn.innerHTML = originalBtnText;
                     submitBtn.disabled = false;
                 });
