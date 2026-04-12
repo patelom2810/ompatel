@@ -13,6 +13,14 @@
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        corePlugins: {
+          preflight: false,
+        }
+      }
+    </script>
 </head>
 
 <body>
@@ -25,8 +33,8 @@
     <!-- Glassy Navigation Dock -->
     <div class="glassy-nav-container">
         <nav class="glassy-nav">
-            <a href="#home" class="nav-item active" data-tooltip="Home">
-                <i class="fas fa-home"></i>
+            <a href="CV/om_cv.pdf" class="nav-item active" data-tooltip="Resume" target="_blank">
+                <i class="fas fa-file-alt"></i>
             </a>
             <a href="#about" class="nav-item" data-tooltip="About">
                 <i class="fas fa-user"></i>
@@ -133,9 +141,34 @@
             </div>
         </div>
     </section>
-
-
-
+    <!-- Scrolling Skills Marquee -->
+    <div class="skills-marquee-container">
+        <div class="skills-marquee">
+            <div class="marquee-content">
+                <span class="marquee-item"><img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg" alt="PowerBI"> PowerBI</span> <span class="marquee-dot">&bull;</span>
+                <span class="marquee-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python"> Python</span> <span class="marquee-dot">&bull;</span>
+                <span class="marquee-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azuresqldatabase/azuresqldatabase-original.svg" alt="SQL"> SQL</span> <span class="marquee-dot">&bull;</span>
+                <span class="marquee-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript"> JavaScript</span> <span class="marquee-dot">&bull;</span>
+                <span class="marquee-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL"> MySQL</span> <span class="marquee-dot">&bull;</span>
+                <span class="marquee-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS"> AWS</span> <span class="marquee-dot">&bull;</span>
+                <span class="marquee-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="TensorFlow"> TensorFlow</span> <span class="marquee-dot">&bull;</span>
+                <span class="marquee-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub"> GitHub</span> <span class="marquee-dot">&bull;</span>
+                <span class="marquee-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/openai/openai-original.svg" alt="AI"> Prompt Engineering</span> <span class="marquee-dot">&bull;</span>
+            </div>
+            <!-- Duplicate for seamless scrolling -->
+            <div class="marquee-content" aria-hidden="true">
+                <span class="marquee-item"><img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg" alt="PowerBI"> PowerBI</span> <span class="marquee-dot">&bull;</span>
+                <span class="marquee-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python"> Python</span> <span class="marquee-dot">&bull;</span>
+                <span class="marquee-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azuresqldatabase/azuresqldatabase-original.svg" alt="SQL"> SQL</span> <span class="marquee-dot">&bull;</span>
+                <span class="marquee-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript"> JavaScript</span> <span class="marquee-dot">&bull;</span>
+                <span class="marquee-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL"> MySQL</span> <span class="marquee-dot">&bull;</span>
+                <span class="marquee-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS"> AWS</span> <span class="marquee-dot">&bull;</span>
+                <span class="marquee-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="TensorFlow"> TensorFlow</span> <span class="marquee-dot">&bull;</span>
+                <span class="marquee-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub"> GitHub</span> <span class="marquee-dot">&bull;</span>
+                <span class="marquee-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/openai/openai-original.svg" alt="AI"> Prompt Engineering</span> <span class="marquee-dot">&bull;</span>
+            </div>
+        </div>
+    </div>
     <!-- About Me (Minimal Split Layout) -->
     <section id="about" class="about-bento">
         <div class="container">
@@ -174,7 +207,7 @@
             <h2 class="section-title">Skills</h2>
 
             <div class="skills-grid-new">
-                <!-- Data Visualization & Analysis -->
+                <!-- Data Analytics & Visualization -->
                 <div class="skill-card" style="--progress: 90%;">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg" alt="PowerBI">
                     <div class="skill-info">
@@ -190,32 +223,142 @@
                     </div>
                 </div>
                 <div class="skill-card" style="--progress: 85%;">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/60/Microsoft_Office_Excel_%282025%E2%80%93present%29.svg"
-                        alt="Excel">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/60/Microsoft_Office_Excel_%282025%E2%80%93present%29.svg" alt="Excel">
                     <div class="skill-info">
                         <span class="skill-name">Excel</span>
                         <span class="skill-percentage">85%</span>
                     </div>
                 </div>
-
-                <!-- Programming & AI -->
                 <div class="skill-card" style="--progress: 80%;">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
-                        alt="Python">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/matplotlib/matplotlib-original.svg" alt="Data Visualization">
                     <div class="skill-info">
-                        <span class="skill-name">Python</span>
+                        <span class="skill-name">Data Vis</span>
                         <span class="skill-percentage">80%</span>
                     </div>
                 </div>
+
+                <!-- Programming -->
+                <div class="skill-card" style="--progress: 85%;">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
+                    <div class="skill-info">
+                        <span class="skill-name">Python</span>
+                        <span class="skill-percentage">85%</span>
+                    </div>
+                </div>
+                <div class="skill-card" style="--progress: 75%;">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript">
+                    <div class="skill-info">
+                        <span class="skill-name">JavaScript</span>
+                        <span class="skill-percentage">75%</span>
+                    </div>
+                </div>
+                <div class="skill-card" style="--progress: 80%;">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azuresqldatabase/azuresqldatabase-original.svg" alt="SQL">
+                    <div class="skill-info">
+                        <span class="skill-name">SQL</span>
+                        <span class="skill-percentage">80%</span>
+                    </div>
+                </div>
+
+                <!-- Web Development -->
+                <div class="skill-card" style="--progress: 90%;">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML">
+                    <div class="skill-info">
+                        <span class="skill-name">HTML</span>
+                        <span class="skill-percentage">90%</span>
+                    </div>
+                </div>
+                <div class="skill-card" style="--progress: 85%;">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS">
+                    <div class="skill-info">
+                        <span class="skill-name">CSS</span>
+                        <span class="skill-percentage">85%</span>
+                    </div>
+                </div>
+                <div class="skill-card" style="--progress: 70%;">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP">
+                    <div class="skill-info">
+                        <span class="skill-name">PHP</span>
+                        <span class="skill-percentage">70%</span>
+                    </div>
+                </div>
+
+                <!-- Databases -->
+                <div class="skill-card" style="--progress: 80%;">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL">
+                    <div class="skill-info">
+                        <span class="skill-name">MySQL</span>
+                        <span class="skill-percentage">80%</span>
+                    </div>
+                </div>
+                <div class="skill-card" style="--progress: 70%;">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB">
+                    <div class="skill-info">
+                        <span class="skill-name">MongoDB</span>
+                        <span class="skill-percentage">70%</span>
+                    </div>
+                </div>
+                <div class="skill-card" style="--progress: 75%;">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" alt="Firebase">
+                    <div class="skill-info">
+                        <span class="skill-name">Firebase</span>
+                        <span class="skill-percentage">75%</span>
+                    </div>
+                </div>
+                <div class="skill-card" style="--progress: 70%;">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg" alt="Supabase">
+                    <div class="skill-info">
+                        <span class="skill-name">Supabase</span>
+                        <span class="skill-percentage">70%</span>
+                    </div>
+                </div>
+
+                <!-- Cloud & Tools -->
+                <!-- Cloud & Tools -->
+                <div class="skill-card" style="--progress: 75%;">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS EC2">
+                    <div class="skill-info">
+                        <span class="skill-name">AWS EC2</span>
+                        <span class="skill-percentage">75%</span>
+                    </div>
+                </div>
+                <div class="skill-card" style="--progress: 70%;">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS RDS">
+                    <div class="skill-info">
+                        <span class="skill-name">AWS RDS</span>
+                        <span class="skill-percentage">70%</span>
+                    </div>
+                </div>
+                <div class="skill-card" style="--progress: 75%;">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS S3">
+                    <div class="skill-info">
+                        <span class="skill-name">AWS S3</span>
+                        <span class="skill-percentage">75%</span>
+                    </div>
+                </div>
+                <div class="skill-card" style="--progress: 90%;">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub">
+                    <div class="skill-info">
+                        <span class="skill-name">GitHub</span>
+                        <span class="skill-percentage">90%</span>
+                    </div>
+                </div>
+                <div class="skill-card" style="--progress: 80%;">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/netlify/netlify-original.svg" alt="Netlify">
+                    <div class="skill-info">
+                        <span class="skill-name">Netlify</span>
+                        <span class="skill-percentage">80%</span>
+                    </div>
+                </div>
+
+                <!-- Machine Learning & AI -->
                 <div class="skill-card" style="--progress: 65%;">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg"
-                        alt="Pandas">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" alt="Pandas">
                     <div class="skill-info">
                         <span class="skill-name">Pandas</span>
                         <span class="skill-percentage">65%</span>
                     </div>
                 </div>
-                <!-- NumPy Added -->
                 <div class="skill-card" style="--progress: 70%;">
                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" alt="NumPy">
                     <div class="skill-info">
@@ -224,36 +367,26 @@
                     </div>
                 </div>
                 <div class="skill-card" style="--progress: 60%;">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg"
-                        alt="TensorFlow">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="TensorFlow">
                     <div class="skill-info">
                         <span class="skill-name">TensorFlow</span>
                         <span class="skill-percentage">60%</span>
                     </div>
                 </div>
 
-                <!-- Database & Backend -->
-                <div class="skill-card" style="--progress: 75%;">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="SQL">
+                <!-- Other -->
+                <div class="skill-card" style="--progress: 80%;">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg" alt="REST APIs">
                     <div class="skill-info">
-                        <span class="skill-name">SQL</span>
-                        <span class="skill-percentage">75%</span>
+                        <span class="skill-name">REST APIs</span>
+                        <span class="skill-percentage">80%</span>
                     </div>
                 </div>
-                <div class="skill-card" style="--progress: 70%;">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg"
-                        alt="MongoDB">
+                <div class="skill-card" style="--progress: 85%;">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/openai/openai-original.svg" alt="Prompt Engineering">
                     <div class="skill-info">
-                        <span class="skill-name">MongoDB</span>
-                        <span class="skill-percentage">70%</span>
-                    </div>
-                </div>
-                <div class="skill-card" style="--progress: 70%;">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg"
-                        alt="Firebase">
-                    <div class="skill-info">
-                        <span class="skill-name">Firebase</span>
-                        <span class="skill-percentage">70%</span>
+                        <span class="skill-name">Prompt Eng.</span>
+                        <span class="skill-percentage">85%</span>
                     </div>
                 </div>
             </div>
@@ -268,31 +401,29 @@
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
+                        <div class="timeline-date">2025 – 2027</div>
+                        <h3 class="timeline-title">Master of Science (MSc) – Information Technology</h3>
+                        <p class="timeline-description">GLS University, Ahmedabad, Gujarat<br>Status: Pursuing
+                        </p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <!-- Premium Watermark Cap Icon -->
+                        <i class="fas fa-graduation-cap" style="position: absolute; top: -15px; right: -15px; font-size: 8rem; color: var(--primary-color); opacity: 0.05; transform: rotate(15deg); pointer-events: none;"></i>
+                        <div class="timeline-date">2022 – 2025</div>
+                        <h3 class="timeline-title">Bachelor of Science (BSc) – Information Technology</h3>
+                        <p class="timeline-description">Sardar Patel University, Vallabh Vidyanagar, Gujarat<br>CGPA: 7.8
+                        </p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
                         <div class="timeline-date">2021</div>
-                        <h3 class="timeline-title">Higher Secondary: Science</h3>
-                        <p class="timeline-description">Focus on Physics, Chemistry, Maths.<br>Final
-                            Grade: 50%
-                        </p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="cap-icon"><i class="fas fa-graduation-cap"></i></div>
-                        <div class="timeline-date">2022 - 2025</div>
-                        <h3 class="timeline-title">Bachelor of Computer Application & IT</h3>
-                        <p class="timeline-description">Science Academy, Sardar Patel University<br>GPA: 8.0
-                        </p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-date">2025 - 2027</div>
-                        <h3 class="timeline-title">Masters of Computer Application & IT</h3>
-                        <p class="timeline-description">Specialization in Data Analytics &
-                            AI/ML<br>Status: In
-                            Progress
+                        <h3 class="timeline-title">CLASS XII (Science Stream)</h3>
+                        <p class="timeline-description">Bits Education High School, Khambhat<br>Percentage: 49%
                         </p>
                     </div>
                 </div>
@@ -318,104 +449,60 @@
     </section>
 
     <!-- Get in Touch Section (Premium Glass) -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="contact-container">
-                <div class="contact-info">
-                    <div>
-                        <h3>Let's Connect</h3>
-                        <p>Feel free to reach out for collaborations, job opportunities, or just a
-                            friendly
-                            hello! I'm
-                            always open to discussing new projects and ideas.</p>
-                    </div>
-
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <div class="icon-circle"><i class="fas fa-map-marker-alt"></i></div>
-                            <div class="contact-item-content">
-                                <h4>Location</h4>
-                                <p>Khambhat, India</p>
-                            </div>
-                        </div>
-
-                        <div class="contact-item">
-                            <div class="icon-circle"><i class="fas fa-envelope"></i></div>
-                            <div class="contact-item-content">
-                                <h4>Email</h4>
-                                <p>omashwin28@gmail.com</p>
-                            </div>
-                        </div>
-
-                        <div class="contact-item">
-                            <div class="icon-circle"><i class="fas fa-phone"></i></div>
-                            <div class="contact-item-content">
-                                <h4>Phone</h4>
-                                <p>+91 9054 203388</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="social-links big">
-                        <a href="https://www.linkedin.com/in/om-patel-1a929831b" class="social-link"
-                            aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="https://github.com/patelom2810" class="social-link" aria-label="GitHub"><i
-                                class="fab fa-github"></i></a>
-                        <a href="error.html" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="https://www.instagram.com/ommpatel28?igsh=MXZjMm1taWt1MmVmOA==" class="social-link"
-                            aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-
-                <div class="contact-form-wrapper">
-                    <form id="contactForm" action="https://formsubmit.co/omashwin28@gmail.com" method="POST">
-                        <!-- FormSubmit Configuration -->
-                        <input type="hidden" name="_captcha" value="false">
-                        <input type="hidden" name="_template" value="table">
-                        <input type="hidden" name="_subject" value="New Contact from Portfolio">
-
-                        <div class="form-group">
-                            <input type="text" id="name" name="name" class="form-control" placeholder=" " required>
-                            <label for="name" class="floating-label">Your Name</label>
-                        </div>
-
-                        <div class="form-group">
-                            <input type="email" id="email" name="email" class="form-control" placeholder=" " required>
-                            <label for="email" class="floating-label">Your Email</label>
-                        </div>
-
-                        <div class="form-group">
-                            <input type="text" id="subject" name="subject" class="form-control" placeholder=" "
-                                required>
-                            <label for="subject" class="floating-label">Subject</label>
-                        </div>
-
-                        <div class="form-group">
-                            <textarea id="message" name="message" class="form-control" rows="4" placeholder=" "
-                                required></textarea>
-                            <label for="message" class="floating-label">Message</label>
-                        </div>
-
-                        <button type="submit" class="submit-btn" id="submitBtn">Send Message <i
-                                class="fas fa-paper-plane"></i></button>
-                    </form>
-                </div>
+    <!-- New Minimal Tailwind Footer (Image Match) -->
+    <!-- New Minimal Tailwind Footer (Dark Theme) -->
+    <footer class="bg-[#0b0c1b] pt-24 pb-12 px-6 sm:px-12 w-full mt-20" style="font-family: inherit;">
+        <div class="max-w-4xl mx-auto">
+            <!-- Section Tag -->
+            <div class="flex items-center gap-4 mb-6">
+                <span class="text-[#888eab] font-mono font-bold tracking-[0.2em] text-sm uppercase">06 &mdash; CONTACT</span>
             </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <h3 class="footer-title">Om Patel</h3>
-                <p class="footer-text">
-                    Thank you for visiting my portfolio. Looking forward to connecting with you!
+            
+            <!-- Heading -->
+            <h2 class="text-4xl md:text-5xl font-extrabold text-white leading-tight mb-6">
+                Let's connect to build<br/>something meaningful.
+            </h2>
+            
+            <!-- Subtext -->
+            <p class="text-lg text-[#c5c9db] mb-12 max-w-2xl leading-relaxed">
+                Open to Data Engineering, AI/ML, and Data Analyst opportunities. Based in Gujarat, India &mdash; open to remote and relocation.
+            </p>
+            
+            <!-- Big Action Buttons -->
+            <div class="flex flex-col sm:flex-row flex-wrap gap-4 mb-20">
+                <a href="mailto:omashwin28@gmail.com" class="bg-[#8b91b2] hover:bg-[#787f9c] text-[#0b0c1b] px-6 py-4 rounded-xl font-bold flex items-center justify-center gap-3 transition shadow-sm" style="text-decoration: none;">
+                    <i class="fas fa-envelope"></i> omashwin28@gmail.com
+                </a>
+                <a href="https://www.linkedin.com/in/om-patel-1a929831b" target="_blank" class="bg-transparent border border-[#3b4168] hover:bg-[#1a1e36] text-white px-6 py-4 rounded-xl font-semibold flex items-center justify-center gap-3 transition shadow-sm" style="text-decoration: none;">
+                    <i class="fab fa-linkedin-in"></i> LinkedIn <i class="fas fa-arrow-up-right-from-square ml-1 text-xs opacity-70"></i>
+                </a>
+                <a href="https://github.com/patelom2810" target="_blank" class="bg-transparent border border-[#3b4168] hover:bg-[#1a1e36] text-white px-6 py-4 rounded-xl font-semibold flex items-center justify-center gap-3 transition shadow-sm" style="text-decoration: none;">
+                    <i class="fab fa-github"></i> GitHub <i class="fas fa-arrow-up-right-from-square ml-1 text-xs opacity-70"></i>
+                </a>
+            </div>
+            
+            <!-- Divider -->
+            <div class="border-t border-[#2a2e4c] mb-8 w-full"></div>
+            
+            <!-- Bottom Footer Area / Icon Row -->
+            <div class="flex flex-col items-center justify-center gap-6">
+                
+                <p class="text-[#a8adc4] font-mono text-sm tracking-wide">
+                    &copy; 2026 Om Patel
                 </p>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Om Patel. All rights reserved.</p>
+                
+                <div class="flex gap-4">
+                    <a href="https://www.linkedin.com/in/om-patel-1a929831b" target="_blank" class="w-12 h-12 bg-transparent border border-[#3b4168] rounded-xl flex items-center justify-center text-[#a8adc4] hover:text-white hover:bg-[#1a1e36] transition shadow-sm text-lg" style="text-decoration: none;">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://github.com/patelom2810" target="_blank" class="w-12 h-12 bg-transparent border border-[#3b4168] rounded-xl flex items-center justify-center text-[#a8adc4] hover:text-white hover:bg-[#1a1e36] transition shadow-sm text-lg" style="text-decoration: none;">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="mailto:omashwin28@gmail.com" class="w-12 h-12 bg-transparent border border-[#3b4168] rounded-xl flex items-center justify-center text-[#a8adc4] hover:text-white hover:bg-[#1a1e36] transition shadow-sm text-lg" style="text-decoration: none;">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+                
             </div>
         </div>
     </footer>

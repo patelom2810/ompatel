@@ -13,6 +13,14 @@
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        corePlugins: {
+          preflight: false,
+        }
+      }
+    </script>
     <script src="main.js" defer></script>
 </head>
 
@@ -287,98 +295,59 @@
         </div>
     </section>
 
-    <!-- Get in Touch Section (Premium Glass) -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="contact-container">
-                <div class="contact-info">
-                    <div>
-                        <h3>Let's Connect</h3>
-                        <p>Feel free to reach out for collaborations, job opportunities, or just a
-                            friendly
-                            hello! I'm
-                            always open to discussing new projects and ideas.</p>
-                    </div>
-
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <div class="icon-circle"><i class="fas fa-map-marker-alt"></i></div>
-                            <div class="contact-item-content">
-                                <h4>Location</h4>
-                                <p>Khambhat, India</p>
-                            </div>
-                        </div>
-
-                        <div class="contact-item">
-                            <div class="icon-circle"><i class="fas fa-envelope"></i></div>
-                            <div class="contact-item-content">
-                                <h4>Email</h4>
-                                <p>omashwin28@gmail.com</p>
-                            </div>
-                        </div>
-
-                        <div class="contact-item">
-                            <div class="icon-circle"><i class="fas fa-phone"></i></div>
-                            <div class="contact-item-content">
-                                <h4>Phone</h4>
-                                <p>+91 9054 203388</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="social-links big">
-                        <a href="https://www.linkedin.com/in/om-patel-1a929831b" class="social-link"
-                            aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="https://github.com/patelom2810" class="social-link" aria-label="GitHub"><i
-                                class="fab fa-github"></i></a>
-                        <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="https://www.instagram.com/ommpatel28?igsh=MXZjMm1taWt1MmVmOA==" class="social-link"
-                            aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-
-                <div class="contact-form-wrapper">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <input type="text" id="name" class="form-control" placeholder=" " required>
-                            <label for="name" class="floating-label">Your Name</label>
-                        </div>
-
-                        <div class="form-group">
-                            <input type="email" id="email" class="form-control" placeholder=" " required>
-                            <label for="email" class="floating-label">Your Email</label>
-                        </div>
-
-                        <div class="form-group">
-                            <input type="text" id="subject" class="form-control" placeholder=" " required>
-                            <label for="subject" class="floating-label">Subject</label>
-                        </div>
-
-                        <div class="form-group">
-                            <textarea id="message" class="form-control" rows="4" placeholder=" " required></textarea>
-                            <label for="message" class="floating-label">Message</label>
-                        </div>
-
-                        <button type="submit" class="submit-btn">Send Message <i
-                                class="fas fa-paper-plane"></i></button>
-                    </form>
-                </div>
+    <!-- New Minimal Tailwind Footer (Dark Theme) -->
+    <footer class="bg-[#0b0c1b] pt-24 pb-12 px-6 sm:px-12 w-full mt-20" style="font-family: inherit;">
+        <div class="max-w-4xl mx-auto">
+            <!-- Section Tag -->
+            <div class="flex items-center gap-4 mb-6">
+                <span class="text-[#888eab] font-mono font-bold tracking-[0.2em] text-sm uppercase">06 &mdash; CONTACT</span>
             </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <h3 class="footer-title">Om Patel</h3>
-                <p class="footer-text">
-                    Thank you for visiting my portfolio. Looking forward to connecting with you!
+            
+            <!-- Heading -->
+            <h2 class="text-4xl md:text-5xl font-extrabold text-white leading-tight mb-6">
+                Let's connect to build<br/>something meaningful.
+            </h2>
+            
+            <!-- Subtext -->
+            <p class="text-lg text-[#c5c9db] mb-12 max-w-2xl leading-relaxed">
+                Open to Data Engineering, AI/ML, and Data Analyst opportunities. Based in Gujarat, India &mdash; open to remote and relocation.
+            </p>
+            
+            <!-- Big Action Buttons -->
+            <div class="flex flex-col sm:flex-row flex-wrap gap-4 mb-20">
+                <a href="mailto:omashwin28@gmail.com" class="bg-[#8b91b2] hover:bg-[#787f9c] text-[#0b0c1b] px-6 py-4 rounded-xl font-bold flex items-center justify-center gap-3 transition shadow-sm" style="text-decoration: none;">
+                    <i class="fas fa-envelope"></i> omashwin28@gmail.com
+                </a>
+                <a href="https://www.linkedin.com/in/om-patel-1a929831b" target="_blank" class="bg-transparent border border-[#3b4168] hover:bg-[#1a1e36] text-white px-6 py-4 rounded-xl font-semibold flex items-center justify-center gap-3 transition shadow-sm" style="text-decoration: none;">
+                    <i class="fab fa-linkedin-in"></i> LinkedIn <i class="fas fa-arrow-up-right-from-square ml-1 text-xs opacity-70"></i>
+                </a>
+                <a href="https://github.com/patelom2810" target="_blank" class="bg-transparent border border-[#3b4168] hover:bg-[#1a1e36] text-white px-6 py-4 rounded-xl font-semibold flex items-center justify-center gap-3 transition shadow-sm" style="text-decoration: none;">
+                    <i class="fab fa-github"></i> GitHub <i class="fas fa-arrow-up-right-from-square ml-1 text-xs opacity-70"></i>
+                </a>
+            </div>
+            
+            <!-- Divider -->
+            <div class="border-t border-[#2a2e4c] mb-8 w-full"></div>
+            
+            <!-- Bottom Footer Area / Icon Row -->
+            <div class="flex flex-col items-center justify-center gap-6">
+                
+                <p class="text-[#a8adc4] font-mono text-sm tracking-wide">
+                    &copy; 2026 Om Patel
                 </p>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Om Patel. All rights reserved.</p>
+                
+                <div class="flex gap-4">
+                    <a href="https://www.linkedin.com/in/om-patel-1a929831b" target="_blank" class="w-12 h-12 bg-transparent border border-[#3b4168] rounded-xl flex items-center justify-center text-[#a8adc4] hover:text-white hover:bg-[#1a1e36] transition shadow-sm text-lg" style="text-decoration: none;">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://github.com/patelom2810" target="_blank" class="w-12 h-12 bg-transparent border border-[#3b4168] rounded-xl flex items-center justify-center text-[#a8adc4] hover:text-white hover:bg-[#1a1e36] transition shadow-sm text-lg" style="text-decoration: none;">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="mailto:omashwin28@gmail.com" class="w-12 h-12 bg-transparent border border-[#3b4168] rounded-xl flex items-center justify-center text-[#a8adc4] hover:text-white hover:bg-[#1a1e36] transition shadow-sm text-lg" style="text-decoration: none;">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+                
             </div>
         </div>
     </footer>
