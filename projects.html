@@ -14,7 +14,6 @@
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/png" href="img/favicon.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -36,9 +35,6 @@
     <!-- Glassy Navigation Dock -->
     <div class="glassy-nav-container">
         <nav class="glassy-nav">
-            <a href="CV/om_cv.pdf" class="nav-item" data-tooltip="Resume" target="_blank">
-                <i class="fas fa-file-alt"></i>
-            </a>
             <a href="index.html#about" class="nav-item" data-tooltip="About">
                 <i class="fas fa-user"></i>
             </a>
@@ -113,7 +109,9 @@
                 <!-- Blinkit Analysis (Data) -->
                 <div class="project-card" data-category="data">
                     <div class="project-image-wrapper">
-                        <img src="img/blinkit.png" alt="Blinkit Dashboard" class="project-image" loading="lazy">
+                        <div class="project-thumb bg-gradient-2" aria-label="Blinkit Dashboard preview">
+                            <i class="fas fa-basket-shopping"></i>
+                        </div>
                         <div class="project-overlay">
                             <a href="#" class="project-link" target="_blank" title="View Code"><i class="fab fa-github"></i></a>
                         </div>
@@ -215,7 +213,9 @@
                 <!-- Stick Notes (Web) -->
                  <div class="project-card" data-category="web">
                     <div class="project-image-wrapper">
-                        <img src="img/sticky.png" alt="Sticky Notes Application" class="project-image" loading="lazy">
+                        <div class="project-thumb bg-gradient-6" aria-label="Sticky Notes preview">
+                            <i class="fas fa-note-sticky"></i>
+                        </div>
                         <div class="project-overlay">
                             <a href="https://github.com/patelom2810" class="project-link" target="_blank"
                                 title="View Code"><i class="fab fa-github"></i></a>
@@ -278,7 +278,9 @@
                 <!-- Pizza Sales (Data) -->
                 <div class="project-card" data-category="data">
                     <div class="project-image-wrapper">
-                        <img src="img/pizza_sales.png" alt="Pizza Sales Dashboard" class="project-image" loading="lazy">
+                        <div class="project-thumb bg-gradient-4" aria-label="Pizza Sales dashboard preview">
+                            <i class="fas fa-pizza-slice"></i>
+                        </div>
                         <div class="project-overlay">
                             <a href="#" class="project-link" target="_blank" title="View Code"><i class="fab fa-github"></i></a>
                         </div>

@@ -5,6 +5,8 @@ console.log("Portfolio UI Loaded");
    Project Filtering Logic (Bulletproof)
    ========================================= */
 document.addEventListener('DOMContentLoaded', () => {
+    const backToTopBtn = document.querySelector('.back-to-top');
+
     // --- Scroll Reveal Animation (Sections Only) ---
     const sections = document.querySelectorAll('section');
 
@@ -62,6 +64,22 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
         animateProjects();
     }, 100);
+
+    if (backToTopBtn) {
+        const toggleBackToTop = () => {
+            backToTopBtn.classList.toggle('visible', window.scrollY > 300);
+        };
+
+        window.addEventListener('scroll', toggleBackToTop);
+        toggleBackToTop();
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
 
     /* =========================================
        Contact Form Handling (FormSubmit AJAX)
