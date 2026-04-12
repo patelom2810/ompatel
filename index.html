@@ -59,10 +59,16 @@
     <!-- Hero Section -->
     <!-- Hero Section -->
     <section id="home" class="hero-split" style="min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 100px 20px; background-color: #F8FAFC; position: relative; overflow: hidden;">
-        <!-- Background decorative elements (GroVest aesthetic) -->
-        <div style="position: absolute; top: -10vh; left: -10vw; width: 50vw; height: 50vw; max-width: 800px; max-height: 800px; background: radial-gradient(circle, rgba(198, 245, 100, 0.45) 0%, rgba(198, 245, 100, 0) 70%); border-radius: 50%; filter: blur(60px); z-index: 0;"></div>
-        <div style="position: absolute; top: 5%; right: -10vw; width: 60vw; height: 60vw; max-width: 900px; max-height: 900px; background: radial-gradient(circle, rgba(255, 198, 69, 0.3) 0%, rgba(255, 198, 69, 0) 70%); border-radius: 50%; filter: blur(80px); z-index: 0;"></div>
-        <div style="position: absolute; bottom: -20vh; left: 10vw; width: 40vw; height: 40vw; max-width: 600px; max-height: 600px; background: radial-gradient(circle, rgba(65, 105, 225, 0.15) 0%, rgba(65, 105, 225, 0) 70%); border-radius: 50%; filter: blur(70px); z-index: 0;"></div>
+        <!-- Background decorative blobs (static wavy organic shapes) -->
+        <svg style="position:absolute;top:-5%;left:-8%;width:65vw;max-width:850px;z-index:0;opacity:0.55;filter:blur(55px);" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+          <path fill="rgba(198,245,100,0.7)" d="M430,280Q410,360,340,400Q270,440,200,400Q130,360,110,280Q90,200,150,140Q210,80,300,70Q390,60,430,140Q470,220,430,280Z"/>
+        </svg>
+        <svg style="position:absolute;top:0;right:-10%;width:60vw;max-width:800px;z-index:0;opacity:0.45;filter:blur(65px);" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+          <path fill="rgba(255,198,69,0.6)" d="M450,300Q430,390,360,430Q290,470,210,430Q130,390,110,300Q90,210,155,150Q220,90,310,80Q400,70,445,155Q490,240,450,300Z"/>
+        </svg>
+        <svg style="position:absolute;bottom:-10%;left:5%;width:45vw;max-width:600px;z-index:0;opacity:0.35;filter:blur(60px);" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+          <path fill="rgba(65,105,225,0.5)" d="M410,290Q390,370,320,415Q250,460,180,415Q110,370,95,290Q80,210,145,155Q210,100,300,90Q390,80,425,160Q460,240,410,290Z"/>
+        </svg>
 
         <div class="hero-split-container" style="max-width: 1200px; width: 100%; display: grid; grid-template-columns: 1fr 1.1fr; gap: 30px; align-items: center; position: relative; z-index: 10;">
             
@@ -435,8 +441,6 @@
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <!-- Premium Watermark Cap Icon -->
-                        <i class="fas fa-graduation-cap" style="position: absolute; top: -15px; right: -15px; font-size: 8rem; color: #4169E1; opacity: 0.12; transform: rotate(15deg); pointer-events: none;"></i>
                         <div class="timeline-date">2025 – 2027</div>
                         <h3 class="timeline-title">Master of Science (MSc) – Information Technology</h3>
                         <p class="timeline-description">GLS University, Ahmedabad, Gujarat<br>Status: Pursuing
@@ -457,8 +461,6 @@
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <!-- Premium Watermark Cap Icon -->
-                        <i class="fas fa-graduation-cap" style="position: absolute; top: -15px; right: -15px; font-size: 8rem; color: #F39C12; opacity: 0.12; transform: rotate(15deg); pointer-events: none;"></i>
                         <div class="timeline-date">2021</div>
                         <h3 class="timeline-title">CLASS XII (Science Stream)</h3>
                         <p class="timeline-description">Bits Education High School, Khambhat<br>Percentage: 49%
