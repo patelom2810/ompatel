@@ -1442,9 +1442,9 @@ header.scrolled {
     }
 }
 
-/* Legacy footer hidden */
+/* Footer visible */
 footer {
-    display: none;
+    display: block;
 }
 
 /* Responsive */
