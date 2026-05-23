@@ -1,6 +1,12 @@
 // Main JS file
 console.log("Portfolio UI Loaded");
 
+// Fix: Clear URL hash on load to prevent scrolling to #contact on refresh
+if (window.location.hash) {
+    history.replaceState(null, null, window.location.pathname);
+    window.scrollTo(0, 0);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
 
     /* =========================================
@@ -26,6 +32,38 @@ document.addEventListener('DOMContentLoaded', () => {
         sectionObserver.observe(section);
         section.classList.add('section-hidden');
     });
+
+    /* =========================================
+       Scroll Spy for Glassy Nav Dock
+       ========================================= */
+    const navLinks = document.querySelectorAll('.nav-link-dock');
+    const pageSections = document.querySelectorAll('section[id]');
+
+    if (navLinks.length > 0 && pageSections.length > 0) {
+        const handleScrollSpy = () => {
+            let current = '';
+            const scrollPos = window.scrollY || document.documentElement.scrollTop;
+
+            pageSections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollPos >= (sectionTop - sectionHeight / 3.5)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                const href = link.getAttribute('href');
+                if (href === `#${current}` || href === `index.html#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', handleScrollSpy);
+        handleScrollSpy();
+    }
 
     /* =========================================
        Project Filtering & Animation Logic
@@ -127,4 +165,54 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
         });
     }
+
+    /* =========================================
+       Theme Toggle (Dark / Light Mode)
+       ========================================= */
+    const themeToggles = document.querySelectorAll('#theme-toggle');
+    const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+
+    // Initialize theme based on local storage or system preference
+    const currentTheme = localStorage.getItem("theme");
+    if (currentTheme == "dark") {
+        document.body.classList.add("dark-theme");
+    } else if (currentTheme == "light") {
+        document.body.classList.remove("dark-theme");
+    } else if (prefersDarkScheme.matches) {
+        document.body.classList.add("dark-theme");
+    }
+
+    // Function to update icon
+    const updateIcon = () => {
+        themeToggles.forEach(toggle => {
+            const icon = toggle.querySelector('.theme-icon');
+            if (document.body.classList.contains("dark-theme")) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        });
+    };
+    
+    // Initial icon update
+    updateIcon();
+
+    // Toggle logic
+    themeToggles.forEach(toggle => {
+        toggle.addEventListener("click", () => {
+            document.body.classList.toggle("dark-theme");
+            
+            // Save preference
+            let theme = "light";
+            if (document.body.classList.contains("dark-theme")) {
+                theme = "dark";
+            }
+            localStorage.setItem("theme", theme);
+            
+            // Update icons
+            updateIcon();
+        });
+    });
 });

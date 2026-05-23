@@ -15,16 +15,38 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="main.js" defer></script>
     <script>
       tailwind.config = {
         corePlugins: {
           preflight: false,
+        },
+        theme: {
+          extend: {
+            colors: {
+              primary: '#4169E1',
+              secondary: '#000000',
+              accent: '#8D6E63',
+              card: '#ffffff',
+              navBg: 'rgba(255, 255, 255, 0.95)'
+            },
+            fontFamily: {
+              poppins: ['Poppins', 'sans-serif']
+            }
+          }
         }
       }
     </script>
 </head>
 
 <body>
+    <!-- Background Mesh Blobs -->
+    <div class="mesh-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
     <!-- Back to Top Button -->
     <div class="back-to-top">
         <i class="fas fa-arrow-up"></i>
@@ -34,31 +56,40 @@
     <!-- Glassy Navigation Dock -->
     <div class="glassy-nav-container">
         <nav class="glassy-nav">
-            <a href="https://www.linkedin.com/in/om-patel-1a929831b" class="nav-item" data-tooltip="LinkedIn" target="_blank">
+            <a href="https://www.linkedin.com/in/om-patel-1a929831b" class="nav-item hide-mobile" data-tooltip="LinkedIn" target="_blank">
                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn" style="width: 20px; height: 20px; object-fit: contain;">
             </a>
-            <a href="https://github.com/patelom2810" class="nav-item" data-tooltip="GitHub" target="_blank">
+            <a href="https://github.com/patelom2810" class="nav-item hide-mobile" data-tooltip="GitHub" target="_blank">
                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" style="width: 20px; height: 20px; object-fit: contain;">
             </a>
+            <a href="#about" class="nav-item nav-link-dock" data-tooltip="About">
+                <i class="fas fa-user"></i>
+            </a>
+            <a href="#skills" class="nav-item nav-link-dock" data-tooltip="Skills">
+                <i class="fas fa-code"></i>
+            </a>
             
-            <a href="#home" class="nav-profile-wrapper">
+            <a href="#home" class="nav-profile-wrapper nav-link-dock">
                 <div class="nav-profile">
                     <img src="img/profile.jpg" alt="Om Patel">
                 </div>
             </a>
 
-            <a href="projects.html" class="nav-item" data-tooltip="Projects">
+            <a href="#education" class="nav-item nav-link-dock hide-mobile" data-tooltip="Education">
+                <i class="fas fa-graduation-cap"></i>
+            </a>
+            <a href="projects.html" class="nav-item nav-link-dock" data-tooltip="Projects">
                 <i class="fas fa-briefcase"></i>
             </a>
-            <a href="#contact" class="nav-item" data-tooltip="Contact">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Gmail_icon_%282020%29.svg" alt="Email" style="width: 20px; height: 20px; object-fit: contain;">
-            </a>
+            <button id="theme-toggle" class="nav-item" data-tooltip="Theme">
+                <i class="fas fa-moon theme-icon"></i>
+            </button>
         </nav>
     </div>
 
     <!-- Hero Section -->
     <!-- Hero Section -->
-    <section id="home" class="hero-split" style="min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 100px 20px; background-color: #F8FAFC; position: relative; overflow: hidden;">
+    <section id="home" class="hero-split">
         <!-- Background decorative blobs (static wavy organic shapes) -->
         <svg style="position:absolute;top:-5%;left:-8%;width:65vw;max-width:850px;z-index:0;opacity:0.55;filter:blur(55px);" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
           <path fill="rgba(198,245,100,0.7)" d="M430,280Q410,360,340,400Q270,440,200,400Q130,360,110,280Q90,200,150,140Q210,80,300,70Q390,60,430,140Q470,220,430,280Z"/>
@@ -74,25 +105,25 @@
             
             <!-- Left Side: Text and CTA -->
             <div class="hero-left" style="padding-right: 20px;">
-                <h1 style="font-size: clamp(3rem, 5.5vw, 4.5rem); font-weight: 800; color: #1a1a2e; line-height: 1.1; margin-bottom: 24px; letter-spacing: -0.04em;">
+                <h1 style="font-size: clamp(3rem, 5.5vw, 4.5rem); font-weight: 800; line-height: 1.1; margin-bottom: 24px; letter-spacing: -0.04em;">
                     Hi, I'm <br/>
                     <span style="color: #4169E1;">Om Patel.</span>
                 </h1>
                 
-                <p style="font-size: 1.1rem; color: #4a5568; max-width: 500px; margin-bottom: 35px; line-height: 1.7; font-weight: 400;">
+                <p style="font-size: 1.1rem; max-width: 500px; margin-bottom: 35px; line-height: 1.7; font-weight: 400; color: var(--text-muted);">
                     Data Analyst & AI/ML Developer passionate about transforming complex data into meaningful insights and intelligent solutions.
                 </p>
                 
                 <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 10px;">
-                    <a href="mailto:patelom2810@gmail.com" style="background: #ffffff; color: #4169E1; padding: 10px 20px; border-radius: 12px; font-weight: 600; display: flex; align-items: center; gap: 10px; font-size: 0.92rem; transition: all 0.3s; text-decoration: none; border: 2px solid rgba(65, 105, 225, 0.2); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);" onmouseover="this.style.boxShadow='0 12px 25px rgba(65, 105, 225, 0.15)'; this.style.borderColor='#4169E1'; this.style.transform='translateY(-2px)';" onmouseout="this.style.boxShadow='0 8px 20px rgba(0, 0, 0, 0.05)'; this.style.borderColor='rgba(65, 105, 225, 0.2)'; this.style.transform='translateY(0)';">
+                    <a href="mailto:patelom2810@gmail.com" class="contact-btn btn-gmail">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Gmail_icon_%282020%29.svg" alt="Gmail" style="width: 18px; height: 18px; object-fit: contain;"> <span class="btn-email-label">patelom2810@gmail.com</span><span class="btn-email-short" style="display:none;">Gmail</span>
                     </a>
                     
-                    <a href="https://www.linkedin.com/in/om-patel-1a929831b" target="_blank" style="background: #ffffff; color: #0077B5; padding: 10px 20px; border-radius: 12px; font-weight: 600; display: flex; align-items: center; gap: 10px; font-size: 0.92rem; transition: all 0.3s; text-decoration: none; border: 2px solid rgba(0, 119, 181, 0.2); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);" onmouseover="this.style.boxShadow='0 12px 25px rgba(0, 119, 181, 0.15)'; this.style.borderColor='#0077B5'; this.style.transform='translateY(-2px)';" onmouseout="this.style.boxShadow='0 8px 20px rgba(0, 0, 0, 0.05)'; this.style.borderColor='rgba(0, 119, 181, 0.2)'; this.style.transform='translateY(0)';">
+                    <a href="https://www.linkedin.com/in/om-patel-1a929831b" target="_blank" class="contact-btn btn-linkedin">
                         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn" style="width: 18px; height: 18px; object-fit: contain;"> LinkedIn
                     </a>
                     
-                    <a href="https://github.com/patelom2810" target="_blank" style="background: #ffffff; color: #181717; padding: 10px 20px; border-radius: 12px; font-weight: 600; display: flex; align-items: center; gap: 10px; font-size: 0.92rem; transition: all 0.3s; text-decoration: none; border: 2px solid rgba(24, 23, 23, 0.2); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);" onmouseover="this.style.boxShadow='0 12px 25px rgba(24, 23, 23, 0.15)'; this.style.borderColor='#181717'; this.style.transform='translateY(-2px)';" onmouseout="this.style.boxShadow='0 8px 20px rgba(0, 0, 0, 0.05)'; this.style.borderColor='rgba(24, 23, 23, 0.2)'; this.style.transform='translateY(0)';">
+                    <a href="https://github.com/patelom2810" target="_blank" class="contact-btn btn-github">
                         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" style="width: 18px; height: 18px; object-fit: contain;"> GitHub
                     </a>
                 </div>
@@ -212,7 +243,7 @@
     </div>
     <!-- About Me (Minimal Split Layout) -->
     <section id="about" class="about-bento">
-        <div class="container">
+        <div class="max-w-[1200px] mx-auto px-5">
             <div style="text-align: center; margin-bottom: 3.5rem;">
                 <span style="color: #4169E1; font-family: 'Poppins', monospace; font-weight: 700; letter-spacing: 0.2em; font-size: 0.85rem; text-transform: uppercase;">&mdash; DISCOVER</span>
                 <h2 style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; color: #1a1a2e; line-height: 1.2; margin-top: 10px;">About Me</h2>
@@ -221,7 +252,7 @@
                 <div class="about-min-content full-width">
                     <div class="status-badge">
                         <span class="pulse-dot"></span>
-                        <span>Currently finding for job</span>
+                        <span>Open to new opportunities</span>
                     </div>
                     <h3 class="about-greeting">Hello there!</h3>
                     <h2 class="about-headline" style="text-wrap: balance;">
@@ -248,7 +279,7 @@
     <!-- Skills Section -->
     <!-- Skills Section: Bricks Architecture -->
     <section id="skills" class="skills">
-        <div class="container">
+        <div class="max-w-[1200px] mx-auto px-5">
             <div style="text-align: center; margin-bottom: 3.5rem;">
                 <span style="color: #4169E1; font-family: 'Poppins', monospace; font-weight: 700; letter-spacing: 0.2em; font-size: 0.85rem; text-transform: uppercase;">&mdash; EXPERTISE</span>
                 <h2 style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; color: #1a1a2e; line-height: 1.2; margin-top: 10px;">Skills</h2>
@@ -409,7 +440,7 @@
 
     <!-- Education Section -->
     <section id="education" class="education">
-        <div class="container">
+        <div class="max-w-[1200px] mx-auto px-5">
             <div style="text-align: center; margin-bottom: 3.5rem;">
                 <span style="color: #4169E1; font-family: 'Poppins', monospace; font-weight: 700; letter-spacing: 0.2em; font-size: 0.85rem; text-transform: uppercase;">&mdash; JOURNEY</span>
                 <h2 style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; color: #1a1a2e; line-height: 1.2; margin-top: 10px;">Education</h2>
@@ -456,7 +487,7 @@
         </div>
         
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 350px)); gap: 30px; justify-content: center;">
-            <a href="Certificate/aws.pdf" target="_blank" style="text-decoration: none; display: block; background: #fff; border-radius: 24px; padding: 35px; box-shadow: 0 10px 30px rgba(0,0,0,0.04); border: 2px solid rgba(65, 105, 225, 0.08); transition: all 0.3s; position: relative; overflow: hidden;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 20px 40px rgba(65, 105, 225, 0.12)'; this.style.borderColor='rgba(65, 105, 225, 0.3)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 30px rgba(0,0,0,0.04)'; this.style.borderColor='rgba(65, 105, 225, 0.08)';">
+            <a href="Certificate/aws.pdf" target="_blank" class="cert-card">
                 <!-- Watermark -->
                 <i class="fas fa-award" style="position: absolute; top: -15px; right: -15px; font-size: 8rem; color: #4169E1; opacity: 0.03; transform: rotate(15deg); pointer-events: none;"></i>
                 
@@ -465,8 +496,8 @@
                         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS" style="width: 35px; height: 35px; object-fit: contain;">
                     </div>
                     <div>
-                        <h3 style="font-size: 1.15rem; font-weight: 700; color: #1a1a2e; margin-bottom: 6px; line-height: 1.3;">AWS Certified</h3>
-                        <p style="font-size: 0.9rem; color: #4a5568; margin-bottom: 18px;">Amazon Web Services</p>
+                        <h3>AWS Certified</h3>
+                        <p>Amazon Web Services</p>
                         <div style="display: inline-flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 600; color: #4169E1; background: rgba(65, 105, 225, 0.1); padding: 6px 12px; border-radius: 50px;">
                             View Certificate <i class="fas fa-arrow-right" style="font-size: 0.75rem;"></i>
                         </div>
@@ -477,147 +508,38 @@
     </section>
 
     <!-- Footer -->
-    <footer id="contact" style="padding: 60px 30px 60px; width: 100%; font-family: 'Poppins', sans-serif; background: transparent; border-top: none;">
-        <div style="max-width: 900px; margin: 0 auto; width: 100%;">
+    <footer id="contact">
+        <div class="footer-container">
             <!-- Section Tag -->
-            <div style="margin-bottom: 1.2rem;">
-                <span style="color: #4169E1; font-family: 'Poppins', monospace; font-weight: 700; letter-spacing: 0.2em; font-size: 0.8rem; text-transform: uppercase;">&mdash; CONTACT</span>
+            <div class="footer-tag">
+                <span>&mdash; CONTACT</span>
             </div>
             <!-- Heading -->
-            <h2 style="font-size: clamp(1.8rem, 4.5vw, 2.8rem); font-weight: 800; color: #1a1a2e; line-height: 1.2; margin-bottom: 1rem;">
+            <h2 class="footer-heading">
                 Let's connect to build<br/>something meaningful.
             </h2>
             <!-- Subtext -->
-            <p style="font-size: 1rem; color: #4a5568; margin-bottom: 2.5rem; max-width: 36rem; line-height: 1.7;">
+            <p class="footer-subtext">
                 Open to Data Engineering, AI/ML, and Data Analyst opportunities. Based in Gujarat, India &mdash; open to remote and relocation.
             </p>
             <!-- Contact Buttons -->
-            <div style="display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 3rem;">
-                <a href="mailto:patelom2810@gmail.com" style="background: #ffffff; color: #4169E1; padding: 12px 24px; border-radius: 12px; font-weight: 600; display: flex; align-items: center; gap: 10px; font-size: 0.95rem; transition: all 0.3s; text-decoration: none; border: 2px solid rgba(65, 105, 225, 0.2); box-shadow: 0 4px 15px rgba(0,0,0,0.05);" onmouseover="this.style.borderColor='#4169E1'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 20px rgba(65,105,225,0.12)';" onmouseout="this.style.borderColor='rgba(65,105,225,0.2)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(0,0,0,0.05)';">
+            <div class="footer-buttons">
+                <a href="mailto:patelom2810@gmail.com" class="contact-btn btn-gmail" style="padding: 12px 24px;">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Gmail_icon_%282020%29.svg" alt="Gmail" style="width: 20px; height: 20px;"> patelom2810@gmail.com
                 </a>
-                <a href="https://www.linkedin.com/in/om-patel-1a929831b" target="_blank" style="background: #ffffff; color: #0077B5; padding: 12px 24px; border-radius: 12px; font-weight: 600; display: flex; align-items: center; gap: 10px; font-size: 0.95rem; transition: all 0.3s; text-decoration: none; border: 2px solid rgba(0,119,181,0.2); box-shadow: 0 4px 15px rgba(0,0,0,0.05);" onmouseover="this.style.borderColor='#0077B5'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 20px rgba(0,119,181,0.12)';" onmouseout="this.style.borderColor='rgba(0,119,181,0.2)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(0,0,0,0.05)';">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn" style="width: 20px; height: 20px;"> LinkedIn
+                <a href="https://www.linkedin.com/in/om-patel-1a929831b" target="_blank" class="contact-btn btn-linkedin" style="padding: 12px 24px;">
+                    <img loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn" style="width: 20px; height: 20px;"> LinkedIn
                 </a>
-                <a href="https://github.com/patelom2810" target="_blank" style="background: #ffffff; color: #181717; padding: 12px 24px; border-radius: 12px; font-weight: 600; display: flex; align-items: center; gap: 10px; font-size: 0.95rem; transition: all 0.3s; text-decoration: none; border: 2px solid rgba(24,23,23,0.2); box-shadow: 0 4px 15px rgba(0,0,0,0.05);" onmouseover="this.style.borderColor='#181717'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 20px rgba(0,0,0,0.1)';" onmouseout="this.style.borderColor='rgba(24,23,23,0.2)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(0,0,0,0.05)';">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" style="width: 20px; height: 20px;"> GitHub
+                <a href="https://github.com/patelom2810" target="_blank" class="contact-btn btn-github" style="padding: 12px 24px;">
+                    <img loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" style="width: 20px; height: 20px;"> GitHub
                 </a>
             </div>
             <!-- Bottom Row -->
-            <div style="border-top: 1px solid rgba(0,0,0,0.06); padding-top: 1.5rem;">
+            <div class="footer-bottom">
                 <p style="color: #94a3b8; font-size: 0.82rem; letter-spacing: 0.03em; margin: 0;">&copy; 2026 Om Patel &mdash; Built with passion.</p>
             </div>
         </div>
     </footer>
-
-    <script>
-        // Fix: Clear URL hash on load to prevent scrolling to #contact on refresh
-        if (window.location.hash) {
-            history.replaceState(null, null, window.location.pathname);
-            window.scrollTo(0, 0);
-        }
-
-        window.addEventListener('DOMContentLoaded', function () {            checkSections();
-
-            // Mobile menu
-            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-            const nav = document.getElementById('nav');
-
-            if (mobileMenuBtn && nav) {
-                mobileMenuBtn.addEventListener('click', function () {
-                    nav.classList.toggle('active');
-                    const icon = this.querySelector('i');
-                    if (nav.classList.contains('active')) {
-                        icon.classList.remove('fa-bars');
-                        icon.classList.add('fa-times');
-                    } else {
-                        icon.classList.remove('fa-times');
-                        icon.classList.add('fa-bars');
-                    }
-                });
-            }
-
-            document.querySelectorAll('nav ul li a').forEach(link => {
-                link.addEventListener('click', function () {
-                    nav.classList.remove('active');
-                    const icon = mobileMenuBtn.querySelector('i');
-                    icon.classList.add('fa-bars');
-                    icon.classList.remove('fa-times');
-                });
-            });
-
-            const header = document.getElementById('header');
-            window.addEventListener('scroll', function () {
-                if (window.scrollY > 50) {
-                    header.classList.add('scrolled');
-                } else {
-                    header.classList.remove('scrolled');
-                }
-            });
-
-            const backToTopBtn = document.querySelector('.back-to-top');
-            window.addEventListener('scroll', function () {
-                if (window.scrollY > 300) {
-                    backToTopBtn.classList.add('visible');
-                } else {
-                    backToTopBtn.classList.remove('visible');
-                }
-            });
-
-            backToTopBtn.addEventListener('click', function () {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            });
-
-            // Contact form
-            const contactForm = document.getElementById('contactForm');
-            if (contactForm) {
-                contactForm.addEventListener('submit', function (e) {
-                    e.preventDefault();
-                    alert('Thank you for your message! I will get back to you soon.');
-                    contactForm.reset();
-                });
-            }
-        });
-
-        // Intersection Observer for animations
-        function checkSections() {
-            const sections = document.querySelectorAll('section');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, { threshold: 0.1 });
-
-            sections.forEach(section => observer.observe(section));
-        }
-
-        // Active link
-        window.addEventListener('scroll', () => {
-            const sections = document.querySelectorAll('section');
-            const navLinks = document.querySelectorAll('nav ul li');
-
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(li => {
-                li.classList.remove('active');
-                if (li.querySelector('a').getAttribute('href') === `#${current}`) {
-                    li.classList.add('active');
-                }
-            });
-        });
-    </script>
 </body>
 
 </html>
