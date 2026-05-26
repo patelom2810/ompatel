@@ -9,7 +9,7 @@
     <!-- Poppins Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -56,12 +56,6 @@
     <!-- Glassy Navigation Dock -->
     <div class="glassy-nav-container">
         <nav class="glassy-nav">
-            <a href="https://www.linkedin.com/in/om-patel-1a929831b" class="nav-item hide-mobile" data-tooltip="LinkedIn" target="_blank">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn" style="width: 20px; height: 20px; object-fit: contain;">
-            </a>
-            <a href="https://github.com/patelom2810" class="nav-item hide-mobile" data-tooltip="GitHub" target="_blank">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" style="width: 20px; height: 20px; object-fit: contain;">
-            </a>
             <a href="#about" class="nav-item nav-link-dock" data-tooltip="About">
                 <i class="fas fa-user"></i>
             </a>
@@ -107,11 +101,11 @@
             <div class="hero-left" style="padding-right: 20px;">
                 <h1 style="font-size: clamp(3rem, 5.5vw, 4.5rem); font-weight: 800; line-height: 1.1; margin-bottom: 24px; letter-spacing: -0.04em;">
                     Hi, I'm <br/>
-                    <span style="color: #4169E1;">Om Patel.</span>
+                    <span style="color: var(--primary-color);">Om Patel.</span>
                 </h1>
                 
                 <p style="font-size: 1.1rem; max-width: 500px; margin-bottom: 35px; line-height: 1.7; font-weight: 400; color: var(--text-muted);">
-                    Data Analyst & AI/ML Developer passionate about transforming complex data into meaningful insights and intelligent solutions.
+                     Data Analyst & AI/ML Developer passionate about transforming complex data into meaningful insights and intelligent solutions.
                 </p>
                 
                 <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 10px;">
@@ -130,24 +124,24 @@
             </div>
             
             <!-- Right Side: Capsules Masonry Grid -->
-            <div class="hero-right-capsules" style="display: flex; gap: 12px; align-items: center; justify-content: flex-end; height: 500px;">
+            <div class="hero-right-capsules" style="display: flex; gap: 12px; align-items: center; justify-content: flex-end; height: 420px;">
                 
                 <!-- Column 1 (New: PowerBI & SQL) -->
                 <div class="capsule-col" style="display: flex; flex-direction: column; gap: 12px; transform: translateY(15px);">
-                    <div style="width: 100px; height: 180px; border-radius: 60px; overflow: hidden; background: #FFF8E1; border: 1px solid rgba(0,0,0,0.03); box-shadow: 0 10px 20px rgba(0,0,0,0.04); display: flex; align-items: center; justify-content: center; padding: 22px; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                    <div class="tech-capsule capsule-pbi" style="height: 150px;">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg" alt="PowerBI" style="width: 100%; object-fit: contain; filter: drop-shadow(0px 5px 8px rgba(0,0,0,0.08));">
                     </div>
-                    <div style="width: 100px; height: 200px; border-radius: 60px; overflow: hidden; background: #E1F5FE; border: 1px solid rgba(0,0,0,0.03); box-shadow: 0 10px 20px rgba(0,0,0,0.04); display: flex; align-items: center; justify-content: center; padding: 22px; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                    <div class="tech-capsule capsule-sql" style="height: 170px;">
                         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azuresqldatabase/azuresqldatabase-original.svg" alt="SQL" style="width: 100%; object-fit: contain; filter: drop-shadow(0px 5px 8px rgba(0,0,0,0.08));">
                     </div>
                 </div>
 
                 <!-- Column 2 (Pandas & NumPy) -->
                 <div class="capsule-col" style="display: flex; flex-direction: column; gap: 12px; transform: translateY(-25px);">
-                    <div style="width: 100px; height: 190px; border-radius: 60px; overflow: hidden; background: #FFF9C4; border: 1px solid rgba(0,0,0,0.03); box-shadow: 0 10px 20px rgba(0,0,0,0.04); display: flex; align-items: center; justify-content: center; padding: 22px; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                    <div class="tech-capsule capsule-pandas" style="height: 160px;">
                          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" alt="Pandas" style="width: 100%; object-fit: contain; filter: drop-shadow(0px 5px 8px rgba(0,0,0,0.08));">
                     </div>
-                    <div style="width: 100px; height: 220px; border-radius: 60px; overflow: hidden; background: #E3F2FD; border: 1px solid rgba(0,0,0,0.03); box-shadow: 0 10px 20px rgba(0,0,0,0.04); display: flex; align-items: center; justify-content: center; padding: 22px; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                    <div class="tech-capsule capsule-numpy" style="height: 180px;">
                         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" alt="NumPy" style="width: 100%; object-fit: contain; filter: drop-shadow(0px 5px 8px rgba(0,0,0,0.08));">
                     </div>
                 </div>
@@ -156,43 +150,43 @@
                 <div class="capsule-col" style="display: flex; flex-direction: column; gap: 12px; transform: translateY(5px); position: relative;">
                     
                     <!-- Floating Role Badge -->
-                    <div style="position: absolute; bottom: 120px; left: -30px; background: rgba(255,255,255,0.9); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.9); border-radius: 12px; padding: 10px 16px; display: flex; align-items: center; gap: 12px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); z-index: 20; transition: transform 0.3s; cursor: pointer; white-space: nowrap;" onmouseover="this.style.transform='scale(1.05) translateY(-5px)'" onmouseout="this.style.transform='scale(1) translateY(0)'">
-                        <div style="width: 32px; height: 32px; background: rgba(65, 105, 225, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #4169E1;">
+                    <div class="floating-role-badge">
+                        <div class="role-badge-icon">
                             <i class="fas fa-brain"></i>
                         </div>
                         <div>
-                            <div style="font-size: 0.8rem; font-weight: 700; color: #1a1a2e; line-height: 1.2;">AI & Data Analyst</div>
-                            <div style="font-size: 0.65rem; color: #4a5568; font-weight: 500;">Specialist</div>
+                            <div class="role-badge-title">AI & Data Analyst</div>
+                            <div class="role-badge-subtitle">Specialist</div>
                         </div>
                     </div>
 
-                    <div style="width: 160px; height: 280px; border-radius: 100px; overflow: hidden; background: #fff; box-shadow: 0 15px 30px rgba(0,0,0,0.08); border: 5px solid white; transition: transform 0.3s; position: relative;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+                    <div class="hero-profile-frame">
                         <img src="img/profile.jpg" alt="Om Patel" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
-                    <div style="width: 150px; height: 150px; border-radius: 50%; overflow: hidden; background: linear-gradient(135deg, #4169E1, #5c85ff); box-shadow: 0 12px 25px rgba(65, 105, 225, 0.25); display: flex; align-items: center; justify-content: center; color: white; padding: 15px; text-align: center; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                    <div class="hero-stat-circle">
                         <div>
-                            <span style="font-size: 2.2rem; font-weight: 800; display: block; line-height: 1;">15+</span>
-                            <span style="font-size: 0.75rem; font-weight: 500; opacity: 0.9;">Projects<br/>Completed</span>
+                            <span class="hero-stat-number">15+</span>
+                            <span class="hero-stat-desc">Projects<br/>Completed</span>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Column 4 (Python & AWS) -->
                 <div class="capsule-col" style="display: flex; flex-direction: column; gap: 12px; transform: translateY(10px);">
-                    <div style="width: 120px; height: 120px; border-radius: 50%; overflow: hidden; background: #e8f5e9; border: 1px solid rgba(0,0,0,0.03); box-shadow: 0 10px 20px rgba(0,0,0,0.04); display: flex; align-items: center; justify-content: center; padding: 22px; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                    <div class="tech-capsule capsule-python">
                         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" style="width: 100%; object-fit: contain; filter: drop-shadow(0px 5px 8px rgba(0,0,0,0.08));">
                     </div>
-                    <div style="width: 100px; height: 230px; border-radius: 60px; overflow: hidden; background: #FFF3E0; border: 1px solid rgba(0,0,0,0.03); box-shadow: 0 10px 20px rgba(0,0,0,0.04); display: flex; align-items: center; justify-content: center; padding: 22px; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                    <div class="tech-capsule capsule-aws" style="height: 190px;">
                         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS" style="width: 100%; object-fit: contain; filter: drop-shadow(0px 5px 8px rgba(0,0,0,0.08));">
                     </div>
                 </div>
 
                 <!-- Column 5 (New: TensorFlow & JavaScript) -->
                 <div class="capsule-col" style="display: flex; flex-direction: column; gap: 12px; transform: translateY(10px);">
-                    <div style="width: 100px; height: 200px; border-radius: 60px; overflow: hidden; background: #FFEBEE; border: 1px solid rgba(0,0,0,0.03); box-shadow: 0 10px 20px rgba(0,0,0,0.04); display: flex; align-items: center; justify-content: center; padding: 22px; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                    <div class="tech-capsule capsule-tensorflow" style="height: 170px;">
                         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="TensorFlow" style="width: 100%; object-fit: contain; filter: drop-shadow(0px 5px 8px rgba(0,0,0,0.08));">
                     </div>
-                    <div style="width: 100px; height: 180px; border-radius: 60px; overflow: hidden; background: #FFFDE7; border: 1px solid rgba(0,0,0,0.03); box-shadow: 0 10px 20px rgba(0,0,0,0.04); display: flex; align-items: center; justify-content: center; padding: 22px; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                    <div class="tech-capsule capsule-javascript" style="height: 150px;">
                         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" style="width: 100%; object-fit: contain; filter: drop-shadow(0px 5px 8px rgba(0,0,0,0.08));">
                     </div>
                 </div>
@@ -217,223 +211,356 @@
     <div class="skills-marquee-container">
         <div class="skills-marquee">
             <div class="marquee-content">
-                <span class="marquee-item"><img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg" alt="PowerBI"> PowerBI</span> <span class="marquee-dot">&bull;</span>
-                <span class="marquee-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python"> Python</span> <span class="marquee-dot">&bull;</span>
-                <span class="marquee-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azuresqldatabase/azuresqldatabase-original.svg" alt="SQL"> SQL</span> <span class="marquee-dot">&bull;</span>
-                <span class="marquee-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript"> JavaScript</span> <span class="marquee-dot">&bull;</span>
-                <span class="marquee-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL"> MySQL</span> <span class="marquee-dot">&bull;</span>
-                <span class="marquee-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS"> AWS</span> <span class="marquee-dot">&bull;</span>
-                <span class="marquee-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="TensorFlow"> TensorFlow</span> <span class="marquee-dot">&bull;</span>
-                <span class="marquee-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub"> GitHub</span> <span class="marquee-dot">&bull;</span>
-                <span class="marquee-item"><img src="img/prompt_engineering.png" alt="AI"> Prompt Engineering</span> <span class="marquee-dot">&bull;</span>
+                <div class="marquee-item">
+                    <div class="marquee-icon-circle">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
+                    </div>
+                    <span class="marquee-label">Python</span>
+                </div>
+                <div class="marquee-item">
+                    <div class="marquee-icon-circle">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azuresqldatabase/azuresqldatabase-original.svg" alt="SQL">
+                    </div>
+                    <span class="marquee-label">SQL</span>
+                </div>
+                <div class="marquee-item">
+                    <div class="marquee-icon-circle">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" alt="Pandas">
+                    </div>
+                    <span class="marquee-label">Pandas</span>
+                </div>
+                <div class="marquee-item">
+                    <div class="marquee-icon-circle">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" alt="NumPy">
+                    </div>
+                    <span class="marquee-label">NumPy</span>
+                </div>
+                <div class="marquee-item">
+                    <div class="marquee-icon-circle">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="TensorFlow">
+                    </div>
+                    <span class="marquee-label">TensorFlow</span>
+                </div>
+                <div class="marquee-item">
+                    <div class="marquee-icon-circle">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS">
+                    </div>
+                    <span class="marquee-label">AWS</span>
+                </div>
+                <div class="marquee-item">
+                    <div class="marquee-icon-circle">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript">
+                    </div>
+                    <span class="marquee-label">JavaScript</span>
+                </div>
+                <div class="marquee-item">
+                    <div class="marquee-icon-circle">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5">
+                    </div>
+                    <span class="marquee-label">HTML5</span>
+                </div>
+                <div class="marquee-item">
+                    <div class="marquee-icon-circle">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3">
+                    </div>
+                    <span class="marquee-label">CSS3</span>
+                </div>
+                <div class="marquee-item">
+                    <div class="marquee-icon-circle">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg" alt="PowerBI">
+                    </div>
+                    <span class="marquee-label">Power BI</span>
+                </div>
             </div>
             <!-- Duplicate for seamless scrolling -->
             <div class="marquee-content" aria-hidden="true">
-                <span class="marquee-item"><img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg" alt="PowerBI"> PowerBI</span> <span class="marquee-dot">&bull;</span>
-                <span class="marquee-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python"> Python</span> <span class="marquee-dot">&bull;</span>
-                <span class="marquee-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azuresqldatabase/azuresqldatabase-original.svg" alt="SQL"> SQL</span> <span class="marquee-dot">&bull;</span>
-                <span class="marquee-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript"> JavaScript</span> <span class="marquee-dot">&bull;</span>
-                <span class="marquee-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL"> MySQL</span> <span class="marquee-dot">&bull;</span>
-                <span class="marquee-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS"> AWS</span> <span class="marquee-dot">&bull;</span>
-                <span class="marquee-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="TensorFlow"> TensorFlow</span> <span class="marquee-dot">&bull;</span>
-                <span class="marquee-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub"> GitHub</span> <span class="marquee-dot">&bull;</span>
-                <span class="marquee-item"><img src="img/prompt_engineering.png" alt="AI"> Prompt Engineering</span> <span class="marquee-dot">&bull;</span>
+                <div class="marquee-item">
+                    <div class="marquee-icon-circle">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
+                    </div>
+                    <span class="marquee-label">Python</span>
+                </div>
+                <div class="marquee-item">
+                    <div class="marquee-icon-circle">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azuresqldatabase/azuresqldatabase-original.svg" alt="SQL">
+                    </div>
+                    <span class="marquee-label">SQL</span>
+                </div>
+                <div class="marquee-item">
+                    <div class="marquee-icon-circle">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" alt="Pandas">
+                    </div>
+                    <span class="marquee-label">Pandas</span>
+                </div>
+                <div class="marquee-item">
+                    <div class="marquee-icon-circle">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" alt="NumPy">
+                    </div>
+                    <span class="marquee-label">NumPy</span>
+                </div>
+                <div class="marquee-item">
+                    <div class="marquee-icon-circle">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="TensorFlow">
+                    </div>
+                    <span class="marquee-label">TensorFlow</span>
+                </div>
+                <div class="marquee-item">
+                    <div class="marquee-icon-circle">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS">
+                    </div>
+                    <span class="marquee-label">AWS</span>
+                </div>
+                <div class="marquee-item">
+                    <div class="marquee-icon-circle">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript">
+                    </div>
+                    <span class="marquee-label">JavaScript</span>
+                </div>
+                <div class="marquee-item">
+                    <div class="marquee-icon-circle">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5">
+                    </div>
+                    <span class="marquee-label">HTML5</span>
+                </div>
+                <div class="marquee-item">
+                    <div class="marquee-icon-circle">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3">
+                    </div>
+                    <span class="marquee-label">CSS3</span>
+                </div>
+                <div class="marquee-item">
+                    <div class="marquee-icon-circle">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg" alt="PowerBI">
+                    </div>
+                    <span class="marquee-label">Power BI</span>
+                </div>
             </div>
         </div>
     </div>
     <!-- About Me (Minimal Split Layout) -->
     <section id="about" class="about-bento">
         <div class="max-w-[1200px] mx-auto px-5">
-            <div style="text-align: center; margin-bottom: 3.5rem;">
-                <span style="color: #4169E1; font-family: 'Poppins', monospace; font-weight: 700; letter-spacing: 0.2em; font-size: 0.85rem; text-transform: uppercase;">&mdash; DISCOVER</span>
-                <h2 style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; color: #1a1a2e; line-height: 1.2; margin-top: 10px;">About Me</h2>
+            <div class="section-header">
+                <span class="section-subtitle">&mdash; DISCOVER</span>
+                <h2 class="section-title">About Me</h2>
             </div>
-            <div class="about-minimal-wrapper text-center">
-                <div class="about-min-content full-width">
+            <div class="about-bento-grid">
+                <!-- Card 1: Interactive Profile Card (Span 4) -->
+                <div class="about-bento-card card-profile">
+                    <div class="profile-avatar-container">
+                        <img src="img/profile.jpg" alt="Om Patel" class="profile-avatar">
+                        <div class="avatar-ring"></div>
+                    </div>
+                    <h3 class="profile-name">Om Patel</h3>
+                    <p class="profile-title">Data Analyst & AI/ML Developer</p>
+                    
+                    <div class="profile-details-list">
+                        <div class="profile-detail-item">
+                            <span class="detail-icon"><i class="fas fa-map-marker-alt"></i></span>
+                            <div class="detail-content">
+                                <span class="detail-label">Location</span>
+                                <span class="detail-value">Gujarat, India</span>
+                            </div>
+                        </div>
+                        <div class="profile-detail-item">
+                            <span class="detail-icon"><i class="fas fa-graduation-cap"></i></span>
+                            <div class="detail-content">
+                                <span class="detail-label">Education</span>
+                                <span class="detail-value">M.Sc. IT (Candidate)</span>
+                            </div>
+                        </div>
+                        <div class="profile-detail-item">
+                            <span class="detail-icon"><i class="fas fa-envelope"></i></span>
+                            <div class="detail-content">
+                                <span class="detail-label">Email</span>
+                                <span class="detail-value">patelom2810@gmail.com</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-social-row">
+                        <a href="https://www.linkedin.com/in/om-patel-1a929831b" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://github.com/patelom2810" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="mailto:patelom2810@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+
+                <!-- Card 2: Main Story (Span 8) -->
+                <div class="about-bento-card card-intro">
                     <div class="status-badge">
                         <span class="pulse-dot"></span>
                         <span>Open to new opportunities</span>
                     </div>
-                    <h3 class="about-greeting">Hello there!</h3>
-                    <h2 class="about-headline" style="text-wrap: balance;">
-                        My name is <span class="highlight-text">Om Patel</span> and I <span
-                            class="highlight-text">analyze data</span> and <span class="highlight-text">build AI
-                            models</span> (most of the time).
+                    <h3 class="about-greeting">My Story</h3>
+                    <h2 class="about-headline">
+                        Turning complex data into <span class="highlight-text">clear, actionable stories</span> and <span class="highlight-text">intelligent models</span>.
                     </h2>
-                    <p class="about-description mx-auto">
-                        Transforming complex data into actionable insights. I am a Data Analyst & AiML Engineer
-                        passionate about leveraging statistical modeling and machine learning to drive decision-making.
+                    <p class="about-description">
+                        I am currently pursuing my <strong>M.Sc. in Information Technology</strong> at GLS University, building upon my foundational knowledge from a <strong>B.Sc. in Computer Applications &amp; IT</strong>. My academic and project work focuses on bridge-building between raw datasets and strategic decision making.
                         <br><br>
-                        Currently based in Khambhat, India, working on impactful projects that blend design and
-                        functionality.
+                        Passionate about data analytics, machine learning, and cloud technologies, I design end-to-end pipelines that ingest data, perform statistical analysis, and generate predictive outputs. I am looking for a challenging internship to deploy these skills and grow as a professional.
                     </p>
-                    <div class="about-action">
+                    <div class="story-quote">
+                        <i class="fas fa-quote-left quote-icon"></i>
+                        <p>I seek to extract value from data and design architectures that automate intelligent decision making.</p>
+                    </div>
+                </div>
+
+                <!-- Card 3: Pillars of Expertise (Span 6) -->
+                <div class="about-bento-card card-pillars">
+                    <h4 class="about-bento-card-title"><i class="fas fa-cubes"></i> Core Pillars</h4>
+                    <p class="pillars-sub">The methodologies and approaches that drive my work:</p>
+                    
+                    <div class="pillars-container">
+                        <div class="pillar-item">
+                            <div class="pillar-icon-box anal-bg">
+                                <i class="fas fa-chart-pie"></i>
+                            </div>
+                            <div class="pillar-text">
+                                <h5>Insight Analytics</h5>
+                                <p>Ingesting, cleaning, and visualizing trends using SQL, Python (Pandas/NumPy), and Power BI.</p>
+                            </div>
+                        </div>
+                        <div class="pillar-item">
+                            <div class="pillar-icon-box ai-bg">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <div class="pillar-text">
+                                <h5>Machine Intelligence</h5>
+                                <p>Developing predictive algorithms, neural networks, and optimizing generative prompt strategies.</p>
+                            </div>
+                        </div>
+                        <div class="pillar-item">
+                            <div class="pillar-icon-box cloud-bg">
+                                <i class="fas fa-server"></i>
+                            </div>
+                            <div class="pillar-text">
+                                <h5>Infrastructure & DevOps</h5>
+                                <p>Deploying projects to AWS (EC2/S3/RDS), managing databases, and using Git workflows.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4: Fast Facts & Stats (Span 6) -->
+                <div class="about-bento-card card-stats">
+                    <h4 class="about-bento-card-title"><i class="fas fa-bolt"></i> Fast Facts</h4>
+                    <p class="stats-sub">A quick snapshot of my qualifications and metrics:</p>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-box-item">
+                            <span class="stat-number">15+</span>
+                            <span class="stat-desc">Projects Completed</span>
+                        </div>
+                        <div class="stat-box-item">
+                            <span class="stat-number">7.8</span>
+                            <span class="stat-desc">B.Sc. IT CGPA</span>
+                        </div>
+                        <div class="stat-box-item">
+                            <span class="stat-number">AWS</span>
+                            <span class="stat-desc">Certified Cloud Practitioner</span>
+                        </div>
+                        <div class="stat-box-item">
+                            <span class="stat-number">GLS</span>
+                            <span class="stat-desc">M.Sc. IT University</span>
+                        </div>
+                    </div>
+                    
+                    <div class="about-action-row">
                         <a href="#contact" class="btn-glass-unique">Let's Talk <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
         </div>
-        </div>
     </section>
 
     <!-- Skills Section -->
-    <!-- Skills Section: Bricks Architecture -->
     <section id="skills" class="skills">
         <div class="max-w-[1200px] mx-auto px-5">
-            <div style="text-align: center; margin-bottom: 3.5rem;">
-                <span style="color: #4169E1; font-family: 'Poppins', monospace; font-weight: 700; letter-spacing: 0.2em; font-size: 0.85rem; text-transform: uppercase;">&mdash; EXPERTISE</span>
-                <h2 style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; color: #1a1a2e; line-height: 1.2; margin-top: 10px;">Skills</h2>
+            <div class="section-header">
+                <span class="section-subtitle">&mdash; EXPERTISE</span>
+                <h2 class="section-title">Skills & Tooling</h2>
             </div>
 
-            <div class="skills-bricks">
-
-                <!-- WIDE brick: Data Analytics -->
-                <div class="brick brick-wide" style="--brick-color: #4169E1;">
-                    <div class="brick-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg" alt="PowerBI"></div>
-                    <div class="brick-body">
-                        <span class="brick-label">Data Analytics</span>
-                        <span class="brick-name">Power BI</span>
-                        <div class="brick-bar"><div style="width:90%"></div></div>
+            <div class="skills-bento-grid">
+                <!-- Box 1: Data Analytics -->
+                <div class="skills-bento-card card-data">
+                    <div class="skills-bento-header">
+                        <div class="skills-bento-icon">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <span class="skills-bento-number">01</span>
+                    </div>
+                    <div class="skills-bento-body">
+                        <h3>Data Analytics</h3>
+                        <div class="skills-bento-tags">
+                            <span class="skill-badge">Power BI</span>
+                            <span class="skill-badge">Tableau</span>
+                            <span class="skill-badge">Excel</span>
+                            <span class="skill-badge">Pandas</span>
+                            <span class="skill-badge">NumPy</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Regular bricks -->
-                <div class="brick" style="--brick-color: #2196F3;">
-                    <div class="brick-icon"><img src="img/tableau.jpg" alt="Tableau"></div>
-                    <div class="brick-body">
-                        <span class="brick-name">Tableau</span>
-                        <div class="brick-bar"><div style="width:85%"></div></div>
+                <!-- Box 2: Programming -->
+                <div class="skills-bento-card card-programming">
+                    <div class="skills-bento-header">
+                        <div class="skills-bento-icon">
+                            <i class="fas fa-terminal"></i>
+                        </div>
+                        <span class="skills-bento-number">02</span>
+                    </div>
+                    <div class="skills-bento-body">
+                        <h3>Programming</h3>
+                        <div class="skills-bento-tags">
+                            <span class="skill-badge">Python</span>
+                            <span class="skill-badge">SQL</span>
+                            <span class="skill-badge">JavaScript</span>
+                            <span class="skill-badge">HTML5</span>
+                            <span class="skill-badge">CSS3</span>
+                            <span class="skill-badge">MySQL</span>
+                        </div>
                     </div>
                 </div>
 
-                <div class="brick" style="--brick-color: #1D6F42;">
-                    <div class="brick-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/6/60/Microsoft_Office_Excel_%282025%E2%80%93present%29.svg" alt="Excel"></div>
-                    <div class="brick-body">
-                        <span class="brick-name">Excel</span>
-                        <div class="brick-bar"><div style="width:85%"></div></div>
+                <!-- Box 3: AI / ML -->
+                <div class="skills-bento-card card-ai">
+                    <div class="skills-bento-header">
+                        <div class="skills-bento-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <span class="skills-bento-number">03</span>
+                    </div>
+                    <div class="skills-bento-body">
+                        <h3>AI / ML</h3>
+                        <div class="skills-bento-tags">
+                            <span class="skill-badge">TensorFlow</span>
+                            <span class="skill-badge">Prompt Engineering</span>
+                            <span class="skill-badge">Scikit-Learn</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- WIDE brick: Python -->
-                <div class="brick brick-wide" style="--brick-color: #3776AB;">
-                    <div class="brick-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python"></div>
-                    <div class="brick-body">
-                        <span class="brick-label">Programming</span>
-                        <span class="brick-name">Python</span>
-                        <div class="brick-bar"><div style="width:85%"></div></div>
+                <!-- Box 4: Cloud & Backend -->
+                <div class="skills-bento-card card-cloud">
+                    <div class="skills-bento-header">
+                        <div class="skills-bento-icon">
+                            <i class="fas fa-cloud"></i>
+                        </div>
+                        <span class="skills-bento-number">04</span>
+                    </div>
+                    <div class="skills-bento-body">
+                        <h3>Cloud & Backend</h3>
+                        <div class="skills-bento-tags">
+                            <span class="skill-badge">AWS (EC2, S3, RDS)</span>
+                            <span class="skill-badge">Firebase</span>
+                            <span class="skill-badge">Supabase</span>
+                            <span class="skill-badge">MongoDB</span>
+                            <span class="skill-badge">GitHub</span>
+                        </div>
                     </div>
                 </div>
-
-                <div class="brick" style="--brick-color: #F7DF1E; color:#000;">
-                    <div class="brick-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript"></div>
-                    <div class="brick-body">
-                        <span class="brick-name">JavaScript</span>
-                        <div class="brick-bar"><div style="width:75%"></div></div>
-                    </div>
-                </div>
-
-                <div class="brick" style="--brick-color: #336791;">
-                    <div class="brick-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azuresqldatabase/azuresqldatabase-original.svg" alt="SQL"></div>
-                    <div class="brick-body">
-                        <span class="brick-name">SQL</span>
-                        <div class="brick-bar"><div style="width:80%"></div></div>
-                    </div>
-                </div>
-
-                <!-- WIDE brick: HTML -->
-                <div class="brick brick-wide" style="--brick-color: #E44D26;">
-                    <div class="brick-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML"></div>
-                    <div class="brick-body">
-                        <span class="brick-label">Web Dev</span>
-                        <span class="brick-name">HTML / CSS</span>
-                        <div class="brick-bar"><div style="width:90%"></div></div>
-                    </div>
-                </div>
-
-                <div class="brick" style="--brick-color: #4A76C5;">
-                    <div class="brick-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL"></div>
-                    <div class="brick-body">
-                        <span class="brick-name">MySQL</span>
-                        <div class="brick-bar"><div style="width:80%"></div></div>
-                    </div>
-                </div>
-
-                <div class="brick" style="--brick-color: #47A248;">
-                    <div class="brick-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB"></div>
-                    <div class="brick-body">
-                        <span class="brick-name">MongoDB</span>
-                        <div class="brick-bar"><div style="width:70%"></div></div>
-                    </div>
-                </div>
-
-                <!-- WIDE brick: AWS -->
-                <div class="brick brick-wide" style="--brick-color: #FF9900;">
-                    <div class="brick-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS"></div>
-                    <div class="brick-body">
-                        <span class="brick-label">Cloud</span>
-                        <span class="brick-name">AWS (EC2 · RDS · S3)</span>
-                        <div class="brick-bar"><div style="width:75%"></div></div>
-                    </div>
-                </div>
-
-                <div class="brick" style="--brick-color: #FF4500;">
-                    <div class="brick-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="TensorFlow"></div>
-                    <div class="brick-body">
-                        <span class="brick-name">TensorFlow</span>
-                        <div class="brick-bar"><div style="width:60%"></div></div>
-                    </div>
-                </div>
-
-                <div class="brick" style="--brick-color: #150458;">
-                    <div class="brick-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" alt="Pandas"></div>
-                    <div class="brick-body">
-                        <span class="brick-name">Pandas</span>
-                        <div class="brick-bar"><div style="width:65%"></div></div>
-                    </div>
-                </div>
-
-                <!-- WIDE brick: Prompt Engineering -->
-                <div class="brick brick-wide" style="--brick-color: #4169E1;">
-                    <div class="brick-icon"><img src="img/prompt_engineering.png" alt="Prompt Eng."></div>
-                    <div class="brick-body">
-                        <span class="brick-label">AI</span>
-                        <span class="brick-name">Prompt Engineering</span>
-                        <div class="brick-bar"><div style="width:85%"></div></div>
-                    </div>
-                </div>
-
-                <div class="brick" style="--brick-color: #333;">
-                    <div class="brick-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub"></div>
-                    <div class="brick-body">
-                        <span class="brick-name">GitHub</span>
-                        <div class="brick-bar"><div style="width:90%"></div></div>
-                    </div>
-                </div>
-
-                <div class="brick" style="--brick-color: #numpy;--brick-color: #4dabcf;">
-                    <div class="brick-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" alt="NumPy"></div>
-                    <div class="brick-body">
-                        <span class="brick-name">NumPy</span>
-                        <div class="brick-bar"><div style="width:70%"></div></div>
-                    </div>
-                </div>
-
-                <div class="brick" style="--brick-color: #FFCA28;">
-                    <div class="brick-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" alt="Firebase"></div>
-                    <div class="brick-body">
-                        <span class="brick-name">Firebase</span>
-                        <div class="brick-bar"><div style="width:75%"></div></div>
-                    </div>
-                </div>
-
-                <div class="brick" style="--brick-color: #3ECF8E;">
-                    <div class="brick-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg" alt="Supabase"></div>
-                    <div class="brick-body">
-                        <span class="brick-name">Supabase</span>
-                        <div class="brick-bar"><div style="width:70%"></div></div>
-                    </div>
-                </div>
-
             </div>
         </div>
     </section>
@@ -441,9 +568,9 @@
     <!-- Education Section -->
     <section id="education" class="education">
         <div class="max-w-[1200px] mx-auto px-5">
-            <div style="text-align: center; margin-bottom: 3.5rem;">
-                <span style="color: #4169E1; font-family: 'Poppins', monospace; font-weight: 700; letter-spacing: 0.2em; font-size: 0.85rem; text-transform: uppercase;">&mdash; JOURNEY</span>
-                <h2 style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; color: #1a1a2e; line-height: 1.2; margin-top: 10px;">Education</h2>
+            <div class="section-header">
+                <span class="section-subtitle">&mdash; JOURNEY</span>
+                <h2 class="section-title">Education</h2>
             </div>
             <div class="timeline">
                 <div class="timeline-item">
@@ -459,7 +586,7 @@
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <!-- Premium Watermark Cap Icon -->
-                        <i class="fas fa-graduation-cap" style="position: absolute; top: -15px; right: -15px; font-size: 8rem; color: #2ECC71; opacity: 0.12; transform: rotate(15deg); pointer-events: none;"></i>
+                        <i class="fas fa-graduation-cap timeline-watermark"></i>
                         <div class="timeline-date">2022 – 2025</div>
                         <h3 class="timeline-title">Bachelor of Science (BSc) – Information Technology</h3>
                         <p class="timeline-description">Sardar Patel University, Vallabh Vidyanagar, Gujarat<br>CGPA: 7.8
@@ -479,27 +606,112 @@
         </div>
     </section>
 
+    <!-- Featured Projects Section -->
+    <section id="featured-projects" class="featured-projects">
+        <div class="max-w-[1200px] mx-auto px-5">
+            <div class="section-header">
+                <span class="section-subtitle">&mdash; PORTFOLIO</span>
+                <h2 class="section-title">Featured Projects</h2>
+                <a href="projects.html" class="view-all-link header-action-link">View All <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="featured-projects-slider-wrapper">
+                <div class="featured-projects-slider">
+                    <!-- Card 1: Solar Energy Analytics -->
+                    <a href="projects.html#solar-energy" class="featured-project-card">
+                        <div class="featured-project-image">
+                            <img src="img/solar_energy.png" alt="Solar Energy Analytics">
+                        </div>
+                        <div class="featured-project-info">
+                            <h3>Solar Energy Analytics</h3>
+                            <div class="featured-project-meta">
+                                <span>Flask &bull; Scikit-learn &bull; MySQL &bull; Docker</span>
+                                <div class="featured-project-circle-btn"><i class="fas fa-arrow-right"></i></div>
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <!-- Card 2: E-Game Scout -->
+                    <a href="projects.html#egame-scout" class="featured-project-card">
+                        <div class="featured-project-image">
+                            <img src="img/egamescout.png" alt="E-Game Scout">
+                        </div>
+                        <div class="featured-project-info">
+                            <h3>E-Game Scout</h3>
+                            <div class="featured-project-meta">
+                                <span>Django &bull; AWS EC2 &bull; AI &bull; Tailwind</span>
+                                <div class="featured-project-circle-btn"><i class="fas fa-arrow-right"></i></div>
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <!-- Card 3: CleanItUp! -->
+                    <a href="projects.html#cleanitup" class="featured-project-card">
+                        <div class="featured-project-image">
+                            <img src="img/cleanitup.png" alt="CleanItUp!">
+                        </div>
+                        <div class="featured-project-info">
+                            <h3>CleanItUp!</h3>
+                            <div class="featured-project-meta">
+                                <span>AI &bull; Data Cleaning</span>
+                                <div class="featured-project-circle-btn"><i class="fas fa-arrow-right"></i></div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Card 4: Blinkit Analysis -->
+                    <a href="projects.html#blinkit-analysis" class="featured-project-card">
+                        <div class="featured-project-image">
+                            <img src="img/blinkit_analysis.png" alt="Blinkit Analysis">
+                        </div>
+                        <div class="featured-project-info">
+                            <h3>Blinkit Analysis</h3>
+                            <div class="featured-project-meta">
+                                <span>PowerBI &bull; Data Vis</span>
+                                <div class="featured-project-circle-btn"><i class="fas fa-arrow-right"></i></div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Card 5: Pizza Sales -->
+                    <a href="projects.html#pizza-sales" class="featured-project-card">
+                        <div class="featured-project-image">
+                            <img src="img/pizza_sales.png" alt="Pizza Sales">
+                        </div>
+                        <div class="featured-project-info">
+                            <h3>Pizza Sales</h3>
+                            <div class="featured-project-meta">
+                                <span>PowerBI &bull; SQL</span>
+                                <div class="featured-project-circle-btn"><i class="fas fa-arrow-right"></i></div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Certifications Section -->
     <section id="certifications" style="padding: 4rem 2rem 6rem; background: transparent; max-width: 1200px; margin: 0 auto; width: 100%;">
-        <div style="text-align: center; margin-bottom: 3.5rem;">
-            <span style="color: #4169E1; font-family: 'Poppins', monospace; font-weight: 700; letter-spacing: 0.2em; font-size: 0.85rem; text-transform: uppercase;">&mdash; ACHIEVEMENTS</span>
-            <h2 style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; color: #1a1a2e; line-height: 1.2; margin-top: 10px;">Certifications</h2>
+        <div class="section-header">
+            <span class="section-subtitle">&mdash; ACHIEVEMENTS</span>
+            <h2 class="section-title">Certifications</h2>
         </div>
         
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 350px)); gap: 30px; justify-content: center;">
             <a href="Certificate/aws.pdf" target="_blank" class="cert-card">
                 <!-- Watermark -->
-                <i class="fas fa-award" style="position: absolute; top: -15px; right: -15px; font-size: 8rem; color: #4169E1; opacity: 0.03; transform: rotate(15deg); pointer-events: none;"></i>
+                <i class="fas fa-award timeline-watermark"></i>
                 
                 <div style="display: flex; gap: 20px; align-items: flex-start; position: relative; z-index: 2;">
-                    <div style="width: 60px; height: 60px; border-radius: 16px; background: #FFF3E0; display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 1px solid rgba(255, 152, 0, 0.2);">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS" style="width: 35px; height: 35px; object-fit: contain;">
+                    <div class="cert-icon-box aws-orange-bg">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS">
                     </div>
                     <div>
                         <h3>AWS Certified</h3>
                         <p>Amazon Web Services</p>
-                        <div style="display: inline-flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 600; color: #4169E1; background: rgba(65, 105, 225, 0.1); padding: 6px 12px; border-radius: 50px;">
-                            View Certificate <i class="fas fa-arrow-right" style="font-size: 0.75rem;"></i>
+                        <div class="cert-badge">
+                            View Certificate <i class="fas fa-arrow-right"></i>
                         </div>
                     </div>
                 </div>
@@ -522,21 +734,38 @@
             <p class="footer-subtext">
                 Open to Data Engineering, AI/ML, and Data Analyst opportunities. Based in Gujarat, India &mdash; open to remote and relocation.
             </p>
-            <!-- Contact Buttons -->
-            <div class="footer-buttons">
-                <a href="mailto:patelom2810@gmail.com" class="contact-btn btn-gmail" style="padding: 12px 24px;">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Gmail_icon_%282020%29.svg" alt="Gmail" style="width: 20px; height: 20px;"> patelom2810@gmail.com
-                </a>
-                <a href="https://www.linkedin.com/in/om-patel-1a929831b" target="_blank" class="contact-btn btn-linkedin" style="padding: 12px 24px;">
-                    <img loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn" style="width: 20px; height: 20px;"> LinkedIn
-                </a>
-                <a href="https://github.com/patelom2810" target="_blank" class="contact-btn btn-github" style="padding: 12px 24px;">
-                    <img loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" style="width: 20px; height: 20px;"> GitHub
-                </a>
+            <!-- Contact Card Widget -->
+            <div class="contact-card-new">
+                <div class="contact-card-left">
+                    <div class="contact-mail-icon-box">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-card-text">
+                        <h3>Let's Connect</h3>
+                        <p>I'm always open to discussing new projects, creative ideas or opportunities.</p>
+                    </div>
+                </div>
+                <div class="contact-card-right">
+                    <a href="mailto:patelom2810@gmail.com" class="contact-circle-btn" data-tooltip="Gmail">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Gmail_icon_%282020%29.svg" alt="Gmail">
+                    </a>
+                    <a href="https://www.linkedin.com/in/om-patel-1a929831b" target="_blank" class="contact-circle-btn" data-tooltip="LinkedIn">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn">
+                    </a>
+                    <a href="https://github.com/patelom2810" target="_blank" class="contact-circle-btn" data-tooltip="GitHub">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub">
+                    </a>
+                </div>
             </div>
             <!-- Bottom Row -->
             <div class="footer-bottom">
-                <p style="color: #94a3b8; font-size: 0.82rem; letter-spacing: 0.03em; margin: 0;">&copy; 2026 Om Patel &mdash; Built with passion.</p>
+                <p class="footer-copy">&copy; 2024 Om Patel &bull; Data Analyst &amp; AI/ML Developer</p>
+                <div class="footer-links">
+                    <a href="https://github.com/patelom2810" target="_blank">GitHub</a>
+                    <a href="https://www.linkedin.com/in/om-patel-1a929831b" target="_blank">LinkedIn</a>
+                    <a href="#" target="_blank">Twitter</a>
+                    <a href="mailto:patelom2810@gmail.com">Email</a>
+                </div>
             </div>
         </div>
     </footer>

@@ -1,11 +1,6 @@
 // Main JS file
 console.log("Portfolio UI Loaded");
 
-// Fix: Clear URL hash on load to prevent scrolling to #contact on refresh
-if (window.location.hash) {
-    history.replaceState(null, null, window.location.pathname);
-    window.scrollTo(0, 0);
-}
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -75,6 +70,13 @@ document.addEventListener('DOMContentLoaded', () => {
         let visibleCount = 0;
 
         projectCards.forEach((card) => {
+            if (card.dataset.timeoutId) {
+                clearTimeout(parseInt(card.dataset.timeoutId, 10));
+            }
+            if (card.dataset.fadeTimeoutId) {
+                clearTimeout(parseInt(card.dataset.fadeTimeoutId, 10));
+            }
+
             const categories = (card.getAttribute('data-category') || '').split(' ');
             const matches = filter === 'all' || categories.includes(filter);
 
@@ -84,17 +86,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 card.style.opacity = '0';
                 const delay = visibleCount * 70;
                 visibleCount++;
-                setTimeout(() => {
+                const tid = setTimeout(() => {
                     card.style.animation = `card-in 0.45s cubic-bezier(0.22,1,0.36,1) ${delay}ms both`;
                 }, 10);
+                card.dataset.timeoutId = tid.toString();
             } else {
                 card.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
                 card.style.opacity = '0';
                 card.style.transform = 'scale(0.94)';
-                setTimeout(() => {
+                const ftid = setTimeout(() => {
                     card.style.display = 'none';
                     card.style.transform = '';
                 }, 220);
+                card.dataset.fadeTimeoutId = ftid.toString();
             }
         });
     };

@@ -9,7 +9,7 @@
     <!-- Poppins Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -56,12 +56,6 @@
     <!-- Glassy Navigation Dock -->
     <div class="glassy-nav-container">
         <nav class="glassy-nav">
-            <a href="https://www.linkedin.com/in/om-patel-1a929831b" class="nav-item hide-mobile" data-tooltip="LinkedIn" target="_blank">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn" style="width: 20px; height: 20px; object-fit: contain;">
-            </a>
-            <a href="https://github.com/patelom2810" class="nav-item hide-mobile" data-tooltip="GitHub" target="_blank">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" style="width: 20px; height: 20px; object-fit: contain;">
-            </a>
             <a href="index.html#about" class="nav-item nav-link-dock" data-tooltip="About">
                 <i class="fas fa-user"></i>
             </a>
@@ -144,7 +138,7 @@
             <div class="projects-grid">
                 
                 <!-- Solar Energy Analytics (Data/Web) -->
-                <div class="project-card card-solar" data-category="data web">
+                <div id="solar-energy" class="project-card card-solar" data-category="data web">
                     <div class="project-image-wrapper">
                         <div class="project-thumb thumb-solar">
                             <!-- Weather sun & cloud decorative background elements -->
@@ -172,7 +166,7 @@
                 </div>
 
                 <!-- E-Game Scout -->
-                <div class="project-card card-esports bg-grid-cyber" data-category="data web">
+                <div id="egame-scout" class="project-card card-esports bg-grid-cyber" data-category="data web">
                     <div class="project-image-wrapper">
                         <div class="project-thumb thumb-esports thumb-grid-cyber">
                             <!-- Grid overlay on thumb -->
@@ -200,7 +194,7 @@
                 </div>
 
                 <!-- CleanItUp! (Data/AI) -->
-                <div class="project-card card-clean" data-category="data web">
+                <div id="cleanitup" class="project-card card-clean" data-category="data web">
                     <div class="project-image-wrapper">
                         <div class="project-thumb thumb-clean">
                             <!-- Excel logo - background left -->
@@ -234,7 +228,7 @@
                 </div>
 
                 <!-- Blinkit Analysis (Data) -->
-                <div class="project-card card-blinkit" data-category="data">
+                <div id="blinkit-analysis" class="project-card card-blinkit" data-category="data">
                     <div class="project-image-wrapper">
                         <div class="project-thumb thumb-blinkit" aria-label="Blinkit Dashboard preview">
                             <!-- Blinkit logo - large background left -->
@@ -418,7 +412,7 @@
                 </div>
 
                 <!-- Pizza Sales (Data) -->
-                <div class="project-card card-pizza" data-category="data">
+                <div id="pizza-sales" class="project-card card-pizza" data-category="data">
                     <div class="project-image-wrapper">
                         <div class="project-thumb thumb-pizza" aria-label="Pizza Sales dashboard preview">
                             <i class="fas fa-pizza-slice"></i>
@@ -454,30 +448,40 @@
             <p class="footer-subtext">
                 Open to Data Engineering, AI/ML, and Data Analyst opportunities. Based in Gujarat, India &mdash; open to remote and relocation.
             </p>
-            <!-- Contact Buttons -->
-            <div class="footer-buttons">
-                <a href="mailto:patelom2810@gmail.com" class="contact-btn btn-gmail" style="padding: 12px 24px;">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Gmail_icon_%282020%29.svg" alt="Gmail" style="width: 20px; height: 20px;"> patelom2810@gmail.com
-                </a>
-                <a href="https://www.linkedin.com/in/om-patel-1a929831b" target="_blank" class="contact-btn btn-linkedin" style="padding: 12px 24px;">
-                    <img loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn" style="width: 20px; height: 20px;"> LinkedIn
-                </a>
-                <a href="https://github.com/patelom2810" target="_blank" class="contact-btn btn-github" style="padding: 12px 24px;">
-                    <img loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" style="width: 20px; height: 20px;"> GitHub
-                </a>
+            <!-- Contact Card Widget -->
+            <div class="contact-card-new">
+                <div class="contact-card-left">
+                    <div class="contact-mail-icon-box">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-card-text">
+                        <h3>Let's Connect</h3>
+                        <p>I'm always open to discussing new projects, creative ideas or opportunities.</p>
+                    </div>
+                </div>
+                <div class="contact-card-right">
+                    <a href="mailto:patelom2810@gmail.com" class="contact-circle-btn" data-tooltip="Gmail">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Gmail_icon_%282020%29.svg" alt="Gmail">
+                    </a>
+                    <a href="https://www.linkedin.com/in/om-patel-1a929831b" target="_blank" class="contact-circle-btn" data-tooltip="LinkedIn">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn">
+                    </a>
+                    <a href="https://github.com/patelom2810" target="_blank" class="contact-circle-btn" data-tooltip="GitHub">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub">
+                    </a>
+                </div>
             </div>
             <!-- Bottom Row -->
             <div class="footer-bottom">
-                <p style="color: #94a3b8; font-size: 0.82rem; letter-spacing: 0.03em; margin: 0;">&copy; 2026 Om Patel &mdash; Built with passion.</p>
+                <p class="footer-copy">&copy; 2024 Om Patel &bull; Data Analyst &amp; AI/ML Developer</p>
+                <div class="footer-links">
+                    <a href="https://github.com/patelom2810" target="_blank">GitHub</a>
+                    <a href="https://www.linkedin.com/in/om-patel-1a929831b" target="_blank">LinkedIn</a>
+                    <a href="#" target="_blank">Twitter</a>
+                    <a href="mailto:patelom2810@gmail.com">Email</a>
+                </div>
             </div>
         </div>
     </footer>
-    <script>
-        // Fix: Clear URL hash on load to prevent scrolling to #contact on refresh
-        if (window.location.hash) {
-            history.replaceState(null, null, window.location.pathname);
-            window.scrollTo(0, 0);
-        }
-    </script>
 </body>
 </html>
