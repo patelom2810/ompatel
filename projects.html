@@ -81,6 +81,25 @@
         </nav>
     </div>
 
+    <!-- Top Header Pill (Static inside Projects page for Desktop) -->
+    <div class="hero-header-pill">
+        <div class="hero-logo-box">
+            <div class="hero-logo-square">OP</div>
+            <span class="hero-logo-text">DESIGN BY OM PATEL</span>
+        </div>
+        <div class="hero-header-links">
+            <a href="index.html#about" class="hero-header-link">ABOUT</a>
+            <span class="hero-header-slash">/</span>
+            <a href="index.html#skills" class="hero-header-link">SKILLS</a>
+            <span class="hero-header-slash">/</span>
+            <a href="projects.html" class="hero-header-link" style="color: var(--primary-color);">PROJECTS</a>
+            <span class="hero-header-slash">/</span>
+            <a href="index.html#contact" class="hero-header-link">CONTACT</a>
+        </div>
+        <a href="mailto:patelom2810@gmail.com" class="hero-header-btn">HIRE ME</a>
+    </div>
+
+
     <!-- Primer-Style Hero Section -->
     <section class="primer-hero">
         <!-- Blobs migrated to CSS classes -->
@@ -137,297 +156,255 @@
             </div>
             <div class="projects-grid">
                 
-                <!-- Solar Energy Analytics (Data/Web) -->
-                <div id="solar-energy" class="project-card card-solar" data-category="data web">
-                    <div class="project-image-wrapper">
-                        <div class="project-thumb thumb-solar">
-                            <!-- Weather sun & cloud decorative background elements -->
-                            <i class="fas fa-cloud-sun-rain" style="position:absolute; font-size:6.5rem; top:5%; left:5%; opacity:0.18; transform:rotate(-15deg); color:#fff;"></i>
-                            <i class="fas fa-bolt" style="position:absolute; font-size:4rem; bottom:10%; right:8%; opacity:0.15; transform:rotate(15deg); color:#fff;"></i>
-                            <i class="fas fa-temperature-high" style="position:absolute; font-size:3rem; top:12%; right:12%; opacity:0.12; transform:rotate(10deg); color:#fff;"></i>
-                            <i class="fas fa-chart-line" style="position:absolute; font-size:3.5rem; bottom:12%; left:12%; opacity:0.15; transform:rotate(-10deg); color:#fff;"></i>
-                            <!-- Main Icon -->
-                            <i class="fas fa-sun" style="position:relative; z-index:2; font-size:3.8rem; color:#fff; filter: drop-shadow(0 8px 15px rgba(0,0,0,0.15));"></i>
+                <!-- Solar Energy Analytics (Data/Web - NY Style) -->
+                <div id="solar-energy" class="project-card project-card-ny" data-category="data web">
+                    <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=600&q=80" alt="Solar Energy Analytics" class="project-ny-bg-image">
+                    <div class="project-ny-overlay"></div>
+                    <a href="https://github.com/patelom2810/Solar-Energy-Generation-Weather-Analytics" target="_blank" class="project-ny-heart-btn" title="GitHub Code">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <div class="project-ny-content">
+                        <h3 class="project-ny-title">Solar Energy Analytics</h3>
+                        <p class="project-ny-subtitle">Flask &bull; Scikit-learn &bull; MySQL &bull; Docker</p>
+                        <div class="project-ny-meta-row">
+                            <span class="project-ny-meta-item"><i class="fas fa-tag"></i> Data Analytics</span>
+                            <span class="project-ny-meta-item"><i class="fas fa-chart-line"></i> Solar Generation</span>
                         </div>
-                        <div class="project-overlay">
-                            <a href="https://github.com/patelom2810/Solar-Energy-Generation-Weather-Analytics" class="project-link" target="_blank" title="View Code"><i class="fab fa-github"></i></a>
-                        </div>
+                        <a href="https://github.com/patelom2810/Solar-Energy-Generation-Weather-Analytics" target="_blank" class="project-ny-btn-white">Explore Insights</a>
                     </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Solar Energy Analytics</h3>
-                        <p class="project-description">ML-powered weather forecasting and energy analytics dashboard integrating MySQL, Flask, and scikit-learn.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">Flask</span>
-                            <span class="project-tag">Scikit-learn</span>
-                            <span class="project-tag">MySQL</span>
-                            <span class="project-tag">Docker</span>
+                </div>
+
+                <!-- E-Game Scout (Data/Web - NY Style) -->
+                <div id="egame-scout" class="project-card project-card-ny" data-category="data web">
+                    <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=600&q=80" alt="E-Game Scout" class="project-ny-bg-image">
+                    <div class="project-ny-overlay"></div>
+                    <a href="http://13.232.179.239:8000/" target="_blank" class="project-ny-heart-btn" title="Live Demo">
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                    <div class="project-ny-content">
+                        <h3 class="project-ny-title">E-Game Scout</h3>
+                        <p class="project-ny-subtitle">Django &bull; AWS EC2 &bull; AI Analytics &bull; Tailwind</p>
+                        <div class="project-ny-meta-row">
+                            <span class="project-ny-meta-item"><i class="fas fa-tag"></i> Esports Talent</span>
+                            <span class="project-ny-meta-item"><i class="fas fa-brain"></i> AI Scout</span>
+                        </div>
+                        <a href="http://13.232.179.239:8000/" target="_blank" class="project-ny-btn-white">Explore Insights</a>
+                    </div>
+                </div>
+
+                <!-- CleanItUp! (Data/AI - NY Style) -->
+                <div id="cleanitup" class="project-card project-card-ny" data-category="data web">
+                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80" alt="CleanItUp!" class="project-ny-bg-image">
+                    <div class="project-ny-overlay"></div>
+                    <a href="https://cleanitup.netlify.app" target="_blank" class="project-ny-heart-btn" title="Live Demo">
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                    <div class="project-ny-content">
+                        <h3 class="project-ny-title">CleanItUp!</h3>
+                        <p class="project-ny-subtitle">AI-powered tabular data cleaner platform</p>
+                        <div class="project-ny-meta-row">
+                            <span class="project-ny-meta-item"><i class="fas fa-tag"></i> Data Utility</span>
+                            <span class="project-ny-meta-item"><i class="fas fa-magic"></i> AI Cleaning</span>
+                        </div>
+                        <a href="https://cleanitup.netlify.app" target="_blank" class="project-ny-btn-white">Explore Insights</a>
+                    </div>
+                </div>
+
+                <!-- Blinkit Analysis (Data - NY Style) -->
+                <div id="blinkit-analysis" class="project-card project-card-ny" data-category="data">
+                    <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=600&q=80" alt="Blinkit Analysis" class="project-ny-bg-image">
+                    <div class="project-ny-overlay"></div>
+                    <a href="https://github.com/patelom2810" target="_blank" class="project-ny-heart-btn" title="View Code">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <div class="project-ny-content">
+                        <h3 class="project-ny-title">Blinkit Analysis</h3>
+                        <p class="project-ny-subtitle">PowerBI &bull; Grocery delivery sales dashboard</p>
+                        <div class="project-ny-meta-row">
+                            <span class="project-ny-meta-item"><i class="fas fa-tag"></i> Data Visualization</span>
+                            <span class="project-ny-meta-item"><i class="fas fa-chart-pie"></i> Business KPIs</span>
+                        </div>
+                        <a href="https://github.com/patelom2810" target="_blank" class="project-ny-btn-white">Explore Insights</a>
+                    </div>
+                </div>
+
+                <!-- ClipDrop (Web - SF Style) -->
+                <div class="project-card project-card-sf" data-category="web">
+                    <div class="project-sf-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80" alt="ClipDrop" class="project-sf-image">
+                        <a href="https://github.com/patelom2810" target="_blank" class="project-sf-heart-btn" title="GitHub Code">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                    <div class="project-sf-info">
+                        <h3 class="project-sf-title">ClipDrop</h3>
+                        <p class="project-sf-subtitle">Secure peer-to-peer file transfer. Fast, encrypted, and no registration.</p>
+                        <div class="project-sf-meta-row">
+                            <span class="project-sf-meta-item"><i class="fas fa-tag"></i> P2P App</span>
+                            <span class="project-sf-meta-item"><i class="fas fa-code"></i> WebRTC</span>
+                        </div>
+                        <div class="project-sf-action-row">
+                            <a href="https://clipdrop.netlify.app" target="_blank" class="project-sf-btn-black">View Live</a>
+                            <a href="https://github.com/patelom2810" target="_blank" class="project-sf-btn-circle" title="View Code">
+                                <i class="fas fa-heart"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- E-Game Scout -->
-                <div id="egame-scout" class="project-card card-esports bg-grid-cyber" data-category="data web">
-                    <div class="project-image-wrapper">
-                        <div class="project-thumb thumb-esports thumb-grid-cyber">
-                            <!-- Grid overlay on thumb -->
-                            <div class="thumb-grid-overlay"></div>
-                            <img src="img/egs-logo.png" alt="E-Game Scout Logo" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; position: relative; z-index: 2;">
-                        </div>
-                        <div class="project-overlay">
-                            <a href="http://13.232.179.239:8000/" class="project-link" target="_blank"
-                                aria-label="E-Game Scout Live Demo" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
-                        </div>
+                <!-- ClipChain (Web - SF Style) -->
+                <div class="project-card project-card-sf" data-category="web">
+                    <div class="project-sf-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=600&q=80" alt="ClipChain" class="project-sf-image">
+                        <a href="https://github.com/patelom2810" target="_blank" class="project-sf-heart-btn" title="GitHub Code">
+                            <i class="fab fa-github"></i>
+                        </a>
                     </div>
-                    <div class="project-content" style="background: transparent;">
-                        <div style="margin-bottom: 10px;">
-                            <span style="font-family: 'Poppins', sans-serif; font-size: 0.78rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #ffffff; line-height: 1;">EGAME</span><span class="text-cyber-gradient" style="font-family: 'Poppins', sans-serif; font-size: 0.78rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; line-height: 1;">SCOUT</span>
+                    <div class="project-sf-info">
+                        <h3 class="project-sf-title">ClipChain</h3>
+                        <p class="project-sf-subtitle">Universal clipboard tool. Sync text and code snippets across devices in real-time.</p>
+                        <div class="project-sf-meta-row">
+                            <span class="project-sf-meta-item"><i class="fas fa-tag"></i> Clipboard</span>
+                            <span class="project-sf-meta-item"><i class="fas fa-link"></i> Web Sync</span>
                         </div>
-                        <h3 class="project-title" style="display: none;">E-Game Scout</h3>
-                        <p class="project-description" style="color: #94a3b8;">Esports Talent Discovery Platform bridging grassroots players and pro organizations with tournament management and AI analytics.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">Django</span>
-                            <span class="project-tag">AWS EC2</span>
-                            <span class="project-tag">AI</span>
-                            <span class="project-tag">Tailwind</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- CleanItUp! (Data/AI) -->
-                <div id="cleanitup" class="project-card card-clean" data-category="data web">
-                    <div class="project-image-wrapper">
-                        <div class="project-thumb thumb-clean">
-                            <!-- Excel logo - background left -->
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/6/60/Microsoft_Office_Excel_%282025%E2%80%93present%29.svg"
-                                 alt="Excel"
-                                 style="position:absolute; width:75px; height:75px; object-fit:contain; top:12%; left:8%; opacity:0.22; transform:rotate(-12deg); filter:drop-shadow(0 4px 8px rgba(0,0,0,0.2));">
-                            <!-- CSV text badge - top right -->
-                            <div style="position:absolute; top:10%; right:8%; opacity:0.2; transform:rotate(10deg); font-family:'Poppins',sans-serif; font-weight:800; font-size:1.4rem; color:#1a1a2e; letter-spacing:0.08em; line-height:1; background:rgba(255,255,255,0.6); padding:4px 10px; border-radius:8px;">.CSV</div>
-                            <!-- Excel logo - bottom right -->
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/6/60/Microsoft_Office_Excel_%282025%E2%80%93present%29.svg"
-                                 alt="Excel"
-                                 style="position:absolute; width:55px; height:55px; object-fit:contain; bottom:10%; right:10%; opacity:0.18; transform:rotate(8deg); filter:drop-shadow(0 4px 8px rgba(0,0,0,0.15));">
-                            <!-- CSV badge bottom left -->
-                            <div style="position:absolute; bottom:12%; left:10%; opacity:0.15; transform:rotate(-8deg); font-family:'Poppins',sans-serif; font-weight:800; font-size:1rem; color:#1a1a2e; letter-spacing:0.08em; background:rgba(255,255,255,0.5); padding:3px 8px; border-radius:6px;">.CSV</div>
-                            <!-- Main icon -->
-                            <i class="fas fa-magic" style="position:relative; z-index:2;"></i>
-                        </div>
-                        <div class="project-overlay">
-                            <a href="https://cleanitup.netlify.app" class="project-link" target="_blank"
-                                title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">CleanItUp!</h3>
-                        <p class="project-description">The ultimate data cleaning platform. Transform messy datasets with AI-powered tools.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">AI</span>
-                            <span class="project-tag">Data Cleaning</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Blinkit Analysis (Data) -->
-                <div id="blinkit-analysis" class="project-card card-blinkit" data-category="data">
-                    <div class="project-image-wrapper">
-                        <div class="project-thumb thumb-blinkit" aria-label="Blinkit Dashboard preview">
-                            <!-- Blinkit logo - large background left -->
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Blinkit-yellow-app-icon.svg"
-                                 alt="Blinkit"
-                                 style="position:absolute; width:90px; height:90px; object-fit:contain; top:8%; left:6%; opacity:0.2; transform:rotate(-10deg); filter:drop-shadow(0 4px 10px rgba(0,0,0,0.15));">
-                            <!-- Blinkit logo - smaller top right -->
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Blinkit-yellow-app-icon.svg"
-                                 alt="Blinkit"
-                                 style="position:absolute; width:55px; height:55px; object-fit:contain; top:8%; right:8%; opacity:0.15; transform:rotate(8deg);">
-                            <!-- Blinkit logo - bottom right -->
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Blinkit-yellow-app-icon.svg"
-                                 alt="Blinkit"
-                                 style="position:absolute; width:65px; height:65px; object-fit:contain; bottom:8%; right:6%; opacity:0.18; transform:rotate(12deg);">
-                            <!-- Blinkit wordmark text -->
-                            <div style="position:absolute; bottom:10%; left:8%; opacity:0.18; font-family:'Poppins',sans-serif; font-weight:800; font-size:1.1rem; color:#1a1a2e; letter-spacing:0.04em; transform:rotate(-5deg);">blinkit</div>
-                            <!-- Main icon -->
-                            <i class="fas fa-basket-shopping" style="position:relative; z-index:2;"></i>
-                        </div>
-                        <div class="project-overlay">
-                            <a href="#" class="project-link" target="_blank" title="View Code"><i class="fab fa-github"></i></a>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Blinkit Analysis</h3>
-                        <p class="project-description">Comprehensive sales and outlet performance dashboard.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">PowerBI</span>
-                            <span class="project-tag">Data Vis</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ClipDrop (Tool) -->
-                <div class="project-card card-clipdrop" data-category="web">
-                    <div class="project-image-wrapper">
-                        <div class="project-thumb thumb-clipdrop">
-                            <i class="fas fa-share-alt"></i>
-                        </div>
-                        <div class="project-overlay">
-                            <a href="https://clipdrop.netlify.app" class="project-link" target="_blank"
-                                title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">ClipDrop</h3>
-                        <p class="project-description">Secure peer-to-peer file transfer. Fast, encrypted, and no registration required.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">WebRTC</span>
-                            <span class="project-tag">Security</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ClipChain (Tool) -->
-                <div class="project-card card-clipchain" data-category="web">
-                    <div class="project-image-wrapper">
-                        <div class="project-thumb thumb-clipchain">
-                            <i class="fas fa-link"></i>
-                        </div>
-                        <div class="project-overlay">
-                            <a href="https://clipchain.netlify.app" class="project-link" target="_blank"
-                                title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">ClipChain</h3>
-                        <p class="project-description">Universal clipboard tool. Sync detailed text and code snippets across devices in real-time.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">Utility</span>
-                            <span class="project-tag">Real-time</span>
+                        <div class="project-sf-action-row">
+                            <a href="https://clipchain.netlify.app" target="_blank" class="project-sf-btn-black">View Live</a>
+                            <a href="https://github.com/patelom2810" target="_blank" class="project-sf-btn-circle" title="View Code">
+                                <i class="fas fa-heart"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
                 
-                <!-- CodeVault (Tool) -->
-                <div class="project-card card-codevault" data-category="web">
-                    <div class="project-image-wrapper">
-                        <div class="project-thumb thumb-codevault">
-                            <i class="fas fa-code"></i>
-                        </div>
-                        <div class="project-overlay">
-                            <a href="https://codevaultt.netlify.app" class="project-link" target="_blank"
-                                title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
-                        </div>
+                <!-- CodeVault (Web - SF Style) -->
+                <div class="project-card project-card-sf" data-category="web">
+                    <div class="project-sf-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=600&q=80" alt="CodeVault" class="project-sf-image">
+                        <a href="https://github.com/patelom2810" target="_blank" class="project-sf-heart-btn" title="GitHub Code">
+                            <i class="fab fa-github"></i>
+                        </a>
                     </div>
-                    <div class="project-content">
-                        <h3 class="project-title">CodeVault</h3>
-                        <p class="project-description">Ultimate code snippet manager with real-time collaboration features.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">Developer Tool</span>
-                            <span class="project-tag">Snippets</span>
+                    <div class="project-sf-info">
+                        <h3 class="project-sf-title">CodeVault</h3>
+                        <p class="project-sf-subtitle">Ultimate code snippet manager with real-time collaboration features.</p>
+                        <div class="project-sf-meta-row">
+                            <span class="project-sf-meta-item"><i class="fas fa-tag"></i> Dev Tool</span>
+                            <span class="project-sf-meta-item"><i class="fas fa-lock"></i> Encrypted</span>
                         </div>
-                    </div>
-                </div>
-
-                <!-- DeveloperZip (Tool) -->
-                <div class="project-card card-devzip" data-category="web">
-                    <div class="project-image-wrapper">
-                        <div class="project-thumb thumb-devzip">
-                            <i class="fas fa-folder-open"></i>
-                        </div>
-                        <div class="project-overlay">
-                            <a href="https://devloperzip.netlify.app" class="project-link" target="_blank"
-                                title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">DeveloperZip</h3>
-                        <p class="project-description">Create, organize, and download project folder structures instantly.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">Productivity</span>
-                            <span class="project-tag">File System</span>
+                        <div class="project-sf-action-row">
+                            <a href="https://codevaultt.netlify.app" target="_blank" class="project-sf-btn-black">View Live</a>
+                            <a href="https://github.com/patelom2810" target="_blank" class="project-sf-btn-circle" title="View Code">
+                                <i class="fas fa-heart"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Stick Notes (Web) -->
-                 <div class="project-card card-notes" data-category="web">
-                    <div class="project-image-wrapper">
-                        <div class="project-thumb thumb-notes" aria-label="Sticky Notes preview">
-                            <i class="fas fa-note-sticky"></i>
-                        </div>
-                        <div class="project-overlay">
-                            <a href="https://github.com/patelom2810" class="project-link" target="_blank"
-                                title="View Code"><i class="fab fa-github"></i></a>
-                            <a href="https://stickynotes-mu.vercel.app/" class="project-link" target="_blank"
-                                title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
-                        </div>
+                <!-- DeveloperZip (Web - SF Style) -->
+                <div class="project-card project-card-sf" data-category="web">
+                    <div class="project-sf-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1607799279861-4dd421887fb3?auto=format&fit=crop&w=600&q=80" alt="DeveloperZip" class="project-sf-image">
+                        <a href="https://github.com/patelom2810" target="_blank" class="project-sf-heart-btn" title="GitHub Code">
+                            <i class="fab fa-github"></i>
+                        </a>
                     </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Sticky Notes</h3>
-                        <p class="project-description">A colorful and intuitive sticky notes application for quick thoughts.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">React</span>
-                            <span class="project-tag">UI/UX</span>
+                    <div class="project-sf-info">
+                        <h3 class="project-sf-title">DeveloperZip</h3>
+                        <p class="project-sf-subtitle">Create, organize, and download project folder structures instantly.</p>
+                        <div class="project-sf-meta-row">
+                            <span class="project-sf-meta-item"><i class="fas fa-tag"></i> Utility</span>
+                            <span class="project-sf-meta-item"><i class="fas fa-folder"></i> Zip System</span>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Zaayka Junction (Web) -->
-                <div class="project-card card-zaayka" data-category="web">
-                    <div class="project-image-wrapper">
-                        <div class="project-thumb thumb-zaayka">
-                            <i class="fas fa-utensils"></i>
-                        </div>
-                        <div class="project-overlay">
-                            <a href="https://zaaykajunctionui.netlify.app" class="project-link" target="_blank"
-                                title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Zaayka Junction</h3>
-                        <p class="project-description">Discover flavors from every state. A culinary community for food lovers.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">Community</span>
-                            <span class="project-tag">Food</span>
+                        <div class="project-sf-action-row">
+                            <a href="https://devloperzip.netlify.app" target="_blank" class="project-sf-btn-black">View Live</a>
+                            <a href="https://github.com/patelom2810" target="_blank" class="project-sf-btn-circle" title="View Code">
+                                <i class="fas fa-heart"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Stock Report (Web) -->
-                <div class="project-card card-stock" data-category="web">
-                    <div class="project-image-wrapper">
-                        <div class="project-thumb thumb-stock">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
-                        <div class="project-overlay">
-                            <a href="https://storckreport.netlify.app" class="project-link" target="_blank"
-                                title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
-                        </div>
+                <!-- Sticky Notes (Web - SF Style) -->
+                <div class="project-card project-card-sf" data-category="web">
+                    <div class="project-sf-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=600&q=80" alt="Sticky Notes" class="project-sf-image">
+                        <a href="https://github.com/patelom2810" target="_blank" class="project-sf-heart-btn" title="GitHub Code">
+                            <i class="fab fa-github"></i>
+                        </a>
                     </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Stock Manager</h3>
-                        <p class="project-description">Efficient stock management system with export to Excel/PDF capabilities.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">Management</span>
-                            <span class="project-tag">Dashboard</span>
+                    <div class="project-sf-info">
+                        <h3 class="project-sf-title">Sticky Notes</h3>
+                        <p class="project-sf-subtitle">A colorful and intuitive sticky notes application for quick thoughts.</p>
+                        <div class="project-sf-meta-row">
+                            <span class="project-sf-meta-item"><i class="fas fa-tag"></i> React App</span>
+                            <span class="project-sf-meta-item"><i class="fas fa-note-sticky"></i> Notebook</span>
+                        </div>
+                        <div class="project-sf-action-row">
+                            <a href="https://stickynotes-mu.vercel.app/" target="_blank" class="project-sf-btn-black">View Live</a>
+                            <a href="https://github.com/patelom2810" target="_blank" class="project-sf-btn-circle" title="View Code">
+                                <i class="fas fa-heart"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Pizza Sales (Data) -->
-                <div id="pizza-sales" class="project-card card-pizza" data-category="data">
-                    <div class="project-image-wrapper">
-                        <div class="project-thumb thumb-pizza" aria-label="Pizza Sales dashboard preview">
-                            <i class="fas fa-pizza-slice"></i>
+                <!-- Zaayka Junction (Web - SF Style) -->
+                <div class="project-card project-card-sf" data-category="web">
+                    <div class="project-sf-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=600&q=80" alt="Zaayka Junction" class="project-sf-image">
+                        <a href="https://github.com/patelom2810" target="_blank" class="project-sf-heart-btn" title="GitHub Code">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                    <div class="project-sf-info">
+                        <h3 class="project-sf-title">Zaayka Junction</h3>
+                        <p class="project-sf-subtitle">Discover culinary flavors. A community recipe catalog for food lovers.</p>
+                        <div class="project-sf-meta-row">
+                            <span class="project-sf-meta-item"><i class="fas fa-tag"></i> Recipe Portal</span>
+                            <span class="project-sf-meta-item"><i class="fas fa-utensils"></i> Cook Community</span>
                         </div>
-                        <div class="project-overlay">
-                            <a href="#" class="project-link" target="_blank" title="View Code"><i class="fab fa-github"></i></a>
+                        <div class="project-sf-action-row">
+                            <a href="https://zaaykajunctionui.netlify.app" target="_blank" class="project-sf-btn-black">View Live</a>
+                            <a href="https://github.com/patelom2810" target="_blank" class="project-sf-btn-circle" title="View Code">
+                                <i class="fas fa-heart"></i>
+                            </a>
                         </div>
                     </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Pizza Sales</h3>
-                        <p class="project-description">Visualizing daily trends and top-selling pizza categories.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">PowerBI</span>
-                            <span class="project-tag">SQL</span>
+                </div>
+
+                <!-- Stock Manager (Data/Web - NY Style) -->
+                <div id="stock" class="project-card project-card-ny" data-category="web data">
+                    <img src="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&w=600&q=80" alt="Stock Manager" class="project-ny-bg-image">
+                    <div class="project-ny-overlay"></div>
+                    <a href="https://storckreport.netlify.app" target="_blank" class="project-ny-heart-btn" title="Live Demo">
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                    <div class="project-ny-content">
+                        <h3 class="project-ny-title">Stock Manager</h3>
+                        <p class="project-ny-subtitle">Management system with export to Excel/PDF reports</p>
+                        <div class="project-ny-meta-row">
+                            <span class="project-ny-meta-item"><i class="fas fa-tag"></i> Management</span>
+                            <span class="project-ny-meta-item"><i class="fas fa-chart-line"></i> Stock KPIs</span>
                         </div>
+                        <a href="https://storckreport.netlify.app" target="_blank" class="project-ny-btn-white">Explore Insights</a>
+                    </div>
+                </div>
+
+                <!-- Pizza Sales (Data - NY Style) -->
+                <div id="pizza-sales" class="project-card project-card-ny" data-category="data">
+                    <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80" alt="Pizza Sales" class="project-ny-bg-image">
+                    <div class="project-ny-overlay"></div>
+                    <a href="https://github.com/patelom2810" target="_blank" class="project-ny-heart-btn" title="View Code">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <div class="project-ny-content">
+                        <h3 class="project-ny-title">Pizza Sales</h3>
+                        <p class="project-ny-subtitle">Visualizing revenue, daily trends, and sales categories</p>
+                        <div class="project-ny-meta-row">
+                            <span class="project-ny-meta-item"><i class="fas fa-tag"></i> SQL Server</span>
+                            <span class="project-ny-meta-item"><i class="fas fa-chart-bar"></i> Pizza Report</span>
+                        </div>
+                        <a href="https://github.com/patelom2810" target="_blank" class="project-ny-btn-white">Explore Insights</a>
                     </div>
                 </div>
 

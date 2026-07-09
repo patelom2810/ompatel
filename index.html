@@ -82,130 +82,50 @@
     </div>
 
     <!-- Hero Section -->
-    <!-- Hero Section -->
-    <section id="home" class="hero-split">
-        <!-- Background decorative blobs (static wavy organic shapes) -->
-        <svg style="position:absolute;top:-5%;left:-8%;width:65vw;max-width:850px;z-index:0;opacity:0.55;filter:blur(55px);" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
-          <path fill="rgba(198,245,100,0.7)" d="M430,280Q410,360,340,400Q270,440,200,400Q130,360,110,280Q90,200,150,140Q210,80,300,70Q390,60,430,140Q470,220,430,280Z"/>
-        </svg>
-        <svg style="position:absolute;top:0;right:-10%;width:60vw;max-width:800px;z-index:0;opacity:0.45;filter:blur(65px);" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
-          <path fill="rgba(255,198,69,0.6)" d="M450,300Q430,390,360,430Q290,470,210,430Q130,390,110,300Q90,210,155,150Q220,90,310,80Q400,70,445,155Q490,240,450,300Z"/>
-        </svg>
-        <svg style="position:absolute;bottom:-10%;left:5%;width:45vw;max-width:600px;z-index:0;opacity:0.35;filter:blur(60px);" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
-          <path fill="rgba(65,105,225,0.5)" d="M410,290Q390,370,320,415Q250,460,180,415Q110,370,95,290Q80,210,145,155Q210,100,300,90Q390,80,425,160Q460,240,410,290Z"/>
-        </svg>
-
-        <div class="hero-split-container" style="max-width: 1200px; width: 100%; display: grid; grid-template-columns: 1fr 1.1fr; gap: 30px; align-items: center; position: relative; z-index: 10;">
-            
-            <!-- Left Side: Text and CTA -->
-            <div class="hero-left" style="padding-right: 20px;">
-                <h1 style="font-size: clamp(3rem, 5.5vw, 4.5rem); font-weight: 800; line-height: 1.1; margin-bottom: 24px; letter-spacing: -0.04em;">
-                    Hi, I'm <br/>
-                    <span style="color: var(--primary-color);">Om Patel.</span>
-                </h1>
-                
-                <p style="font-size: 1.1rem; max-width: 500px; margin-bottom: 35px; line-height: 1.7; font-weight: 400; color: var(--text-muted);">
-                     Data Analyst & AI/ML Developer passionate about transforming complex data into meaningful insights and intelligent solutions.
-                </p>
-                
-                <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 10px;">
-                    <a href="mailto:patelom2810@gmail.com" class="contact-btn btn-gmail">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Gmail_icon_%282020%29.svg" alt="Gmail" style="width: 18px; height: 18px; object-fit: contain;"> <span class="btn-email-label">patelom2810@gmail.com</span><span class="btn-email-short" style="display:none;">Gmail</span>
-                    </a>
-                    
-                    <a href="https://www.linkedin.com/in/om-patel-1a929831b" target="_blank" class="contact-btn btn-linkedin">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn" style="width: 18px; height: 18px; object-fit: contain;"> LinkedIn
-                    </a>
-                    
-                    <a href="https://github.com/patelom2810" target="_blank" class="contact-btn btn-github">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" style="width: 18px; height: 18px; object-fit: contain;"> GitHub
-                    </a>
-                </div>
+    <!-- Hero Section -->    <section id="home" class="hero-split">
+        <!-- Concentric Background Circles -->
+        <div class="hero-circle hero-circle-1"></div>
+        <div class="hero-circle hero-circle-2"></div>
+        <div class="hero-circle hero-circle-3"></div>
+        <!-- Top Header Pill (Static inside Hero) -->
+        <div class="hero-header-pill">
+            <div class="hero-logo-box">
+                <div class="hero-logo-square">OP</div>
+                <span class="hero-logo-text">DESIGN BY OM PATEL</span>
             </div>
-            
-            <!-- Right Side: Capsules Masonry Grid -->
-            <div class="hero-right-capsules" style="display: flex; gap: 12px; align-items: center; justify-content: flex-end; height: 420px;">
-                
-                <!-- Column 1 (New: PowerBI & SQL) -->
-                <div class="capsule-col" style="display: flex; flex-direction: column; gap: 12px; transform: translateY(15px);">
-                    <div class="tech-capsule capsule-pbi" style="height: 150px;">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg" alt="PowerBI" style="width: 100%; object-fit: contain; filter: drop-shadow(0px 5px 8px rgba(0,0,0,0.08));">
-                    </div>
-                    <div class="tech-capsule capsule-sql" style="height: 170px;">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azuresqldatabase/azuresqldatabase-original.svg" alt="SQL" style="width: 100%; object-fit: contain; filter: drop-shadow(0px 5px 8px rgba(0,0,0,0.08));">
-                    </div>
-                </div>
-
-                <!-- Column 2 (Pandas & NumPy) -->
-                <div class="capsule-col" style="display: flex; flex-direction: column; gap: 12px; transform: translateY(-25px);">
-                    <div class="tech-capsule capsule-pandas" style="height: 160px;">
-                         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" alt="Pandas" style="width: 100%; object-fit: contain; filter: drop-shadow(0px 5px 8px rgba(0,0,0,0.08));">
-                    </div>
-                    <div class="tech-capsule capsule-numpy" style="height: 180px;">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" alt="NumPy" style="width: 100%; object-fit: contain; filter: drop-shadow(0px 5px 8px rgba(0,0,0,0.08));">
-                    </div>
-                </div>
-                
-                <!-- Column 3 (Center, Profile) -->
-                <div class="capsule-col" style="display: flex; flex-direction: column; gap: 12px; transform: translateY(5px); position: relative;">
-                    
-                    <!-- Floating Role Badge -->
-                    <div class="floating-role-badge">
-                        <div class="role-badge-icon">
-                            <i class="fas fa-brain"></i>
-                        </div>
-                        <div>
-                            <div class="role-badge-title">AI & Data Analyst</div>
-                            <div class="role-badge-subtitle">Specialist</div>
-                        </div>
-                    </div>
-
-                    <div class="hero-profile-frame">
-                        <img src="img/profile.jpg" alt="Om Patel" style="width: 100%; height: 100%; object-fit: cover;">
-                    </div>
-                    <div class="hero-stat-circle">
-                        <div>
-                            <span class="hero-stat-number">15+</span>
-                            <span class="hero-stat-desc">Projects<br/>Completed</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Column 4 (Python & AWS) -->
-                <div class="capsule-col" style="display: flex; flex-direction: column; gap: 12px; transform: translateY(10px);">
-                    <div class="tech-capsule capsule-python">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" style="width: 100%; object-fit: contain; filter: drop-shadow(0px 5px 8px rgba(0,0,0,0.08));">
-                    </div>
-                    <div class="tech-capsule capsule-aws" style="height: 190px;">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS" style="width: 100%; object-fit: contain; filter: drop-shadow(0px 5px 8px rgba(0,0,0,0.08));">
-                    </div>
-                </div>
-
-                <!-- Column 5 (New: TensorFlow & JavaScript) -->
-                <div class="capsule-col" style="display: flex; flex-direction: column; gap: 12px; transform: translateY(10px);">
-                    <div class="tech-capsule capsule-tensorflow" style="height: 170px;">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="TensorFlow" style="width: 100%; object-fit: contain; filter: drop-shadow(0px 5px 8px rgba(0,0,0,0.08));">
-                    </div>
-                    <div class="tech-capsule capsule-javascript" style="height: 150px;">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" style="width: 100%; object-fit: contain; filter: drop-shadow(0px 5px 8px rgba(0,0,0,0.08));">
-                    </div>
-                </div>
+            <div class="hero-header-links">
+                <a href="#about" class="hero-header-link">ABOUT</a>
+                <span class="hero-header-slash">/</span>
+                <a href="#skills" class="hero-header-link">SKILLS</a>
+                <span class="hero-header-slash">/</span>
+                <a href="projects.html" class="hero-header-link">PROJECTS</a>
+                <span class="hero-header-slash">/</span>
+                <a href="#contact" class="hero-header-link">CONTACT</a>
             </div>
-            
+            <a href="mailto:patelom2810@gmail.com" class="hero-header-btn">HIRE ME</a>
         </div>
-        
-        <style>
-            @keyframes pulse-blue {
-                0% { box-shadow: 0 0 0 0 rgba(65, 105, 225, 0.4); }
-                70% { box-shadow: 0 0 0 10px rgba(65, 105, 225, 0); }
-                100% { box-shadow: 0 0 0 0 rgba(65, 105, 225, 0); }
-            }
-            @keyframes float {
-                0% { transform: translateY(0px) var(--base-transform, ); }
-                50% { transform: translateY(-15px) var(--base-transform, ); }
-                100% { transform: translateY(0px) var(--base-transform, ); }
-            }
-        </style>
+
+        <div class="hero-main-content">
+            <!-- Left Side Role -->
+            <div class="hero-sidebar-left">
+                <span class="hero-role-tag">Freelance</span>
+                <h4 class="hero-role-heading">Data Analyst<br>&amp; AI/ML Developer</h4>
+            </div>
+
+            <!-- Center Watermark & Avatar -->
+            <div class="hero-center-area">
+                <div class="hero-watermark-bg">OM PATEL</div>
+                <img src="img/profile-suit-transparent.png" alt="Om Patel" class="hero-avatar-new">
+            </div>
+
+            <!-- Right Side Scroll -->
+            <div class="hero-sidebar-right">
+                <span class="hero-scroll-text">Scroll down</span>
+                <div class="hero-scroll-arrow">
+                    <i class="fas fa-arrow-down"></i>
+                </div>
+            </div>
+        </div>
     </section>
     <!-- Scrolling Skills Marquee -->
     <div class="skills-marquee-container">
@@ -539,74 +459,94 @@
             <div class="featured-projects-slider-wrapper">
                 <div class="featured-projects-slider">
                     <!-- Card 1: Solar Energy Analytics -->
-                    <a href="projects.html#solar-energy" class="featured-project-card">
-                        <div class="featured-project-image">
-                            <img src="img/solar_energy.png" alt="Solar Energy Analytics">
-                        </div>
-                        <div class="featured-project-info">
-                            <h3>Solar Energy Analytics</h3>
-                            <div class="featured-project-meta">
-                                <span>Flask &bull; Scikit-learn &bull; MySQL &bull; Docker</span>
-                                <div class="featured-project-circle-btn"><i class="fas fa-arrow-right"></i></div>
+                    <div class="project-card-ny">
+                        <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=600&q=80" alt="Solar Energy Analytics" class="project-ny-bg-image">
+                        <div class="project-ny-overlay"></div>
+                        <a href="https://github.com/patelom2810/Solar-Energy-Generation-Weather-Analytics" target="_blank" class="project-ny-heart-btn" title="GitHub Code">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <div class="project-ny-content">
+                            <h3 class="project-ny-title">Solar Energy Analytics</h3>
+                            <p class="project-ny-subtitle">Flask &bull; Scikit-learn &bull; MySQL &bull; Docker</p>
+                            <div class="project-ny-meta-row">
+                                <span class="project-ny-meta-item"><i class="fas fa-tag"></i> Data Analytics</span>
+                                <span class="project-ny-meta-item"><i class="fas fa-chart-line"></i> Solar Generation</span>
                             </div>
+                            <a href="projects.html#solar-energy" class="project-ny-btn-white">Explore Insights</a>
                         </div>
-                    </a>
+                    </div>
                     
                     <!-- Card 2: E-Game Scout -->
-                    <a href="projects.html#egame-scout" class="featured-project-card">
-                        <div class="featured-project-image">
-                            <img src="img/egamescout.png" alt="E-Game Scout">
-                        </div>
-                        <div class="featured-project-info">
-                            <h3>E-Game Scout</h3>
-                            <div class="featured-project-meta">
-                                <span>Django &bull; AWS EC2 &bull; AI &bull; Tailwind</span>
-                                <div class="featured-project-circle-btn"><i class="fas fa-arrow-right"></i></div>
+                    <div class="project-card-ny">
+                        <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=600&q=80" alt="E-Game Scout" class="project-ny-bg-image">
+                        <div class="project-ny-overlay"></div>
+                        <a href="http://13.232.179.239:8000/" target="_blank" class="project-ny-heart-btn" title="Live Demo">
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                        <div class="project-ny-content">
+                            <h3 class="project-ny-title">E-Game Scout</h3>
+                            <p class="project-ny-subtitle">Django &bull; AWS EC2 &bull; AI Analytics &bull; Tailwind</p>
+                            <div class="project-ny-meta-row">
+                                <span class="project-ny-meta-item"><i class="fas fa-tag"></i> Esports</span>
+                                <span class="project-ny-meta-item"><i class="fas fa-brain"></i> AI Scout</span>
                             </div>
+                            <a href="projects.html#egame-scout" class="project-ny-btn-white">Explore Insights</a>
                         </div>
-                    </a>
+                    </div>
                     
                     <!-- Card 3: CleanItUp! -->
-                    <a href="projects.html#cleanitup" class="featured-project-card">
-                        <div class="featured-project-image">
-                            <img src="img/cleanitup.png" alt="CleanItUp!">
-                        </div>
-                        <div class="featured-project-info">
-                            <h3>CleanItUp!</h3>
-                            <div class="featured-project-meta">
-                                <span>AI &bull; Data Cleaning</span>
-                                <div class="featured-project-circle-btn"><i class="fas fa-arrow-right"></i></div>
+                    <div class="project-card-ny">
+                        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80" alt="CleanItUp!" class="project-ny-bg-image">
+                        <div class="project-ny-overlay"></div>
+                        <a href="https://cleanitup.netlify.app" target="_blank" class="project-ny-heart-btn" title="Live Demo">
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                        <div class="project-ny-content">
+                            <h3 class="project-ny-title">CleanItUp!</h3>
+                            <p class="project-ny-subtitle">AI-powered tabular data cleaner platform</p>
+                            <div class="project-ny-meta-row">
+                                <span class="project-ny-meta-item"><i class="fas fa-tag"></i> Data Utility</span>
+                                <span class="project-ny-meta-item"><i class="fas fa-magic"></i> AI Cleaning</span>
                             </div>
+                            <a href="projects.html#cleanitup" class="project-ny-btn-white">Explore Insights</a>
                         </div>
-                    </a>
+                    </div>
 
                     <!-- Card 4: Blinkit Analysis -->
-                    <a href="projects.html#blinkit-analysis" class="featured-project-card">
-                        <div class="featured-project-image">
-                            <img src="img/blinkit_analysis.png" alt="Blinkit Analysis">
-                        </div>
-                        <div class="featured-project-info">
-                            <h3>Blinkit Analysis</h3>
-                            <div class="featured-project-meta">
-                                <span>PowerBI &bull; Data Vis</span>
-                                <div class="featured-project-circle-btn"><i class="fas fa-arrow-right"></i></div>
+                    <div class="project-card-ny">
+                        <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=600&q=80" alt="Blinkit Analysis" class="project-ny-bg-image">
+                        <div class="project-ny-overlay"></div>
+                        <a href="projects.html#blinkit-analysis" class="project-ny-heart-btn" title="View Details">
+                            <i class="fas fa-info-circle"></i>
+                        </a>
+                        <div class="project-ny-content">
+                            <h3 class="project-ny-title">Blinkit Analysis</h3>
+                            <p class="project-ny-subtitle">PowerBI &bull; Grocery delivery sales dashboard</p>
+                            <div class="project-ny-meta-row">
+                                <span class="project-ny-meta-item"><i class="fas fa-tag"></i> Data Visualization</span>
+                                <span class="project-ny-meta-item"><i class="fas fa-chart-pie"></i> Business KPIs</span>
                             </div>
+                            <a href="projects.html#blinkit-analysis" class="project-ny-btn-white">Explore Insights</a>
                         </div>
-                    </a>
+                    </div>
 
                     <!-- Card 5: Pizza Sales -->
-                    <a href="projects.html#pizza-sales" class="featured-project-card">
-                        <div class="featured-project-image">
-                            <img src="img/pizza_sales.png" alt="Pizza Sales">
-                        </div>
-                        <div class="featured-project-info">
-                            <h3>Pizza Sales</h3>
-                            <div class="featured-project-meta">
-                                <span>PowerBI &bull; SQL</span>
-                                <div class="featured-project-circle-btn"><i class="fas fa-arrow-right"></i></div>
+                    <div class="project-card-ny">
+                        <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80" alt="Pizza Sales" class="project-ny-bg-image">
+                        <div class="project-ny-overlay"></div>
+                        <a href="projects.html#pizza-sales" class="project-ny-heart-btn" title="View Details">
+                            <i class="fas fa-info-circle"></i>
+                        </a>
+                        <div class="project-ny-content">
+                            <h3 class="project-ny-title">Pizza Sales</h3>
+                            <p class="project-ny-subtitle">SQL &bull; PowerBI &bull; Revenue analytics</p>
+                            <div class="project-ny-meta-row">
+                                <span class="project-ny-meta-item"><i class="fas fa-tag"></i> SQL Server</span>
+                                <span class="project-ny-meta-item"><i class="fas fa-pizza-slice"></i> Sales KPI</span>
                             </div>
+                            <a href="projects.html#pizza-sales" class="project-ny-btn-white">Explore Insights</a>
                         </div>
-                    </a>
+                    </div>
                 </div>
             </div>
         </div>
