@@ -3405,7 +3405,7 @@ body.dark-theme .marquee-item:hover .marquee-icon-circle {
     background: #ffffff;
     border: 1px solid rgba(65, 105, 225, 0.1);
     border-radius: 24px;
-    padding: 24px 180px 24px 30px;
+    padding: 24px 210px 24px 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
