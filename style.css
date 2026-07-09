@@ -59,6 +59,12 @@ body.dark-theme .about-content, body.dark-theme .contact-container, body.dark-th
 body.dark-theme h1, body.dark-theme h2, body.dark-theme h3 {
     color: #fff !important;
 }
+
+h1, h2, h3, .section-title {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+}
+
 body.dark-theme .project-card.bg-grid-cyber {
     background: #000 !important;
 }
@@ -3389,13 +3395,15 @@ body.dark-theme .marquee-item:hover .marquee-icon-circle {
     background: #ffffff;
     border: 1px solid rgba(65, 105, 225, 0.1);
     border-radius: 24px;
-    padding: 24px 30px;
+    padding: 24px 180px 24px 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
     margin-bottom: 3rem;
     width: 100%;
+    position: relative;
+    overflow: visible;
 }
 
 body.dark-theme .contact-card-new {
@@ -3452,6 +3460,8 @@ body.dark-theme .contact-mail-icon-box {
     display: flex;
     gap: 16px;
     align-items: center;
+    position: relative;
+    z-index: 2;
 }
 
 .contact-circle-btn {
@@ -3490,18 +3500,46 @@ body.dark-theme .contact-circle-btn:hover {
     border-color: rgba(96, 165, 250, 0.4);
 }
 
+.contact-card-avatar-new {
+    position: absolute;
+    right: 25px;
+    bottom: 0;
+    height: 145px;
+    width: auto;
+    object-fit: contain;
+    pointer-events: none;
+    z-index: 1;
+    transition: transform 0.3s ease;
+}
+
+.contact-card-new:hover .contact-card-avatar-new {
+    transform: scale(1.03);
+}
+
 @media (max-width: 768px) {
     .contact-card-new {
         flex-direction: column;
-        gap: 24px;
-        padding: 24px 20px;
+        gap: 20px;
+        padding: 30px 20px 140px 20px !important;
         text-align: center;
+        position: relative;
     }
     
     .contact-card-left {
         flex-direction: column;
         gap: 16px;
         text-align: center;
+    }
+    
+    .contact-card-avatar-new {
+        left: 50%;
+        transform: translateX(-50%);
+        right: auto;
+        height: 130px;
+    }
+    
+    .contact-card-new:hover .contact-card-avatar-new {
+        transform: translateX(-50%) scale(1.03);
     }
 }
 
