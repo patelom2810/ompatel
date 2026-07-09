@@ -3736,7 +3736,7 @@ body.dark-theme .contact-circle-btn:hover {
 
 /* Individual Particle Positions */
 .p-1 { top: 15%; left: 10%; width: 60px; height: 60px; animation-duration: 5s; }
-.p-2 { top: 25%; left: 25%; width: 80px; height: 80px; animation-duration: 7s; }
+.p-2 { top: 20%; left: 17%; width: 80px; height: 80px; animation-duration: 7s; }
 .p-3 { top: 60%; left: 12%; animation-delay: 1s; }
 .p-4 { bottom: 15%; left: 28%; width: 55px; height: 55px; animation-duration: 5.5s; }
 .p-5 { top: 18%; right: 15%; animation-delay: 0.5s; }
@@ -3760,9 +3760,9 @@ body.dark-theme .contact-circle-btn:hover {
     animation: primer-float 7s ease-in-out infinite alternate;
 }
 
-.l-1 { top: 40%; left: 18%; background: #fecaca; color: #b91c1c; animation-delay: 0.8s; }
-.l-2 { bottom: 35%; right: 15%; background: #bbf7d0; color: #15803d; animation-duration: 6s; }
-.l-3 { top: 20%; right: 28%; background: #fef08a; color: #a16207; animation-delay: 1.2s; }
+.l-1 { top: 36%; left: 8%; background: #fecaca; color: #b91c1c; animation-delay: 0.8s; }
+.l-2 { bottom: 35%; right: 8%; background: #bbf7d0; color: #15803d; animation-duration: 6s; }
+.l-3 { top: 20%; right: 20%; background: #fef08a; color: #a16207; animation-delay: 1.2s; }
 
 @keyframes primer-float {
     0% { transform: translateY(0px) rotate(0deg); }
