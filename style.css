@@ -4392,445 +4392,375 @@ body.dark-theme .footer-bottom {
         align-items: center;
         text-align: center;
     }
+}/* =========================================
+   About Me Folio Layout (Redesigned)
+   ========================================= */
+.about-folio {
+    background: var(--hero-bg);
+    position: relative;
+    padding: 6rem 0 !important;
+    transition: background-color 0.3s ease;
 }
 
-/* =========================================
-   About Me Bento Grid (Redesigned)
-   ========================================= */
-.about-bento-grid {
+
+.folio-container {
     display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 24px;
-    max-width: 1100px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    max-width: 900px;
     margin: 0 auto;
     align-items: stretch;
 }
 
-.about-bento-card {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 24px;
-    padding: 32px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+.folio-card {
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: 28px;
+    padding: 40px 32px 60px 32px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.04);
     display: flex;
     flex-direction: column;
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     position: relative;
     overflow: hidden;
+    min-height: 580px;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    color: #1f2328;
 }
 
-body.dark-theme .about-bento-card {
+body.dark-theme .folio-card {
     background: #161b22;
     border-color: rgba(255, 255, 255, 0.05);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.25);
+    color: #e6edf3;
 }
 
-.about-bento-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 20px 40px rgba(65, 105, 225, 0.08);
+.folio-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 50px rgba(65, 105, 225, 0.08);
     border-color: rgba(65, 105, 225, 0.25);
 }
 
-body.dark-theme .about-bento-card:hover {
+body.dark-theme .folio-card:hover {
     border-color: rgba(96, 165, 250, 0.3);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.35);
 }
 
-/* Bento Card Grid Spans */
-.card-profile {
-    grid-column: span 4;
-}
-
-.card-intro {
-    grid-column: span 8;
-}
-
-.card-pillars {
-    grid-column: span 6;
-}
-
-.card-stats {
-    grid-column: span 6;
-}
-
-/* Card inner styles */
-.about-bento-card-title {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: var(--text-color);
-    margin: 0 0 10px 0;
+/* Folio Card Top Row */
+.folio-card-top {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 10px;
-}
-
-.about-bento-card-title i {
-    color: var(--primary-color);
-}
-
-/* Card 1: Profile card styles */
-.profile-avatar-container {
-    position: relative;
-    width: 110px;
-    height: 110px;
-    margin: 0 auto 20px;
-}
-
-.profile-avatar {
-    width: 110px;
-    height: 110px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 4px solid #ffffff;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-    position: relative;
-    z-index: 2;
-}
-
-body.dark-theme .profile-avatar {
-    border-color: #1e293b;
-}
-
-.avatar-ring {
-    position: absolute;
-    top: -4px;
-    left: -4px;
-    width: 118px;
-    height: 118px;
-    border-radius: 50%;
-    border: 2px dashed var(--primary-color);
-    animation: rotate-ring 20s linear infinite;
-    z-index: 1;
-    opacity: 0.6;
-}
-
-@keyframes rotate-ring {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-.profile-name {
-    font-size: 1.4rem;
-    font-weight: 800;
-    color: var(--text-color);
-    margin: 0 0 6px 0;
-    text-align: center;
-}
-
-.profile-title {
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--primary-color);
-    margin: 0 0 25px 0;
-    text-align: center;
-}
-
-.profile-details-list {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
     width: 100%;
     margin-bottom: 25px;
 }
 
-.profile-detail-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.profile-detail-item .detail-icon {
-    width: 36px;
-    height: 36px;
-    border-radius: 10px;
-    background: rgba(65, 105, 225, 0.06);
-    color: var(--primary-color);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1rem;
-    flex-shrink: 0;
-}
-
-body.dark-theme .profile-detail-item .detail-icon {
-    background: rgba(96, 165, 250, 0.1);
-}
-
-.profile-detail-item .detail-content {
-    display: flex;
-    flex-direction: column;
-}
-
-.profile-detail-item .detail-label {
-    font-size: 0.7rem;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    font-weight: 700;
-}
-
-.profile-detail-item .detail-value {
-    font-size: 0.85rem;
-    color: var(--text-color);
-    font-weight: 600;
-}
-
-.profile-social-row {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    margin-top: auto;
-}
-
-.profile-social-row a {
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    background: rgba(65, 105, 225, 0.05);
-    color: var(--primary-color);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.95rem;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    border: 1px solid rgba(65, 105, 225, 0.1);
-}
-
-body.dark-theme .profile-social-row a {
-    background: rgba(255, 255, 255, 0.03);
-    border-color: rgba(255, 255, 255, 0.05);
-    color: #60a5fa;
-}
-
-.profile-social-row a:hover {
-    background: var(--primary-color);
-    color: #ffffff !important;
-    transform: translateY(-3px);
-    box-shadow: 0 6px 15px rgba(65, 105, 225, 0.2);
-}
-
-/* Card 2: Bio card styling */
-.about-greeting {
-    font-size: 0.85rem;
-    font-family: var(--font-poppins);
-    font-weight: 700;
-    letter-spacing: 0.15em;
-    color: var(--primary-color);
-    text-transform: uppercase;
-    margin: 0 0 10px 0;
-}
-
-.about-headline {
-    font-size: 1.7rem;
-    font-weight: 800;
-    color: var(--text-color);
-    line-height: 1.35;
-    margin: 0 0 20px 0;
-    letter-spacing: -0.02em;
-}
-
-.highlight-text {
-    color: var(--primary-color);
-    position: relative;
-    display: inline-block;
-}
-
-.about-description {
-    font-size: 0.95rem;
-    color: var(--text-muted);
-    line-height: 1.7;
-    margin: 0 0 24px 0;
-}
-
-.story-quote {
-    background: rgba(65, 105, 225, 0.03);
-    border-left: 4px solid var(--primary-color);
-    padding: 16px 20px;
-    border-radius: 0 16px 16px 0;
-    display: flex;
-    gap: 15px;
-    align-items: flex-start;
-    margin-top: auto;
-}
-
-body.dark-theme .story-quote {
-    background: rgba(255, 255, 255, 0.02);
-}
-
-.story-quote .quote-icon {
-    font-size: 1.1rem;
-    color: var(--primary-color);
-    opacity: 0.6;
-    margin-top: 3px;
-}
-
-.story-quote p {
-    font-size: 0.9rem;
-    font-style: italic;
-    color: var(--text-color);
-    margin: 0;
-    line-height: 1.5;
+.folio-date {
+    font-size: 0.8rem;
     font-weight: 500;
+    color: #57606a;
 }
 
-/* Card 3: Pillars */
-.pillars-sub {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    margin: 0 0 20px 0;
+body.dark-theme .folio-date {
+    color: #8b949e;
 }
 
-.pillars-container {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-.pillar-item {
-    display: flex;
-    gap: 16px;
-    align-items: flex-start;
-    padding: 12px;
-    border-radius: 16px;
-    transition: background 0.3s ease;
-}
-
-.pillar-item:hover {
-    background: rgba(65, 105, 225, 0.03);
-}
-
-body.dark-theme .pillar-item:hover {
-    background: rgba(255, 255, 255, 0.02);
-}
-
-.pillar-icon-box {
-    width: 44px;
-    height: 44px;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.1rem;
-    flex-shrink: 0;
-}
-
-.anal-bg {
-    background: rgba(65, 105, 225, 0.08);
-    color: #4169E1;
-}
-.ai-bg {
-    background: rgba(46, 204, 113, 0.08);
-    color: #2ecc71;
-}
-.cloud-bg {
-    background: rgba(243, 156, 18, 0.08);
-    color: #f39c12;
-}
-
-.pillar-text h5 {
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: var(--text-color);
-    margin: 0 0 4px 0;
-}
-
-.pillar-text p {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    margin: 0;
-    line-height: 1.5;
-}
-
-/* Card 4: Stats Grid */
-.stats-sub {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    margin: 0 0 20px 0;
-}
-
-.stats-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-    margin-bottom: 25px;
-}
-
-.stat-box-item {
-    background: rgba(0, 0, 0, 0.02);
-    border: 1px solid rgba(0, 0, 0, 0.03);
-    border-radius: 16px;
-    padding: 16px;
-    display: flex;
-    flex-direction: column;
-    transition: all 0.3s ease;
-}
-
-body.dark-theme .stat-box-item {
-    background: rgba(255, 255, 255, 0.02);
-    border-color: rgba(255, 255, 255, 0.04);
-}
-
-.stat-box-item:hover {
-    background: rgba(65, 105, 225, 0.03);
-    border-color: rgba(65, 105, 225, 0.1);
-}
-
-.stat-number {
-    font-size: 1.6rem;
+.folio-logo {
+    font-family: 'Poppins', sans-serif;
     font-weight: 800;
-    color: var(--primary-color);
-    line-height: 1.2;
+    font-size: 1rem;
+    letter-spacing: -0.05em;
+    border: 2.5px solid #1f2328;
+    padding: 1px 5px;
+    line-height: 1;
+    border-radius: 6px;
+    color: #1f2328;
+}
+
+body.dark-theme .folio-logo {
+    border-color: #e6edf3;
+    color: #e6edf3;
+}
+
+/* Card 1: Cover Layout */
+.cover-from {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.cover-label {
+    font-size: 0.85rem;
+    color: #57606a;
+    font-style: italic;
     margin-bottom: 4px;
 }
 
-.stat-desc {
-    font-size: 0.75rem;
+body.dark-theme .cover-label {
+    color: #8b949e;
+}
+
+.cover-name {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #1f2328;
+    margin: 0 0 2px 0;
+}
+
+body.dark-theme .cover-name {
+    color: #e6edf3;
+}
+
+.cover-title {
+    font-size: 0.85rem;
+    color: #57606a;
+    margin: 0;
+    line-height: 1.4;
+    font-weight: 500;
+}
+
+body.dark-theme .cover-title {
+    color: #8b949e;
+}
+
+.cover-center {
+    margin: auto 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.cover-center-sub {
+    font-size: 1rem;
+    color: #57606a;
+    font-weight: 400;
+    margin-bottom: 4px;
+}
+
+body.dark-theme .cover-center-sub {
+    color: #8b949e;
+}
+
+.cover-center-main {
+    font-size: 2.5rem;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    line-height: 1.1;
+    color: #1f2328;
+    margin: 0;
+}
+
+body.dark-theme .cover-center-main {
+    color: #e6edf3;
+}
+
+.cover-line {
+    width: 140px;
+    height: 6px;
+    background: #1f2328;
+    margin-top: 8px;
+}
+
+body.dark-theme .cover-line {
+    background: #e6edf3;
+}
+
+.cover-to {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.cover-to-text {
+    font-size: 0.85rem;
     font-weight: 600;
-    color: var(--text-muted);
+    color: #1f2328;
+    margin: 0;
+}
+
+body.dark-theme .cover-to-text {
+    color: #e6edf3;
+}
+
+/* Card 2 & 3: Header Section */
+.card-folio-header {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.folio-card-title {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #1f2328;
+    margin: 0;
+    letter-spacing: -0.02em;
+}
+
+body.dark-theme .folio-card-title {
+    color: #e6edf3;
+}
+
+.folio-title-line {
+    width: 45px;
+    height: 4px;
+    background: #1f2328;
+    margin-top: 6px;
+}
+
+body.dark-theme .folio-title-line {
+    background: #e6edf3;
+}
+
+/* Card 2: About Profile */
+.folio-author {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 25px;
+}
+
+.folio-author-img {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(0, 0, 0, 0.05);
+}
+
+body.dark-theme .folio-author-img {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.folio-author-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.folio-author-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1f2328;
+    margin: 0;
+}
+
+body.dark-theme .folio-author-name {
+    color: #e6edf3;
+}
+
+.folio-author-title {
+    font-size: 0.75rem;
+    color: #57606a;
+    margin: 1px 0 0 0;
+    font-weight: 500;
+}
+
+body.dark-theme .folio-author-title {
+    color: #8b949e;
+}
+
+.folio-body-text {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    line-height: 1.6;
+    font-size: 0.88rem;
+    margin-bottom: 20px;
+}
+
+.folio-p {
+    margin: 0;
+    color: #1f2328;
+}
+
+body.dark-theme .folio-p {
+    color: #e6edf3;
+}
+
+.folio-p.emphasis {
+    font-size: 0.95rem;
+    font-weight: 600;
+    font-style: italic;
+    color: #1f2328;
+    border-left: 3px solid var(--primary-color);
+    padding-left: 12px;
+    margin-bottom: 4px;
+}
+
+body.dark-theme .folio-p.emphasis {
+    color: #e6edf3;
+}
+
+/* Card 3: Disclaimer */
+.folio-disclaimer-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 10px;
+}
+
+.disclaimer-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.disclaimer-item h5 {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #1f2328;
+    margin: 0 0 2px 0;
+}
+
+body.dark-theme .disclaimer-item h5 {
+    color: #e6edf3;
+}
+
+.disclaimer-item p {
+    font-size: 0.78rem;
+    color: #57606a;
+    margin: 0;
     line-height: 1.4;
 }
 
-.about-action-row {
-    margin-top: auto;
-    width: 100%;
+body.dark-theme .disclaimer-item p {
+    color: #8b949e;
 }
 
-.card-stats .btn-glass-unique {
-    width: 100%;
-    justify-content: center;
-    box-sizing: border-box;
-    background: rgba(65, 105, 225, 0.08);
-    border: 1px solid rgba(65, 105, 225, 0.2);
-    color: var(--primary-color);
+/* Watermark Bottom styling */
+.folio-watermark-bottom {
+    position: absolute;
+    bottom: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 6.5rem;
+    font-weight: 900;
+    color: rgba(0, 0, 0, 0.03);
+    letter-spacing: -0.02em;
+    pointer-events: none;
+    text-transform: uppercase;
+    user-select: none;
+    font-family: 'Poppins', sans-serif;
+    width: 105%;
+    text-align: center;
 }
 
-body.dark-theme .card-stats .btn-glass-unique {
-    background: rgba(96, 165, 250, 0.1);
-    border-color: rgba(96, 165, 250, 0.2);
-    color: #60a5fa;
+body.dark-theme .folio-watermark-bottom {
+    color: rgba(255, 255, 255, 0.025);
 }
 
-.card-stats .btn-glass-unique:hover {
-    background: var(--primary-color);
-    color: #ffffff !important;
-    border-color: var(--primary-color);
-    box-shadow: 0 10px 25px rgba(65, 105, 225, 0.2);
-}
-
-body.dark-theme .card-stats .btn-glass-unique:hover {
-    background: #60a5fa;
-    color: #0d1117 !important;
-    border-color: #60a5fa;
-    box-shadow: 0 10px 25px rgba(96, 165, 250, 0.3);
-}
-
-/* Mobile responsive bento */
-@media (max-width: 900px) {
-    .about-bento-grid {
-        display: flex;
-        flex-direction: column;
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .folio-container {
+        grid-template-columns: 1fr;
         gap: 20px;
+    }
+    
+    .folio-card {
+        padding: 32px 24px 50px 24px;
+        min-height: auto;
+    }
+    
+    .folio-watermark-bottom {
+        font-size: 4.5rem;
+        bottom: -20px;
     }
 }
 
