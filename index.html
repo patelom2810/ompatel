@@ -6,15 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Om Patel – Data Analyst & AI/ML Developer from Gujarat, India. Explore my projects, skills, and experience in data engineering, visualization, and cloud technologies.">
     <title>Om Patel - Portfolio</title>
-    <!-- Poppins Font -->
+    <!-- Preconnect for fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Preload hero image (LCP) -->
+    <link rel="preload" as="image" href="img/profile-suit-transparent.png" fetchpriority="high">
+    <!-- Google Fonts (non-blocking display=swap already) -->
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
-    <!-- FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet"></noscript>
+    <!-- FontAwesome — non-blocking -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+          media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+    <!-- Main stylesheet -->
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind (deferred — only used for utility classes) -->
+    <script src="https://cdn.tailwindcss.com" defer></script>
     <script src="main.js" defer></script>
     <script>
       tailwind.config = {
@@ -118,6 +126,18 @@
                 <img src="img/profile-suit-transparent.png" alt="Om Patel" class="hero-avatar-new">
             </div>
 
+            <!-- Mobile-only: Role text below image -->
+            <div class="hero-mobile-role">
+                <span class="hero-role-tag">Freelance</span>
+                <h4 class="hero-role-heading">Data Analyst &amp; AI/ML Developer</h4>
+            </div>
+
+            <!-- Mobile-only: Scroll indicator -->
+            <div class="hero-mobile-scroll">
+                <span>Scroll</span>
+                <i class="fas fa-arrow-down"></i>
+            </div>
+
             <!-- Right Side Scroll -->
             <div class="hero-sidebar-right">
                 <span class="hero-scroll-text">Scroll down</span>
@@ -133,61 +153,61 @@
             <div class="marquee-content">
                 <div class="marquee-item">
                     <div class="marquee-icon-circle">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" loading="lazy">
                     </div>
                     <span class="marquee-label">Python</span>
                 </div>
                 <div class="marquee-item">
                     <div class="marquee-icon-circle">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azuresqldatabase/azuresqldatabase-original.svg" alt="SQL">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azuresqldatabase/azuresqldatabase-original.svg" alt="SQL" loading="lazy">
                     </div>
                     <span class="marquee-label">SQL</span>
                 </div>
                 <div class="marquee-item">
                     <div class="marquee-icon-circle">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" alt="Pandas">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" alt="Pandas" loading="lazy">
                     </div>
                     <span class="marquee-label">Pandas</span>
                 </div>
                 <div class="marquee-item">
                     <div class="marquee-icon-circle">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" alt="NumPy">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" alt="NumPy" loading="lazy">
                     </div>
                     <span class="marquee-label">NumPy</span>
                 </div>
                 <div class="marquee-item">
                     <div class="marquee-icon-circle">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="TensorFlow">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="TensorFlow" loading="lazy">
                     </div>
                     <span class="marquee-label">TensorFlow</span>
                 </div>
                 <div class="marquee-item">
                     <div class="marquee-icon-circle">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS" loading="lazy">
                     </div>
                     <span class="marquee-label">AWS</span>
                 </div>
                 <div class="marquee-item">
                     <div class="marquee-icon-circle">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" loading="lazy">
                     </div>
                     <span class="marquee-label">JavaScript</span>
                 </div>
                 <div class="marquee-item">
                     <div class="marquee-icon-circle">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" loading="lazy">
                     </div>
                     <span class="marquee-label">HTML5</span>
                 </div>
                 <div class="marquee-item">
                     <div class="marquee-icon-circle">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" loading="lazy">
                     </div>
                     <span class="marquee-label">CSS3</span>
                 </div>
                 <div class="marquee-item">
                     <div class="marquee-icon-circle">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg" alt="PowerBI">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg" alt="PowerBI" loading="lazy">
                     </div>
                     <span class="marquee-label">Power BI</span>
                 </div>
@@ -196,61 +216,61 @@
             <div class="marquee-content" aria-hidden="true">
                 <div class="marquee-item">
                     <div class="marquee-icon-circle">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" loading="lazy">
                     </div>
                     <span class="marquee-label">Python</span>
                 </div>
                 <div class="marquee-item">
                     <div class="marquee-icon-circle">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azuresqldatabase/azuresqldatabase-original.svg" alt="SQL">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azuresqldatabase/azuresqldatabase-original.svg" alt="SQL" loading="lazy">
                     </div>
                     <span class="marquee-label">SQL</span>
                 </div>
                 <div class="marquee-item">
                     <div class="marquee-icon-circle">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" alt="Pandas">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" alt="Pandas" loading="lazy">
                     </div>
                     <span class="marquee-label">Pandas</span>
                 </div>
                 <div class="marquee-item">
                     <div class="marquee-icon-circle">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" alt="NumPy">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" alt="NumPy" loading="lazy">
                     </div>
                     <span class="marquee-label">NumPy</span>
                 </div>
                 <div class="marquee-item">
                     <div class="marquee-icon-circle">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="TensorFlow">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="TensorFlow" loading="lazy">
                     </div>
                     <span class="marquee-label">TensorFlow</span>
                 </div>
                 <div class="marquee-item">
                     <div class="marquee-icon-circle">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS" loading="lazy">
                     </div>
                     <span class="marquee-label">AWS</span>
                 </div>
                 <div class="marquee-item">
                     <div class="marquee-icon-circle">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" loading="lazy">
                     </div>
                     <span class="marquee-label">JavaScript</span>
                 </div>
                 <div class="marquee-item">
                     <div class="marquee-icon-circle">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" loading="lazy">
                     </div>
                     <span class="marquee-label">HTML5</span>
                 </div>
                 <div class="marquee-item">
                     <div class="marquee-icon-circle">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" loading="lazy">
                     </div>
                     <span class="marquee-label">CSS3</span>
                 </div>
                 <div class="marquee-item">
                     <div class="marquee-icon-circle">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg" alt="PowerBI">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg" alt="PowerBI" loading="lazy">
                     </div>
                     <span class="marquee-label">Power BI</span>
                 </div>
@@ -275,7 +295,7 @@
                         <div class="folio-title-line"></div>
                     </div>
                     <div class="folio-author">
-                        <img src="img/profile.jpg" alt="Om Patel" class="folio-author-img">
+                        <img src="img/profile.jpg" alt="Om Patel" class="folio-author-img" loading="lazy">
                         <div class="folio-author-info">
                             <h4 class="folio-author-name">Om Patel</h4>
                             <p class="folio-author-title">Data Analyst / AI/ML Developer</p>
@@ -437,7 +457,7 @@
                 <div class="featured-projects-slider">
                     <!-- Card 1: Solar Energy Analytics -->
                     <div class="project-card-ny">
-                        <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=600&q=80" alt="Solar Energy Analytics" class="project-ny-bg-image">
+                        <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=600&q=80" alt="Solar Energy Analytics" class="project-ny-bg-image" loading="lazy">
                         <div class="project-ny-overlay"></div>
                         <a href="https://github.com/patelom2810/Solar-Energy-Generation-Weather-Analytics" target="_blank" class="project-ny-heart-btn" title="GitHub Code">
                             <i class="fab fa-github"></i>
@@ -455,7 +475,7 @@
                     
                     <!-- Card 2: E-Game Scout -->
                     <div class="project-card-ny">
-                        <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=600&q=80" alt="E-Game Scout" class="project-ny-bg-image">
+                        <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=600&q=80" alt="E-Game Scout" class="project-ny-bg-image" loading="lazy">
                         <div class="project-ny-overlay"></div>
                         <a href="http://13.232.179.239:8000/" target="_blank" class="project-ny-heart-btn" title="Live Demo">
                             <i class="fas fa-external-link-alt"></i>
@@ -473,7 +493,7 @@
                     
                     <!-- Card 3: CleanItUp! -->
                     <div class="project-card-ny">
-                        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80" alt="CleanItUp!" class="project-ny-bg-image">
+                        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80" alt="CleanItUp!" class="project-ny-bg-image" loading="lazy">
                         <div class="project-ny-overlay"></div>
                         <a href="https://cleanitup.netlify.app" target="_blank" class="project-ny-heart-btn" title="Live Demo">
                             <i class="fas fa-external-link-alt"></i>
@@ -491,7 +511,7 @@
 
                     <!-- Card 4: Blinkit Analysis -->
                     <div class="project-card-ny">
-                        <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=600&q=80" alt="Blinkit Analysis" class="project-ny-bg-image">
+                        <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=600&q=80" alt="Blinkit Analysis" class="project-ny-bg-image" loading="lazy">
                         <div class="project-ny-overlay"></div>
                         <a href="projects.html#blinkit-analysis" class="project-ny-heart-btn" title="View Details">
                             <i class="fas fa-info-circle"></i>
@@ -509,7 +529,7 @@
 
                     <!-- Card 5: Pizza Sales -->
                     <div class="project-card-ny">
-                        <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80" alt="Pizza Sales" class="project-ny-bg-image">
+                        <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80" alt="Pizza Sales" class="project-ny-bg-image" loading="lazy">
                         <div class="project-ny-overlay"></div>
                         <a href="projects.html#pizza-sales" class="project-ny-heart-btn" title="View Details">
                             <i class="fas fa-info-circle"></i>
@@ -543,7 +563,7 @@
                 
                 <div style="display: flex; gap: 20px; align-items: flex-start; position: relative; z-index: 2;">
                     <div class="cert-icon-box aws-orange-bg">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS" loading="lazy">
                     </div>
                     <div>
                         <h3>AWS Certified</h3>
@@ -585,20 +605,20 @@
                 </div>
                 <div class="contact-card-right">
                     <a href="mailto:patelom2810@gmail.com" class="contact-circle-btn" data-tooltip="Gmail">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Gmail_icon_%282020%29.svg" alt="Gmail">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Gmail_icon_%282020%29.svg" alt="Gmail" loading="lazy">
                     </a>
                     <a href="https://www.linkedin.com/in/om-patel-1a929831b" target="_blank" class="contact-circle-btn" data-tooltip="LinkedIn">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn" loading="lazy">
                     </a>
                     <a href="https://github.com/patelom2810" target="_blank" class="contact-circle-btn" data-tooltip="GitHub">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" loading="lazy">
                     </a>
                 </div>
-                <img src="img/profile-removebg-preview.png" alt="Om Patel" class="contact-card-avatar-new">
+                <img src="img/profile-removebg-preview.png" alt="Om Patel" class="contact-card-avatar-new" loading="lazy">
             </div>
             <!-- Bottom Row -->
             <div class="footer-bottom">
-                <p class="footer-copy">&copy; 2024 Om Patel &bull; Data Analyst &amp; AI/ML Developer</p>
+                <p class="footer-copy">&copy; 2026 Om Patel &bull; Data Analyst &amp; AI/ML Developer</p>
                 <div class="footer-links">
                     <a href="https://github.com/patelom2810" target="_blank">GitHub</a>
                     <a href="https://www.linkedin.com/in/om-patel-1a929831b" target="_blank">LinkedIn</a>

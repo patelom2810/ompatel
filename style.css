@@ -1768,31 +1768,130 @@ body.dark-theme .footer-bottom {
 }
 
 @media screen and (max-width: 768px) {
+
+    /* --- Hero Section: Portrait-first full-screen --- */
+    .hero-split {
+        min-height: 100svh;
+        overflow: hidden;
+    }
+
     .hero-header-links {
         display: none !important;
     }
-    
+
     .hero-header-pill {
         display: none !important;
     }
-    
+
+    /* Stack layout vertically, image first */
+    .hero-main-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+        height: 100svh;
+        padding: 0 0 90px 0;
+        gap: 0;
+        position: relative;
+    }
+
+    /* Hide left sidebar (role text) on mobile */
+    .hero-sidebar-left {
+        display: none !important;
+    }
+
+    /* Hide right sidebar (scroll text) on mobile — handled separately */
+    .hero-sidebar-right {
+        display: none !important;
+    }
+
+    /* Center area takes full screen */
     .hero-center-area {
-        height: 380px;
+        position: absolute;
+        top: 0;
+        left: 0;
         width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        overflow: hidden;
     }
-    
+
+    /* Large portrait image — fills most of the screen */
     .hero-avatar-new {
-        height: 340px;
-        max-height: 95%;
+        height: 88svh;
+        max-height: 88svh;
+        width: auto;
+        object-fit: contain;
+        position: relative;
+        bottom: 0;
+        z-index: 2;
     }
-    
+
+    /* Watermark stays centered behind image */
     .hero-watermark-bg {
-        font-size: 5rem;
-        top: 45%;
+        font-size: clamp(5.5rem, 22vw, 9rem);
+        top: 42%;
+        letter-spacing: -0.04em;
+        white-space: nowrap;
     }
-    
-    .hero-role-heading {
-        font-size: 1.3rem;
+
+    /* Role text — shown at bottom above scroll arrow */
+    .hero-mobile-role {
+        display: flex !important;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        position: absolute;
+        bottom: 52px;
+        left: 0;
+        right: 0;
+        z-index: 10;
+        gap: 4px;
+    }
+
+    .hero-mobile-role .hero-role-tag {
+        font-size: 0.85rem;
+        opacity: 0.7;
+        margin-bottom: 2px;
+    }
+
+    .hero-mobile-role .hero-role-heading {
+        font-size: 1.05rem;
+        font-weight: 600;
+        line-height: 1.3;
+        opacity: 0.85;
+    }
+
+    /* Scroll arrow at very bottom */
+    .hero-mobile-scroll {
+        display: flex !important;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        position: absolute;
+        bottom: 14px;
+        left: 0;
+        right: 0;
+        z-index: 10;
+    }
+
+    .hero-mobile-scroll span {
+        font-size: 0.68rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        color: var(--text-color);
+        opacity: 0.55;
+        font-family: var(--font-poppins);
+        text-transform: uppercase;
+    }
+
+    .hero-mobile-scroll i {
+        font-size: 0.85rem;
+        color: var(--text-color);
+        opacity: 0.55;
+        animation: bounce 2s infinite;
     }
 }
 
@@ -5075,6 +5174,12 @@ body.dark-theme .hero-circle-2 {
 
 body.dark-theme .hero-circle-3 {
     border-color: rgba(255, 255, 255, 0.02);
+}
+
+/* Mobile-only hero elements — hidden by default, shown in mobile media query */
+.hero-mobile-role,
+.hero-mobile-scroll {
+    display: none;
 }
 
 /* Left Sidebar Metadata */
