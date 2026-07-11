@@ -25,7 +25,10 @@
     --text-muted: #4a5568;
     --hero-main-bg: #dedfe2;
     --hero-watermark-stroke: #000000;
-    --header-pill-bg: #ffffff;
+    --header-pill-bg: rgba(255, 255, 255, 0.55);
+    --header-pill-border: rgba(255, 255, 255, 0.5);
+    --header-pill-blur: blur(28px) saturate(180%) brightness(1.05);
+    --header-pill-shadow: 0 10px 30px rgba(0, 0, 0, 0.03), inset 0 1px 0 rgba(255, 255, 255, 0.4);
 }
 
 body.dark-theme {
@@ -42,13 +45,21 @@ body.dark-theme {
     --text-muted: #94a3b8;
     --hero-main-bg: #0d1117;
     --hero-watermark-stroke: #ffffff;
-    --header-pill-bg: #161b22;
+    --header-pill-bg: rgba(20, 20, 30, 0.45);
+    --header-pill-border: rgba(255, 255, 255, 0.12);
+    --header-pill-blur: blur(28px) saturate(180%) brightness(1.1);
+    --header-pill-shadow: 0 10px 30px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.08);
     background-color: var(--bg-color);
     color: var(--text-color);
 }
 
 body.dark-theme .bg-tech-pattern {
-    background-image: none;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+    background-color: var(--bg-color);
+}
+
+body.dark-theme .contact-circle-btn[data-tooltip="GitHub"] img {
+    filter: invert(1) brightness(1.2);
 }
 body.dark-theme .brick, body.dark-theme .brick-wide {
     background: #1e293b !important;
@@ -1767,133 +1778,7 @@ body.dark-theme .footer-bottom {
     }
 }
 
-@media screen and (max-width: 768px) {
-
-    /* --- Hero Section: Portrait-first full-screen --- */
-    .hero-split {
-        min-height: 100svh;
-        overflow: hidden;
-    }
-
-    .hero-header-links {
-        display: none !important;
-    }
-
-    .hero-header-pill {
-        display: none !important;
-    }
-
-    /* Stack layout vertically, image first */
-    .hero-main-content {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-end;
-        height: 100svh;
-        padding: 0 0 90px 0;
-        gap: 0;
-        position: relative;
-    }
-
-    /* Hide left sidebar (role text) on mobile */
-    .hero-sidebar-left {
-        display: none !important;
-    }
-
-    /* Hide right sidebar (scroll text) on mobile — handled separately */
-    .hero-sidebar-right {
-        display: none !important;
-    }
-
-    /* Center area takes full screen */
-    .hero-center-area {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: flex-end;
-        overflow: hidden;
-    }
-
-    /* Large portrait image — fills most of the screen */
-    .hero-avatar-new {
-        height: 88svh;
-        max-height: 88svh;
-        width: auto;
-        object-fit: contain;
-        position: relative;
-        bottom: 0;
-        z-index: 2;
-    }
-
-    /* Watermark stays centered behind image */
-    .hero-watermark-bg {
-        font-size: clamp(5.5rem, 22vw, 9rem);
-        top: 42%;
-        letter-spacing: -0.04em;
-        white-space: nowrap;
-    }
-
-    /* Role text — shown at bottom above scroll arrow */
-    .hero-mobile-role {
-        display: flex !important;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        position: absolute;
-        bottom: 52px;
-        left: 0;
-        right: 0;
-        z-index: 10;
-        gap: 4px;
-    }
-
-    .hero-mobile-role .hero-role-tag {
-        font-size: 0.85rem;
-        opacity: 0.7;
-        margin-bottom: 2px;
-    }
-
-    .hero-mobile-role .hero-role-heading {
-        font-size: 1.05rem;
-        font-weight: 600;
-        line-height: 1.3;
-        opacity: 0.85;
-    }
-
-    /* Scroll arrow at very bottom */
-    .hero-mobile-scroll {
-        display: flex !important;
-        flex-direction: column;
-        align-items: center;
-        gap: 4px;
-        position: absolute;
-        bottom: 14px;
-        left: 0;
-        right: 0;
-        z-index: 10;
-    }
-
-    .hero-mobile-scroll span {
-        font-size: 0.68rem;
-        font-weight: 600;
-        letter-spacing: 0.08em;
-        color: var(--text-color);
-        opacity: 0.55;
-        font-family: var(--font-poppins);
-        text-transform: uppercase;
-    }
-
-    .hero-mobile-scroll i {
-        font-size: 0.85rem;
-        color: var(--text-color);
-        opacity: 0.55;
-        animation: bounce 2s infinite;
-    }
-}
+/* Mobile Hero Section styles moved to the end of the file to ensure correct cascading order (overriding desktop definitions) */
 
 /* =========================================
    About Me (Bento Grid)
@@ -3505,7 +3390,7 @@ body.dark-theme .marquee-item:hover .marquee-icon-circle {
     background: #ffffff;
     border: 1px solid rgba(65, 105, 225, 0.1);
     border-radius: 24px;
-    padding: 24px 210px 24px 30px;
+    padding: 24px 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -3632,7 +3517,7 @@ body.dark-theme .contact-circle-btn:hover {
     .contact-card-new {
         flex-direction: column;
         gap: 20px;
-        padding: 30px 20px 140px 20px !important;
+        padding: 30px 20px !important;
         text-align: center;
         position: relative;
     }
@@ -5030,14 +4915,16 @@ body.dark-theme .aws-orange-bg {
     width: 90%;
     max-width: 1100px;
     background: var(--header-pill-bg);
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--header-pill-border);
     border-radius: 20px;
     padding: 10px 24px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+    box-shadow: var(--header-pill-shadow);
     margin: 24px auto 0 auto;
     position: relative;
     z-index: 20;
     transition: all 0.3s ease;
+    backdrop-filter: var(--header-pill-blur);
+    -webkit-backdrop-filter: var(--header-pill-blur);
 }
 
 .hero-logo-box {
@@ -5669,5 +5556,164 @@ body.dark-theme .project-card-ny:hover {
 @media screen and (min-width: 769px) {
     .glassy-nav-container {
         display: none !important;
+    }
+}
+
+/* --- Mobile Hero Section (Placed at the end for cascading priority) --- */
+@media screen and (max-width: 768px) {
+
+    .hero-split {
+        min-height: 100svh !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: flex-start !important;
+        align-items: center !important;
+        overflow: hidden !important;
+        position: relative !important;
+    }
+
+    .hero-header-links {
+        display: none !important;
+    }
+
+    .hero-header-pill {
+        display: flex !important;
+        width: 90% !important;
+        margin: 12px auto 0 auto !important;
+        padding: 10px 18px !important; /* Increased padding to give HIRE ME button proper vertical clearance */
+        border-radius: 16px !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        box-shadow: var(--header-pill-shadow) !important;
+        border: 1px solid var(--header-pill-border) !important;
+        background: var(--header-pill-bg) !important;
+        backdrop-filter: var(--header-pill-blur) !important;
+        -webkit-backdrop-filter: var(--header-pill-blur) !important;
+    }
+
+    .hero-logo-text {
+        font-size: 0.72rem !important;
+    }
+
+    .hero-header-btn {
+        font-size: 0.72rem !important;
+        padding: 6px 12px !important;
+        border-radius: 10px !important;
+    }
+
+    /* Flex-based vertical layout for main content */
+    .hero-main-content {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: flex-start !important; /* Stack elements from top */
+        flex: 1 !important;
+        width: 100% !important;
+        padding: 20px 20px 0 20px !important; /* Let image extend to the bottom */
+        box-sizing: border-box !important;
+        position: relative !important;
+        gap: 15px !important;
+        height: auto !important;
+        min-height: 0 !important;
+    }
+
+    /* Hide sidebars on mobile */
+    .hero-sidebar-left {
+        display: none !important;
+    }
+
+    .hero-sidebar-right {
+        display: none !important;
+    }
+
+    /* Center area takes bottom part of screen absolutely to hide cutoff */
+    .hero-center-area {
+        position: absolute !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 60svh !important; /* Spans 60% of viewport height at the bottom */
+        display: flex !important;
+        justify-content: center !important;
+        align-items: flex-end !important;
+        overflow: hidden !important;
+        z-index: 1 !important;
+        order: 2 !important;
+    }
+
+    /* Large portrait image — scales dynamically to fit the bottom area */
+    .hero-avatar-new {
+        height: 100% !important;
+        width: auto !important;
+        max-width: 95vw !important;
+        object-fit: contain !important;
+        position: relative !important;
+        bottom: 0 !important;
+        z-index: 2 !important;
+        /* Premium mask fade-out at the bottom */
+        -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 70%, rgba(0, 0, 0, 0) 100%) !important;
+        mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 70%, rgba(0, 0, 0, 0) 100%) !important;
+    }
+
+    /* Watermark centered behind image */
+    .hero-watermark-bg {
+        font-size: clamp(4.5rem, 18vw, 7.5rem) !important;
+        top: 45% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        letter-spacing: -0.04em !important;
+        white-space: nowrap !important;
+        position: absolute !important;
+        z-index: 1 !important;
+    }
+
+    /* Role text placed in normal flow above the image/watermark area */
+    .hero-mobile-role {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        position: relative !important;
+        bottom: auto !important;
+        left: auto !important;
+        right: auto !important;
+        z-index: 10 !important;
+        gap: 6px !important;
+        order: 1 !important;
+        margin-top: 10px !important;
+    }
+
+    .hero-mobile-role .hero-role-tag {
+        font-size: 0.85rem !important;
+        opacity: 0.7 !important;
+        margin-bottom: 0px !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.05em !important;
+    }
+
+    .hero-mobile-role .hero-role-heading {
+        font-size: 1.25rem !important;
+        font-weight: 600 !important;
+        line-height: 1.3 !important;
+        opacity: 0.9 !important;
+        margin: 0 !important;
+    }
+
+    /* Hide scroll arrow on mobile to prevent overlapping with the navigation dock */
+    .hero-mobile-scroll {
+        display: none !important;
+    }
+
+    /* Hide home icon from glassy bottom navigation dock on mobile */
+    .nav-profile-wrapper {
+        display: none !important;
+    }
+
+    /* Adjust back-to-top button on mobile to prevent overlapping with the bottom glassy dock */
+    .back-to-top {
+        bottom: 85px !important;
+        right: 20px !important;
+        width: 44px !important;
+        height: 44px !important;
     }
 }

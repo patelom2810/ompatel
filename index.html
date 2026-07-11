@@ -48,6 +48,16 @@
 </head>
 
 <body>
+    <script>
+        // Prevent theme flashing on page load
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                document.body.classList.add('dark-theme');
+            }
+        })();
+    </script>
     <!-- Background Mesh Blobs -->
     <div class="mesh-blobs">
         <div class="blob blob-1"></div>
@@ -491,23 +501,7 @@
                         </div>
                     </div>
                     
-                    <!-- Card 3: CleanItUp! -->
-                    <div class="project-card-ny">
-                        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80" alt="CleanItUp!" class="project-ny-bg-image" loading="lazy">
-                        <div class="project-ny-overlay"></div>
-                        <a href="https://cleanitup.netlify.app" target="_blank" class="project-ny-heart-btn" title="Live Demo">
-                            <i class="fas fa-external-link-alt"></i>
-                        </a>
-                        <div class="project-ny-content">
-                            <h3 class="project-ny-title">CleanItUp!</h3>
-                            <p class="project-ny-subtitle">AI-powered tabular data cleaner platform</p>
-                            <div class="project-ny-meta-row">
-                                <span class="project-ny-meta-item"><i class="fas fa-tag"></i> Data Utility</span>
-                                <span class="project-ny-meta-item"><i class="fas fa-magic"></i> AI Cleaning</span>
-                            </div>
-                            <a href="projects.html#cleanitup" class="project-ny-btn-white">Explore Insights</a>
-                        </div>
-                    </div>
+
 
                     <!-- Card 4: Blinkit Analysis -->
                     <div class="project-card-ny">
@@ -527,23 +521,6 @@
                         </div>
                     </div>
 
-                    <!-- Card 5: Pizza Sales -->
-                    <div class="project-card-ny">
-                        <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80" alt="Pizza Sales" class="project-ny-bg-image" loading="lazy">
-                        <div class="project-ny-overlay"></div>
-                        <a href="projects.html#pizza-sales" class="project-ny-heart-btn" title="View Details">
-                            <i class="fas fa-info-circle"></i>
-                        </a>
-                        <div class="project-ny-content">
-                            <h3 class="project-ny-title">Pizza Sales</h3>
-                            <p class="project-ny-subtitle">SQL &bull; PowerBI &bull; Revenue analytics</p>
-                            <div class="project-ny-meta-row">
-                                <span class="project-ny-meta-item"><i class="fas fa-tag"></i> SQL Server</span>
-                                <span class="project-ny-meta-item"><i class="fas fa-pizza-slice"></i> Sales KPI</span>
-                            </div>
-                            <a href="projects.html#pizza-sales" class="project-ny-btn-white">Explore Insights</a>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -614,7 +591,6 @@
                         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" loading="lazy">
                     </a>
                 </div>
-                <img src="img/profile-removebg-preview.png" alt="Om Patel" class="contact-card-avatar-new" loading="lazy">
             </div>
             <!-- Bottom Row -->
             <div class="footer-bottom">

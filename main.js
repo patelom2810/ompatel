@@ -48,8 +48,14 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             navLinks.forEach(link => {
-                link.classList.remove('active');
                 const href = link.getAttribute('href');
+                // If on projects page, keep the projects link active and don't clear it
+                if (window.location.pathname.includes('projects.html') && href.includes('projects.html')) {
+                    link.classList.add('active');
+                    return;
+                }
+
+                link.classList.remove('active');
                 if (href === `#${current}` || href === `index.html#${current}`) {
                     link.classList.add('active');
                 }
