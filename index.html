@@ -696,8 +696,6 @@
 
 
                 </div>
-                <!-- Mobile Stack Dots -->
-                <div class="stack-dots" id="stackDots"></div>
             </div>
         </div>
     </section>
@@ -782,18 +780,17 @@
     </footer>
 
     <script>
-        /* ══════════════════════════════════════
-           FLIP CARD — Desktop only
-        ══════════════════════════════════════ */
+        /* ── Flip Card Logic ── */
         function flipCard(container) {
-            if (window.innerWidth <= 768) return; // mobile uses stack
             const wasFlipped = container.classList.contains('flipped');
+            // Flip all cards back first
             document.querySelectorAll('.flip-card-container.flipped').forEach(c => {
                 c.classList.remove('flipped');
                 c.querySelectorAll('.flip-point').forEach(p => p.classList.remove('visible'));
             });
             if (!wasFlipped) {
                 container.classList.add('flipped');
+                // Animate bullet points in one by one after flip
                 const points = container.querySelectorAll('.flip-point');
                 points.forEach((pt, i) => {
                     setTimeout(() => pt.classList.add('visible'), 420 + i * 180);
@@ -806,99 +803,6 @@
             container.classList.remove('flipped');
             container.querySelectorAll('.flip-point').forEach(p => p.classList.remove('visible'));
         }
-
-        /* ══════════════════════════════════════
-           MOBILE CARD STACK
-        ══════════════════════════════════════ */
-        (function initMobileStack() {
-            const cards   = Array.from(document.querySelectorAll('.flip-card-container'));
-            const dotsWrap = document.getElementById('stackDots');
-            let active = 0;
-            let busy   = false;
-
-            if (!cards.length) return;
-
-            // Build dots
-            cards.forEach((_, i) => {
-                const d = document.createElement('span');
-                d.className = 'stack-dot' + (i === 0 ? ' stack-dot-active' : '');
-                dotsWrap.appendChild(d);
-            });
-
-            function getPos(relIndex) {
-                // relIndex: 0 = top, 1 = mid, 2+ = bottom
-                const offsets = [
-                    { y: 0,   scale: 1,    opacity: 1,   z: 3 },
-                    { y: 14,  scale: 0.94, opacity: 0.85, z: 2 },
-                    { y: 26,  scale: 0.88, opacity: 0.65, z: 1 },
-                ];
-                return offsets[Math.min(relIndex, 2)];
-            }
-
-            function applyStack(skipTransition) {
-                cards.forEach((card, i) => {
-                    const rel = (i - active + cards.length) % cards.length;
-                    const pos = getPos(rel);
-                    card.style.transition = skipTransition ? 'none' : 'transform 0.42s cubic-bezier(0.4,0.2,0.2,1), opacity 0.42s ease, z-index 0s';
-                    card.style.transform  = `translateY(${pos.y}px) scale(${pos.scale})`;
-                    card.style.opacity    = pos.opacity;
-                    card.style.zIndex     = pos.z;
-                    card.classList.remove('stack-exit-left');
-                });
-                // Update dots
-                dotsWrap.querySelectorAll('.stack-dot').forEach((d, i) => {
-                    d.classList.toggle('stack-dot-active', i === active);
-                });
-            }
-
-            function nextCard() {
-                if (window.innerWidth > 768 || busy) return;
-                busy = true;
-                const current = cards[active];
-                // Swipe out the top card
-                current.style.transition = 'transform 0.38s cubic-bezier(0.4,0,1,1), opacity 0.38s ease';
-                current.style.transform  = 'translateX(110%) rotate(12deg) scale(1)';
-                current.style.opacity    = '0';
-                current.style.zIndex     = '10';
-
-                setTimeout(() => {
-                    active = (active + 1) % cards.length;
-                    applyStack(true);           // snap dismissed card to back instantly
-                    // Then re-apply with transition to animate back-cards forward
-                    requestAnimationFrame(() => requestAnimationFrame(() => {
-                        applyStack(false);
-                        busy = false;
-                    }));
-                }, 380);
-            }
-
-            // Mobile click — override flipCard
-            cards.forEach(card => {
-                card.addEventListener('click', e => {
-                    if (window.innerWidth > 768) return;
-                    e.stopPropagation();
-                    nextCard();
-                }, true); // capture phase beats inline onclick
-            });
-
-            // Init + handle resize
-            function handleResize() {
-                if (window.innerWidth <= 768) {
-                    applyStack(true);
-                } else {
-                    // Reset inline styles on desktop
-                    cards.forEach(card => {
-                        card.style.transform = '';
-                        card.style.opacity   = '';
-                        card.style.zIndex    = '';
-                        card.style.transition = '';
-                    });
-                }
-            }
-
-            handleResize();
-            window.addEventListener('resize', handleResize);
-        })();
     </script>
 </body>
 
