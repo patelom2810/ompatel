@@ -93,9 +93,6 @@
             <a href="projects.html" class="nav-item nav-link-dock" data-tooltip="Projects">
                 <i class="fas fa-briefcase"></i>
             </a>
-            <button id="theme-toggle" class="nav-item" data-tooltip="Theme">
-                <i class="fas fa-moon theme-icon"></i>
-            </button>
         </nav>
     </div>
 
@@ -124,10 +121,18 @@
         </div>
 
         <div class="hero-main-content">
-            <!-- Left Side Role -->
+            <!-- Left Side Role & Services Widget -->
             <div class="hero-sidebar-left">
-                <span class="hero-role-tag">Freelance</span>
-                <h4 class="hero-role-heading">Data Analyst<br>&amp; AI/ML Developer</h4>
+                <span class="hero-role-tag">Services</span>
+                <h4 class="hero-services-heading">Let's build quality models, pipelines, and insights with my services</h4>
+                <a href="#about" class="hero-services-more-link">show more <i class="fas fa-arrow-right"></i></a>
+                
+                <div class="hero-services-socials">
+                    <a href="mailto:patelom2810@gmail.com" class="hero-services-social-btn" title="Gmail"><i class="fas fa-envelope"></i></a>
+                    <a href="https://www.linkedin.com/in/om-patel-1a929831b" target="_blank" class="hero-services-social-btn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/patelom2810" target="_blank" class="hero-services-social-btn" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://www.instagram.com/patelom2810" target="_blank" class="hero-services-social-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
             </div>
 
             <!-- Center Watermark & Avatar -->
@@ -138,7 +143,6 @@
 
             <!-- Mobile-only: Role text below image -->
             <div class="hero-mobile-role">
-                <span class="hero-role-tag">Freelance</span>
                 <h4 class="hero-role-heading">Data Analyst &amp; AI/ML Developer</h4>
             </div>
 
@@ -287,36 +291,47 @@
             </div>
         </div>
     </div>
-    <!-- About Me (Minimal Split Layout) -->
-    <section id="about" class="about-bento about-folio">
-        <div class="max-w-[1200px] mx-auto px-5">
-            <div class="section-header">
-                <span class="section-subtitle">&mdash; DISCOVER</span>
-                <h2 class="section-title">About Me</h2>
-            </div>            <div class="folio-container folio-single">
-                <!-- Single About Me Card -->
-                <div class="folio-card card-about">
-                    <div class="folio-card-top">
-                        <span class="folio-date">Jul 2026</span>
-                        <div class="folio-logo">OP</div>
+    <!-- About Me (Modern Split Grid Layout) -->
+    <section id="about" class="about-new-section">
+        <div class="about-new-container">
+            <div class="about-new-grid">
+                <!-- Left Column -->
+                <div class="about-new-left">
+                    <div class="about-avatar-row">
+                        <div class="about-avatar-pill" title="Toggle Theme">
+                            <div class="about-pill-knob">
+                                <img src="img/profile.jpg" alt="Om Patel">
+                            </div>
+                        </div>
+                        <h2 class="about-greeting">Hello, I'm <span class="highlight-white">Om</span></h2>
                     </div>
-                    <div class="card-folio-header">
-                        <h2 class="folio-card-title">About Me</h2>
-                        <div class="folio-title-line"></div>
-                    </div>
-                    <div class="folio-author">
-                        <img src="img/profile.jpg" alt="Om Patel" class="folio-author-img" loading="lazy">
-                        <div class="folio-author-info">
-                            <h4 class="folio-author-name">Om Patel</h4>
-                            <p class="folio-author-title">Data Analyst / AI/ML Developer</p>
+                    <h1 class="about-title-large">Data Analyst<br/>&amp; AI/ML Developer</h1>
+                </div>
+                
+                <!-- Right Column -->
+                <div class="about-new-right">
+                    <p class="about-intro-text">
+                        With experience in Data Analytics, Machine Learning pipelines, and Cloud technologies, I combine these fields to turn complex data into clear, actionable stories and intelligent predictive models.
+                    </p>
+                    <p class="about-sub-text">
+                        I am currently pursuing my M.Sc. in Information Technology at GLS University, building upon my B.Sc. in Computer Applications &amp; IT. I design end-to-end data pipelines, build scalable models, and create modern dashboards that drive business value.
+                    </p>
+                    <div class="about-action-row">
+                        <a href="mailto:patelom2810@gmail.com" class="about-msg-btn">
+                            Write a message <i class="fas fa-paper-plane"></i>
+                        </a>
+                        <div class="about-social-links">
+                            <a href="mailto:patelom2810@gmail.com" class="about-social-link">
+                                <i class="fas fa-envelope"></i> Gmail
+                            </a>
+                            <a href="https://www.linkedin.com/in/om-patel-1a929831b" target="_blank" class="about-social-link">
+                                <i class="fab fa-linkedin-in"></i> LinkedIn
+                            </a>
+                            <a href="https://github.com/patelom2810" target="_blank" class="about-social-link">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
                         </div>
                     </div>
-                    <div class="folio-body-text">
-                        <p class="folio-p emphasis">"Turning complex data into clear, actionable stories and intelligent models."</p>
-                        <p class="folio-p">I am currently pursuing my <strong>M.Sc. in Information Technology</strong> at GLS University, building upon my foundational knowledge from a <strong>B.Sc. in Computer Applications &amp; IT</strong>.</p>
-                        <p class="folio-p">Passionate about data analytics, machine learning, and cloud technologies, I design end-to-end pipelines that ingest data, perform statistical analysis, and generate predictive outputs.</p>
-                    </div>
-                    <div class="folio-watermark-bottom">OMPATEL</div>
                 </div>
             </div>
         </div>
@@ -420,34 +435,89 @@
                 <span class="section-subtitle">&mdash; JOURNEY</span>
                 <h2 class="section-title">Education</h2>
             </div>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-date">2025 – 2027</div>
-                        <h3 class="timeline-title">Master of Science (MSc) – Information Technology</h3>
-                        <p class="timeline-description">GLS University, Ahmedabad, Gujarat<br>Status: Pursuing
-                        </p>
+            
+            <div class="tree-container">
+                <!-- Central Trunk Line -->
+                <div class="tree-trunk"></div>
+                
+                <!-- Tree Node 1: M.Sc. IT (Left Branch) — Expanded by default (Pursuing) -->
+                <div class="tree-item tree-item-left">
+                    <div class="tree-dot tree-dot-active"></div>
+                    <div class="tree-node expanded" onclick="toggleTreeNode(this)">
+                        <div class="tree-node-header">
+                            <div class="tree-node-meta">
+                                <span class="tree-node-date">2025 – 2027</span>
+                                <div class="tree-node-title-row">
+                                    <i class="fas fa-brain tree-degree-icon" style="color: var(--primary-color);"></i>
+                                    <span class="tree-node-type">MSc – IT (Data Analytics &amp; AI)</span>
+                                </div>
+                            </div>
+                            <div class="tree-node-toggle">
+                                <span class="pursuing-badge"><span class="pursuing-dot"></span>Pursuing</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                        </div>
+                        <div class="tree-node-body">
+                            <!-- Watermark -->
+                            <i class="fas fa-brain timeline-watermark"></i>
+                            <h3 class="tree-degree-title">Master of Science (MSc) – Information Technology</h3>
+                            <p class="tree-degree-desc" style="margin-bottom: 12px;">Stream: <strong>Data Analytics &amp; AI</strong></p>
+                            <div class="tree-degree-details">
+                                <div class="tree-detail-row">GLS University, Ahmedabad, Gujarat</div>
+                                <div class="tree-detail-row">2025 – 2027 (2 Years)</div>
+                                <div class="tree-detail-row pursuing-status">Currently Pursuing — Active</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <!-- Premium Watermark Cap Icon -->
-                        <i class="fas fa-graduation-cap timeline-watermark"></i>
-                        <div class="timeline-date">2022 – 2025</div>
-                        <h3 class="timeline-title">Bachelor of Science (BSc) – Information Technology</h3>
-                        <p class="timeline-description">Sardar Patel University, Vallabh Vidyanagar, Gujarat<br>CGPA: 7.8
-                        </p>
+
+                <!-- Tree Node 2: B.Sc. IT (Right Branch) -->
+                <div class="tree-item tree-item-right">
+                    <div class="tree-dot"></div>
+                    <div class="tree-node" onclick="toggleTreeNode(this)">
+                        <div class="tree-node-header">
+                            <div class="tree-node-meta">
+                                <span class="tree-node-date">2022 – 2025</span>
+                                <div class="tree-node-title-row">
+                                    <i class="fas fa-graduation-cap tree-degree-icon" style="color: var(--primary-color);"></i>
+                                    <span class="tree-node-type">BSc – CA &amp; IT</span>
+                                </div>
+                            </div>
+                            <div class="tree-node-toggle">
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                        </div>
+                        <div class="tree-node-body">
+                            <!-- Watermark -->
+                            <i class="fas fa-graduation-cap timeline-watermark"></i>
+                            <h3 class="tree-degree-title">Bachelor of Science (BSc) – Computer Application &amp; Information Technology</h3>
+                            <p class="tree-degree-desc">Sardar Patel University, Vallabh Vidyanagar, Gujarat<br>CGPA: 7.8</p>
+                        </div>
                     </div>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-date">2021</div>
-                        <h3 class="timeline-title">CLASS XII (Science Stream)</h3>
-                        <p class="timeline-description">Bits Education High School, Khambhat<br>Percentage: 49%
-                        </p>
+
+                <!-- Tree Node 3: Class XII (Left Branch) -->
+                <div class="tree-item tree-item-left">
+                    <div class="tree-dot"></div>
+                    <div class="tree-node" onclick="toggleTreeNode(this)">
+                        <div class="tree-node-header">
+                            <div class="tree-node-meta">
+                                <span class="tree-node-date">2021</span>
+                                <div class="tree-node-title-row">
+                                    <i class="fas fa-flask tree-degree-icon" style="color: var(--primary-color);"></i>
+                                    <span class="tree-node-type">Class XII – Science Stream</span>
+                                </div>
+                            </div>
+                            <div class="tree-node-toggle">
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                        </div>
+                        <div class="tree-node-body">
+                            <!-- Watermark -->
+                            <i class="fas fa-flask timeline-watermark"></i>
+                            <h3 class="tree-degree-title">CLASS XII (Science Stream)</h3>
+                            <p class="tree-degree-desc">Bits Education High School, Khambhat<br>Percentage: 49%</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -465,63 +535,169 @@
             
             <div class="featured-projects-slider-wrapper">
                 <div class="featured-projects-slider">
-                    <!-- Card 1: Solar Energy Analytics -->
-                    <div class="project-card-ny">
-                        <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=600&q=80" alt="Solar Energy Analytics" class="project-ny-bg-image" loading="lazy">
-                        <div class="project-ny-overlay"></div>
-                        <a href="https://github.com/patelom2810/Solar-Energy-Generation-Weather-Analytics" target="_blank" class="project-ny-heart-btn" title="GitHub Code">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <div class="project-ny-content">
-                            <h3 class="project-ny-title">Solar Energy Analytics</h3>
-                            <p class="project-ny-subtitle">Flask &bull; Scikit-learn &bull; MySQL &bull; Docker</p>
-                            <div class="project-ny-meta-row">
-                                <span class="project-ny-meta-item"><i class="fas fa-tag"></i> Data Analytics</span>
-                                <span class="project-ny-meta-item"><i class="fas fa-chart-line"></i> Solar Generation</span>
+                    <!-- Card 1: Solar Energy Analytics — Flip Card -->
+                    <div class="flip-card-container" onclick="flipCard(this)">
+                        <div class="flip-card-inner">
+
+                            <!-- FRONT -->
+                            <div class="flip-card-front project-card-ny" style="background: linear-gradient(145deg, rgba(251, 191, 36, 0.12) 0%, rgba(234, 88, 12, 0.10) 100%) !important;">
+                                <!-- Hint badge -->
+
+                                <!-- Media -->
+                                <div class="project-media-wrapper">
+                                    <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=600&q=80" alt="Solar Energy Analytics" class="project-ny-bg-image" loading="lazy">
+                                </div>
+                                <!-- Top-Right Actions -->
+                                <a href="https://github.com/patelom2810/Solar-Energy-Generation-Weather-Analytics" target="_blank" class="project-ny-heart-btn" title="GitHub Code" onclick="event.stopPropagation()">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <!-- Text -->
+                                <div class="project-ny-content">
+                                    <h3 class="project-ny-title">Solar Energy Analytics</h3>
+                                    <p class="project-ny-subtitle">Flask &bull; Scikit-learn &bull; MySQL &bull; Docker</p>
+                                    <div class="project-ny-meta-row">
+                                        <span class="project-ny-meta-item"><i class="fas fa-tag"></i> Data Analytics</span>
+                                        <span class="project-ny-meta-item"><i class="fas fa-chart-line"></i> Solar Gen</span>
+                                    </div>
+                                    <a href="projects.html#solar-energy" class="project-ny-btn-white" onclick="event.stopPropagation()">Explore Insights</a>
+                                </div>
                             </div>
-                            <a href="projects.html#solar-energy" class="project-ny-btn-white">Explore Insights</a>
+
+                            <!-- BACK -->
+                            <div class="flip-card-back" style="background: linear-gradient(145deg, rgba(251, 191, 36, 0.22) 0%, rgba(234, 88, 12, 0.18) 100%);">
+                                <div class="flip-back-header">
+                                    <i class="fas fa-solar-panel" style="font-size: 1.6rem; color: #f59e0b;"></i>
+                                    <span class="flip-back-title" style="color: #92400e;">Solar Energy Analytics</span>
+                                </div>
+                                <ul class="flip-points">
+                                    <li class="flip-point">Developed a machine learning application using Gradient Boosting Regressor to predict solar energy generation from historical weather and solar datasets.</li>
+                                    <li class="flip-point">Built a responsive analytics dashboard with real-time KPIs, interactive charts, and weather insights using Flask, Chart.js, and MySQL.</li>
+                                    <li class="flip-point">Implemented REST APIs, Docker deployment, OpenAPI documentation, and automated testing to create a scalable and maintainable analytics platform.</li>
+                                </ul>
+                                <button class="flip-back-btn" style="border-color: #f59e0b; color: #92400e;" onclick="event.stopPropagation(); unflipCard(this)">
+                                    <i class="fas fa-arrow-left"></i> Back
+                                </button>
+                            </div>
+
                         </div>
                     </div>
                     
-                    <!-- Card 2: E-Game Scout -->
-                    <div class="project-card-ny">
-                        <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=600&q=80" alt="E-Game Scout" class="project-ny-bg-image" loading="lazy">
-                        <div class="project-ny-overlay"></div>
-                        <a href="http://13.232.179.239:8000/" target="_blank" class="project-ny-heart-btn" title="Live Demo">
-                            <i class="fas fa-external-link-alt"></i>
-                        </a>
-                        <div class="project-ny-content">
-                            <h3 class="project-ny-title">E-Game Scout</h3>
-                            <p class="project-ny-subtitle">Django &bull; AWS EC2 &bull; AI Analytics &bull; Tailwind</p>
-                            <div class="project-ny-meta-row">
-                                <span class="project-ny-meta-item"><i class="fas fa-tag"></i> Esports</span>
-                                <span class="project-ny-meta-item"><i class="fas fa-brain"></i> AI Scout</span>
+                    <!-- Card 2: E-Game Scout — Flip Card -->
+                    <div class="flip-card-container" onclick="flipCard(this)">
+                        <div class="flip-card-inner">
+
+                            <!-- FRONT -->
+                            <div class="flip-card-front project-card-ny" style="background: linear-gradient(145deg, rgba(139, 92, 246, 0.14) 0%, rgba(219, 39, 119, 0.12) 100%) !important;">
+                                <!-- Hint badge -->
+
+                                <!-- Media -->
+                                <div class="project-media-wrapper" style="background: linear-gradient(135deg, rgba(88, 28, 135, 0.08) 0%, rgba(59, 130, 246, 0.08) 100%); border: 1px solid rgba(88, 28, 135, 0.15);">
+                                    <img src="img/egs-logo.png" alt="E-Game Scout Logo" style="max-height: 120px; max-width: 120px; object-fit: contain; filter: drop-shadow(0 8px 16px rgba(0,0,0,0.15));" loading="lazy">
+                                </div>
+                                <!-- Top-Right Actions -->
+                                <a href="http://13.232.179.239:8000/" target="_blank" class="project-ny-heart-btn" title="Live Demo" onclick="event.stopPropagation()">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                                <a href="https://github.com/kachhadiyajanvi/E-GAMESCOUT" target="_blank" class="project-ny-heart-btn" style="right: 79px;" title="GitHub Code" onclick="event.stopPropagation()">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <!-- Text -->
+                                <div class="project-ny-content">
+                                    <h3 class="project-ny-title">E-Game Scout</h3>
+                                    <p class="project-ny-subtitle">Django &bull; AWS EC2 &bull; AI Analytics &bull; Tailwind</p>
+                                    <div class="project-ny-meta-row">
+                                        <span class="project-ny-meta-item"><i class="fas fa-tag"></i> Esports</span>
+                                        <span class="project-ny-meta-item"><i class="fas fa-brain"></i> AI Scout</span>
+                                    </div>
+                                    <a href="projects.html#egame-scout" class="project-ny-btn-white" onclick="event.stopPropagation()">Explore Insights</a>
+                                </div>
                             </div>
-                            <a href="projects.html#egame-scout" class="project-ny-btn-white">Explore Insights</a>
+
+                            <!-- BACK -->
+                            <div class="flip-card-back" style="background: linear-gradient(145deg, rgba(139, 92, 246, 0.22) 0%, rgba(219, 39, 119, 0.18) 100%);">
+                                <div class="flip-back-header">
+                                    <img src="img/egs-logo.png" alt="EGS" style="height:44px; object-fit:contain; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));">
+                                    <span class="flip-back-title">E-Game Scout</span>
+                                </div>
+                                <ul class="flip-points">
+                                    <li class="flip-point">Developed a full-stack esports platform with role-based dashboards for players, organizations, and administrators, enabling tournament management and player scouting.</li>
+                                    <li class="flip-point">Integrated Google Gemini AI and Groq API for AI-powered scorecard analysis, secure authentication (Email OTP &amp; 2FA), and automated PDF contract generation.</li>
+                                    <li class="flip-point">Deployed on AWS EC2 with AWS RDS (MySQL) using Django, delivering a scalable, cloud-hosted solution with email notifications.</li>
+                                </ul>
+                                <button class="flip-back-btn" onclick="event.stopPropagation(); unflipCard(this)">
+                                    <i class="fas fa-arrow-left"></i> Back
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Card 3: ClipChain -->
+                    <!-- Card 3: ClipChain — Flip Card -->
+                    <div class="flip-card-container" onclick="flipCard(this)">
+                        <div class="flip-card-inner">
+
+                            <!-- FRONT -->
+                            <div class="flip-card-front project-card-ny" style="background: linear-gradient(145deg, rgba(15, 89, 47, 0.14) 0%, rgba(123, 193, 67, 0.12) 100%) !important;">
+                                <!-- Hint badge -->
+
+                                <!-- Media -->
+                                <div class="project-media-wrapper" style="background: linear-gradient(135deg, rgba(15, 89, 47, 0.08) 0%, rgba(123, 193, 67, 0.08) 100%); border: 1px solid rgba(15, 89, 47, 0.15);">
+                                    <div class="flex items-center select-none" style="font-family: 'Pacifico', cursive; font-size: 28px; font-weight: 400; line-height: 1; padding-bottom: 2px;">
+                                      <span style="color: #0f592f;">Clip</span><span style="color: #7bc143;">Chain</span><span style="color: #0f592f;">!</span>
+                                      <div style="color: #7bc143; margin-top: -4px; margin-left: 6px; position: relative; display: inline-flex;">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+                                          <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                                          <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                                        </svg>
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" style="position: absolute; top: -12px; right: -8px; stroke-width: 4;">
+                                          <line x1="12" y1="2" x2="12" y2="7"></line>
+                                          <line x1="20" y1="6" x2="16" y2="9"></line>
+                                          <line x1="22" y1="14" x2="18" y2="14"></line>
+                                        </svg>
+                                      </div>
+                                    </div>
+                                </div>
+                                <!-- Top-Right Actions -->
+                                <a href="https://github.com/patelom2810/clipchain" target="_blank" class="project-ny-heart-btn" title="GitHub Code" onclick="event.stopPropagation()">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <!-- Text -->
+                                <div class="project-ny-content">
+                                    <h3 class="project-ny-title">ClipChain</h3>
+                                    <p class="project-ny-subtitle">Universal clipboard tool. Sync text and code snippets across devices in real-time.</p>
+                                    <div class="project-ny-meta-row">
+                                        <span class="project-ny-meta-item"><i class="fas fa-tag"></i> Clipboard</span>
+                                        <span class="project-ny-meta-item"><i class="fas fa-link"></i> Web Sync</span>
+                                    </div>
+                                    <a href="https://clipchain.netlify.app" target="_blank" class="project-ny-btn-white" onclick="event.stopPropagation()">View Live</a>
+                                </div>
+                            </div>
+
+                            <!-- BACK -->
+                            <div class="flip-card-back" style="background: linear-gradient(145deg, rgba(15, 89, 47, 0.22) 0%, rgba(123, 193, 67, 0.18) 100%);">
+                                <div class="flip-back-header">
+                                    <span style="font-family: 'Pacifico', cursive; font-size: 22px; color: #0f592f;">Clip<span style="color: #7bc143;">Chain</span><span style="color: #0f592f;">!</span></span>
+                                </div>
+                                <ul class="flip-points">
+                                    <li class="flip-point">Developed a real-time clipboard synchronization platform using Firebase Realtime Database, enabling instant cross-device text sharing.</li>
+                                    <li class="flip-point">Implemented secure collaboration features including password-protected rooms, QR code sharing, self-destruct timers, and local clipboard history.</li>
+                                    <li class="flip-point">Built a responsive interface with live Markdown preview, search functionality, and light/dark themes for an intuitive user experience.</li>
+                                </ul>
+                                <button class="flip-back-btn" style="border-color: #7bc143; color: #0f592f;" onclick="event.stopPropagation(); unflipCard(this)">
+                                    <i class="fas fa-arrow-left"></i> Back
+                                </button>
+                            </div>
+
                         </div>
                     </div>
                     
 
 
-                    <!-- Card 4: Blinkit Analysis -->
-                    <div class="project-card-ny">
-                        <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=600&q=80" alt="Blinkit Analysis" class="project-ny-bg-image" loading="lazy">
-                        <div class="project-ny-overlay"></div>
-                        <a href="projects.html#blinkit-analysis" class="project-ny-heart-btn" title="View Details">
-                            <i class="fas fa-info-circle"></i>
-                        </a>
-                        <div class="project-ny-content">
-                            <h3 class="project-ny-title">Blinkit Analysis</h3>
-                            <p class="project-ny-subtitle">PowerBI &bull; Grocery delivery sales dashboard</p>
-                            <div class="project-ny-meta-row">
-                                <span class="project-ny-meta-item"><i class="fas fa-tag"></i> Data Visualization</span>
-                                <span class="project-ny-meta-item"><i class="fas fa-chart-pie"></i> Business KPIs</span>
-                            </div>
-                            <a href="projects.html#blinkit-analysis" class="project-ny-btn-white">Explore Insights</a>
-                        </div>
-                    </div>
 
                 </div>
+                <!-- Mobile Stack Dots -->
+                <div class="stack-dots" id="stackDots"></div>
             </div>
         </div>
     </section>
@@ -543,7 +719,7 @@
                         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS" loading="lazy">
                     </div>
                     <div>
-                        <h3>AWS Certified</h3>
+                        <h3>AWS Certificate</h3>
                         <p>Amazon Web Services</p>
                         <div class="cert-badge">
                             View Certificate <i class="fas fa-arrow-right"></i>
@@ -604,6 +780,126 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        /* ══════════════════════════════════════
+           FLIP CARD — Desktop only
+        ══════════════════════════════════════ */
+        function flipCard(container) {
+            if (window.innerWidth <= 768) return; // mobile uses stack
+            const wasFlipped = container.classList.contains('flipped');
+            document.querySelectorAll('.flip-card-container.flipped').forEach(c => {
+                c.classList.remove('flipped');
+                c.querySelectorAll('.flip-point').forEach(p => p.classList.remove('visible'));
+            });
+            if (!wasFlipped) {
+                container.classList.add('flipped');
+                const points = container.querySelectorAll('.flip-point');
+                points.forEach((pt, i) => {
+                    setTimeout(() => pt.classList.add('visible'), 420 + i * 180);
+                });
+            }
+        }
+
+        function unflipCard(btn) {
+            const container = btn.closest('.flip-card-container');
+            container.classList.remove('flipped');
+            container.querySelectorAll('.flip-point').forEach(p => p.classList.remove('visible'));
+        }
+
+        /* ══════════════════════════════════════
+           MOBILE CARD STACK
+        ══════════════════════════════════════ */
+        (function initMobileStack() {
+            const cards   = Array.from(document.querySelectorAll('.flip-card-container'));
+            const dotsWrap = document.getElementById('stackDots');
+            let active = 0;
+            let busy   = false;
+
+            if (!cards.length) return;
+
+            // Build dots
+            cards.forEach((_, i) => {
+                const d = document.createElement('span');
+                d.className = 'stack-dot' + (i === 0 ? ' stack-dot-active' : '');
+                dotsWrap.appendChild(d);
+            });
+
+            function getPos(relIndex) {
+                // relIndex: 0 = top, 1 = mid, 2+ = bottom
+                const offsets = [
+                    { y: 0,   scale: 1,    opacity: 1,   z: 3 },
+                    { y: 14,  scale: 0.94, opacity: 0.85, z: 2 },
+                    { y: 26,  scale: 0.88, opacity: 0.65, z: 1 },
+                ];
+                return offsets[Math.min(relIndex, 2)];
+            }
+
+            function applyStack(skipTransition) {
+                cards.forEach((card, i) => {
+                    const rel = (i - active + cards.length) % cards.length;
+                    const pos = getPos(rel);
+                    card.style.transition = skipTransition ? 'none' : 'transform 0.42s cubic-bezier(0.4,0.2,0.2,1), opacity 0.42s ease, z-index 0s';
+                    card.style.transform  = `translateY(${pos.y}px) scale(${pos.scale})`;
+                    card.style.opacity    = pos.opacity;
+                    card.style.zIndex     = pos.z;
+                    card.classList.remove('stack-exit-left');
+                });
+                // Update dots
+                dotsWrap.querySelectorAll('.stack-dot').forEach((d, i) => {
+                    d.classList.toggle('stack-dot-active', i === active);
+                });
+            }
+
+            function nextCard() {
+                if (window.innerWidth > 768 || busy) return;
+                busy = true;
+                const current = cards[active];
+                // Swipe out the top card
+                current.style.transition = 'transform 0.38s cubic-bezier(0.4,0,1,1), opacity 0.38s ease';
+                current.style.transform  = 'translateX(110%) rotate(12deg) scale(1)';
+                current.style.opacity    = '0';
+                current.style.zIndex     = '10';
+
+                setTimeout(() => {
+                    active = (active + 1) % cards.length;
+                    applyStack(true);           // snap dismissed card to back instantly
+                    // Then re-apply with transition to animate back-cards forward
+                    requestAnimationFrame(() => requestAnimationFrame(() => {
+                        applyStack(false);
+                        busy = false;
+                    }));
+                }, 380);
+            }
+
+            // Mobile click — override flipCard
+            cards.forEach(card => {
+                card.addEventListener('click', e => {
+                    if (window.innerWidth > 768) return;
+                    e.stopPropagation();
+                    nextCard();
+                }, true); // capture phase beats inline onclick
+            });
+
+            // Init + handle resize
+            function handleResize() {
+                if (window.innerWidth <= 768) {
+                    applyStack(true);
+                } else {
+                    // Reset inline styles on desktop
+                    cards.forEach(card => {
+                        card.style.transform = '';
+                        card.style.opacity   = '';
+                        card.style.zIndex    = '';
+                        card.style.transition = '';
+                    });
+                }
+            }
+
+            handleResize();
+            window.addEventListener('resize', handleResize);
+        })();
+    </script>
 </body>
 
 </html>

@@ -204,6 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 icon.classList.add('fa-moon');
             }
         });
+
     };
     
     // Initial icon update
@@ -225,4 +226,24 @@ document.addEventListener('DOMContentLoaded', () => {
             updateIcon();
         });
     });
+
+    // Theme Toggle on About Me Avatar click
+    const aboutAvatarPill = document.querySelector('.about-avatar-pill');
+    if (aboutAvatarPill) {
+        aboutAvatarPill.addEventListener("click", () => {
+            document.body.classList.toggle("dark-theme");
+            
+            let theme = "light";
+            if (document.body.classList.contains("dark-theme")) {
+                theme = "dark";
+            }
+            localStorage.setItem("theme", theme);
+            updateIcon();
+        });
+    }
 });
+
+// Toggle education tree nodes
+function toggleTreeNode(node) {
+    node.classList.toggle('expanded');
+}
