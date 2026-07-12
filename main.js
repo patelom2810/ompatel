@@ -129,11 +129,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const backToTopBtn = document.querySelector('.back-to-top');
 
     if (backToTopBtn) {
+        const glassyNavContainer = document.querySelector('.glassy-nav-container');
         const toggleBackToTop = () => {
-            backToTopBtn.classList.toggle('visible', window.scrollY > 300);
+            const isScrolled = window.scrollY > 300;
+            backToTopBtn.classList.toggle('visible', isScrolled);
+            if (glassyNavContainer) {
+                glassyNavContainer.classList.toggle('dock-shrunk', isScrolled);
+            }
         };
 
         window.addEventListener('scroll', toggleBackToTop);
+        window.addEventListener('load', toggleBackToTop);
+        document.addEventListener('DOMContentLoaded', toggleBackToTop);
         toggleBackToTop();
 
         backToTopBtn.addEventListener('click', () => {

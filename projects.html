@@ -13,7 +13,7 @@
         rel="stylesheet">
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=2.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -57,12 +57,6 @@
         <div class="blob blob-3"></div>
     </div>
 
-    <!-- Back to Top Button -->
-    <div class="back-to-top">
-        <i class="fas fa-arrow-up"></i>
-    </div>
-
-
     <!-- Glassy Navigation Dock -->
     <div class="glassy-nav-container">
         <nav class="glassy-nav">
@@ -84,7 +78,15 @@
             </a>
             <a href="projects.html" class="nav-item nav-link-dock active" data-tooltip="Projects">
                 <i class="fas fa-briefcase"></i>
+            </a>
+            <a href="index.html#contact" class="nav-item nav-link-dock" data-tooltip="Contact">
+                <i class="fas fa-envelope"></i>
+            </a>
         </nav>
+        <!-- Back to Top Button -->
+        <div class="back-to-top">
+            <i class="fas fa-arrow-up"></i>
+        </div>
     </div>
 
     <!-- Top Header Pill (Static inside Projects page for Desktop) -->
@@ -197,7 +199,7 @@
                     <a href="http://13.232.179.239:8000/" target="_blank" class="project-ny-heart-btn" title="Live Demo">
                         <i class="fas fa-external-link-alt"></i>
                     </a>
-                    <a href="https://github.com/kachhadiyajanvi/E-GAMESCOUT" target="_blank" class="project-ny-heart-btn" style="right: 79px;" title="GitHub Code">
+                    <a href="https://github.com/kachhadiyajanvi/E-GAMESCOUT" target="_blank" class="project-ny-heart-btn" style="right: 90px;" title="GitHub Code">
                         <i class="fab fa-github"></i>
                     </a>
 
@@ -214,9 +216,10 @@
                 </div>
 
 
-                <!-- ClipChain (Web - SF Style) -->
-                <div class="project-card project-card-sf" data-category="web">
-                    <div class="project-sf-image-wrapper" style="background: linear-gradient(135deg, rgba(15, 89, 47, 0.08) 0%, rgba(123, 193, 67, 0.08) 100%); display: flex; align-items: center; justify-content: center; height: 210px; position: relative; overflow: hidden;">
+                <!-- ClipChain (Data/Web - NY Style) -->
+                <div id="clipchain" class="project-card project-card-ny" data-category="web">
+                    <!-- Top Inner Panel -->
+                    <div class="project-media-wrapper" style="background: linear-gradient(135deg, rgba(15, 89, 47, 0.08) 0%, rgba(123, 193, 67, 0.08) 100%); display: flex; align-items: center; justify-content: center; height: 210px; position: relative; overflow: hidden;">
                         <!-- Custom HTML Logo -->
                         <div id="workspaceAvatar" class="flex items-center select-none cursor-pointer hover:opacity-80 transition-opacity" style="font-family: 'Pacifico', cursive; font-size: 26px; font-weight: 400; line-height: 1; padding-bottom: 2px;" title="Switch Workspace">
                           <span style="color: #0f592f;" class="dark:text-emerald-500">Clip</span><span style="color: #7bc143;">Chain</span><span style="color: #0f592f;" class="dark:text-emerald-500">!</span>
@@ -233,20 +236,20 @@
                             </svg>
                           </div>
                         </div>
-                        <a href="https://github.com/patelom2810/clipchain" target="_blank" class="project-sf-heart-btn" title="GitHub Code">
+                        <a href="https://github.com/patelom2810/clipchain" target="_blank" class="project-ny-heart-btn" title="GitHub Code">
                             <i class="fab fa-github"></i>
                         </a>
                     </div>
-                    <div class="project-sf-info">
-                        <h3 class="project-sf-title">ClipChain</h3>
-                        <p class="project-sf-subtitle">Universal clipboard tool. Sync text and code snippets across devices in real-time.</p>
-                        <div class="project-sf-meta-row">
-                            <span class="project-sf-meta-item"><i class="fas fa-tag"></i> Clipboard</span>
-                            <span class="project-sf-meta-item"><i class="fas fa-link"></i> Web Sync</span>
+
+                    <!-- Text Content -->
+                    <div class="project-ny-content">
+                        <h3 class="project-ny-title">ClipChain</h3>
+                        <p class="project-ny-subtitle">Firebase &bull; React &bull; Tailwind &bull; CSS3</p>
+                        <div class="project-ny-meta-row">
+                            <span class="project-ny-meta-item"><i class="fas fa-tag"></i> Clipboard</span>
+                            <span class="project-ny-meta-item"><i class="fas fa-link"></i> Web Sync</span>
                         </div>
-                        <div class="project-sf-action-row">
-                            <a href="https://clipchain.netlify.app" target="_blank" class="project-sf-btn-black">View Live</a>
-                        </div>
+                        <a href="https://clipchain.netlify.app" target="_blank" class="project-ny-btn-white">View Live</a>
                     </div>
                 </div>
                 
@@ -293,11 +296,10 @@
             </div>
             <!-- Bottom Row -->
             <div class="footer-bottom">
-                <p class="footer-copy">&copy; 2024 Om Patel &bull; Data Analyst &amp; AI/ML Developer</p>
+                <p class="footer-copy">&copy; 2026 Om Patel &bull; Data Analyst &amp; AI/ML Developer</p>
                 <div class="footer-links">
                     <a href="https://github.com/patelom2810" target="_blank">GitHub</a>
                     <a href="https://www.linkedin.com/in/om-patel-1a929831b" target="_blank">LinkedIn</a>
-                    <a href="#" target="_blank">Twitter</a>
                     <a href="mailto:patelom2810@gmail.com">Email</a>
                 </div>
             </div>

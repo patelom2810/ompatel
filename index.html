@@ -20,9 +20,9 @@
           media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
     <!-- Main stylesheet -->
-    <link rel="stylesheet" href="style.css">
-    <!-- Tailwind (deferred — only used for utility classes) -->
-    <script src="https://cdn.tailwindcss.com" defer></script>
+    <link rel="stylesheet" href="style.css?v=2.0">
+    <!-- Tailwind (only used for utility classes) -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <script src="main.js" defer></script>
     <script>
       tailwind.config = {
@@ -65,12 +65,6 @@
         <div class="blob blob-3"></div>
     </div>
 
-    <!-- Back to Top Button -->
-    <div class="back-to-top">
-        <i class="fas fa-arrow-up"></i>
-    </div>
-
-
     <!-- Glassy Navigation Dock -->
     <div class="glassy-nav-container">
         <nav class="glassy-nav">
@@ -93,7 +87,14 @@
             <a href="projects.html" class="nav-item nav-link-dock" data-tooltip="Projects">
                 <i class="fas fa-briefcase"></i>
             </a>
+            <a href="#contact" class="nav-item nav-link-dock" data-tooltip="Contact">
+                <i class="fas fa-envelope"></i>
+            </a>
         </nav>
+        <!-- Back to Top Button -->
+        <div class="back-to-top">
+            <i class="fas fa-arrow-up"></i>
+        </div>
     </div>
 
     <!-- Hero Section -->
@@ -598,7 +599,7 @@
                                 <a href="http://13.232.179.239:8000/" target="_blank" class="project-ny-heart-btn" title="Live Demo" onclick="event.stopPropagation()">
                                     <i class="fas fa-external-link-alt"></i>
                                 </a>
-                                <a href="https://github.com/kachhadiyajanvi/E-GAMESCOUT" target="_blank" class="project-ny-heart-btn" style="right: 79px;" title="GitHub Code" onclick="event.stopPropagation()">
+                                <a href="https://github.com/kachhadiyajanvi/E-GAMESCOUT" target="_blank" class="project-ny-heart-btn" style="right: 90px;" title="GitHub Code" onclick="event.stopPropagation()">
                                     <i class="fab fa-github"></i>
                                 </a>
                                 <!-- Text -->
@@ -665,7 +666,7 @@
                                 <!-- Text -->
                                 <div class="project-ny-content">
                                     <h3 class="project-ny-title">ClipChain</h3>
-                                    <p class="project-ny-subtitle">Universal clipboard tool. Sync text and code snippets across devices in real-time.</p>
+                                    <p class="project-ny-subtitle">Firebase &bull; React &bull; Tailwind &bull; CSS3</p>
                                     <div class="project-ny-meta-row">
                                         <span class="project-ny-meta-item"><i class="fas fa-tag"></i> Clipboard</span>
                                         <span class="project-ny-meta-item"><i class="fas fa-link"></i> Web Sync</span>
