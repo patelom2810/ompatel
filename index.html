@@ -12,15 +12,15 @@
     <!-- Preload hero image (LCP) -->
     <link rel="preload" as="image" href="img/profile-suit-transparent.png" fetchpriority="high">
     <!-- Google Fonts (non-blocking display=swap already) -->
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:wght@300;400;500;600;700;800&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Pacifico&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:wght@300;400;500;600;700;800&family=Syne:wght@400..800&display=swap"
         rel="stylesheet" media="print" onload="this.media='all'">
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet"></noscript>
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Syne:wght@400..800&display=swap" rel="stylesheet"></noscript>
     <!-- FontAwesome — non-blocking -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
           media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
     <!-- Main stylesheet -->
-    <link rel="stylesheet" href="style.css?v=2.0">
+    <link rel="stylesheet" href="style.css?v=3.0">
     <!-- Tailwind (only used for utility classes) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="main.js" defer></script>
@@ -39,7 +39,8 @@
               navBg: 'rgba(255, 255, 255, 0.95)'
             },
             fontFamily: {
-              poppins: ['Poppins', 'sans-serif']
+              poppins: ['Poppins', 'sans-serif'],
+              syne: ['Syne', 'sans-serif']
             }
           }
         }
@@ -58,6 +59,83 @@
             }
         })();
     </script>
+    <!-- Mobile Splash Screen -->
+    <div id="mobile-splash">
+        <!-- Background Animated Graphs -->
+        <div class="splash-graphs">
+            <!-- Line Graph SVG -->
+            <svg class="splash-svg-graph line-graph" viewBox="0 0 400 200">
+                <path d="M 10 180 L 70 150 L 130 160 L 190 90 L 250 110 L 310 40 L 390 20" fill="none" stroke="rgba(255, 255, 255, 0.08)" stroke-width="2" stroke-linecap="round"/>
+                <path class="animated-path" d="M 10 180 L 70 150 L 130 160 L 190 90 L 250 110 L 310 40 L 390 20" fill="none" stroke="rgba(65, 105, 225, 0.2)" stroke-width="2.5" stroke-linecap="round"/>
+                <circle cx="390" cy="20" r="4" fill="#60a5fa" class="graph-pulse-dot" />
+            </svg>
+            <!-- Nodes Network SVG -->
+            <svg class="splash-svg-graph network-graph" viewBox="0 0 300 300">
+                <line x1="50" y1="50" x2="150" y2="100" stroke="rgba(255, 255, 255, 0.05)" stroke-width="1"/>
+                <line x1="150" y1="100" x2="250" y2="70" stroke="rgba(255, 255, 255, 0.05)" stroke-width="1"/>
+                <line x1="150" y1="100" x2="100" y2="220" stroke="rgba(255, 255, 255, 0.05)" stroke-width="1"/>
+                <line x1="100" y1="220" x2="220" y2="250" stroke="rgba(255, 255, 255, 0.05)" stroke-width="1"/>
+                <line x1="250" y1="70" x2="220" y2="250" stroke="rgba(255, 255, 255, 0.05)" stroke-width="1"/>
+                
+                <circle cx="50" cy="50" r="4" fill="rgba(255, 255, 255, 0.15)" class="node-pulse"/>
+                <circle cx="150" cy="100" r="5" fill="rgba(65, 105, 225, 0.3)" class="node-pulse-blue"/>
+                <circle cx="250" cy="70" r="4" fill="rgba(255, 255, 255, 0.15)" class="node-pulse"/>
+                <circle cx="100" cy="220" r="4" fill="rgba(255, 255, 255, 0.15)" class="node-pulse"/>
+                <circle cx="220" cy="250" r="5" fill="rgba(65, 105, 225, 0.3)" class="node-pulse-blue"/>
+            </svg>
+            <!-- Bar Chart SVG -->
+            <svg class="splash-svg-graph bar-graph" viewBox="0 0 200 150">
+                <rect x="10" y="80" width="14" height="70" rx="2" fill="rgba(255, 255, 255, 0.04)"/>
+                <rect x="34" y="50" width="14" height="100" rx="2" fill="rgba(255, 255, 255, 0.04)"/>
+                <rect x="58" y="90" width="14" height="60" rx="2" fill="rgba(255, 255, 255, 0.04)"/>
+                <rect x="82" y="30" width="14" height="120" rx="2" fill="rgba(255, 255, 255, 0.04)"/>
+                <rect x="106" y="60" width="14" height="90" rx="2" fill="rgba(255, 255, 255, 0.04)"/>
+                <rect x="130" y="10" width="14" height="140" rx="2" fill="rgba(255, 255, 255, 0.04)"/>
+            </svg>
+        </div>
+        <div class="splash-content">
+            <div class="splash-title">
+                <span>O</span><span>m</span><span>&nbsp;</span><span>P</span><span>a</span><span>t</span><span>e</span><span>l</span>
+            </div>
+            <div class="splash-subtitle">Data Analyst</div>
+        </div>
+        <!-- Skip Intro Button -->
+        <button class="skip-intro-btn" onclick="skipIntro()">
+            Skip Intro <i class="fas fa-chevron-right"></i>
+        </button>
+    </div>
+    <script>
+        function skipIntro() {
+            const splash = document.getElementById('mobile-splash');
+            if (splash && !splash.classList.contains('fade-out')) {
+                splash.classList.add('fade-out');
+                document.body.classList.remove('no-scroll');
+                if (window.splashTimeout) clearTimeout(window.splashTimeout);
+                if (window.splashHideTimeout) clearTimeout(window.splashHideTimeout);
+                window.splashHideTimeout = setTimeout(function() {
+                    splash.style.display = 'none';
+                }, 600);
+            }
+        }
+
+        (function() {
+            const splash = document.getElementById('mobile-splash');
+            if (window.innerWidth > 768) {
+                splash.style.display = 'none';
+            } else {
+                document.body.classList.add('no-scroll');
+                
+                // Fade out splash screen overlay at 2.0s
+                window.splashTimeout = setTimeout(function() {
+                    splash.classList.add('fade-out');
+                    document.body.classList.remove('no-scroll');
+                    window.splashHideTimeout = setTimeout(function() {
+                        splash.style.display = 'none';
+                    }, 600);
+                }, 2000);
+            }
+        })();
+    </script>
     <!-- Background Mesh Blobs -->
     <div class="mesh-blobs">
         <div class="blob blob-1"></div>
@@ -70,9 +148,11 @@
         <nav class="glassy-nav">
             <a href="#about" class="nav-item nav-link-dock" data-tooltip="About">
                 <i class="fas fa-user"></i>
+                <span class="nav-label">About</span>
             </a>
             <a href="#skills" class="nav-item nav-link-dock" data-tooltip="Skills">
                 <i class="fas fa-code"></i>
+                <span class="nav-label">Skills</span>
             </a>
             
             <a href="#home" class="nav-profile-wrapper nav-link-dock" data-tooltip="Home">
@@ -83,12 +163,15 @@
 
             <a href="#education" class="nav-item nav-link-dock hide-mobile" data-tooltip="Education">
                 <i class="fas fa-graduation-cap"></i>
+                <span class="nav-label">Education</span>
             </a>
             <a href="projects.html" class="nav-item nav-link-dock" data-tooltip="Projects">
                 <i class="fas fa-briefcase"></i>
+                <span class="nav-label">Projects</span>
             </a>
             <a href="#contact" class="nav-item nav-link-dock" data-tooltip="Contact">
                 <i class="fas fa-envelope"></i>
+                <span class="nav-label">Contact</span>
             </a>
         </nav>
         <!-- Back to Top Button -->
@@ -107,7 +190,7 @@
         <div class="hero-header-pill">
             <div class="hero-logo-box">
                 <div class="hero-logo-square">OP</div>
-                <span class="hero-logo-text">DESIGN BY OM PATEL</span>
+                <span class="hero-logo-text">OM PATEL</span>
             </div>
             <div class="hero-header-links">
                 <a href="#about" class="hero-header-link">ABOUT</a>
@@ -118,12 +201,21 @@
                 <span class="hero-header-slash">/</span>
                 <a href="#contact" class="hero-header-link">CONTACT</a>
             </div>
+            <!-- Dynamic Search Bar -->
+            <div class="nav-search-wrapper">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" class="nav-search-input" id="nav-search" placeholder="Search projects...">
+            </div>
             <a href="mailto:patelom2810@gmail.com" class="hero-header-btn">HIRE ME</a>
         </div>
 
         <div class="hero-main-content">
             <!-- Left Side Role & Services Widget -->
             <div class="hero-sidebar-left">
+                <div class="hero-status-badge">
+                    <span class="status-dot"></span>
+                    Available for Internships
+                </div>
                 <span class="hero-role-tag">Services</span>
                 <h4 class="hero-services-heading">Let's build quality models, pipelines, and insights with my services</h4>
                 <a href="#about" class="hero-services-more-link">show more <i class="fas fa-arrow-right"></i></a>
@@ -144,7 +236,12 @@
 
             <!-- Mobile-only: Role text below image -->
             <div class="hero-mobile-role">
+                <div class="hero-status-badge" style="margin-left: auto; margin-right: auto;">
+                    <span class="status-dot"></span>
+                    Available for Internships
+                </div>
                 <h4 class="hero-role-heading">Data Analyst &amp; AI/ML Developer</h4>
+                <p class="hero-role-subtext">Building models, pipelines, and insights to turn complex data into clear, actionable stories.</p>
             </div>
 
             <!-- Mobile-only: Scroll indicator -->
@@ -337,91 +434,146 @@
             </div>
         </div>
     </section>
-
+    
     <!-- Skills Section -->
     <section id="skills" class="skills">
         <div class="max-w-[1200px] mx-auto px-5">
             <div class="section-header">
                 <span class="section-subtitle">&mdash; EXPERTISE</span>
-                <h2 class="section-title">Skills & Tooling</h2>
+                <h2 class="section-title">Technical Skillset</h2>
+                <p style="font-family: var(--font-poppins), sans-serif; font-size: 0.95rem; color: var(--text-muted); margin-top: 8px; max-width: 600px; line-height: 1.5; text-align: left;">
+                    Organized categories of tools, frameworks, and methodologies that I use daily.
+                </p>
             </div>
 
             <div class="skills-bento-grid">
-                <!-- Box 1: Data Analytics -->
-                <div class="skills-bento-card card-data">
+                <!-- Card 1: Languages -->
+                <div class="skills-bento-card">
                     <div class="skills-bento-header">
                         <div class="skills-bento-icon">
-                            <i class="fas fa-chart-bar"></i>
+                            <i class="fas fa-code"></i>
                         </div>
-                        <span class="skills-bento-number">01</span>
                     </div>
                     <div class="skills-bento-body">
-                        <h3>Data Analytics</h3>
-                        <div class="skills-bento-tags">
-                            <span class="skill-badge">Power BI</span>
-                            <span class="skill-badge">Tableau</span>
-                            <span class="skill-badge">Excel</span>
-                            <span class="skill-badge">Pandas</span>
-                            <span class="skill-badge">NumPy</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Box 2: Programming -->
-                <div class="skills-bento-card card-programming">
-                    <div class="skills-bento-header">
-                        <div class="skills-bento-icon">
-                            <i class="fas fa-terminal"></i>
-                        </div>
-                        <span class="skills-bento-number">02</span>
-                    </div>
-                    <div class="skills-bento-body">
-                        <h3>Programming</h3>
+                        <h3>Languages</h3>
                         <div class="skills-bento-tags">
                             <span class="skill-badge">Python</span>
+                            <span class="skill-badge">PHP</span>
                             <span class="skill-badge">SQL</span>
+                            <span class="skill-badge">R</span>
                             <span class="skill-badge">JavaScript</span>
-                            <span class="skill-badge">HTML5</span>
-                            <span class="skill-badge">CSS3</span>
-                            <span class="skill-badge">MySQL</span>
+                            <span class="skill-badge">Dart</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Box 3: AI / ML -->
-                <div class="skills-bento-card card-ai">
+                <!-- Card 2: AI & Machine Learning -->
+                <div class="skills-bento-card">
                     <div class="skills-bento-header">
                         <div class="skills-bento-icon">
                             <i class="fas fa-brain"></i>
                         </div>
-                        <span class="skills-bento-number">03</span>
                     </div>
                     <div class="skills-bento-body">
-                        <h3>AI / ML</h3>
+                        <h3>AI & Machine Learning</h3>
                         <div class="skills-bento-tags">
-                            <span class="skill-badge">TensorFlow</span>
-                            <span class="skill-badge">Prompt Engineering</span>
-                            <span class="skill-badge">Scikit-Learn</span>
+                            <span class="skill-badge">scikit-learn</span>
+                            <span class="skill-badge">Pandas</span>
+                            <span class="skill-badge">NumPy</span>
+                            <span class="skill-badge">Matplotlib</span>
+                            <span class="skill-badge">Classification</span>
+                            <span class="skill-badge">Regression</span>
+                            <span class="skill-badge">Model Evaluation</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Box 4: Cloud & Backend -->
-                <div class="skills-bento-card card-cloud">
+                <!-- Card 3: Backend & APIs -->
+                <div class="skills-bento-card">
+                    <div class="skills-bento-header">
+                        <div class="skills-bento-icon">
+                            <i class="fas fa-server"></i>
+                        </div>
+                    </div>
+                    <div class="skills-bento-body">
+                        <h3>Backend & APIs</h3>
+                        <div class="skills-bento-tags">
+                            <span class="skill-badge">FastAPI</span>
+                            <span class="skill-badge">Node.js</span>
+                            <span class="skill-badge">REST APIs</span>
+                            <span class="skill-badge">LangChain</span>
+                            <span class="skill-badge">PHPMailer</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4: Frontend -->
+                <div class="skills-bento-card">
+                    <div class="skills-bento-header">
+                        <div class="skills-bento-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                    </div>
+                    <div class="skills-bento-body">
+                        <h3>Frontend</h3>
+                        <div class="skills-bento-tags">
+                            <span class="skill-badge">React</span>
+                            <span class="skill-badge">Flutter</span>
+                            <span class="skill-badge">HTML & CSS</span>
+                            <span class="skill-badge">Tailwind CSS</span>
+                            <span class="skill-badge">Jinja2</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5: Databases -->
+                <div class="skills-bento-card">
+                    <div class="skills-bento-header">
+                        <div class="skills-bento-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                    </div>
+                    <div class="skills-bento-body">
+                        <h3>Databases</h3>
+                        <div class="skills-bento-tags">
+                            <span class="skill-badge">MySQL</span>
+                            <span class="skill-badge">Supabase</span>
+                            <span class="skill-badge">ChromaDB</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 6: Cloud & DevOps -->
+                <div class="skills-bento-card">
                     <div class="skills-bento-header">
                         <div class="skills-bento-icon">
                             <i class="fas fa-cloud"></i>
                         </div>
-                        <span class="skills-bento-number">04</span>
                     </div>
                     <div class="skills-bento-body">
-                        <h3>Cloud & Backend</h3>
+                        <h3>Cloud & DevOps</h3>
                         <div class="skills-bento-tags">
-                            <span class="skill-badge">AWS (EC2, S3, RDS)</span>
-                            <span class="skill-badge">Firebase</span>
-                            <span class="skill-badge">Supabase</span>
-                            <span class="skill-badge">MongoDB</span>
-                            <span class="skill-badge">GitHub</span>
+                            <span class="skill-badge">Railway</span>
+                            <span class="skill-badge">Netlify</span>
+                            <span class="skill-badge">AWS S3</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 7: Tools & Platforms -->
+                <div class="skills-bento-card">
+                    <div class="skills-bento-header">
+                        <div class="skills-bento-icon">
+                            <i class="fas fa-cog"></i>
+                        </div>
+                    </div>
+                    <div class="skills-bento-body">
+                        <h3>Tools & Platforms</h3>
+                        <div class="skills-bento-tags">
+                            <span class="skill-badge">Git & GitHub</span>
+                            <span class="skill-badge">VS Code</span>
+                            <span class="skill-badge">Jupyter Notebook</span>
+                            <span class="skill-badge">Android Studio</span>
                         </div>
                     </div>
                 </div>
@@ -536,7 +688,52 @@
             
             <div class="featured-projects-slider-wrapper">
                 <div class="featured-projects-slider">
-                    <!-- Card 1: Solar Energy Analytics — Flip Card -->
+                    <!-- Card 1: Shikshapatri AI — Flip Card -->
+                    <div class="flip-card-container" onclick="flipCard(this)">
+                        <div class="flip-card-inner">
+
+                            <!-- FRONT -->
+                            <div class="flip-card-front project-card-ny" style="background: linear-gradient(145deg, rgba(16, 185, 129, 0.12) 0%, rgba(59, 130, 246, 0.10) 100%) !important;">
+                                <!-- Media -->
+                                <div class="project-media-wrapper" style="background: #f6f0e7; border: 1px solid rgba(0, 0, 0, 0.03); display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 12px; height: 210px; box-sizing: border-box;">
+                                    <img src="img/shikshapatri-logo.png" alt="Shikshapatri AI Logo" style="max-height: 140px; max-width: 100%; object-fit: contain; border-radius: 8px;">
+                                </div>
+                                <!-- Top-Right Actions -->
+                                <a href="https://github.com/patelom2810/shikshapatri-ai" target="_blank" class="project-ny-heart-btn" title="GitHub Code" onclick="event.stopPropagation()">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <!-- Text -->
+                                <div class="project-ny-content">
+                                    <h3 class="project-ny-title">Shikshapatri AI</h3>
+                                    <p class="project-ny-subtitle">Python &bull; LangChain &bull; Gemini Pro &bull; ChromaDB</p>
+                                    <div class="project-ny-meta-row">
+                                        <span class="project-ny-meta-item"><i class="fas fa-tag"></i> AI Scripture</span>
+                                        <span class="project-ny-meta-item"><i class="fas fa-search"></i> RAG search</span>
+                                    </div>
+                                    <a href="projects.html#shikshapatri-ai" class="project-ny-btn-white" onclick="event.stopPropagation()">View Details</a>
+                                </div>
+                            </div>
+
+                            <!-- BACK -->
+                            <div class="flip-card-back" style="background: linear-gradient(145deg, rgba(16, 185, 129, 0.22) 0%, rgba(59, 130, 246, 0.18) 100%);">
+                                <div class="flip-back-header">
+                                    <i class="fas fa-brain" style="font-size: 1.6rem; color: #10b981;"></i>
+                                    <span class="flip-back-title" style="color: #065f46;">Shikshapatri AI</span>
+                                </div>
+                                <ul class="flip-points">
+                                    <li class="flip-point">Developed an AI-powered semantic search and translation engine for the Shikshapatri scriptures using LangChain and Gemini Pro.</li>
+                                    <li class="flip-point">Integrated ChromaDB vector database for efficient embedding storage and Retrieval-Augmented Generation (RAG).</li>
+                                    <li class="flip-point">Built a FastAPI back-end interface supporting natural language queries in English and Gujarati.</li>
+                                </ul>
+                                <button class="flip-back-btn" style="border-color: #10b981; color: #065f46;" onclick="event.stopPropagation(); unflipCard(this)">
+                                    Go Back <i class="fas fa-undo" style="font-size: 0.75rem; margin-left: 5px;"></i>
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Solar Energy Analytics — Flip Card -->
                     <div class="flip-card-container" onclick="flipCard(this)">
                         <div class="flip-card-inner">
 
@@ -708,11 +905,8 @@
             <h2 class="section-title">Certifications</h2>
         </div>
         
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 350px)); gap: 30px; justify-content: center;">
+        <div class="certifications-grid">
             <a href="Certificate/aws.pdf" target="_blank" class="cert-card">
-                <!-- Watermark -->
-                <i class="fas fa-award timeline-watermark"></i>
-                
                 <div style="display: flex; gap: 20px; align-items: flex-start; position: relative; z-index: 2;">
                     <div class="cert-icon-box aws-orange-bg">
                         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS" loading="lazy">
@@ -722,6 +916,21 @@
                         <p>Amazon Web Services</p>
                         <div class="cert-badge">
                             View Certificate <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#" class="cert-card" style="cursor: default;" onclick="event.preventDefault();">
+                <div style="display: flex; gap: 20px; align-items: flex-start; position: relative; z-index: 2;">
+                    <div class="cert-icon-box" style="background: rgba(66, 133, 244, 0.08); border: 1.5px solid rgba(66, 133, 244, 0.15); display: flex; align-items: center; justify-content: center; width: 56px; height: 56px; border-radius: 16px; flex-shrink: 0;">
+                        <i class="fab fa-google" style="font-size: 1.6rem; color: #4285f4;"></i>
+                    </div>
+                    <div>
+                        <h3>Google Data Analytics</h3>
+                        <p>Google Professional Certificate</p>
+                        <div class="cert-badge" style="background: rgba(66, 133, 244, 0.08); color: #4285f4; border: 1px solid rgba(66, 133, 244, 0.15);">
+                            Credential Earned <i class="fas fa-check" style="font-size: 0.75rem; margin-left: 4px;"></i>
                         </div>
                     </div>
                 </div>

@@ -71,8 +71,15 @@ document.addEventListener('DOMContentLoaded', () => {
        ========================================= */
     const projectCards = document.querySelectorAll('.project-card');
     const filterBtns = document.querySelectorAll('.filter-btn');
+    const searchInputs = document.querySelectorAll('#nav-search');
 
-    const applyFilter = (filter) => {
+    const applySearchAndCategoryFilter = () => {
+        const activeBtn = document.querySelector('.filter-btn.active');
+        const currentCategory = activeBtn ? activeBtn.getAttribute('data-filter') : 'all';
+        
+        const searchInput = document.querySelector('#nav-search');
+        const searchQuery = searchInput ? searchInput.value.toLowerCase().trim() : '';
+
         let visibleCount = 0;
 
         projectCards.forEach((card) => {
@@ -84,9 +91,15 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             const categories = (card.getAttribute('data-category') || '').split(' ');
-            const matches = filter === 'all' || categories.includes(filter);
+            const title = card.querySelector('.project-ny-title') ? card.querySelector('.project-ny-title').textContent.toLowerCase() : '';
+            const subtitle = card.querySelector('.project-ny-subtitle') ? card.querySelector('.project-ny-subtitle').textContent.toLowerCase() : '';
 
-            if (matches) {
+            const categoryMatches = currentCategory === 'all' || categories.includes(currentCategory);
+            const searchMatches = searchQuery === '' || title.includes(searchQuery) || subtitle.includes(searchQuery) || categories.some(cat => cat.includes(searchQuery));
+
+            const isVisible = categoryMatches && searchMatches;
+
+            if (isVisible) {
                 card.style.display = '';
                 card.style.animation = 'none';
                 card.style.opacity = '0';
@@ -114,13 +127,41 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.addEventListener('click', () => {
             filterBtns.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
-            applyFilter(btn.getAttribute('data-filter'));
+            applySearchAndCategoryFilter();
         });
     });
 
-    // Initial load — show all with stagger
+    // Search input handlers
+    searchInputs.forEach(input => {
+        input.addEventListener('input', () => {
+            applySearchAndCategoryFilter();
+        });
+
+        // On home page, pressing Enter redirects to projects page
+        if (!document.querySelector('.projects-grid')) {
+            input.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    const query = input.value.trim();
+                    if (query) {
+                        window.location.href = `projects.html?search=${encodeURIComponent(query)}`;
+                    }
+                }
+            });
+        }
+    });
+
+    // Initial load — check URL params and apply filters
     setTimeout(() => {
-        applyFilter('all');
+        if (document.querySelector('.projects-grid')) {
+            const urlParams = new URLSearchParams(window.location.search);
+            const searchQuery = urlParams.get('search');
+            if (searchQuery) {
+                searchInputs.forEach(input => {
+                    input.value = searchQuery;
+                });
+            }
+        }
+        applySearchAndCategoryFilter();
     }, 100);
 
     /* =========================================

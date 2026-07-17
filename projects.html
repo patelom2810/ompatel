@@ -9,11 +9,11 @@
     <!-- Poppins Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:wght@300;400;500;600;700;800&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Pacifico&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:wght@300;400;500;600;700;800&family=Syne:wght@400..800&display=swap"
         rel="stylesheet">
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css?v=2.0">
+    <link rel="stylesheet" href="style.css?v=3.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -30,7 +30,8 @@
               navBg: 'rgba(255, 255, 255, 0.95)'
             },
             fontFamily: {
-              poppins: ['Poppins', 'sans-serif']
+              poppins: ['Poppins', 'sans-serif'],
+              syne: ['Syne', 'sans-serif']
             }
           }
         }
@@ -50,6 +51,83 @@
             }
         })();
     </script>
+    <!-- Mobile Splash Screen -->
+    <div id="mobile-splash">
+        <!-- Background Animated Graphs -->
+        <div class="splash-graphs">
+            <!-- Line Graph SVG -->
+            <svg class="splash-svg-graph line-graph" viewBox="0 0 400 200">
+                <path d="M 10 180 L 70 150 L 130 160 L 190 90 L 250 110 L 310 40 L 390 20" fill="none" stroke="rgba(255, 255, 255, 0.08)" stroke-width="2" stroke-linecap="round"/>
+                <path class="animated-path" d="M 10 180 L 70 150 L 130 160 L 190 90 L 250 110 L 310 40 L 390 20" fill="none" stroke="rgba(65, 105, 225, 0.2)" stroke-width="2.5" stroke-linecap="round"/>
+                <circle cx="390" cy="20" r="4" fill="#60a5fa" class="graph-pulse-dot" />
+            </svg>
+            <!-- Nodes Network SVG -->
+            <svg class="splash-svg-graph network-graph" viewBox="0 0 300 300">
+                <line x1="50" y1="50" x2="150" y2="100" stroke="rgba(255, 255, 255, 0.05)" stroke-width="1"/>
+                <line x1="150" y1="100" x2="250" y2="70" stroke="rgba(255, 255, 255, 0.05)" stroke-width="1"/>
+                <line x1="150" y1="100" x2="100" y2="220" stroke="rgba(255, 255, 255, 0.05)" stroke-width="1"/>
+                <line x1="100" y1="220" x2="220" y2="250" stroke="rgba(255, 255, 255, 0.05)" stroke-width="1"/>
+                <line x1="250" y1="70" x2="220" y2="250" stroke="rgba(255, 255, 255, 0.05)" stroke-width="1"/>
+                
+                <circle cx="50" cy="50" r="4" fill="rgba(255, 255, 255, 0.15)" class="node-pulse"/>
+                <circle cx="150" cy="100" r="5" fill="rgba(65, 105, 225, 0.3)" class="node-pulse-blue"/>
+                <circle cx="250" cy="70" r="4" fill="rgba(255, 255, 255, 0.15)" class="node-pulse"/>
+                <circle cx="100" cy="220" r="4" fill="rgba(255, 255, 255, 0.15)" class="node-pulse"/>
+                <circle cx="220" cy="250" r="5" fill="rgba(65, 105, 225, 0.3)" class="node-pulse-blue"/>
+            </svg>
+            <!-- Bar Chart SVG -->
+            <svg class="splash-svg-graph bar-graph" viewBox="0 0 200 150">
+                <rect x="10" y="80" width="14" height="70" rx="2" fill="rgba(255, 255, 255, 0.04)"/>
+                <rect x="34" y="50" width="14" height="100" rx="2" fill="rgba(255, 255, 255, 0.04)"/>
+                <rect x="58" y="90" width="14" height="60" rx="2" fill="rgba(255, 255, 255, 0.04)"/>
+                <rect x="82" y="30" width="14" height="120" rx="2" fill="rgba(255, 255, 255, 0.04)"/>
+                <rect x="106" y="60" width="14" height="90" rx="2" fill="rgba(255, 255, 255, 0.04)"/>
+                <rect x="130" y="10" width="14" height="140" rx="2" fill="rgba(255, 255, 255, 0.04)"/>
+            </svg>
+        </div>
+        <div class="splash-content">
+            <div class="splash-title">
+                <span>O</span><span>m</span><span>&nbsp;</span><span>P</span><span>a</span><span>t</span><span>e</span><span>l</span>
+            </div>
+            <div class="splash-subtitle">Data Analyst</div>
+        </div>
+        <!-- Skip Intro Button -->
+        <button class="skip-intro-btn" onclick="skipIntro()">
+            Skip Intro <i class="fas fa-chevron-right"></i>
+        </button>
+    </div>
+    <script>
+        function skipIntro() {
+            const splash = document.getElementById('mobile-splash');
+            if (splash && !splash.classList.contains('fade-out')) {
+                splash.classList.add('fade-out');
+                document.body.classList.remove('no-scroll');
+                if (window.splashTimeout) clearTimeout(window.splashTimeout);
+                if (window.splashHideTimeout) clearTimeout(window.splashHideTimeout);
+                window.splashHideTimeout = setTimeout(function() {
+                    splash.style.display = 'none';
+                }, 600);
+            }
+        }
+
+        (function() {
+            const splash = document.getElementById('mobile-splash');
+            if (window.innerWidth > 768) {
+                splash.style.display = 'none';
+            } else {
+                document.body.classList.add('no-scroll');
+                
+                // Fade out splash screen overlay at 2.0s
+                window.splashTimeout = setTimeout(function() {
+                    splash.classList.add('fade-out');
+                    document.body.classList.remove('no-scroll');
+                    window.splashHideTimeout = setTimeout(function() {
+                        splash.style.display = 'none';
+                    }, 600);
+                }, 2000);
+            }
+        })();
+    </script>
     <!-- Background Mesh Blobs -->
     <div class="mesh-blobs">
         <div class="blob blob-1"></div>
@@ -62,9 +140,11 @@
         <nav class="glassy-nav">
             <a href="index.html#about" class="nav-item nav-link-dock" data-tooltip="About">
                 <i class="fas fa-user"></i>
+                <span class="nav-label">About</span>
             </a>
             <a href="index.html#skills" class="nav-item nav-link-dock" data-tooltip="Skills">
                 <i class="fas fa-code"></i>
+                <span class="nav-label">Skills</span>
             </a>
             
             <a href="index.html#home" class="nav-profile-wrapper nav-link-dock" data-tooltip="Home">
@@ -75,12 +155,15 @@
 
             <a href="index.html#education" class="nav-item nav-link-dock hide-mobile" data-tooltip="Education">
                 <i class="fas fa-graduation-cap"></i>
+                <span class="nav-label">Education</span>
             </a>
             <a href="projects.html" class="nav-item nav-link-dock active" data-tooltip="Projects">
                 <i class="fas fa-briefcase"></i>
+                <span class="nav-label">Projects</span>
             </a>
             <a href="index.html#contact" class="nav-item nav-link-dock" data-tooltip="Contact">
                 <i class="fas fa-envelope"></i>
+                <span class="nav-label">Contact</span>
             </a>
         </nav>
         <!-- Back to Top Button -->
@@ -103,6 +186,11 @@
             <a href="projects.html" class="hero-header-link" style="color: var(--primary-color);">PROJECTS</a>
             <span class="hero-header-slash">/</span>
             <a href="index.html#contact" class="hero-header-link">CONTACT</a>
+        </div>
+        <!-- Dynamic Search Bar -->
+        <div class="nav-search-wrapper">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" class="nav-search-input" id="nav-search" placeholder="Search projects...">
         </div>
         <a href="mailto:patelom2810@gmail.com" class="hero-header-btn">HIRE ME</a>
     </div>
@@ -164,95 +252,242 @@
             </div>
             <div class="projects-grid">
                 
-                <!-- Solar Energy Analytics (Data/Web - NY Style) -->
-                <div id="solar-energy" class="project-card project-card-ny" data-category="data web">
-                    <!-- Top Inner Panel -->
-                    <div class="project-media-wrapper">
-                        <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=600&q=80" alt="Solar Energy Analytics" class="project-ny-bg-image" loading="lazy">
+                <!-- Shikshapatri AI (Data & AI) -->
+                <div id="shikshapatri-ai" class="project-card project-expanded-card" data-category="data">
+                    <div class="project-header-row">
+                        <div class="project-header-left">
+                            <div class="project-meta-badges">
+                                <span class="meta-badge-text" style="background: rgba(16, 185, 129, 0.1); color: #10b981; font-weight: 800;">CURRENTLY WORKING</span>
+                                <span class="meta-badge-text">AI SCRIPTURE INTERPRETER</span>
+                                <span class="meta-badge-year">2026</span>
+                            </div>
+                            <div class="project-title-logo-row">
+                                <div class="project-logo-circle shikshapatri-logo" style="background: #f6f0e7; border: 1px solid rgba(0, 0, 0, 0.05); padding: 2px;">
+                                    <img src="img/shikshapatri-logo.png" alt="Shikshapatri AI Logo" style="width: 100%; height: 100%; object-fit: contain; border-radius: 8px;">
+                                </div>
+                                <h2 class="project-card-title">Shikshapatri AI</h2>
+                            </div>
+                            <p class="project-card-desc">
+                                An AI-powered search and translation engine for the Shikshapatri, providing semantic query interpretations, English/Gujarati translations, and verse-by-verse scriptural context.
+                            </p>
+                            <div class="project-card-tags">
+                                <span class="skill-badge">Python</span>
+                                <span class="skill-badge">LangChain</span>
+                                <span class="skill-badge">Gemini Pro</span>
+                                <span class="skill-badge">ChromaDB</span>
+                            </div>
+                        </div>
+                        <div class="project-header-right">
+                            <a href="https://github.com/patelom2810/shikshapatri-ai" target="_blank" class="project-header-action-btn" title="GitHub Code">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Solar Energy Analytics (Data/Web) -->
+                <div id="solar-energy" class="project-card project-expanded-card expanded" data-category="data web">
+                    <div class="project-header-row">
+                        <div class="project-header-left">
+                            <div class="project-meta-badges">
+                                <span class="meta-badge-text">DATA SCIENCE & ANALYTICS</span>
+                                <span class="meta-badge-year">2024</span>
+                            </div>
+                            <div class="project-title-logo-row">
+                                <div class="project-logo-circle solar-logo">
+                                    <i class="fas fa-sun"></i>
+                                </div>
+                                <h2 class="project-card-title">Solar Energy Analytics</h2>
+                            </div>
+                            <p class="project-card-desc">
+                                A machine learning analytics application designed to predict and analyze solar energy generation trends using weather forecast variables.
+                            </p>
+                            <div class="project-card-tags">
+                                <span class="skill-badge">Flask</span>
+                                <span class="skill-badge">Scikit-learn</span>
+                                <span class="skill-badge">MySQL</span>
+                                <span class="skill-badge">Docker</span>
+                            </div>
+                        </div>
+                        <div class="project-header-right">
+                            <a href="https://github.com/patelom2810/Solar-Energy-Generation-Weather-Analytics" target="_blank" class="project-header-action-btn" title="GitHub Code">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <button class="project-expand-toggle-btn" onclick="toggleProjectExpand(this)">
+                                <i class="fas fa-chevron-up"></i>
+                            </button>
+                        </div>
                     </div>
                     
-                    <!-- Top-Right Actions -->
-                    <a href="https://github.com/patelom2810/Solar-Energy-Generation-Weather-Analytics" target="_blank" class="project-ny-heart-btn" title="GitHub Code">
-                        <i class="fab fa-github"></i>
-                    </a>
-
-                    <!-- Text Content -->
-                    <div class="project-ny-content">
-                        <h3 class="project-ny-title">Solar Energy Analytics</h3>
-                        <p class="project-ny-subtitle">Flask &bull; Scikit-learn &bull; MySQL &bull; Docker</p>
-                        <div class="project-ny-meta-row">
-                            <span class="project-ny-meta-item"><i class="fas fa-tag"></i> Data Analytics</span>
-                            <span class="project-ny-meta-item"><i class="fas fa-chart-line"></i> Solar Generation</span>
+                    <div class="project-expand-body">
+                        <div class="project-detail-cols">
+                            <div class="project-detail-left">
+                                <div class="detail-block">
+                                    <span class="detail-label">THE PROBLEM</span>
+                                    <p class="detail-text">
+                                        Weather fluctuations make solar energy generation unpredictable, leading to inefficiencies in grid management and distribution.
+                                    </p>
+                                </div>
+                                <div class="detail-block">
+                                    <span class="detail-label">THE SOLUTION</span>
+                                    <p class="detail-text">
+                                        Built a predictive analytics dashboard utilizing Scikit-learn random forest models, predicting solar outputs based on weather parameters.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="project-detail-right">
+                                <div class="detail-block">
+                                    <span class="detail-label">TECHNICAL IMPLEMENTATION</span>
+                                    <p class="detail-text">
+                                        Features interactive Flask API routes, MySQL databases for log storage, and containerized Docker environments for easy deployment.
+                                    </p>
+                                </div>
+                                <a href="https://github.com/patelom2810/Solar-Energy-Generation-Weather-Analytics" target="_blank" class="project-explore-arch-link">
+                                    Explore technical architecture on GitHub <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
                         </div>
-                        <a href="https://github.com/patelom2810/Solar-Energy-Generation-Weather-Analytics" target="_blank" class="project-ny-btn-white">Explore Insights</a>
                     </div>
                 </div>
 
-                <!-- E-Game Scout (Data/Web - NY Style) -->
-                <div id="egame-scout" class="project-card project-card-ny" data-category="data web">
-                    <!-- Top Inner Panel -->
-                    <div class="project-media-wrapper" style="background: linear-gradient(135deg, rgba(88, 28, 135, 0.08) 0%, rgba(59, 130, 246, 0.08) 100%); border: 1px solid rgba(88, 28, 135, 0.15);">
-                        <img src="img/egs-logo.png" alt="E-Game Scout Logo" style="max-height: 120px; max-width: 120px; object-fit: contain; filter: drop-shadow(0 8px 16px rgba(0,0,0,0.15));" loading="lazy">
+                <!-- E-Game Scout (Data/Web) -->
+                <div id="egame-scout" class="project-card project-expanded-card expanded" data-category="data web">
+                    <div class="project-header-row">
+                        <div class="project-header-left">
+                            <div class="project-meta-badges">
+                                <span class="meta-badge-text">ESPORTS & AI PLATFORM</span>
+                                <span class="meta-badge-year">2024</span>
+                            </div>
+                            <div class="project-title-logo-row">
+                                <div class="project-logo-circle esports-logo" style="background: transparent; border: none; padding: 0; border-radius: 12px; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                                    <img src="img/egs-logo.png" alt="E-Game Scout Logo" style="width: 100%; height: 100%; object-fit: contain;">
+                                </div>
+                                <h2 class="project-card-title">E-Game Scout</h2>
+                            </div>
+                            <p class="project-card-desc">
+                                A comprehensive esports platform utilizing AI scorecards and dashboard analytics to help teams manage players and scout incoming talent.
+                            </p>
+                            <div class="project-card-tags">
+                                <span class="skill-badge">Django</span>
+                                <span class="skill-badge">AWS EC2</span>
+                                <span class="skill-badge">AI Analytics</span>
+                                <span class="skill-badge">Tailwind</span>
+                            </div>
+                        </div>
+                        <div class="project-header-right">
+                            <a href="http://13.232.179.239:8000/" target="_blank" class="project-header-action-btn" style="margin-right: 8px;" title="Live Demo">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                            <a href="https://github.com/kachhadiyajanvi/E-GAMESCOUT" target="_blank" class="project-header-action-btn" title="GitHub Code">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <button class="project-expand-toggle-btn" onclick="toggleProjectExpand(this)">
+                                <i class="fas fa-chevron-up"></i>
+                            </button>
+                        </div>
                     </div>
                     
-                    <!-- Top-Right Actions -->
-                    <a href="http://13.232.179.239:8000/" target="_blank" class="project-ny-heart-btn" title="Live Demo">
-                        <i class="fas fa-external-link-alt"></i>
-                    </a>
-                    <a href="https://github.com/kachhadiyajanvi/E-GAMESCOUT" target="_blank" class="project-ny-heart-btn" style="right: 90px;" title="GitHub Code">
-                        <i class="fab fa-github"></i>
-                    </a>
-
-                    <!-- Text Content -->
-                    <div class="project-ny-content">
-                        <h3 class="project-ny-title">E-Game Scout</h3>
-                        <p class="project-ny-subtitle">Django &bull; AWS EC2 &bull; AI Analytics &bull; Tailwind</p>
-                        <div class="project-ny-meta-row">
-                            <span class="project-ny-meta-item"><i class="fas fa-tag"></i> Esports Talent</span>
-                            <span class="project-ny-meta-item"><i class="fas fa-brain"></i> AI Scout</span>
+                    <div class="project-expand-body">
+                        <div class="project-detail-cols">
+                            <div class="project-detail-left">
+                                <div class="detail-block">
+                                    <span class="detail-label">THE PROBLEM</span>
+                                    <p class="detail-text">
+                                        Scouting esports talent is highly fragmented, relies on unverified self-reporting, and lacks central statistical data pipelines.
+                                    </p>
+                                </div>
+                                <div class="detail-block">
+                                    <span class="detail-label">THE SOLUTION</span>
+                                    <p class="detail-text">
+                                        Developed E-Game Scout with role-based dashboards, automated contract generation, Gemini scorecard analysis, and player telemetry trackers.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="project-detail-right">
+                                <div class="detail-block">
+                                    <span class="detail-label">TECHNICAL IMPLEMENTATION</span>
+                                    <p class="detail-text">
+                                        Deployed on AWS EC2, connected to AWS RDS, using Django pipelines and integrated Groq/Gemini API endpoints.
+                                    </p>
+                                </div>
+                                <a href="https://github.com/kachhadiyajanvi/E-GAMESCOUT" target="_blank" class="project-explore-arch-link">
+                                    Explore technical architecture on GitHub <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
                         </div>
-                        <a href="http://13.232.179.239:8000/" target="_blank" class="project-ny-btn-white">Explore Insights</a>
                     </div>
                 </div>
 
-
-                <!-- ClipChain (Data/Web - NY Style) -->
-                <div id="clipchain" class="project-card project-card-ny" data-category="web">
-                    <!-- Top Inner Panel -->
-                    <div class="project-media-wrapper" style="background: linear-gradient(135deg, rgba(15, 89, 47, 0.08) 0%, rgba(123, 193, 67, 0.08) 100%); display: flex; align-items: center; justify-content: center; height: 210px; position: relative; overflow: hidden;">
-                        <!-- Custom HTML Logo -->
-                        <div id="workspaceAvatar" class="flex items-center select-none cursor-pointer hover:opacity-80 transition-opacity" style="font-family: 'Pacifico', cursive; font-size: 26px; font-weight: 400; line-height: 1; padding-bottom: 2px;" title="Switch Workspace">
-                          <span style="color: #0f592f;" class="dark:text-emerald-500">Clip</span><span style="color: #7bc143;">Chain</span><span style="color: #0f592f;" class="dark:text-emerald-500">!</span>
-                          <div class="relative flex items-center" style="color: #7bc143; margin-top: -3px; margin-left: 5px;">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" style="transform: rotate(0deg);">
-                              <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
-                              <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-                            </svg>
-                            <!-- Sparks -->
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" class="absolute" style="position: absolute; top: -10px; right: -8px; stroke-width: 4;">
-                              <line x1="12" y1="2" x2="12" y2="7"></line>
-                              <line x1="20" y1="6" x2="16" y2="9"></line>
-                              <line x1="22" y1="14" x2="18" y2="14"></line>
-                            </svg>
-                          </div>
+                <!-- ClipChain (Web Dev) -->
+                <div id="clipchain" class="project-card project-expanded-card expanded" data-category="web">
+                    <div class="project-header-row">
+                        <div class="project-header-left">
+                            <div class="project-meta-badges">
+                                <span class="meta-badge-text">PRODUCTIVITY UTILITY</span>
+                                <span class="meta-badge-year">2024</span>
+                            </div>
+                            <div class="project-title-logo-row">
+                                <div class="project-logo-circle clipchain-logo" style="background: #eefdf6; border: 1.5px solid rgba(16, 185, 129, 0.15); border-radius: 12px; padding: 6px; display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; box-sizing: border-box;">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" style="transform: rotate(0deg); display: block;">
+                                        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                                        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                                    </svg>
+                                </div>
+                                <h2 class="project-card-title">ClipChain</h2>
+                            </div>
+                            <p class="project-card-desc">
+                                A modern, secure workspace sharing tool designed for real-time clipboard syncing and cloud-hosted data sharing across platforms.
+                            </p>
+                            <div class="project-card-tags">
+                                <span class="skill-badge">Firebase</span>
+                                <span class="skill-badge">React</span>
+                                <span class="skill-badge">Tailwind</span>
+                                <span class="skill-badge">CSS3</span>
+                            </div>
                         </div>
-                        <a href="https://github.com/patelom2810/clipchain" target="_blank" class="project-ny-heart-btn" title="GitHub Code">
-                            <i class="fab fa-github"></i>
-                        </a>
+                        <div class="project-header-right">
+                            <a href="https://clipchain.netlify.app" target="_blank" class="project-header-action-btn" style="margin-right: 8px;" title="Live Demo">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                            <a href="https://github.com/patelom2810/clipchain" target="_blank" class="project-header-action-btn" title="GitHub Code">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <button class="project-expand-toggle-btn" onclick="toggleProjectExpand(this)">
+                                <i class="fas fa-chevron-up"></i>
+                            </button>
+                        </div>
                     </div>
-
-                    <!-- Text Content -->
-                    <div class="project-ny-content">
-                        <h3 class="project-ny-title">ClipChain</h3>
-                        <p class="project-ny-subtitle">Firebase &bull; React &bull; Tailwind &bull; CSS3</p>
-                        <div class="project-ny-meta-row">
-                            <span class="project-ny-meta-item"><i class="fas fa-tag"></i> Clipboard</span>
-                            <span class="project-ny-meta-item"><i class="fas fa-link"></i> Web Sync</span>
+                    
+                    <div class="project-expand-body">
+                        <div class="project-detail-cols">
+                            <div class="project-detail-left">
+                                <div class="detail-block">
+                                    <span class="detail-label">THE PROBLEM</span>
+                                    <p class="detail-text">
+                                        Moving links and text snippets between mobile devices and desktop computers is cumbersome, requiring emails or messaging apps.
+                                    </p>
+                                </div>
+                                <div class="detail-block">
+                                    <span class="detail-label">THE SOLUTION</span>
+                                    <p class="detail-text">
+                                        Engineered ClipChain, a real-time web clipboard that connects workspaces instantly for text syncing with instant click-to-copy.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="project-detail-right">
+                                <div class="detail-block">
+                                    <span class="detail-label">TECHNICAL IMPLEMENTATION</span>
+                                    <p class="detail-text">
+                                        Built using React hooks, styled with Tailwind CSS, and synced instantaneously via Firebase Realtime Database.
+                                    </p>
+                                </div>
+                                <a href="https://github.com/patelom2810/clipchain" target="_blank" class="project-explore-arch-link">
+                                    Explore technical architecture on GitHub <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
                         </div>
-                        <a href="https://clipchain.netlify.app" target="_blank" class="project-ny-btn-white">View Live</a>
                     </div>
                 </div>
-                
 
             </div>
         </div>
@@ -305,5 +540,11 @@
             </div>
         </div>
     </footer>
+    <script>
+        function toggleProjectExpand(btn) {
+            const card = btn.closest('.project-expanded-card');
+            card.classList.toggle('expanded');
+        }
+    </script>
 </body>
 </html>
