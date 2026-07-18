@@ -48,7 +48,7 @@
     </script>
 </head>
 
-<body class="no-scroll">
+<body>
     <script>
         // Prevent theme flashing on page load
         (function() {
@@ -60,21 +60,39 @@
         })();
     </script>
 
-    <!-- Splash Screen -->
-    <div id="mobile-splash">
-        <div class="splash-video-container">
-            <video id="splash-video" class="splash-video" autoplay muted playsinline>
-                <source src="img/Use_the_uploaded_portrait_as_t.mp4" type="video/mp4">
+    <!-- ============================================================
+         HERO REVEAL OVERLAY
+         Full-screen black overlay above the loaded website.
+         Video plays on black, text at bottom, fades out on end.
+    ============================================================ -->
+    <div id="hero-reveal-overlay">
+
+        <!-- Video container: centered, sized by JS -->
+        <div id="hero-reveal-video-wrap">
+            <video
+                id="hero-reveal-video"
+                class="hero-reveal-video"
+                autoplay
+                muted
+                playsinline
+                preload="auto"
+            >
+                <source src="img/VN20260718_140154.mp4" type="video/mp4">
             </video>
-            <div class="watermark-blocker"></div>
+            <!-- Bottom fade gradient that hides the Gemini watermark -->
+            <div class="hero-reveal-vignette"></div>
         </div>
-        <div class="splash-content">
-            <div class="splash-title">
+
+        <!-- Om Patel text: letters slide up from bottom -->
+        <div class="hero-reveal-text">
+            <div class="hero-reveal-name">
                 <span>O</span><span>m</span><span>&nbsp;</span><span>P</span><span>a</span><span>t</span><span>e</span><span>l</span>
             </div>
-            <div class="splash-subtitle">Data Analyst</div>
+            <p class="hero-reveal-sub">Data Analyst &amp; AI/ML Developer</p>
         </div>
-        <button class="skip-intro-btn" onclick="skipIntro()">
+
+        <!-- Skip Intro button -->
+        <button class="hero-reveal-skip" id="hero-reveal-skip-btn">
             Skip Intro <i class="fas fa-chevron-right"></i>
         </button>
     </div>
@@ -881,58 +899,136 @@
             container.querySelectorAll('.flip-point').forEach(p => p.classList.remove('visible'));
         }
 
-        function skipIntro() {
-            const splash = document.getElementById('mobile-splash');
-            if (splash && !splash.classList.contains('fade-out')) {
-                splash.classList.add('fade-out');
-                document.body.classList.remove('no-scroll');
-                if (window.splashTimeout) clearTimeout(window.splashTimeout);
-                if (window.splashHideTimeout) clearTimeout(window.splashHideTimeout);
-                window.splashHideTimeout = setTimeout(function() {
-                    splash.style.display = 'none';
-                }, 700);
+        /* =============================================================
+           HERO REVEAL OVERLAY — Pixel-Perfect Alignment System
+           Video plays over the hero image, then crossfades into it.
+        ============================================================= */
+        (function () {
+            'use strict';
+
+            /* ── Elements ── */
+            const overlay   = document.getElementById('hero-reveal-overlay');
+            const video     = document.getElementById('hero-reveal-video');
+            const videoWrap = document.getElementById('hero-reveal-video-wrap');
+            const skipBtn   = document.getElementById('hero-reveal-skip-btn');
+            const heroImg   = document.querySelector('.hero-avatar-new');
+
+            if (!overlay) return;
+
+            /* ── State ── */
+            let isRevealed   = false;
+            let alignAttempts = 0;
+
+            /* ── Lock scroll ── */
+            document.body.style.overflow = 'hidden';
+
+            /* ── Hide hero image immediately so the video can reveal it ── */
+            if (heroImg) {
+                heroImg.style.opacity    = '0';
+                heroImg.style.transition = 'none'; /* no transition yet; JS sets it later */
             }
-        }
 
-        document.addEventListener("DOMContentLoaded", function() {
-            const video = document.getElementById('splash-video');
+            /* ================================================================
+               ALIGNMENT TUNING — adjust these 3 values if the outline
+               doesn't sit precisely over the hero photo.
 
-            let transitioned = false;
-            const triggerTransition = () => {
-                if (transitioned) return;
-                transitioned = true;
-                skipIntro();
-            };
+               SUBJECT_SCALE
+                 How wide the video wrapper is relative to the hero image.
+                 • Increase → wrapper gets bigger (use if person looks small)
+                 • Decrease → wrapper gets smaller (use if person looks large)
 
-            if (video) {
-                // Set speed once video is ready
-                video.addEventListener('canplaythrough', function() {
-                    video.playbackRate = 1.4;
-                }, { once: true });
+               V_OFFSET_PX  (positive = shift video DOWN, negative = UP)
+               H_OFFSET_PX  (positive = shift video RIGHT, negative = LEFT)
+            ================================================================ */
+            const SUBJECT_SCALE = 1.35;
+            const V_OFFSET_PX   =  60;   /* move video down to match photo */
+            const H_OFFSET_PX   = -80;   /* move video left  to match photo */
 
-                // Trigger on video end
-                video.addEventListener('ended', triggerTransition);
+            /* ── Align video wrapper precisely over the hero image ── */
+            function alignVideoToHero() {
+                if (!heroImg || !videoWrap) return false;
 
-                video.play().catch(function(err) {
-                    console.warn("Autoplay prevented:", err);
-                    // If autoplay blocked, just skip after short delay
-                    setTimeout(triggerTransition, 1000);
+                const rect = heroImg.getBoundingClientRect();
+                if (rect.width === 0 || rect.height === 0) return false;
+
+                /* Video is 9:16 — width drives height */
+                const wrapW = rect.width * SUBJECT_SCALE;
+                const wrapH = wrapW * (16 / 9);   /* 9:16 portrait */
+
+                /* Anchor point: center of the hero image */
+                const imgCX = rect.left + rect.width  / 2;
+                const imgCY = rect.top  + rect.height / 2;
+
+                /* Apply offsets so subject in video aligns with the photo */
+                const left = imgCX - wrapW / 2 + H_OFFSET_PX;
+                const top  = imgCY - wrapH / 2 + V_OFFSET_PX;
+
+                /* Apply — JS inline styles override CSS defaults */
+                Object.assign(videoWrap.style, {
+                    position  : 'fixed',
+                    left      : left   + 'px',
+                    top       : top    + 'px',
+                    width     : wrapW  + 'px',
+                    height    : wrapH  + 'px',
+                    transform : 'none'
                 });
-            } else {
-                // No video found — skip immediately
-                triggerTransition();
+
+                return true;
             }
 
-            // Safety backup: always exit after 7s max no matter what
-            window.splashTimeout = setTimeout(triggerTransition, 7000);
-        });
+            /* ── Keep retrying until the hero image has rendered ── */
+            function tryAlign() {
+                if (!alignVideoToHero() && alignAttempts < 40) {
+                    alignAttempts++;
+                    requestAnimationFrame(tryAlign);
+                }
+            }
 
-        // Final safety net: if page finishes loading but splash still visible, remove no-scroll
-        window.addEventListener('load', function() {
-            setTimeout(function() {
-                document.body.classList.remove('no-scroll');
-            }, 8000); // 8 second hard cap
-        });
+            /* ── Reveal: fade out overlay, fade in hero image ── */
+            function revealSite() {
+                if (isRevealed) return;
+                isRevealed = true;
+
+                document.body.style.overflow = '';
+
+                /* Start overlay fade-out (CSS transition already set: 0.9s) */
+                overlay.classList.add('hero-reveal-done');
+
+                /* Hero image fades in in sync with overlay fade-out */
+                if (heroImg) {
+                    heroImg.style.transition = 'opacity 0.9s cubic-bezier(0.25, 1, 0.5, 1)';
+                    heroImg.style.opacity    = '1';
+                }
+
+                overlay.addEventListener('transitionend', () => overlay.remove(), { once: true });
+            }
+
+            /* ── Bootstrap ── */
+            function init() {
+                tryAlign();
+                if (video) {
+                    video.playbackRate = 1.0;       /* real-time — preserve seamless ending */
+                    video.play().catch(() => setTimeout(revealSite, 600));
+                    video.addEventListener('ended', revealSite, { once: true });
+                }
+                if (skipBtn) skipBtn.addEventListener('click', revealSite);
+                /* Safety net if video stalls or is very long */
+                setTimeout(revealSite, 14000);
+            }
+
+            /* ── Re-align on window resize ── */
+            window.addEventListener('resize', () => requestAnimationFrame(alignVideoToHero));
+
+            /* ── Wait for DOM images to paint before first alignment ── */
+            if (document.readyState === 'complete') {
+                requestAnimationFrame(init);
+            } else {
+                window.addEventListener('load', () => requestAnimationFrame(init));
+                /* Also try right away in case DOMContentLoaded already fired */
+                requestAnimationFrame(tryAlign);
+            }
+
+        }());
     </script>
 </body>
 

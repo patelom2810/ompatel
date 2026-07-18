@@ -91,11 +91,23 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             const categories = (card.getAttribute('data-category') || '').split(' ');
-            const title = card.querySelector('.project-ny-title') ? card.querySelector('.project-ny-title').textContent.toLowerCase() : '';
-            const subtitle = card.querySelector('.project-ny-subtitle') ? card.querySelector('.project-ny-subtitle').textContent.toLowerCase() : '';
+            
+            // Support both project details format (projects.html uses .project-card-title / .project-card-desc, homepage uses .project-ny-title / .project-ny-subtitle)
+            const titleEl = card.querySelector('.project-card-title') || card.querySelector('.project-ny-title');
+            const title = titleEl ? titleEl.textContent.toLowerCase() : '';
+            
+            const subtitleEl = card.querySelector('.project-card-desc') || card.querySelector('.project-ny-subtitle');
+            const subtitle = subtitleEl ? subtitleEl.textContent.toLowerCase() : '';
+
+            // Also search inside technical skill badges for a better search experience
+            const skillBadges = Array.from(card.querySelectorAll('.skill-badge')).map(badge => badge.textContent.toLowerCase());
 
             const categoryMatches = currentCategory === 'all' || categories.includes(currentCategory);
-            const searchMatches = searchQuery === '' || title.includes(searchQuery) || subtitle.includes(searchQuery) || categories.some(cat => cat.includes(searchQuery));
+            const searchMatches = searchQuery === '' || 
+                                  title.includes(searchQuery) || 
+                                  subtitle.includes(searchQuery) || 
+                                  categories.some(cat => cat.includes(searchQuery)) ||
+                                  skillBadges.some(badge => badge.includes(searchQuery));
 
             const isVisible = categoryMatches && searchMatches;
 
