@@ -48,7 +48,7 @@
     </script>
 </head>
 
-<body>
+<body class="no-scroll">
     <script>
         // Prevent theme flashing on page load
         (function() {
@@ -59,39 +59,14 @@
             }
         })();
     </script>
-    <!-- Mobile Splash Screen -->
+
+    <!-- Splash Screen -->
     <div id="mobile-splash">
-        <!-- Background Animated Graphs -->
-        <div class="splash-graphs">
-            <!-- Line Graph SVG -->
-            <svg class="splash-svg-graph line-graph" viewBox="0 0 400 200">
-                <path d="M 10 180 L 70 150 L 130 160 L 190 90 L 250 110 L 310 40 L 390 20" fill="none" stroke="rgba(255, 255, 255, 0.08)" stroke-width="2" stroke-linecap="round"/>
-                <path class="animated-path" d="M 10 180 L 70 150 L 130 160 L 190 90 L 250 110 L 310 40 L 390 20" fill="none" stroke="rgba(65, 105, 225, 0.2)" stroke-width="2.5" stroke-linecap="round"/>
-                <circle cx="390" cy="20" r="4" fill="#60a5fa" class="graph-pulse-dot" />
-            </svg>
-            <!-- Nodes Network SVG -->
-            <svg class="splash-svg-graph network-graph" viewBox="0 0 300 300">
-                <line x1="50" y1="50" x2="150" y2="100" stroke="rgba(255, 255, 255, 0.05)" stroke-width="1"/>
-                <line x1="150" y1="100" x2="250" y2="70" stroke="rgba(255, 255, 255, 0.05)" stroke-width="1"/>
-                <line x1="150" y1="100" x2="100" y2="220" stroke="rgba(255, 255, 255, 0.05)" stroke-width="1"/>
-                <line x1="100" y1="220" x2="220" y2="250" stroke="rgba(255, 255, 255, 0.05)" stroke-width="1"/>
-                <line x1="250" y1="70" x2="220" y2="250" stroke="rgba(255, 255, 255, 0.05)" stroke-width="1"/>
-                
-                <circle cx="50" cy="50" r="4" fill="rgba(255, 255, 255, 0.15)" class="node-pulse"/>
-                <circle cx="150" cy="100" r="5" fill="rgba(65, 105, 225, 0.3)" class="node-pulse-blue"/>
-                <circle cx="250" cy="70" r="4" fill="rgba(255, 255, 255, 0.15)" class="node-pulse"/>
-                <circle cx="100" cy="220" r="4" fill="rgba(255, 255, 255, 0.15)" class="node-pulse"/>
-                <circle cx="220" cy="250" r="5" fill="rgba(65, 105, 225, 0.3)" class="node-pulse-blue"/>
-            </svg>
-            <!-- Bar Chart SVG -->
-            <svg class="splash-svg-graph bar-graph" viewBox="0 0 200 150">
-                <rect x="10" y="80" width="14" height="70" rx="2" fill="rgba(255, 255, 255, 0.04)"/>
-                <rect x="34" y="50" width="14" height="100" rx="2" fill="rgba(255, 255, 255, 0.04)"/>
-                <rect x="58" y="90" width="14" height="60" rx="2" fill="rgba(255, 255, 255, 0.04)"/>
-                <rect x="82" y="30" width="14" height="120" rx="2" fill="rgba(255, 255, 255, 0.04)"/>
-                <rect x="106" y="60" width="14" height="90" rx="2" fill="rgba(255, 255, 255, 0.04)"/>
-                <rect x="130" y="10" width="14" height="140" rx="2" fill="rgba(255, 255, 255, 0.04)"/>
-            </svg>
+        <div class="splash-video-container">
+            <video id="splash-video" class="splash-video" autoplay muted playsinline>
+                <source src="img/Use_the_uploaded_portrait_as_t.mp4" type="video/mp4">
+            </video>
+            <div class="watermark-blocker"></div>
         </div>
         <div class="splash-content">
             <div class="splash-title">
@@ -99,43 +74,11 @@
             </div>
             <div class="splash-subtitle">Data Analyst</div>
         </div>
-        <!-- Skip Intro Button -->
         <button class="skip-intro-btn" onclick="skipIntro()">
             Skip Intro <i class="fas fa-chevron-right"></i>
         </button>
     </div>
-    <script>
-        function skipIntro() {
-            const splash = document.getElementById('mobile-splash');
-            if (splash && !splash.classList.contains('fade-out')) {
-                splash.classList.add('fade-out');
-                document.body.classList.remove('no-scroll');
-                if (window.splashTimeout) clearTimeout(window.splashTimeout);
-                if (window.splashHideTimeout) clearTimeout(window.splashHideTimeout);
-                window.splashHideTimeout = setTimeout(function() {
-                    splash.style.display = 'none';
-                }, 600);
-            }
-        }
 
-        (function() {
-            const splash = document.getElementById('mobile-splash');
-            if (window.innerWidth > 768) {
-                splash.style.display = 'none';
-            } else {
-                document.body.classList.add('no-scroll');
-                
-                // Fade out splash screen overlay at 2.0s
-                window.splashTimeout = setTimeout(function() {
-                    splash.classList.add('fade-out');
-                    document.body.classList.remove('no-scroll');
-                    window.splashHideTimeout = setTimeout(function() {
-                        splash.style.display = 'none';
-                    }, 600);
-                }, 2000);
-            }
-        })();
-    </script>
     <!-- Background Mesh Blobs -->
     <div class="mesh-blobs">
         <div class="blob blob-1"></div>
@@ -301,24 +244,6 @@
                 </div>
                 <div class="marquee-item">
                     <div class="marquee-icon-circle">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" loading="lazy">
-                    </div>
-                    <span class="marquee-label">JavaScript</span>
-                </div>
-                <div class="marquee-item">
-                    <div class="marquee-icon-circle">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" loading="lazy">
-                    </div>
-                    <span class="marquee-label">HTML5</span>
-                </div>
-                <div class="marquee-item">
-                    <div class="marquee-icon-circle">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" loading="lazy">
-                    </div>
-                    <span class="marquee-label">CSS3</span>
-                </div>
-                <div class="marquee-item">
-                    <div class="marquee-icon-circle">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg" alt="PowerBI" loading="lazy">
                     </div>
                     <span class="marquee-label">Power BI</span>
@@ -361,24 +286,6 @@
                         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS" loading="lazy">
                     </div>
                     <span class="marquee-label">AWS</span>
-                </div>
-                <div class="marquee-item">
-                    <div class="marquee-icon-circle">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" loading="lazy">
-                    </div>
-                    <span class="marquee-label">JavaScript</span>
-                </div>
-                <div class="marquee-item">
-                    <div class="marquee-icon-circle">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" loading="lazy">
-                    </div>
-                    <span class="marquee-label">HTML5</span>
-                </div>
-                <div class="marquee-item">
-                    <div class="marquee-icon-circle">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" loading="lazy">
-                    </div>
-                    <span class="marquee-label">CSS3</span>
                 </div>
                 <div class="marquee-item">
                     <div class="marquee-icon-circle">
@@ -458,17 +365,14 @@
                         <h3>Languages</h3>
                         <div class="skills-bento-tags">
                             <span class="skill-badge">Python</span>
-                            <span class="skill-badge">PHP</span>
                             <span class="skill-badge">SQL</span>
                             <span class="skill-badge">R</span>
-                            <span class="skill-badge">JavaScript</span>
-                            <span class="skill-badge">Dart</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Card 2: AI & Machine Learning -->
-                <div class="skills-bento-card">
+                <!-- Card 2: AI & Machine Learning (Span 2 columns) -->
+                <div class="skills-bento-card skills-bento-span-2">
                     <div class="skills-bento-header">
                         <div class="skills-bento-icon">
                             <i class="fas fa-brain"></i>
@@ -488,7 +392,7 @@
                     </div>
                 </div>
 
-                <!-- Card 3: Backend & APIs -->
+                <!-- Card 3: Backend & Databases -->
                 <div class="skills-bento-card">
                     <div class="skills-bento-header">
                         <div class="skills-bento-icon">
@@ -496,54 +400,18 @@
                         </div>
                     </div>
                     <div class="skills-bento-body">
-                        <h3>Backend & APIs</h3>
+                        <h3>Backend &amp; Databases</h3>
                         <div class="skills-bento-tags">
                             <span class="skill-badge">FastAPI</span>
-                            <span class="skill-badge">Node.js</span>
                             <span class="skill-badge">REST APIs</span>
-                            <span class="skill-badge">LangChain</span>
-                            <span class="skill-badge">PHPMailer</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 4: Frontend -->
-                <div class="skills-bento-card">
-                    <div class="skills-bento-header">
-                        <div class="skills-bento-icon">
-                            <i class="fas fa-laptop-code"></i>
-                        </div>
-                    </div>
-                    <div class="skills-bento-body">
-                        <h3>Frontend</h3>
-                        <div class="skills-bento-tags">
-                            <span class="skill-badge">React</span>
-                            <span class="skill-badge">Flutter</span>
-                            <span class="skill-badge">HTML & CSS</span>
-                            <span class="skill-badge">Tailwind CSS</span>
-                            <span class="skill-badge">Jinja2</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 5: Databases -->
-                <div class="skills-bento-card">
-                    <div class="skills-bento-header">
-                        <div class="skills-bento-icon">
-                            <i class="fas fa-database"></i>
-                        </div>
-                    </div>
-                    <div class="skills-bento-body">
-                        <h3>Databases</h3>
-                        <div class="skills-bento-tags">
                             <span class="skill-badge">MySQL</span>
                             <span class="skill-badge">Supabase</span>
-                            <span class="skill-badge">ChromaDB</span>
+                            <span class="skill-badge">Firebase</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Card 6: Cloud & DevOps -->
+                <!-- Card 4: Cloud & DevOps -->
                 <div class="skills-bento-card">
                     <div class="skills-bento-header">
                         <div class="skills-bento-icon">
@@ -551,16 +419,18 @@
                         </div>
                     </div>
                     <div class="skills-bento-body">
-                        <h3>Cloud & DevOps</h3>
+                        <h3>Cloud &amp; DevOps</h3>
                         <div class="skills-bento-tags">
                             <span class="skill-badge">Railway</span>
                             <span class="skill-badge">Netlify</span>
                             <span class="skill-badge">AWS S3</span>
+                            <span class="skill-badge">AWS EC2</span>
+                            <span class="skill-badge">AWS RDS</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Card 7: Tools & Platforms -->
+                <!-- Card 5: Tools & Platforms -->
                 <div class="skills-bento-card">
                     <div class="skills-bento-header">
                         <div class="skills-bento-icon">
@@ -568,12 +438,12 @@
                         </div>
                     </div>
                     <div class="skills-bento-body">
-                        <h3>Tools & Platforms</h3>
+                        <h3>Tools &amp; Platforms</h3>
                         <div class="skills-bento-tags">
-                            <span class="skill-badge">Git & GitHub</span>
+                            <span class="skill-badge">Git &amp; GitHub</span>
                             <span class="skill-badge">VS Code</span>
                             <span class="skill-badge">Jupyter Notebook</span>
-                            <span class="skill-badge">Android Studio</span>
+                            <span class="skill-badge">Google Colab</span>
                         </div>
                     </div>
                 </div>
@@ -581,98 +451,129 @@
         </div>
     </section>
 
-    <!-- Education Section -->
-    <section id="education" class="education">
+    <!-- Education & Certifications Section -->
+    <section id="education" class="education" style="padding: 6rem 0;">
         <div class="max-w-[1200px] mx-auto px-5">
-            <div class="section-header">
-                <span class="section-subtitle">&mdash; JOURNEY</span>
-                <h2 class="section-title">Education</h2>
-            </div>
-            
-            <div class="tree-container">
-                <!-- Central Trunk Line -->
-                <div class="tree-trunk"></div>
+            <div class="education-certifications-grid">
                 
-                <!-- Tree Node 1: M.Sc. IT (Left Branch) — Expanded by default (Pursuing) -->
-                <div class="tree-item tree-item-left">
-                    <div class="tree-dot tree-dot-active"></div>
-                    <div class="tree-node expanded" onclick="toggleTreeNode(this)">
-                        <div class="tree-node-header">
-                            <div class="tree-node-meta">
-                                <span class="tree-node-date">2025 – 2027</span>
-                                <div class="tree-node-title-row">
-                                    <i class="fas fa-brain tree-degree-icon" style="color: var(--primary-color);"></i>
-                                    <span class="tree-node-type">MSc – IT (Data Analytics &amp; AI)</span>
+                <!-- Left Column: Education -->
+                <div class="education-column">
+                    <div class="section-header" style="margin-bottom: 2rem;">
+                        <span class="section-subtitle">&mdash; JOURNEY</span>
+                        <h2 class="section-title">Education</h2>
+                    </div>
+                    
+                    <div class="tree-container">
+                        <!-- Central Trunk Line -->
+                        <div class="tree-trunk"></div>
+                        
+                        <!-- Tree Node 1: M.Sc. IT (Left Branch) — Expanded by default (Pursuing) -->
+                        <div class="tree-item tree-item-left">
+                            <div class="tree-dot tree-dot-active"></div>
+                            <div class="tree-node expanded" onclick="toggleTreeNode(this)">
+                                <div class="tree-node-header">
+                                    <div class="tree-node-meta">
+                                        <span class="tree-node-date">2025 – 2027</span>
+                                        <div class="tree-node-title-row">
+                                            <i class="fas fa-brain tree-degree-icon" style="color: var(--primary-color);"></i>
+                                            <span class="tree-node-type">MSc – IT (Data Analytics &amp; AI)</span>
+                                        </div>
+                                    </div>
+                                    <div class="tree-node-toggle">
+                                        <span class="pursuing-badge"><span class="pursuing-dot"></span>Pursuing</span>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                </div>
+                                <div class="tree-node-body">
+                                    <!-- Watermark -->
+                                    <i class="fas fa-brain timeline-watermark"></i>
+                                    <h3 class="tree-degree-title">Master of Science (MSc) – Information Technology</h3>
+                                    <p class="tree-degree-desc" style="margin-bottom: 12px;">Stream: <strong>Data Analytics &amp; AI</strong></p>
+                                    <div class="tree-degree-details">
+                                        <div class="tree-detail-row">GLS University, Ahmedabad, Gujarat</div>
+                                        <div class="tree-detail-row">2025 – 2027 (2 Years)</div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="tree-node-toggle">
-                                <span class="pursuing-badge"><span class="pursuing-dot"></span>Pursuing</span>
-                                <i class="fas fa-chevron-down"></i>
+                        </div>
+
+                        <!-- Tree Node 2: B.Sc. IT (Right Branch) -->
+                        <div class="tree-item tree-item-right">
+                            <div class="tree-dot"></div>
+                            <div class="tree-node" onclick="toggleTreeNode(this)">
+                                <div class="tree-node-header">
+                                    <div class="tree-node-meta">
+                                        <span class="tree-node-date">2022 – 2025</span>
+                                        <div class="tree-node-title-row">
+                                            <i class="fas fa-graduation-cap tree-degree-icon" style="color: var(--primary-color);"></i>
+                                            <span class="tree-node-type">BSc – CA &amp; IT</span>
+                                        </div>
+                                    </div>
+                                    <div class="tree-node-toggle">
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                </div>
+                                <div class="tree-node-body">
+                                    <!-- Watermark -->
+                                    <i class="fas fa-graduation-cap timeline-watermark"></i>
+                                    <h3 class="tree-degree-title">Bachelor of Science (BSc) – Computer Application &amp; Information Technology</h3>
+                                    <p class="tree-degree-desc">Sardar Patel University, Vallabh Vidyanagar, Gujarat<br>CGPA: 7.8</p>
+                                </div>
                             </div>
                         </div>
-                        <div class="tree-node-body">
-                            <!-- Watermark -->
-                            <i class="fas fa-brain timeline-watermark"></i>
-                            <h3 class="tree-degree-title">Master of Science (MSc) – Information Technology</h3>
-                            <p class="tree-degree-desc" style="margin-bottom: 12px;">Stream: <strong>Data Analytics &amp; AI</strong></p>
-                            <div class="tree-degree-details">
-                                <div class="tree-detail-row">GLS University, Ahmedabad, Gujarat</div>
-                                <div class="tree-detail-row">2025 – 2027 (2 Years)</div>
-                                <div class="tree-detail-row pursuing-status">Currently Pursuing — Active</div>
+
+                        <!-- Tree Node 3: Class XII (Left Branch) -->
+                        <div class="tree-item tree-item-left">
+                            <div class="tree-dot"></div>
+                            <div class="tree-node" onclick="toggleTreeNode(this)">
+                                <div class="tree-node-header">
+                                    <div class="tree-node-meta">
+                                        <span class="tree-node-date">2021</span>
+                                        <div class="tree-node-title-row">
+                                            <i class="fas fa-flask tree-degree-icon" style="color: var(--primary-color);"></i>
+                                            <span class="tree-node-type">Class XII – Science Stream</span>
+                                        </div>
+                                    </div>
+                                    <div class="tree-node-toggle">
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                </div>
+                                <div class="tree-node-body">
+                                    <!-- Watermark -->
+                                    <i class="fas fa-flask timeline-watermark"></i>
+                                    <h3 class="tree-degree-title">CLASS XII (Science Stream)</h3>
+                                    <p class="tree-degree-desc">Bits Education High School, Khambhat<br>Percentage: 49%</p>
+                                </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+                
+                <!-- Right Column: Certifications -->
+                <div class="certifications-column">
+                    <div class="section-header" style="margin-bottom: 2rem;">
+                        <span class="section-subtitle">&mdash; ACHIEVEMENTS</span>
+                        <h2 class="section-title">Certifications</h2>
+                    </div>
+                    
+                    <div class="certifications-list" style="display: flex; flex-direction: column; gap: 20px;">
+                        <a href="Certificate/aws.pdf" target="_blank" class="cert-card" style="width: 100%; box-sizing: border-box; display: block; text-decoration: none;">
+                            <div style="display: flex; gap: 20px; align-items: flex-start; position: relative; z-index: 2;">
+                                <div class="cert-icon-box aws-orange-bg">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS" loading="lazy">
+                                </div>
+                                <div>
+                                    <h3 style="margin-top: 0; margin-bottom: 4px; font-family: var(--font-syne), sans-serif; font-weight: 700; color: var(--text-color);">AWS Certificate</h3>
+                                    <p style="margin: 0 0 12px; color: var(--text-muted); font-size: 0.9rem;">Amazon Web Services</p>
+                                    <div class="cert-badge">
+                                        View Certificate <i class="fas fa-arrow-right"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
                     </div>
                 </div>
 
-                <!-- Tree Node 2: B.Sc. IT (Right Branch) -->
-                <div class="tree-item tree-item-right">
-                    <div class="tree-dot"></div>
-                    <div class="tree-node" onclick="toggleTreeNode(this)">
-                        <div class="tree-node-header">
-                            <div class="tree-node-meta">
-                                <span class="tree-node-date">2022 – 2025</span>
-                                <div class="tree-node-title-row">
-                                    <i class="fas fa-graduation-cap tree-degree-icon" style="color: var(--primary-color);"></i>
-                                    <span class="tree-node-type">BSc – CA &amp; IT</span>
-                                </div>
-                            </div>
-                            <div class="tree-node-toggle">
-                                <i class="fas fa-chevron-down"></i>
-                            </div>
-                        </div>
-                        <div class="tree-node-body">
-                            <!-- Watermark -->
-                            <i class="fas fa-graduation-cap timeline-watermark"></i>
-                            <h3 class="tree-degree-title">Bachelor of Science (BSc) – Computer Application &amp; Information Technology</h3>
-                            <p class="tree-degree-desc">Sardar Patel University, Vallabh Vidyanagar, Gujarat<br>CGPA: 7.8</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Tree Node 3: Class XII (Left Branch) -->
-                <div class="tree-item tree-item-left">
-                    <div class="tree-dot"></div>
-                    <div class="tree-node" onclick="toggleTreeNode(this)">
-                        <div class="tree-node-header">
-                            <div class="tree-node-meta">
-                                <span class="tree-node-date">2021</span>
-                                <div class="tree-node-title-row">
-                                    <i class="fas fa-flask tree-degree-icon" style="color: var(--primary-color);"></i>
-                                    <span class="tree-node-type">Class XII – Science Stream</span>
-                                </div>
-                            </div>
-                            <div class="tree-node-toggle">
-                                <i class="fas fa-chevron-down"></i>
-                            </div>
-                        </div>
-                        <div class="tree-node-body">
-                            <!-- Watermark -->
-                            <i class="fas fa-flask timeline-watermark"></i>
-                            <h3 class="tree-degree-title">CLASS XII (Science Stream)</h3>
-                            <p class="tree-degree-desc">Bits Education High School, Khambhat<br>Percentage: 49%</p>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -688,50 +589,7 @@
             
             <div class="featured-projects-slider-wrapper">
                 <div class="featured-projects-slider">
-                    <!-- Card 1: Shikshapatri AI — Flip Card -->
-                    <div class="flip-card-container" onclick="flipCard(this)">
-                        <div class="flip-card-inner">
 
-                            <!-- FRONT -->
-                            <div class="flip-card-front project-card-ny" style="background: linear-gradient(145deg, rgba(16, 185, 129, 0.12) 0%, rgba(59, 130, 246, 0.10) 100%) !important;">
-                                <!-- Media -->
-                                <div class="project-media-wrapper" style="background: #f6f0e7; border: 1px solid rgba(0, 0, 0, 0.03); display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 12px; height: 210px; box-sizing: border-box;">
-                                    <img src="img/shikshapatri-logo.png" alt="Shikshapatri AI Logo" style="max-height: 140px; max-width: 100%; object-fit: contain; border-radius: 8px;">
-                                </div>
-                                <!-- Top-Right Actions -->
-                                <a href="https://github.com/patelom2810/shikshapatri-ai" target="_blank" class="project-ny-heart-btn" title="GitHub Code" onclick="event.stopPropagation()">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                                <!-- Text -->
-                                <div class="project-ny-content">
-                                    <h3 class="project-ny-title">Shikshapatri AI</h3>
-                                    <p class="project-ny-subtitle">Python &bull; LangChain &bull; Gemini Pro &bull; ChromaDB</p>
-                                    <div class="project-ny-meta-row">
-                                        <span class="project-ny-meta-item"><i class="fas fa-tag"></i> AI Scripture</span>
-                                        <span class="project-ny-meta-item"><i class="fas fa-search"></i> RAG search</span>
-                                    </div>
-                                    <a href="projects.html#shikshapatri-ai" class="project-ny-btn-white" onclick="event.stopPropagation()">View Details</a>
-                                </div>
-                            </div>
-
-                            <!-- BACK -->
-                            <div class="flip-card-back" style="background: linear-gradient(145deg, rgba(16, 185, 129, 0.22) 0%, rgba(59, 130, 246, 0.18) 100%);">
-                                <div class="flip-back-header">
-                                    <i class="fas fa-brain" style="font-size: 1.6rem; color: #10b981;"></i>
-                                    <span class="flip-back-title" style="color: #065f46;">Shikshapatri AI</span>
-                                </div>
-                                <ul class="flip-points">
-                                    <li class="flip-point">Developed an AI-powered semantic search and translation engine for the Shikshapatri scriptures using LangChain and Gemini Pro.</li>
-                                    <li class="flip-point">Integrated ChromaDB vector database for efficient embedding storage and Retrieval-Augmented Generation (RAG).</li>
-                                    <li class="flip-point">Built a FastAPI back-end interface supporting natural language queries in English and Gujarati.</li>
-                                </ul>
-                                <button class="flip-back-btn" style="border-color: #10b981; color: #065f46;" onclick="event.stopPropagation(); unflipCard(this)">
-                                    Go Back <i class="fas fa-undo" style="font-size: 0.75rem; margin-left: 5px;"></i>
-                                </button>
-                            </div>
-
-                        </div>
-                    </div>
 
                     <!-- Card 2: Solar Energy Analytics — Flip Card -->
                     <div class="flip-card-container" onclick="flipCard(this)">
@@ -889,6 +747,53 @@
 
                         </div>
                     </div>
+
+                    <!-- Card 4: Parking Management System — Flip Card -->
+                    <div class="flip-card-container" onclick="flipCard(this)">
+                        <div class="flip-card-inner">
+
+                            <!-- FRONT -->
+                            <div class="flip-card-front project-card-ny" style="background: linear-gradient(145deg, rgba(59, 130, 246, 0.14) 0%, rgba(99, 102, 241, 0.12) 100%) !important;">
+                                <!-- Media -->
+                                <div class="project-media-wrapper" style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(99, 102, 241, 0.08) 100%); border: 1px solid rgba(59, 130, 246, 0.15); display: flex; align-items: center; justify-content: center; height: 210px; box-sizing: border-box; position: relative;">
+                                    <div style="width: 90px; height: 90px; border-radius: 50%; background: #3b82f6; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(59, 130, 246, 0.35);">
+                                        <i class="fas fa-parking" style="font-size: 3rem; color: #ffffff;"></i>
+                                    </div>
+                                </div>
+                                <!-- Top-Right Actions -->
+                                <a href="https://github.com/patelom2810/Parking-Management-System" target="_blank" class="project-ny-heart-btn" title="GitHub Code" onclick="event.stopPropagation()">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <!-- Text -->
+                                <div class="project-ny-content">
+                                    <h3 class="project-ny-title">Parking Management</h3>
+                                    <p class="project-ny-subtitle">VB.NET &bull; WinForms &bull; Offline Desktop App</p>
+                                    <div class="project-ny-meta-row">
+                                        <span class="project-ny-meta-item"><i class="fas fa-tag"></i> Desktop App</span>
+                                        <span class="project-ny-meta-item"><i class="fas fa-car"></i> Space Mgr</span>
+                                    </div>
+                                    <a href="projects.html#parking-system" class="project-ny-btn-white" onclick="event.stopPropagation()">View Details</a>
+                                </div>
+                            </div>
+
+                            <!-- BACK -->
+                            <div class="flip-card-back" style="background: linear-gradient(145deg, rgba(59, 130, 246, 0.22) 0%, rgba(99, 102, 241, 0.18) 100%);">
+                                <div class="flip-back-header">
+                                    <i class="fas fa-parking" style="font-size: 1.6rem; color: #3b82f6;"></i>
+                                    <span class="flip-back-title" style="color: #1e3a8a;">Parking System</span>
+                                </div>
+                                <ul class="flip-points">
+                                    <li class="flip-point">Developed an offline desktop application in VB.NET using Windows Forms for secure admin login, dashboard overview of parking capacity, and floor management.</li>
+                                    <li class="flip-point">Designed robust vehicle entry/exit flows supporting slot allocation, entry tokens generation, and vehicle checkouts with custom receipt printing.</li>
+                                    <li class="flip-point">Implemented advanced admin tools including user creation, vehicle search capabilities, and secure password reset options for offline authentication.</li>
+                                </ul>
+                                <button class="flip-back-btn" style="border-color: #3b82f6; color: #1e3a8a;" onclick="event.stopPropagation(); unflipCard(this)">
+                                    <i class="fas fa-arrow-left"></i> Back
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
                     
 
 
@@ -898,45 +803,7 @@
         </div>
     </section>
 
-    <!-- Certifications Section -->
-    <section id="certifications" style="padding: 4rem 2rem 6rem; background: transparent; max-width: 1200px; margin: 0 auto; width: 100%;">
-        <div class="section-header">
-            <span class="section-subtitle">&mdash; ACHIEVEMENTS</span>
-            <h2 class="section-title">Certifications</h2>
-        </div>
-        
-        <div class="certifications-grid">
-            <a href="Certificate/aws.pdf" target="_blank" class="cert-card">
-                <div style="display: flex; gap: 20px; align-items: flex-start; position: relative; z-index: 2;">
-                    <div class="cert-icon-box aws-orange-bg">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS" loading="lazy">
-                    </div>
-                    <div>
-                        <h3>AWS Certificate</h3>
-                        <p>Amazon Web Services</p>
-                        <div class="cert-badge">
-                            View Certificate <i class="fas fa-arrow-right"></i>
-                        </div>
-                    </div>
-                </div>
-            </a>
 
-            <a href="#" class="cert-card" style="cursor: default;" onclick="event.preventDefault();">
-                <div style="display: flex; gap: 20px; align-items: flex-start; position: relative; z-index: 2;">
-                    <div class="cert-icon-box" style="background: rgba(66, 133, 244, 0.08); border: 1.5px solid rgba(66, 133, 244, 0.15); display: flex; align-items: center; justify-content: center; width: 56px; height: 56px; border-radius: 16px; flex-shrink: 0;">
-                        <i class="fab fa-google" style="font-size: 1.6rem; color: #4285f4;"></i>
-                    </div>
-                    <div>
-                        <h3>Google Data Analytics</h3>
-                        <p>Google Professional Certificate</p>
-                        <div class="cert-badge" style="background: rgba(66, 133, 244, 0.08); color: #4285f4; border: 1px solid rgba(66, 133, 244, 0.15);">
-                            Credential Earned <i class="fas fa-check" style="font-size: 0.75rem; margin-left: 4px;"></i>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-    </section>
 
     <!-- Footer -->
     <footer id="contact">
@@ -1013,6 +880,43 @@
             container.classList.remove('flipped');
             container.querySelectorAll('.flip-point').forEach(p => p.classList.remove('visible'));
         }
+
+        function skipIntro() {
+            const splash = document.getElementById('mobile-splash');
+            if (splash && !splash.classList.contains('fade-out')) {
+                splash.classList.add('fade-out');
+                document.body.classList.remove('no-scroll');
+                if (window.splashTimeout) clearTimeout(window.splashTimeout);
+                if (window.splashHideTimeout) clearTimeout(window.splashHideTimeout);
+                window.splashHideTimeout = setTimeout(function() {
+                    splash.style.display = 'none';
+                }, 600);
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const splash = document.getElementById('mobile-splash');
+            const video = document.getElementById('splash-video');
+
+            // Force play video and set playback rate
+            if (video) {
+                video.playbackRate = 1.4; // Speed up drawing outline
+                video.play().catch(function(err) {
+                    console.log("Autoplay prevented:", err);
+                });
+            }
+            
+            let transitioned = false;
+            const triggerTransition = () => {
+                if (transitioned) return;
+                transitioned = true;
+                skipIntro();
+            };
+
+            // Trigger transition when video ends, or at 6.5s timeout backup (since video is sped up 1.4x)
+            if (video) video.addEventListener("ended", triggerTransition);
+            window.splashTimeout = setTimeout(triggerTransition, 6500);
+        });
     </script>
 </body>
 
