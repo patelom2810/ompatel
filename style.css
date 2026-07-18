@@ -6886,7 +6886,6 @@ body.dark-theme .project-card-ny:hover {
 
 /* Splash Screen Loader (Global) */
 #mobile-splash {
-    display: flex !important;
     position: fixed !important;
     top: 0 !important;
     left: 0 !important;
@@ -6894,13 +6893,15 @@ body.dark-theme .project-card-ny:hover {
     height: 100% !important;
     background-color: #000000 !important;
     z-index: 100000 !important;
+    display: flex !important;
     flex-direction: column !important;
-    justify-content: space-between !important;
     align-items: center !important;
-    padding: 6vh 20px 12vh 20px !important;
+    justify-content: center !important;
+    gap: 0 !important;
     opacity: 1;
     visibility: visible;
     transition: opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1), visibility 0.6s ease !important;
+    overflow: hidden !important;
 }
 
 body.no-scroll {
@@ -6913,37 +6914,63 @@ body.no-scroll {
     pointer-events: none !important;
 }
 
+/* Video fills the full screen — behind everything */
+.splash-video-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.splash-video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    pointer-events: none;
+    opacity: 0.95;
+}
+
+/* Text sits on top of video */
 .splash-content {
+    position: relative;
+    z-index: 10;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap: 12px;
-    position: relative;
-    z-index: 10;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: auto;
+    padding-bottom: 80px;
+    width: 100%;
 }
 
 .splash-title {
     font-family: var(--font-syne), sans-serif;
     font-weight: 800;
-    font-size: clamp(3rem, 6vw, 4.5rem);
+    font-size: clamp(2.4rem, 5vw, 4.5rem);
     color: #ffffff;
     letter-spacing: 0.06em;
     display: flex;
     overflow: hidden;
     line-height: 1.2;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.8);
 }
 
 .splash-subtitle {
     font-family: var(--font-poppins), sans-serif;
     font-weight: 500;
-    font-size: clamp(1rem, 2vw, 1.35rem);
-    color: rgba(255, 255, 255, 0.7);
-    letter-spacing: 0.15em;
-    line-height: 1.2;
+    font-size: clamp(0.85rem, 1.8vw, 1.2rem);
+    color: rgba(255, 255, 255, 0.65);
+    letter-spacing: 0.18em;
     text-transform: uppercase;
     opacity: 0;
     animation: splash-fade-in 1.2s ease 1.0s forwards;
+    text-shadow: 0 1px 10px rgba(0,0,0,0.8);
 }
 
 .splash-title span {
@@ -6971,89 +6998,16 @@ body.no-scroll {
 }
 
 @keyframes splash-fade-in {
-    to {
-        opacity: 1;
-    }
-}
-
-.splash-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    position: relative;
-    z-index: 10;
-}
-
-.splash-title {
-    font-family: var(--font-syne), sans-serif;
-    font-weight: 800;
-    font-size: clamp(3rem, 6vw, 4.5rem);
-    color: #ffffff;
-    letter-spacing: 0.06em;
-    display: flex;
-    overflow: hidden;
-    line-height: 1.2;
-}
-
-.splash-subtitle {
-    font-family: var(--font-poppins), sans-serif;
-    font-weight: 500;
-    font-size: clamp(1rem, 2vw, 1.35rem);
-    color: rgba(255, 255, 255, 0.7);
-    letter-spacing: 0.15em;
-    line-height: 1.2;
-    text-transform: uppercase;
-    opacity: 0;
-    animation: splash-fade-in 1.2s ease 1.0s forwards;
-}
-
-.splash-title span {
-    display: inline-block;
-    transform: translateY(110%);
-    opacity: 0;
-    animation: splash-char-up 0.9s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-}
-
-/* Stagger letters - Om Patel */
-.splash-title span:nth-child(1) { animation-delay: 0.1s; }
-.splash-title span:nth-child(2) { animation-delay: 0.2s; }
-.splash-title span:nth-child(3) { animation-delay: 0.3s; }
-.splash-title span:nth-child(4) { animation-delay: 0.4s; }
-.splash-title span:nth-child(5) { animation-delay: 0.5s; }
-.splash-title span:nth-child(6) { animation-delay: 0.6s; }
-.splash-title span:nth-child(7) { animation-delay: 0.7s; }
-.splash-title span:nth-child(8) { animation-delay: 0.8s; }
-
-/* Background animated silhouette video container for splash screen */
-.splash-video-container {
-    position: relative;
-    height: 50vh;
-    max-height: 400px;
-    aspect-ratio: 16 / 9;
-    max-width: 90vw;
-    z-index: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.splash-video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    pointer-events: none;
-    opacity: 0.95; /* Bright light outline */
+    to { opacity: 1; }
 }
 
 /* Black block overlay to hide the Gemini star watermark in bottom-right */
 .watermark-blocker {
     position: absolute;
-    bottom: 8%;
-    right: 8%;
-    width: 60px;
-    height: 60px;
+    bottom: 6%;
+    right: 6%;
+    width: 70px;
+    height: 70px;
     background-color: #000000;
     z-index: 2;
     pointer-events: none;
@@ -7061,8 +7015,8 @@ body.no-scroll {
 
 @media screen and (max-width: 500px) {
     .watermark-blocker {
-        width: 40px;
-        height: 40px;
+        width: 45px;
+        height: 45px;
         bottom: 8%;
         right: 8%;
     }

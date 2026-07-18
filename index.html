@@ -890,22 +890,13 @@
                 if (window.splashHideTimeout) clearTimeout(window.splashHideTimeout);
                 window.splashHideTimeout = setTimeout(function() {
                     splash.style.display = 'none';
-                }, 600);
+                }, 700);
             }
         }
 
         document.addEventListener("DOMContentLoaded", function() {
-            const splash = document.getElementById('mobile-splash');
             const video = document.getElementById('splash-video');
 
-            // Force play video and set playback rate
-            if (video) {
-                video.playbackRate = 1.4; // Speed up drawing outline
-                video.play().catch(function(err) {
-                    console.log("Autoplay prevented:", err);
-                });
-            }
-            
             let transitioned = false;
             const triggerTransition = () => {
                 if (transitioned) return;
@@ -913,9 +904,34 @@
                 skipIntro();
             };
 
-            // Trigger transition when video ends, or at 6.5s timeout backup (since video is sped up 1.4x)
-            if (video) video.addEventListener("ended", triggerTransition);
-            window.splashTimeout = setTimeout(triggerTransition, 6500);
+            if (video) {
+                // Set speed once video is ready
+                video.addEventListener('canplaythrough', function() {
+                    video.playbackRate = 1.4;
+                }, { once: true });
+
+                // Trigger on video end
+                video.addEventListener('ended', triggerTransition);
+
+                video.play().catch(function(err) {
+                    console.warn("Autoplay prevented:", err);
+                    // If autoplay blocked, just skip after short delay
+                    setTimeout(triggerTransition, 1000);
+                });
+            } else {
+                // No video found — skip immediately
+                triggerTransition();
+            }
+
+            // Safety backup: always exit after 7s max no matter what
+            window.splashTimeout = setTimeout(triggerTransition, 7000);
+        });
+
+        // Final safety net: if page finishes loading but splash still visible, remove no-scroll
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.body.classList.remove('no-scroll');
+            }, 8000); // 8 second hard cap
         });
     </script>
 </body>
