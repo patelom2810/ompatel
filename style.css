@@ -7176,12 +7176,8 @@ body.dark-theme .project-card-ny:hover {
     /* JS overrides position/left/top/width/height via inline style */
     position: fixed;
     pointer-events: none;
-    z-index: 1;
+    z-index: 2;
     background: transparent !important;
-    mix-blend-mode: screen !important;
-    /* Soft radial feather mask — guarantees 0 visible edges on mobile WebKit/Safari */
-    -webkit-mask-image: radial-gradient(ellipse 85% 85% at 50% 50%, #ffffff 65%, transparent 98%);
-    mask-image: radial-gradient(ellipse 85% 85% at 50% 50%, #ffffff 65%, transparent 98%);
     /* Fallback center while JS hasn't run yet */
     top: 50%;
     left: 50%;
@@ -7200,9 +7196,9 @@ body.dark-theme .project-card-ny:hover {
     object-fit: cover;
     display: block;
     pointer-events: none;
-    opacity: 1;
+    opacity: 1 !important;
     mix-blend-mode: screen !important;
-    filter: contrast(1.4) brightness(0.92);
+    filter: contrast(1.15) brightness(1.1);
     background: transparent !important;
 }
 
