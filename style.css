@@ -7187,10 +7187,9 @@ body.dark-theme .project-card-ny:hover {
     pointer-events: none;
     z-index: 2;
     background: transparent !important;
-    mix-blend-mode: screen !important;
-    /* Tight radial mask — hides all edges so video frame rectangle is invisible */
-    -webkit-mask-image: radial-gradient(ellipse 70% 72% at 50% 50%, #000000 45%, transparent 78%);
-    mask-image: radial-gradient(ellipse 70% 72% at 50% 50%, #000000 45%, transparent 78%);
+    /* Portrait mask — feathers the video frame edges for a clean blend */
+    -webkit-mask-image: radial-gradient(ellipse 88% 92% at 50% 48%, #000000 55%, transparent 90%);
+    mask-image: radial-gradient(ellipse 88% 92% at 50% 48%, #000000 55%, transparent 90%);
     /* Fallback center while JS hasn't run yet */
     top: 50%;
     left: 50%;
@@ -7210,10 +7209,8 @@ body.dark-theme .project-card-ny:hover {
     display: block;
     pointer-events: none;
     opacity: 1 !important;
-    mix-blend-mode: screen !important;
-    /* High contrast crushes near-black (compression artifact) pixels to pure black;
-       screen blend then makes pure-black perfectly transparent */
-    filter: contrast(5) brightness(1.4);
+    /* Light sharpen to keep the outline crisp */
+    filter: contrast(1.1) brightness(1.05);
     background: transparent !important;
 }
 
