@@ -77,6 +77,7 @@
                 autoplay
                 muted
                 playsinline
+                webkit-playsinline
                 preload="auto"
             >
                 <source src="img/VN20260718_140154.mp4" type="video/mp4">
@@ -957,35 +958,38 @@
 
             /* ── Align video wrapper precisely over the hero image ── */
             function alignVideoToHero() {
-                if (!heroImg || !videoWrap) return false;
+                if (!videoWrap) return false;
 
-                const rect = heroImg.getBoundingClientRect();
-                if (rect.width === 0 || rect.height === 0) return false;
+                const centerArea = document.querySelector('.hero-center-area');
+                const rect = heroImg ? heroImg.getBoundingClientRect() : null;
+                const containerRect = centerArea ? centerArea.getBoundingClientRect() : null;
+
+                let h = (rect && rect.height > 0) ? rect.height : (containerRect ? containerRect.height : 0);
+                let w = (rect && rect.width > 0) ? rect.width : (containerRect ? containerRect.width : 0);
+
+                if (h === 0) {
+                    h = window.innerHeight * 0.65;
+                    w = h * 0.8;
+                }
 
                 const isMobile = window.innerWidth <= 768;
-
-                /* 
-                   Size video wrapper by matching height of hero avatar image.
-                   Video is 9:16 aspect ratio (width = height * 9 / 16).
-                   This ensures the outline video matches the hero photo scale perfectly.
-                */
                 const SCALE = isMobile ? 1.0 : 1.02;
 
-                const wrapH = rect.height * SCALE;
-                const wrapW = wrapH * (9 / 16);   /* 9:16 portrait */
+                const wrapH = h * SCALE;
+                const wrapW = wrapH * (9 / 16);   /* 9:16 portrait ratio */
 
-                /* Anchor point: center of the hero image */
-                const imgCX = rect.left + rect.width  / 2;
-                const imgCY = rect.top  + rect.height / 2;
+                const leftPos = rect && rect.left !== 0 ? rect.left : (containerRect ? containerRect.left : (window.innerWidth / 2 - w / 2));
+                const topPos  = rect && rect.top !== 0  ? rect.top  : (containerRect ? containerRect.top  : (window.innerHeight / 2 - h / 2));
 
-                /* Centered positioning — slight upward shift ensures video silhouette sits above bottom title text */
-                const hOffset = rect.width * (isMobile ? 0.0 : -0.02);
-                const vOffset = rect.height * (isMobile ? -0.05 : -0.06);
+                const imgCX = leftPos + w / 2;
+                const imgCY = topPos  + h / 2;
+
+                const hOffset = w * (isMobile ? 0.0 : -0.02);
+                const vOffset = h * (isMobile ? -0.05 : -0.06);
 
                 const left = imgCX - wrapW / 2 + hOffset;
                 const top  = imgCY - wrapH / 2 + vOffset;
 
-                /* Apply — JS inline styles override CSS defaults */
                 Object.assign(videoWrap.style, {
                     position  : 'fixed',
                     left      : left   + 'px',
@@ -1001,7 +1005,7 @@
             /* ── Keep retrying alignment as hero image renders ── */
             function tryAlign() {
                 alignVideoToHero();
-                if (alignAttempts < 40) {
+                if (alignAttempts < 60) {
                     alignAttempts++;
                     requestAnimationFrame(tryAlign);
                 }
