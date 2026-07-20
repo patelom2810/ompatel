@@ -961,34 +961,35 @@
                 if (!videoWrap) return false;
 
                 const centerArea = document.querySelector('.hero-center-area');
-                const rect = heroImg ? heroImg.getBoundingClientRect() : null;
+                const rect = (heroImg && heroImg.complete && heroImg.naturalWidth > 0) ? heroImg.getBoundingClientRect() : null;
                 const containerRect = centerArea ? centerArea.getBoundingClientRect() : null;
 
-                let h = (rect && rect.height > 0) ? rect.height : (containerRect ? containerRect.height : 0);
-                let w = (rect && rect.width > 0) ? rect.width : (containerRect ? containerRect.width : 0);
+                const isMobile = window.innerWidth <= 768;
 
-                if (h === 0) {
-                    h = window.innerHeight * 0.65;
-                    w = h * 0.8;
+                if (!rect || rect.width <= 0 || rect.height <= 0 || rect.left <= 0) {
+                    /* Fallback: center in viewport perfectly */
+                    const defaultH = isMobile ? window.innerHeight * 0.55 : window.innerHeight * 0.65;
+                    const defaultW = defaultH * (9 / 16);
+                    Object.assign(videoWrap.style, {
+                        position  : 'fixed',
+                        left      : '50%',
+                        top       : isMobile ? '42%' : '45%',
+                        width     : defaultW + 'px',
+                        height    : defaultH + 'px',
+                        transform : 'translate(-50%, -50%)'
+                    });
+                    return true;
                 }
 
-                const isMobile = window.innerWidth <= 768;
                 const SCALE = isMobile ? 1.0 : 1.02;
+                const wrapH = rect.height * SCALE;
+                const wrapW = wrapH * (9 / 16);
 
-                const wrapH = h * SCALE;
-                const wrapW = wrapH * (9 / 16);   /* 9:16 portrait ratio */
+                const imgCX = rect.left + rect.width / 2;
+                const imgCY = rect.top  + rect.height / 2;
 
-                const leftPos = rect && rect.left !== 0 ? rect.left : (containerRect ? containerRect.left : (window.innerWidth / 2 - w / 2));
-                const topPos  = rect && rect.top !== 0  ? rect.top  : (containerRect ? containerRect.top  : (window.innerHeight / 2 - h / 2));
-
-                const imgCX = leftPos + w / 2;
-                const imgCY = topPos  + h / 2;
-
-                const hOffset = w * (isMobile ? 0.0 : -0.02);
-                const vOffset = h * (isMobile ? -0.05 : -0.06);
-
-                const left = imgCX - wrapW / 2 + hOffset;
-                const top  = imgCY - wrapH / 2 + vOffset;
+                const left = imgCX - wrapW / 2;
+                const top  = imgCY - wrapH / 2;
 
                 Object.assign(videoWrap.style, {
                     position  : 'fixed',
