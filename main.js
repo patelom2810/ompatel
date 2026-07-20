@@ -24,8 +24,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     sections.forEach(section => {
-        sectionObserver.observe(section);
-        section.classList.add('section-hidden');
+        if (section.id === 'home') {
+            section.classList.add('visible');
+        } else {
+            sectionObserver.observe(section);
+            section.classList.add('section-hidden');
+        }
     });
 
     /* =========================================

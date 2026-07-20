@@ -66,6 +66,8 @@
          Video plays on black, text at bottom, fades out on end.
     ============================================================ -->
     <div id="hero-reveal-overlay">
+        <!-- Animated Grid Background -->
+        <div class="hero-reveal-grid"></div>
 
         <!-- Video container: centered, sized by JS -->
         <div id="hero-reveal-video-wrap">
@@ -940,9 +942,7 @@
                V_OFFSET_PX  (positive = shift video DOWN, negative = UP)
                H_OFFSET_PX  (positive = shift video RIGHT, negative = LEFT)
             ================================================================ */
-            const SUBJECT_SCALE = 1.35;
-            const V_OFFSET_PX   =  60;   /* move video down to match photo */
-            const H_OFFSET_PX   = -80;   /* move video left  to match photo */
+
 
             /* ── Align video wrapper precisely over the hero image ── */
             function alignVideoToHero() {
@@ -951,17 +951,28 @@
                 const rect = heroImg.getBoundingClientRect();
                 if (rect.width === 0 || rect.height === 0) return false;
 
-                /* Video is 9:16 — width drives height */
-                const wrapW = rect.width * SUBJECT_SCALE;
-                const wrapH = wrapW * (16 / 9);   /* 9:16 portrait */
+                const isMobile = window.innerWidth <= 768;
+
+                /* 
+                   Size video wrapper by matching height of hero avatar image.
+                   Video is 9:16 aspect ratio (width = height * 9 / 16).
+                   This ensures the outline video matches the hero photo scale perfectly.
+                */
+                const SCALE = isMobile ? 1.0 : 1.02;
+
+                const wrapH = rect.height * SCALE;
+                const wrapW = wrapH * (9 / 16);   /* 9:16 portrait */
 
                 /* Anchor point: center of the hero image */
                 const imgCX = rect.left + rect.width  / 2;
                 const imgCY = rect.top  + rect.height / 2;
 
-                /* Apply offsets so subject in video aligns with the photo */
-                const left = imgCX - wrapW / 2 + H_OFFSET_PX;
-                const top  = imgCY - wrapH / 2 + V_OFFSET_PX;
+                /* Centered positioning — slight upward shift ensures video silhouette sits above bottom title text */
+                const hOffset = rect.width * (isMobile ? 0.0 : -0.02);
+                const vOffset = rect.height * (isMobile ? -0.05 : -0.06);
+
+                const left = imgCX - wrapW / 2 + hOffset;
+                const top  = imgCY - wrapH / 2 + vOffset;
 
                 /* Apply — JS inline styles override CSS defaults */
                 Object.assign(videoWrap.style, {
@@ -976,44 +987,115 @@
                 return true;
             }
 
-            /* ── Keep retrying until the hero image has rendered ── */
+            /* ── Keep retrying alignment as hero image renders ── */
             function tryAlign() {
-                if (!alignVideoToHero() && alignAttempts < 40) {
+                alignVideoToHero();
+                if (alignAttempts < 40) {
                     alignAttempts++;
                     requestAnimationFrame(tryAlign);
                 }
             }
 
-            /* ── Reveal: fade out overlay, fade in hero image ── */
+            /* ── Create dynamic collapsing grid tiles for the reveal ── */
+            function triggerGridReveal(onComplete) {
+                const container = document.createElement('div');
+                container.className = 'hero-reveal-tile-container';
+
+                const isMobile = window.innerWidth <= 768;
+                const cols = isMobile ? 4 : 6;
+                const rows = 4;
+                container.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
+                container.style.gridTemplateRows = `repeat(${rows}, 1fr)`;
+
+                for (let r = 0; r < rows; r++) {
+                    for (let c = 0; c < cols; c++) {
+                        const tile = document.createElement('div');
+                        tile.className = 'hero-reveal-tile';
+
+                        /* Calculate distance from center to ripple out the grid collapse */
+                        const distFromCenter = Math.hypot(c - (cols - 1) / 2, r - (rows - 1) / 2);
+                        const delay = distFromCenter * 0.055;
+
+                        tile.style.animationDelay = `${delay}s`;
+                        container.appendChild(tile);
+                    }
+                }
+
+                document.body.appendChild(container);
+
+                const maxDelay = (Math.hypot(cols, rows) * 0.055 + 0.58) * 1000;
+                setTimeout(() => {
+                    if (container && container.parentNode) {
+                        container.remove();
+                    }
+                    if (onComplete) onComplete();
+                }, maxDelay);
+            }
+
+            /* ── Reveal: ultra-smooth grid reveal animation to hero page ── */
             function revealSite() {
                 if (isRevealed) return;
                 isRevealed = true;
 
                 document.body.style.overflow = '';
 
-                /* Start overlay fade-out (CSS transition already set: 0.9s) */
+                /* Smoothly fade out video wrapper in sync with grid tiles */
+                if (videoWrap) {
+                    videoWrap.style.transition = 'opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
+                    videoWrap.style.opacity    = '0';
+                }
+
+                /* Trigger grid tile collapse transition */
+                triggerGridReveal(() => {
+                    if (overlay && overlay.parentNode) {
+                        overlay.remove();
+                    }
+                });
+
+                /* Start overlay backdrop fade-out */
                 overlay.classList.add('hero-reveal-done');
 
-                /* Hero image fades in in sync with overlay fade-out */
+                /* Ensure hero section is fully visible */
+                const heroSection = document.getElementById('home');
+                if (heroSection) {
+                    heroSection.classList.remove('section-hidden');
+                    heroSection.classList.add('visible');
+                    heroSection.style.opacity = '1';
+                    heroSection.style.transform = 'translateY(0)';
+                }
+
+                /* Hero image fades in smoothly in sync with grid reveal */
                 if (heroImg) {
-                    heroImg.style.transition = 'opacity 0.9s cubic-bezier(0.25, 1, 0.5, 1)';
+                    heroImg.style.transition = 'opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1)';
                     heroImg.style.opacity    = '1';
                 }
 
-                overlay.addEventListener('transitionend', () => overlay.remove(), { once: true });
+                setTimeout(() => {
+                    if (overlay && overlay.parentNode) {
+                        overlay.remove();
+                    }
+                }, 950);
             }
 
             /* ── Bootstrap ── */
             function init() {
                 tryAlign();
                 if (video) {
-                    video.playbackRate = 1.0;       /* real-time — preserve seamless ending */
+                    video.playbackRate = 1.0;
                     video.play().catch(() => setTimeout(revealSite, 600));
+
+                    /* Cut last 1 second from intro video: trigger reveal 1 second early */
+                    video.addEventListener('timeupdate', function () {
+                        if (video.duration && video.currentTime >= (video.duration - 1.0)) {
+                            revealSite();
+                        }
+                    });
+
                     video.addEventListener('ended', revealSite, { once: true });
                 }
                 if (skipBtn) skipBtn.addEventListener('click', revealSite);
                 /* Safety net if video stalls or is very long */
-                setTimeout(revealSite, 14000);
+                setTimeout(revealSite, 9000);
             }
 
             /* ── Re-align on window resize ── */
@@ -1024,7 +1106,6 @@
                 requestAnimationFrame(init);
             } else {
                 window.addEventListener('load', () => requestAnimationFrame(init));
-                /* Also try right away in case DOMContentLoaded already fired */
                 requestAnimationFrame(tryAlign);
             }
 

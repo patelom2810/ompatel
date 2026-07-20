@@ -6886,7 +6886,7 @@ body.dark-theme .project-card-ny:hover {
    Sits above the loaded website and fades out on reveal.
 ============================================================= */
 
-/* ── Main Overlay — always black, always on top ── */
+/* ── Main Overlay ── always black, always on top ── */
 #hero-reveal-overlay {
     position: fixed !important;
     inset: 0 !important;
@@ -6899,23 +6899,113 @@ body.dark-theme .project-card-ny:hover {
     align-items: center;
     justify-content: center;
     opacity: 1;
-    transition: opacity 0.9s cubic-bezier(0.25, 1, 0.5, 1);
     pointer-events: all;
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), visibility 0.8s ease;
 }
 
-/* When JS adds this class, overlay fades out */
+/* When JS adds this class the overlay fades out smoothly and becomes inert */
 #hero-reveal-overlay.hero-reveal-done {
     opacity: 0 !important;
+    visibility: hidden !important;
     pointer-events: none !important;
+}
+
+/* ──────────────────────────────────────────────────────────────
+   DECORATIVE GRID OVERLAY ON BLACK SPLASH SCREEN
+   Fine grid lines with a faint blue-accent glow at corners
+────────────────────────────────────────────────────────────── */
+.hero-reveal-grid {
+    position: absolute;
+    inset: 0;
+    /* Fine white grid lines */
+    background-image:
+        linear-gradient(rgba(255,255,255,0.055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.055) 1px, transparent 1px),
+        /* Slightly thicker lines every 4 cells for major grid */
+        linear-gradient(rgba(255,255,255,0.10) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.10) 1px, transparent 1px);
+    background-size:
+        60px 60px,
+        60px 60px,
+        240px 240px,
+        240px 240px;
+    pointer-events: none;
+    z-index: 0;
+    /* Subtle animated pulse so it feels alive */
+    animation: gridPulse 4s ease-in-out infinite;
+}
+
+/* Radial blue glow in center of the grid to match the portfolio accent */
+.hero-reveal-grid::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        ellipse 65% 55% at 50% 50%,
+        rgba(67, 97, 238, 0.18) 0%,
+        rgba(67, 97, 238, 0.06) 40%,
+        transparent 70%
+    );
+    pointer-events: none;
+}
+
+@keyframes gridPulse {
+    0%, 100% { opacity: 0.7; }
+    50%       { opacity: 1.0; }
+}
+
+/* =============================================================
+   DYNAMIC GRID TILE REVEAL ANIMATION
+   Staggered collapsing grid tiles that reveal the hero page
+============================================================= */
+.hero-reveal-tile-container {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1000010;
+    pointer-events: none;
+    display: grid;
+    transition: opacity 0.5s ease;
+}
+
+.hero-reveal-tile {
+    background: #000000;
+    box-shadow: inset 0 0 0 1px rgba(65, 105, 225, 0.15);
+    transform-origin: center center;
+    will-change: transform, opacity, filter;
+    animation: gridTileCollapse 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes gridTileCollapse {
+    0% {
+        transform: scale(1.02) translateY(0);
+        opacity: 1;
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.15);
+        filter: blur(0px);
+    }
+    35% {
+        box-shadow: inset 0 0 20px rgba(65, 105, 225, 0.5), inset 0 0 0 1px rgba(65, 105, 225, 0.8);
+    }
+    100% {
+        transform: scale(0.65) translateY(-8px);
+        opacity: 0;
+        box-shadow: inset 0 0 0 0 transparent;
+        filter: blur(4px);
+    }
 }
 
 /* ── Video wrapper: JS controls position, size and placement ── */
 #hero-reveal-video-wrap {
     /* JS overrides position/left/top/width/height via inline style */
     position: fixed;
-    overflow: hidden;
     pointer-events: none;
     z-index: 1;
+    background: transparent !important;
+    mix-blend-mode: screen !important;
+    /* Soft radial feather mask completely dissolves any rectangular box edges */
+    -webkit-mask-image: radial-gradient(ellipse 80% 85% at 50% 50%, #000000 60%, transparent 100%);
+    mask-image: radial-gradient(ellipse 80% 85% at 50% 50%, #000000 60%, transparent 100%);
     /* Fallback center while JS hasn't run yet */
     top: 50%;
     left: 50%;
@@ -6923,9 +7013,11 @@ body.dark-theme .project-card-ny:hover {
     width: min(56vw, 85vh * 0.5625);
     height: auto;
     aspect-ratio: 9 / 16;
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* ── Video fills wrapper ── */
+/* ── Video fills wrapper & eliminates dark video background box ── */
+#hero-reveal-video,
 .hero-reveal-video {
     width: 100%;
     height: 100%;
@@ -6933,16 +7025,20 @@ body.dark-theme .project-card-ny:hover {
     display: block;
     pointer-events: none;
     opacity: 1;
+    mix-blend-mode: screen !important;
+    /* High contrast pushes dark video noise to pure 0 black for 100% transparency */
+    filter: contrast(1.85) brightness(0.85);
+    background: transparent !important;
 }
 
-/* ── Bottom gradient vignette hides the Gemini watermark ── */
+/* ── Bottom gradient vignette hides Gemini watermark & guarantees text legibility ── */
 .hero-reveal-vignette {
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 20%;
-    background: linear-gradient(to bottom, transparent, #000000);
+    height: 45%;
+    background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.65) 45%, #000000 100%);
     pointer-events: none;
     z-index: 2;
 }
@@ -6951,13 +7047,13 @@ body.dark-theme .project-card-ny:hover {
 /* ── "Om Patel" text at bottom of overlay ── */
 .hero-reveal-text {
     position: fixed;
-    bottom: 10vh;
+    bottom: 24px;
     left: 0;
     right: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     z-index: 1000003;
     pointer-events: none;
 }
@@ -6966,13 +7062,13 @@ body.dark-theme .project-card-ny:hover {
 .hero-reveal-name {
     font-family: var(--font-syne), 'Syne', sans-serif;
     font-weight: 800;
-    font-size: clamp(2.5rem, 5.5vw, 5rem);
+    font-size: clamp(2.2rem, 5vw, 4.5rem);
     color: #ffffff;
     letter-spacing: 0.06em;
     display: flex;
     overflow: hidden;
     line-height: 1.1;
-    text-shadow: 0 2px 24px rgba(0,0,0,0.6);
+    text-shadow: 0 4px 30px rgba(0, 0, 0, 0.95), 0 2px 8px rgba(0, 0, 0, 0.9);
 }
 
 .hero-reveal-name span {
@@ -7002,13 +7098,14 @@ body.dark-theme .project-card-ny:hover {
 /* Subtitle fades in after letters */
 .hero-reveal-sub {
     font-family: var(--font-poppins), 'Poppins', sans-serif;
-    font-weight: 400;
-    font-size: clamp(0.8rem, 1.6vw, 1.1rem);
-    color: rgba(255, 255, 255, 0.55);
+    font-weight: 600;
+    font-size: clamp(0.75rem, 1.5vw, 1.05rem);
+    color: rgba(255, 255, 255, 0.9);
     letter-spacing: 0.22em;
     text-transform: uppercase;
     margin: 0;
     opacity: 0;
+    text-shadow: 0 3px 20px rgba(0, 0, 0, 0.95), 0 1px 4px rgba(0, 0, 0, 0.9);
     animation: heroRevealFadeIn 1s ease 0.9s forwards;
 }
 
@@ -7072,15 +7169,15 @@ body.dark-theme .project-card-ny:hover {
 /* ── Mobile adjustments ── */
 @media screen and (max-width: 768px) {
     .hero-reveal-text {
-        bottom: 12vh;
+        bottom: 18px;
     }
 
     .hero-reveal-name {
-        font-size: clamp(2rem, 10vw, 3rem);
+        font-size: clamp(1.8rem, 8.5vw, 2.8rem);
     }
 
     .hero-reveal-sub {
-        font-size: 0.75rem;
+        font-size: 0.72rem;
         letter-spacing: 0.16em;
     }
 
