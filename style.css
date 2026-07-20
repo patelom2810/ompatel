@@ -119,6 +119,11 @@ body {
     overflow-x: hidden;
 }
 
+/* Utility: lock scroll during splash/overlay screens */
+body.no-scroll {
+    overflow: hidden !important;
+}
+
 /* Custom Utilities for Playful Hero */
 .flex-center {
     display: flex;
