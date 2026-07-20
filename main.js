@@ -243,34 +243,37 @@ document.addEventListener('DOMContentLoaded', () => {
     /* =========================================
        Theme Toggle (Dark / Light Mode)
        ========================================= */
-    const themeToggles = document.querySelectorAll('#theme-toggle');
+    const themeToggles = document.querySelectorAll('.theme-toggle-btn, #theme-toggle');
     const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
 
     // Initialize theme based on local storage or system preference
     const currentTheme = localStorage.getItem("theme");
-    if (currentTheme == "dark") {
+    if (currentTheme === "dark") {
         document.body.classList.add("dark-theme");
-    } else if (currentTheme == "light") {
+    } else if (currentTheme === "light") {
         document.body.classList.remove("dark-theme");
     } else if (prefersDarkScheme.matches) {
         document.body.classList.add("dark-theme");
+    } else {
+        document.body.classList.add("dark-theme"); // Default to dark mode for portfolio theme
     }
 
     // Function to update icon
     const updateIcon = () => {
         themeToggles.forEach(toggle => {
             const icon = toggle.querySelector('.theme-icon');
-            if (document.body.classList.contains("dark-theme")) {
-                icon.classList.remove('fa-moon');
-                icon.classList.add('fa-sun');
-            } else {
-                icon.classList.remove('fa-sun');
-                icon.classList.add('fa-moon');
+            if (icon) {
+                if (document.body.classList.contains("dark-theme")) {
+                    icon.classList.remove('fa-moon');
+                    icon.classList.add('fa-sun');
+                } else {
+                    icon.classList.remove('fa-sun');
+                    icon.classList.add('fa-moon');
+                }
             }
         });
-
     };
-    
+
     // Initial icon update
     updateIcon();
 

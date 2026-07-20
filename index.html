@@ -136,6 +136,9 @@
                 <i class="fas fa-envelope"></i>
                 <span class="nav-label">Contact</span>
             </a>
+            <button class="nav-item theme-toggle-btn" id="theme-toggle" data-tooltip="Theme" aria-label="Toggle Theme">
+                <i class="fas fa-moon theme-icon"></i>
+            </button>
         </nav>
         <!-- Back to Top Button -->
         <div class="back-to-top">
@@ -144,7 +147,7 @@
     </div>
 
     <!-- Hero Section -->
-    <!-- Hero Section -->    <section id="home" class="hero-split">
+    <section id="home" class="hero-split">
         <!-- Concentric Background Circles -->
         <div class="hero-circle hero-circle-1"></div>
         <div class="hero-circle hero-circle-2"></div>
@@ -169,6 +172,9 @@
                 <i class="fas fa-search search-icon"></i>
                 <input type="text" class="nav-search-input" id="nav-search" placeholder="Search projects...">
             </div>
+            <button class="theme-toggle-btn" id="theme-toggle" title="Toggle Theme" aria-label="Toggle Theme">
+                <i class="fas fa-moon theme-icon"></i>
+            </button>
             <a href="mailto:patelom2810@gmail.com" class="hero-header-btn">HIRE ME</a>
         </div>
 
@@ -179,8 +185,7 @@
                     <span class="status-dot"></span>
                     Available for Internships
                 </div>
-                <span class="hero-role-tag">Services</span>
-                <h4 class="hero-services-heading">Let's build quality models, pipelines, and insights with my services</h4>
+                <h4 class="hero-services-heading">Let's build quality models, pipelines, and insights</h4>
                 <a href="#about" class="hero-services-more-link">show more <i class="fas fa-arrow-right"></i></a>
                 
                 <div class="hero-services-socials">
@@ -997,6 +1002,7 @@
             }
 
             /* ── Create dynamic collapsing grid tiles for the reveal ── */
+            /* ── Create dynamic collapsing grid tiles for the reveal ── */
             function triggerGridReveal(onComplete) {
                 const container = document.createElement('div');
                 container.className = 'hero-reveal-tile-container';
@@ -1012,9 +1018,9 @@
                         const tile = document.createElement('div');
                         tile.className = 'hero-reveal-tile';
 
-                        /* Calculate distance from center to ripple out the grid collapse */
+                        /* Calculate distance from center to ripple out the grid collapse smoothly */
                         const distFromCenter = Math.hypot(c - (cols - 1) / 2, r - (rows - 1) / 2);
-                        const delay = distFromCenter * 0.055;
+                        const delay = distFromCenter * 0.085;
 
                         tile.style.animationDelay = `${delay}s`;
                         container.appendChild(tile);
@@ -1023,7 +1029,7 @@
 
                 document.body.appendChild(container);
 
-                const maxDelay = (Math.hypot(cols, rows) * 0.055 + 0.58) * 1000;
+                const maxDelay = (Math.hypot(cols, rows) * 0.085 + 1.15) * 1000;
                 setTimeout(() => {
                     if (container && container.parentNode) {
                         container.remove();
@@ -1041,7 +1047,7 @@
 
                 /* Smoothly fade out video wrapper in sync with grid tiles */
                 if (videoWrap) {
-                    videoWrap.style.transition = 'opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
+                    videoWrap.style.transition = 'opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
                     videoWrap.style.opacity    = '0';
                 }
 
@@ -1066,7 +1072,7 @@
 
                 /* Hero image fades in smoothly in sync with grid reveal */
                 if (heroImg) {
-                    heroImg.style.transition = 'opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1)';
+                    heroImg.style.transition = 'opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1)';
                     heroImg.style.opacity    = '1';
                 }
 
@@ -1074,7 +1080,7 @@
                     if (overlay && overlay.parentNode) {
                         overlay.remove();
                     }
-                }, 950);
+                }, 1300);
             }
 
             /* ── Bootstrap ── */
@@ -1084,9 +1090,9 @@
                     video.playbackRate = 1.0;
                     video.play().catch(() => setTimeout(revealSite, 600));
 
-                    /* Cut last 1 second from intro video: trigger reveal 1 second early */
+                    /* Trigger smooth reveal near end of video outline animation */
                     video.addEventListener('timeupdate', function () {
-                        if (video.duration && video.currentTime >= (video.duration - 1.0)) {
+                        if (video.duration && video.currentTime >= (video.duration - 0.5)) {
                             revealSite();
                         }
                     });
@@ -1094,8 +1100,8 @@
                     video.addEventListener('ended', revealSite, { once: true });
                 }
                 if (skipBtn) skipBtn.addEventListener('click', revealSite);
-                /* Safety net if video stalls or is very long */
-                setTimeout(revealSite, 9000);
+                /* Safety fallback timer to prevent infinite wait */
+                setTimeout(revealSite, 10000);
             }
 
             /* ── Re-align on window resize ── */
