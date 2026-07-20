@@ -4008,7 +4008,12 @@ body.dark-theme .nav-profile {
     flex-direction: column;
     justify-content: space-between;
     padding: 0;
-    background: radial-gradient(ellipse 90% 70% at 50% 30%, #0d1b40 0%, #060e24 60%, #020612 100%);
+    background-color: #060d1f;
+    background-image: 
+        radial-gradient(ellipse 75% 65% at 50% 30%, rgba(56, 189, 248, 0.14) 0%, transparent 75%),
+        linear-gradient(90deg, rgba(56, 189, 248, 0.05) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(56, 189, 248, 0.05) 1px, transparent 1px);
+    background-size: 100% 100%, 48px 48px, 48px 48px;
     position: relative;
     overflow: hidden;
     transition: background 0.5s ease;
@@ -4038,9 +4043,14 @@ body.dark-theme .nav-profile {
     transform: scale(1.1) rotate(15deg);
 }
 
-/* Light Mode Adaptations for Hero Section */
+/* Light Mode Adaptations for Hero Section — Subtle Baby Blue Tech Grid */
 body:not(.dark-theme) .hero-split {
-    background: radial-gradient(ellipse 90% 70% at 50% 30%, #f8fafc 0%, #e2e8f0 65%, #cbd5e1 100%);
+    background-color: #f0f7ff;
+    background-image: 
+        radial-gradient(ellipse 80% 60% at 50% 30%, rgba(186, 230, 253, 0.55) 0%, rgba(240, 247, 255, 0) 75%),
+        linear-gradient(90deg, rgba(56, 189, 248, 0.12) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(56, 189, 248, 0.12) 1px, transparent 1px);
+    background-size: 100% 100%, 48px 48px, 48px 48px;
 }
 
 body:not(.dark-theme) .hero-header-pill {
@@ -4115,6 +4125,18 @@ body:not(.dark-theme) .theme-toggle-btn:hover {
     background: rgba(37, 99, 235, 0.1);
     color: #2563eb;
     border-color: #2563eb;
+}
+
+body:not(.dark-theme) .hero-status-badge {
+    background: rgba(2, 132, 199, 0.1);
+    border: 1px solid rgba(2, 132, 199, 0.3);
+    color: #0284c7;
+    box-shadow: 0 4px 16px rgba(2, 132, 199, 0.12);
+}
+
+body:not(.dark-theme) .hero-status-badge .status-dot {
+    background-color: #0284c7;
+    box-shadow: 0 0 8px #0284c7;
 }
 
 .cert-card {
@@ -5636,6 +5658,33 @@ body.dark-theme .hero-circle-3 {
     text-align: left;
 }
 
+/* Bottom-to-Top Word Reveal Animation — Triggers ONLY AFTER Intro Reveal */
+.hero-reveal-word {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(32px);
+    will-change: transform, opacity, filter;
+}
+
+body.site-revealed .hero-reveal-word,
+#home.visible .hero-reveal-word,
+.hero-reveal-done ~ #home .hero-reveal-word {
+    animation: heroWordSlideUp 1.0s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes heroWordSlideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(32px);
+        filter: blur(4px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
 
 .hero-role-tag {
     font-size: 0.82rem;
@@ -6353,14 +6402,22 @@ body.dark-theme .project-card-ny:hover {
         margin: 0 !important;
     }
 
+    body:not(.dark-theme) .hero-mobile-role .hero-role-heading {
+        color: #0f172a !important;
+    }
+
     .hero-mobile-role .hero-role-subtext {
         font-family: var(--font-poppins), sans-serif !important;
-        font-size: 0.8rem !important;
-        line-height: 1.4 !important;
-        color: rgba(255, 255, 255, 0.6) !important;
+        font-size: 0.82rem !important;
+        line-height: 1.45 !important;
+        color: rgba(255, 255, 255, 0.7) !important;
         max-width: 88% !important;
         margin: 8px auto 0 auto !important;
         font-weight: 400 !important;
+    }
+
+    body:not(.dark-theme) .hero-mobile-role .hero-role-subtext {
+        color: #334155 !important;
     }
 
     /* Hide scroll arrow on mobile to prevent overlapping with the navigation dock */
@@ -7118,6 +7175,9 @@ body.dark-theme .project-card-ny:hover {
     z-index: 1;
     background: transparent !important;
     mix-blend-mode: screen !important;
+    /* Soft radial feather mask — guarantees 0 visible edges on mobile WebKit/Safari */
+    -webkit-mask-image: radial-gradient(ellipse 85% 85% at 50% 50%, #ffffff 65%, transparent 98%);
+    mask-image: radial-gradient(ellipse 85% 85% at 50% 50%, #ffffff 65%, transparent 98%);
     /* Fallback center while JS hasn't run yet */
     top: 50%;
     left: 50%;
@@ -7138,7 +7198,7 @@ body.dark-theme .project-card-ny:hover {
     pointer-events: none;
     opacity: 1;
     mix-blend-mode: screen !important;
-    filter: contrast(1.25) brightness(0.98);
+    filter: contrast(1.4) brightness(0.92);
     background: transparent !important;
 }
 
@@ -7224,15 +7284,15 @@ body.dark-theme .project-card-ny:hover {
     to { opacity: 1; }
 }
 
-/* ── Skip Button ── */
+/* ── Skip Button ── placed cleanly in top-right corner to clear bottom title ── */
 .hero-reveal-skip {
     position: fixed;
-    bottom: 32px;
+    top: 28px;
     right: 36px;
     z-index: 1000004;
-    background: rgba(255, 255, 255, 0.07);
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    color: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: rgba(255, 255, 255, 0.85);
     padding: 9px 20px;
     border-radius: 24px;
     font-family: var(--font-poppins), sans-serif;
@@ -7241,24 +7301,24 @@ body.dark-theme .project-card-ny:hover {
     letter-spacing: 0.06em;
     text-transform: uppercase;
     cursor: pointer;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
     display: inline-flex;
     align-items: center;
     gap: 7px;
-    /* Slide up from bottom after 1.5s */
-    transform: translateY(20px);
+    /* Slide down from top after 1.5s */
+    transform: translateY(-15px);
     opacity: 0;
-    animation: heroRevealSkipIn 0.9s cubic-bezier(0.25, 1, 0.5, 1) 1.5s forwards;
+    animation: heroRevealSkipIn 0.9s cubic-bezier(0.25, 1, 0.5, 1) 1.2s forwards;
     transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .hero-reveal-skip:hover {
-    background: rgba(255, 255, 255, 0.16);
+    background: rgba(255, 255, 255, 0.18);
     color: #ffffff;
-    border-color: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.35);
     transform: translateY(0) scale(1.04);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
 .hero-reveal-skip i {
@@ -7293,8 +7353,8 @@ body.dark-theme .project-card-ny:hover {
     }
 
     .hero-reveal-skip {
-        bottom: 24px;
-        right: 20px;
+        top: 20px;
+        right: 18px;
         font-size: 0.7rem;
         padding: 8px 16px;
     }

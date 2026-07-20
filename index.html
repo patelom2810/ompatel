@@ -208,8 +208,14 @@
                     <span class="status-dot"></span>
                     Available for Internships
                 </div>
-                <h4 class="hero-role-heading">Data Analyst &amp; AI/ML Developer</h4>
-                <p class="hero-role-subtext">Building models, pipelines, and insights to turn complex data into clear, actionable stories.</p>
+                <h4 class="hero-role-heading">
+                    <span class="hero-reveal-word" style="animation-delay: 0.25s;">Data Analyst</span> 
+                    <span class="hero-reveal-word" style="animation-delay: 0.4s;">&amp;</span> 
+                    <span class="hero-reveal-word" style="animation-delay: 0.55s;">AI/ML Developer</span>
+                </h4>
+                <p class="hero-role-subtext">
+                    <span class="hero-reveal-word" style="animation-delay: 0.75s;">Building models, pipelines, and insights to turn complex data into clear, actionable stories.</span>
+                </p>
             </div>
 
             <!-- Mobile-only: Scroll indicator -->
@@ -1044,6 +1050,7 @@
                 isRevealed = true;
 
                 document.body.style.overflow = '';
+                document.body.classList.add('site-revealed');
 
                 /* Smoothly fade out video wrapper in sync with grid tiles */
                 if (videoWrap) {
