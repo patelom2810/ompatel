@@ -7209,6 +7209,7 @@ body.dark-theme .project-card-ny:hover {
     display: block;
     pointer-events: none;
     opacity: 1 !important;
+    mix-blend-mode: screen !important;
     /* Light sharpen to keep the outline crisp */
     filter: contrast(1.1) brightness(1.05);
     background: transparent !important;
