@@ -7185,9 +7185,7 @@ body.dark-theme .project-card-ny:hover {
     /* JS overrides position/left/top/width/height via inline style */
     position: fixed;
     pointer-events: none;
-    z-index: 2;
     background: transparent !important;
-    mix-blend-mode: screen !important;
     /* Fallback center while JS hasn't run yet */
     top: 50%;
     left: 50%;
@@ -7210,7 +7208,7 @@ body.dark-theme .project-card-ny:hover {
     mix-blend-mode: screen !important;
     /* High contrast crushes any compression noise to true #000000 black,
        which screen blend mode turns 100% transparent */
-    filter: contrast(2.2) brightness(1.2);
+    filter: contrast(2.5) brightness(1.25);
     background: transparent !important;
 }
 
