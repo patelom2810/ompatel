@@ -7178,6 +7178,10 @@ body.dark-theme .project-card-ny:hover {
     pointer-events: none;
     z-index: 2;
     background: transparent !important;
+    mix-blend-mode: screen !important;
+    /* Soft radial feather mask — completely dissolves outer video edges into 100% transparency */
+    -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, #000000 60%, transparent 95%);
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, #000000 60%, transparent 95%);
     /* Fallback center while JS hasn't run yet */
     top: 50%;
     left: 50%;
@@ -7198,7 +7202,7 @@ body.dark-theme .project-card-ny:hover {
     pointer-events: none;
     opacity: 1 !important;
     mix-blend-mode: screen !important;
-    filter: contrast(1.15) brightness(1.1);
+    filter: contrast(1.35) brightness(1.05);
     background: transparent !important;
 }
 
