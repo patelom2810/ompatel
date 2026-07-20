@@ -78,9 +78,9 @@
                 muted
                 playsinline
                 webkit-playsinline
-                preload="auto"
+                preload="metadata"
             >
-                <source src="img/VN20260718_140154.mp4" type="video/mp4">
+                <source src="img/VN20260718_140154-opt.mp4" type="video/mp4">
             </video>
             <!-- Bottom fade gradient that hides the Gemini watermark -->
             <div class="hero-reveal-vignette"></div>
@@ -1112,7 +1112,11 @@
                 }
                 if (skipBtn) skipBtn.addEventListener('click', revealSite);
                 /* Safety fallback timer to prevent infinite wait */
-                setTimeout(revealSite, 10000);
+                setTimeout(revealSite, 5000);
+
+                /* If video stalls on slow connection, skip after short buffer wait */
+                video.addEventListener('stalled', () => setTimeout(revealSite, 2000));
+                video.addEventListener('error',   () => revealSite());
             }
 
             /* ── Re-align on window resize ── */
