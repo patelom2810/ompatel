@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Dancing+Script:wght@400..700&family=Pacifico&family=Syne:wght@400..800&display=swap');
 
 /* Global Styles */
 :root {
@@ -7073,7 +7072,12 @@ body.dark-theme .project-card-ny:hover {
     inset: 0 !important;
     width: 100% !important;
     height: 100% !important;
-    background: #000000 !important;
+    background: radial-gradient(
+        ellipse 120% 100% at 50% 60%,
+        #0a0f2e 0%,
+        #050816 40%,
+        #020510 100%
+    ) !important;
     z-index: 999999 !important;
     overflow: hidden;
     display: flex;
@@ -7151,7 +7155,7 @@ body.dark-theme .project-card-ny:hover {
 }
 
 .hero-reveal-tile {
-    background: #000000;
+    background: #050816;
     box-shadow: inset 0 0 0 1px rgba(65, 105, 225, 0.18);
     transform-origin: center center;
     will-change: transform, opacity, filter;
