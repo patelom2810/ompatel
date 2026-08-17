@@ -6,3 +6,6 @@
 .vscode/
 *.swp
 *.swo
+
+# Media
+*.mov

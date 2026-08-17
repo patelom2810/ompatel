@@ -308,6 +308,116 @@ document.addEventListener('DOMContentLoaded', () => {
             updateIcon();
         });
     }
+
+    /* =========================================
+       Drag-to-Scroll for Featured Projects
+       ========================================= */
+    const slider = document.querySelector('.featured-projects-slider-wrapper');
+    if (slider) {
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        slider.addEventListener('mousedown', (e) => {
+            isDown = true;
+            slider.style.cursor = 'grabbing';
+            startX = e.pageX - slider.offsetLeft;
+            scrollLeft = slider.scrollLeft;
+        });
+
+        slider.addEventListener('mouseleave', () => {
+            isDown = false;
+            slider.style.cursor = 'grab';
+        });
+
+        slider.addEventListener('mouseup', () => {
+            isDown = false;
+            slider.style.cursor = 'grab';
+        });
+
+        slider.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - slider.offsetLeft;
+            const walk = (x - startX) * 2; // scroll speed multiplier
+            slider.scrollLeft = scrollLeft - walk;
+        });
+    }
+
+    /* =========================================
+       Typography Reveal & Highlights Observer
+       ========================================= */
+    
+    // Character Splitter for Headings
+    const animateHeadings = document.querySelectorAll('.section-title, .hero-title-new, .footer-heading, .about-title-large');
+    animateHeadings.forEach(heading => {
+        const text = heading.textContent.trim();
+        heading.innerHTML = '';
+        
+        const words = text.split(/\s+/);
+        words.forEach((word, wordIndex) => {
+            const wordSpan = document.createElement('span');
+            wordSpan.style.display = 'inline-block';
+            wordSpan.style.whiteSpace = 'nowrap';
+            
+            for (let char of word) {
+                const charSpan = document.createElement('span');
+                charSpan.className = 'anim-char';
+                charSpan.textContent = char;
+                wordSpan.appendChild(charSpan);
+            }
+            
+            heading.appendChild(wordSpan);
+            if (wordIndex < words.length - 1) {
+                heading.appendChild(document.createTextNode(' '));
+            }
+        });
+
+        const chars = heading.querySelectorAll('.anim-char');
+        chars.forEach((char, idx) => {
+            char.style.setProperty('--char-index', idx);
+        });
+    });
+
+    // Heading Intersection Observer
+    const headingObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                headingObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    animateHeadings.forEach(h => headingObserver.observe(h));
+
+    // Text Highlight Sweeper Observer
+    const highlightContainers = document.querySelectorAll('.highlight-container');
+    const highlightObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Clear any existing timeouts to prevent overlapping animation cycles
+                if (entry.target.highlightTimeout) {
+                    clearTimeout(entry.target.highlightTimeout);
+                }
+                
+                entry.target.classList.add('active');
+                entry.target.classList.remove('completed');
+                
+                entry.target.highlightTimeout = setTimeout(() => {
+                    entry.target.classList.add('completed');
+                }, 1800);
+            } else {
+                // Reset highlight state when out of view so it animations play again on scroll back
+                entry.target.classList.remove('active', 'completed');
+                if (entry.target.highlightTimeout) {
+                    clearTimeout(entry.target.highlightTimeout);
+                }
+            }
+        });
+    }, { threshold: 0.15 });
+
+    highlightContainers.forEach(container => highlightObserver.observe(container));
 });
 
 // Toggle education tree nodes

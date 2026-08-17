@@ -60,46 +60,7 @@
         })();
     </script>
 
-    <!-- ============================================================
-         HERO REVEAL OVERLAY
-         Full-screen black overlay above the loaded website.
-         Video plays on black, text at bottom, fades out on end.
-    ============================================================ -->
-    <div id="hero-reveal-overlay">
-        <!-- Animated Grid Background -->
-        <div class="hero-reveal-grid"></div>
 
-        <!-- Video container: centered, sized by JS -->
-        <div id="hero-reveal-video-wrap">
-            <video
-                id="hero-reveal-video"
-                class="hero-reveal-video"
-                autoplay
-                muted
-                playsinline
-                webkit-playsinline
-                preload="metadata"
-            >
-                <source src="img/VN20260718_transparent.webm" type="video/webm">
-                <source src="img/VN20260718_140154-opt.mp4" type="video/mp4">
-            </video>
-            <!-- Bottom fade gradient that hides the Gemini watermark -->
-            <div class="hero-reveal-vignette"></div>
-        </div>
-
-        <!-- Om Patel text: letters slide up from bottom -->
-        <div class="hero-reveal-text">
-            <div class="hero-reveal-name">
-                <span>O</span><span>m</span><span>&nbsp;</span><span>P</span><span>a</span><span>t</span><span>e</span><span>l</span>
-            </div>
-            <p class="hero-reveal-sub">Data Analyst &amp; AI/ML Developer</p>
-        </div>
-
-        <!-- Skip Intro button -->
-        <button class="hero-reveal-skip" id="hero-reveal-skip-btn">
-            Skip Intro <i class="fas fa-chevron-right"></i>
-        </button>
-    </div>
 
     <!-- Background Mesh Blobs -->
     <div class="mesh-blobs">
@@ -154,6 +115,45 @@
         <div class="hero-circle hero-circle-1"></div>
         <div class="hero-circle hero-circle-2"></div>
         <div class="hero-circle hero-circle-3"></div>
+        
+        <!-- Curved Vector Shapes Background -->
+        <div class="hero-svg-bg">
+            <svg width="100%" height="100%" viewBox="0 0 1440 900" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+                <defs>
+                    <filter id="shadow-curve" x="-20%" y="-20%" width="140%" height="140%">
+                        <feDropShadow dx="-8" dy="12" stdDeviation="15" flood-color="#4f46e5" flood-opacity="0.1" />
+                    </filter>
+                    <linearGradient id="grad-stroke-1" x1="0%" y1="100%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#818cf8" stop-opacity="0.7"/>
+                        <stop offset="60%" stop-color="#4f46e5" stop-opacity="0.5"/>
+                        <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.05"/>
+                    </linearGradient>
+                    <linearGradient id="grad-stroke-2" x1="0%" y1="100%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.8"/>
+                        <stop offset="60%" stop-color="#3b82f6" stop-opacity="0.4"/>
+                        <stop offset="100%" stop-color="#6366f1" stop-opacity="0.05"/>
+                    </linearGradient>
+                    <linearGradient id="grad-fill-1" x1="0%" y1="100%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#eef2ff" stop-opacity="0.45"/>
+                        <stop offset="100%" stop-color="#ffffff" stop-opacity="0.05"/>
+                    </linearGradient>
+                    <linearGradient id="grad-fill-dark" x1="0%" y1="100%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#090d16" stop-opacity="0.6"/>
+                        <stop offset="100%" stop-color="#030712" stop-opacity="0.1"/>
+                    </linearGradient>
+                </defs>
+                
+                <!-- Left Overlapping Curves -->
+                <path d="M-100 1000 C 150 720, 200 420, 120 -100 L -100 -100 Z" class="vector-fill-path" fill="url(#grad-fill-1)" stroke="url(#grad-stroke-1)" stroke-width="4" filter="url(#shadow-curve)" />
+                <path d="M-100 1000 C 280 670, 320 320, 180 -100 L -100 -100 Z" class="vector-fill-path" fill="url(#grad-fill-1)" stroke="url(#grad-stroke-2)" stroke-width="5" filter="url(#shadow-curve)" />
+                <path d="M-100 1000 C 400 620, 350 220, 220 -100" fill="none" stroke="url(#grad-stroke-1)" stroke-width="6" filter="url(#shadow-curve)" />
+                <path d="M-100 1000 C 480 520, 380 160, 250 -100" fill="none" stroke="url(#grad-stroke-2)" stroke-width="3" />
+                
+                <!-- Bottom Right Arch/Curve -->
+                <path d="M450 1000 C 700 480, 1150 480, 1450 1000" fill="none" stroke="url(#grad-stroke-2)" stroke-width="7" filter="url(#shadow-curve)" />
+                <path d="M550 1000 C 780 540, 1080 540, 1350 1000" fill="none" stroke="url(#grad-stroke-1)" stroke-width="4" filter="url(#shadow-curve)" />
+            </svg>
+        </div>
         <!-- Top Header Pill (Static inside Hero) -->
         <div class="hero-header-pill">
             <div class="hero-logo-box">
@@ -235,100 +235,7 @@
             </div>
         </div>
     </section>
-    <!-- Scrolling Skills Marquee -->
-    <div class="skills-marquee-container">
-        <div class="skills-marquee">
-            <div class="marquee-content">
-                <div class="marquee-item">
-                    <div class="marquee-icon-circle">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" loading="lazy">
-                    </div>
-                    <span class="marquee-label">Python</span>
-                </div>
-                <div class="marquee-item">
-                    <div class="marquee-icon-circle">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azuresqldatabase/azuresqldatabase-original.svg" alt="SQL" loading="lazy">
-                    </div>
-                    <span class="marquee-label">SQL</span>
-                </div>
-                <div class="marquee-item">
-                    <div class="marquee-icon-circle">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" alt="Pandas" loading="lazy">
-                    </div>
-                    <span class="marquee-label">Pandas</span>
-                </div>
-                <div class="marquee-item">
-                    <div class="marquee-icon-circle">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" alt="NumPy" loading="lazy">
-                    </div>
-                    <span class="marquee-label">NumPy</span>
-                </div>
-                <div class="marquee-item">
-                    <div class="marquee-icon-circle">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="TensorFlow" loading="lazy">
-                    </div>
-                    <span class="marquee-label">TensorFlow</span>
-                </div>
-                <div class="marquee-item">
-                    <div class="marquee-icon-circle">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS" loading="lazy">
-                    </div>
-                    <span class="marquee-label">AWS</span>
-                </div>
-                <div class="marquee-item">
-                    <div class="marquee-icon-circle">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg" alt="PowerBI" loading="lazy">
-                    </div>
-                    <span class="marquee-label">Power BI</span>
-                </div>
-            </div>
-            <!-- Duplicate for seamless scrolling -->
-            <div class="marquee-content" aria-hidden="true">
-                <div class="marquee-item">
-                    <div class="marquee-icon-circle">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" loading="lazy">
-                    </div>
-                    <span class="marquee-label">Python</span>
-                </div>
-                <div class="marquee-item">
-                    <div class="marquee-icon-circle">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azuresqldatabase/azuresqldatabase-original.svg" alt="SQL" loading="lazy">
-                    </div>
-                    <span class="marquee-label">SQL</span>
-                </div>
-                <div class="marquee-item">
-                    <div class="marquee-icon-circle">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" alt="Pandas" loading="lazy">
-                    </div>
-                    <span class="marquee-label">Pandas</span>
-                </div>
-                <div class="marquee-item">
-                    <div class="marquee-icon-circle">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" alt="NumPy" loading="lazy">
-                    </div>
-                    <span class="marquee-label">NumPy</span>
-                </div>
-                <div class="marquee-item">
-                    <div class="marquee-icon-circle">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="TensorFlow" loading="lazy">
-                    </div>
-                    <span class="marquee-label">TensorFlow</span>
-                </div>
-                <div class="marquee-item">
-                    <div class="marquee-icon-circle">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS" loading="lazy">
-                    </div>
-                    <span class="marquee-label">AWS</span>
-                </div>
-                <div class="marquee-item">
-                    <div class="marquee-icon-circle">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg" alt="PowerBI" loading="lazy">
-                    </div>
-                    <span class="marquee-label">Power BI</span>
-                </div>
-            </div>
-        </div>
-    </div>
+
     <!-- About Me (Modern Split Grid Layout) -->
     <section id="about" class="about-new-section">
         <div class="about-new-container">
@@ -349,10 +256,10 @@
                 <!-- Right Column -->
                 <div class="about-new-right">
                     <p class="about-intro-text">
-                        With experience in Data Analytics, Machine Learning pipelines, and Cloud technologies, I combine these fields to turn complex data into clear, actionable stories and intelligent predictive models.
+                        With experience in <span class="highlight-container highlight-pink"><span class="handle-left"></span>Data Analytics, Machine Learning pipelines, and Cloud technologies<span class="handle-right"></span></span>, I combine these fields to turn complex data into clear, actionable stories and intelligent predictive models.
                     </p>
                     <p class="about-sub-text">
-                        I am currently pursuing my M.Sc. in Information Technology at GLS University, building upon my B.Sc. in Computer Applications &amp; IT. I design end-to-end data pipelines, build scalable models, and create modern dashboards that drive business value.
+                        I am currently pursuing my <span class="highlight-container highlight-blue"><span class="handle-left"></span>M.Sc. in Information Technology<span class="handle-right"></span></span> at <span class="highlight-container highlight-yellow"><span class="handle-left"></span>GLS University<span class="handle-right"></span></span>, building upon my <span class="highlight-container highlight-blue"><span class="handle-left"></span>B.Sc. in Computer Applications &amp; IT<span class="handle-right"></span></span>. I design end-to-end data pipelines, build scalable models, and create modern dashboards that drive business value.
                     </p>
                     <div class="about-action-row">
                         <a href="mailto:patelom2810@gmail.com" class="about-msg-btn">
@@ -376,107 +283,136 @@
     </section>
     
     <!-- Skills Section -->
-    <section id="skills" class="skills">
-        <div class="max-w-[1200px] mx-auto px-5">
+    <section id="skills" class="skills-split-layout">
+        <!-- Radial Teal Background Glow -->
+        <div class="skills-glow-bg"></div>
+
+        <div class="max-w-[1200px] mx-auto px-5 relative z-10">
             <div class="section-header">
-                <span class="section-subtitle">&mdash; EXPERTISE</span>
+                <span class="section-subtitle" style="color: var(--primary-color);">&mdash; EXPERTISE</span>
                 <h2 class="section-title">Technical Skillset</h2>
-                <p style="font-family: var(--font-poppins), sans-serif; font-size: 0.95rem; color: var(--text-muted); margin-top: 8px; max-width: 600px; line-height: 1.5; text-align: left;">
+                <p style="font-family: var(--font-poppins), sans-serif; font-size: 0.95rem; color: #a0aec0; margin-top: 8px; max-width: 600px; line-height: 1.5; text-align: left;">
                     Organized categories of tools, frameworks, and methodologies that I use daily.
                 </p>
             </div>
 
-            <div class="skills-bento-grid">
-                <!-- Card 1: Languages -->
-                <div class="skills-bento-card">
-                    <div class="skills-bento-header">
-                        <div class="skills-bento-icon">
-                            <i class="fas fa-code"></i>
+            <div class="skills-split-container">
+                <!-- Row 1: Languages -->
+                <div class="skills-split-row">
+                    <div class="skills-split-label">Languages</div>
+                    <div class="skills-split-grid">
+                        <div class="skill-icon-card" data-tooltip="Python">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" loading="lazy">
                         </div>
+                        <div class="skill-icon-card" data-tooltip="SQL">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azuresqldatabase/azuresqldatabase-original.svg" alt="SQL" loading="lazy">
+                        </div>
+                        <div class="skill-icon-card" data-tooltip="R Language">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/r/r-original.svg" alt="R" loading="lazy">
+                        </div>
+                        <!-- Empty slots for alignment -->
+                        <div class="skill-icon-card empty-card"></div>
+                        <div class="skill-icon-card empty-card"></div>
                     </div>
-                    <div class="skills-bento-body">
-                        <h3>Languages</h3>
-                        <div class="skills-bento-tags">
-                            <span class="skill-badge">Python</span>
-                            <span class="skill-badge">SQL</span>
-                            <span class="skill-badge">R</span>
+                </div>
+
+                <!-- Row 2: AI & Machine Learning -->
+                <div class="skills-split-row">
+                    <div class="skills-split-label">AI & Machine Learning</div>
+                    <div class="skills-split-grid">
+                        <div class="skill-icon-card" data-tooltip="scikit-learn">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg" alt="scikit-learn" loading="lazy">
+                        </div>
+                        <div class="skill-icon-card" data-tooltip="Pandas">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" alt="Pandas" loading="lazy">
+                        </div>
+                        <div class="skill-icon-card" data-tooltip="NumPy">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" alt="NumPy" loading="lazy">
+                        </div>
+                        <div class="skill-icon-card" data-tooltip="Matplotlib">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Matplotlib_logo.svg" alt="Matplotlib" loading="lazy">
+                        </div>
+                        <div class="skill-icon-card" data-tooltip="TensorFlow">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="TensorFlow" loading="lazy">
                         </div>
                     </div>
                 </div>
 
-                <!-- Card 2: AI & Machine Learning (Span 2 columns) -->
-                <div class="skills-bento-card skills-bento-span-2">
-                    <div class="skills-bento-header">
-                        <div class="skills-bento-icon">
-                            <i class="fas fa-brain"></i>
+                <!-- Row 3: Backend & Databases -->
+                <div class="skills-split-row">
+                    <div class="skills-split-label">Backend & Databases</div>
+                    <div class="skills-split-grid">
+                        <!-- Empty slots for alignment -->
+                        <div class="skill-icon-card empty-card"></div>
+                        <div class="skill-icon-card empty-card"></div>
+                        <div class="skill-icon-card" data-tooltip="FastAPI">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg" alt="FastAPI" loading="lazy">
                         </div>
-                    </div>
-                    <div class="skills-bento-body">
-                        <h3>AI & Machine Learning</h3>
-                        <div class="skills-bento-tags">
-                            <span class="skill-badge">scikit-learn</span>
-                            <span class="skill-badge">Pandas</span>
-                            <span class="skill-badge">NumPy</span>
-                            <span class="skill-badge">Matplotlib</span>
-                            <span class="skill-badge">Classification</span>
-                            <span class="skill-badge">Regression</span>
-                            <span class="skill-badge">Model Evaluation</span>
+                        <div class="skill-icon-card" data-tooltip="MySQL">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" loading="lazy">
                         </div>
-                    </div>
-                </div>
-
-                <!-- Card 3: Backend & Databases -->
-                <div class="skills-bento-card">
-                    <div class="skills-bento-header">
-                        <div class="skills-bento-icon">
-                            <i class="fas fa-server"></i>
-                        </div>
-                    </div>
-                    <div class="skills-bento-body">
-                        <h3>Backend &amp; Databases</h3>
-                        <div class="skills-bento-tags">
-                            <span class="skill-badge">FastAPI</span>
-                            <span class="skill-badge">REST APIs</span>
-                            <span class="skill-badge">MySQL</span>
-                            <span class="skill-badge">Supabase</span>
-                            <span class="skill-badge">Firebase</span>
+                        <div class="skill-icon-card" data-tooltip="Supabase">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg" alt="Supabase" loading="lazy">
                         </div>
                     </div>
                 </div>
 
-                <!-- Card 4: Cloud & DevOps -->
-                <div class="skills-bento-card">
-                    <div class="skills-bento-header">
-                        <div class="skills-bento-icon">
-                            <i class="fas fa-cloud"></i>
+                <!-- Row 4: Tools & Platforms -->
+                <div class="skills-split-row">
+                    <div class="skills-split-label">Tools & Platforms</div>
+                    <div class="skills-split-grid">
+                        <div class="skill-icon-card" data-tooltip="Git & GitHub">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="Git & GitHub" loading="lazy">
                         </div>
-                    </div>
-                    <div class="skills-bento-body">
-                        <h3>Cloud &amp; DevOps</h3>
-                        <div class="skills-bento-tags">
-                            <span class="skill-badge">Railway</span>
-                            <span class="skill-badge">Netlify</span>
-                            <span class="skill-badge">AWS S3</span>
-                            <span class="skill-badge">AWS EC2</span>
-                            <span class="skill-badge">AWS RDS</span>
+                        <div class="skill-icon-card" data-tooltip="VS Code">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code" loading="lazy">
+                        </div>
+                        <div class="skill-icon-card" data-tooltip="Jupyter Notebook">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original.svg" alt="Jupyter Notebook" loading="lazy">
+                        </div>
+                        <div class="skill-icon-card" data-tooltip="Google Colab">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/Google_Colaboratory_SVG_Logo.svg" alt="Google Colab" loading="lazy">
+                        </div>
+                        <div class="skill-icon-card" data-tooltip="Firebase">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" alt="Firebase" loading="lazy">
                         </div>
                     </div>
                 </div>
 
-                <!-- Card 5: Tools & Platforms -->
-                <div class="skills-bento-card">
-                    <div class="skills-bento-header">
-                        <div class="skills-bento-icon">
-                            <i class="fas fa-cog"></i>
+                <!-- Row 5: Cloud Infrastructure -->
+                <div class="skills-split-row">
+                    <div class="skills-split-label">Cloud Infrastructure</div>
+                    <div class="skills-split-grid">
+                        <!-- Empty slots for alignment -->
+                        <div class="skill-icon-card empty-card"></div>
+                        <div class="skill-icon-card empty-card"></div>
+                        <div class="skill-icon-card" data-tooltip="Microsoft Azure">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg" alt="Azure" loading="lazy">
+                        </div>
+                        <div class="skill-icon-card" data-tooltip="AWS">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS" loading="lazy">
+                        </div>
+                        <div class="skill-icon-card" data-tooltip="Google Cloud Platform">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" alt="GCP" loading="lazy">
                         </div>
                     </div>
-                    <div class="skills-bento-body">
-                        <h3>Tools &amp; Platforms</h3>
-                        <div class="skills-bento-tags">
-                            <span class="skill-badge">Git &amp; GitHub</span>
-                            <span class="skill-badge">VS Code</span>
-                            <span class="skill-badge">Jupyter Notebook</span>
-                            <span class="skill-badge">Google Colab</span>
+                </div>
+
+                <!-- Row 6: Web Hosting & DevOps -->
+                <div class="skills-split-row">
+                    <div class="skills-split-label">Web Hosting & DevOps</div>
+                    <div class="skills-split-grid">
+                        <!-- Empty slots for alignment -->
+                        <div class="skill-icon-card empty-card"></div>
+                        <div class="skill-icon-card empty-card"></div>
+                        <div class="skill-icon-card" data-tooltip="Railway">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/railway/railway-original.svg" alt="Railway" loading="lazy">
+                        </div>
+                        <div class="skill-icon-card" data-tooltip="Netlify">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/Netlify_logo.svg" alt="Netlify" loading="lazy">
+                        </div>
+                        <div class="skill-icon-card" data-tooltip="Docker">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" loading="lazy">
                         </div>
                     </div>
                 </div>
@@ -484,362 +420,241 @@
         </div>
     </section>
 
-    <!-- Education & Certifications Section -->
-    <section id="education" class="education" style="padding: 6rem 0;">
+    <!-- Academic Journey Section (Horizontal Timeline) -->
+    <section id="education" class="journey-timeline-section">
         <div class="max-w-[1200px] mx-auto px-5">
-            <div class="education-certifications-grid">
-                
-                <!-- Left Column: Education -->
-                <div class="education-column">
-                    <div class="section-header" style="margin-bottom: 2rem;">
-                        <span class="section-subtitle">&mdash; JOURNEY</span>
-                        <h2 class="section-title">Education</h2>
+            <div class="section-header text-center" style="margin-bottom: 4rem; display: flex; flex-direction: column; align-items: center;">
+                <span class="section-subtitle" style="color: var(--primary-color);">&mdash; JOURNEY</span>
+                <h2 class="section-title">Academic Journey</h2>
+                <p style="font-family: var(--font-poppins), sans-serif; font-size: 0.95rem; color: var(--text-muted); margin-top: 8px; max-width: 600px; line-height: 1.5; text-align: center;">
+                    A chronological track record of my academic milestones and educational foundation.
+                </p>
+            </div>
+
+            <div class="journey-timeline-wrapper">
+                <!-- Gradient Line -->
+                <div class="journey-timeline-line"></div>
+
+                <!-- Timeline Nodes -->
+                <div class="journey-timeline-nodes">
+                    <!-- Card 1 -->
+                    <div class="journey-timeline-node" style="--stagger-delay: 1;">
+                        <div class="journey-timeline-dot dot-green"></div>
+                        <div class="journey-timeline-connector"></div>
+                        <div class="journey-timeline-content-card">
+                            <span class="journey-timeline-year">2021</span>
+                            <h3 class="journey-timeline-node-title">Class XII</h3>
+                            <p class="journey-timeline-node-subtitle">Science Stream</p>
+                            <p class="journey-timeline-node-desc">
+                                Completed senior secondary education in the Science stream at Bits Education High School, Khambhat.
+                            </p>
+                        </div>
                     </div>
-                    
-                    <div class="tree-container">
-                        <!-- Central Trunk Line -->
-                        <div class="tree-trunk"></div>
-                        
-                        <!-- Tree Node 1: M.Sc. IT (Left Branch) — Expanded by default (Pursuing) -->
-                        <div class="tree-item tree-item-left">
-                            <div class="tree-dot tree-dot-active"></div>
-                            <div class="tree-node expanded" onclick="toggleTreeNode(this)">
-                                <div class="tree-node-header">
-                                    <div class="tree-node-meta">
-                                        <span class="tree-node-date">2025 – 2027</span>
-                                        <div class="tree-node-title-row">
-                                            <i class="fas fa-brain tree-degree-icon" style="color: var(--primary-color);"></i>
-                                            <span class="tree-node-type">MSc – IT (Data Analytics &amp; AI)</span>
-                                        </div>
-                                    </div>
-                                    <div class="tree-node-toggle">
-                                        <span class="pursuing-badge"><span class="pursuing-dot"></span>Pursuing</span>
-                                        <i class="fas fa-chevron-down"></i>
-                                    </div>
-                                </div>
-                                <div class="tree-node-body">
-                                    <!-- Watermark -->
-                                    <i class="fas fa-brain timeline-watermark"></i>
-                                    <h3 class="tree-degree-title">Master of Science (MSc) – Information Technology</h3>
-                                    <p class="tree-degree-desc" style="margin-bottom: 12px;">Stream: <strong>Data Analytics &amp; AI</strong></p>
-                                    <div class="tree-degree-details">
-                                        <div class="tree-detail-row">GLS University, Ahmedabad, Gujarat</div>
-                                        <div class="tree-detail-row">2025 – 2027 (2 Years)</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
-                        <!-- Tree Node 2: B.Sc. IT (Right Branch) -->
-                        <div class="tree-item tree-item-right">
-                            <div class="tree-dot"></div>
-                            <div class="tree-node" onclick="toggleTreeNode(this)">
-                                <div class="tree-node-header">
-                                    <div class="tree-node-meta">
-                                        <span class="tree-node-date">2022 – 2025</span>
-                                        <div class="tree-node-title-row">
-                                            <i class="fas fa-graduation-cap tree-degree-icon" style="color: var(--primary-color);"></i>
-                                            <span class="tree-node-type">BSc – CA &amp; IT</span>
-                                        </div>
-                                    </div>
-                                    <div class="tree-node-toggle">
-                                        <i class="fas fa-chevron-down"></i>
-                                    </div>
-                                </div>
-                                <div class="tree-node-body">
-                                    <!-- Watermark -->
-                                    <i class="fas fa-graduation-cap timeline-watermark"></i>
-                                    <h3 class="tree-degree-title">Bachelor of Science (BSc) – Computer Application &amp; Information Technology</h3>
-                                    <p class="tree-degree-desc">Sardar Patel University, Vallabh Vidyanagar, Gujarat<br>CGPA: 7.8</p>
-                                </div>
-                            </div>
+                    <!-- Card 2 -->
+                    <div class="journey-timeline-node" style="--stagger-delay: 2;">
+                        <div class="journey-timeline-dot dot-pink"></div>
+                        <div class="journey-timeline-connector"></div>
+                        <div class="journey-timeline-content-card">
+                            <span class="journey-timeline-year">2022 - 2025</span>
+                            <h3 class="journey-timeline-node-title">B.Sc. CA &amp; IT</h3>
+                            <p class="journey-timeline-node-subtitle">Sardar Patel University</p>
+                            <p class="journey-timeline-node-desc">
+                                Earned Bachelor of Science in Computer Applications &amp; IT from Sardar Patel University, Vallabh Vidyanagar. Graduated with a CGPA of 7.8.
+                            </p>
                         </div>
+                    </div>
 
-                        <!-- Tree Node 3: Class XII (Left Branch) -->
-                        <div class="tree-item tree-item-left">
-                            <div class="tree-dot"></div>
-                            <div class="tree-node" onclick="toggleTreeNode(this)">
-                                <div class="tree-node-header">
-                                    <div class="tree-node-meta">
-                                        <span class="tree-node-date">2021</span>
-                                        <div class="tree-node-title-row">
-                                            <i class="fas fa-flask tree-degree-icon" style="color: var(--primary-color);"></i>
-                                            <span class="tree-node-type">Class XII – Science Stream</span>
-                                        </div>
-                                    </div>
-                                    <div class="tree-node-toggle">
-                                        <i class="fas fa-chevron-down"></i>
-                                    </div>
-                                </div>
-                                <div class="tree-node-body">
-                                    <!-- Watermark -->
-                                    <i class="fas fa-flask timeline-watermark"></i>
-                                    <h3 class="tree-degree-title">CLASS XII (Science Stream)</h3>
-                                    <p class="tree-degree-desc">Bits Education High School, Khambhat<br>Percentage: 49%</p>
-                                </div>
-                            </div>
+                    <!-- Card 3 -->
+                    <div class="journey-timeline-node" style="--stagger-delay: 3;">
+                        <div class="journey-timeline-dot dot-cyan"></div>
+                        <div class="journey-timeline-connector"></div>
+                        <div class="journey-timeline-content-card">
+                            <span class="journey-timeline-year">2025 - 2027</span>
+                            <h3 class="journey-timeline-node-title">M.Sc. IT</h3>
+                            <p class="journey-timeline-node-subtitle">GLS University</p>
+                            <p class="journey-timeline-node-desc">
+                                Currently pursuing Master of Science in Information Technology (Data Analytics &amp; AI) at GLS University, Ahmedabad.
+                            </p>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Right Column: Certifications -->
-                <div class="certifications-column">
-                    <div class="section-header" style="margin-bottom: 2rem;">
-                        <span class="section-subtitle">&mdash; ACHIEVEMENTS</span>
-                        <h2 class="section-title">Certifications</h2>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="certifications-section">
+        <div class="max-w-[1200px] mx-auto px-5">
+            <div class="section-header text-center" style="margin-bottom: 3.5rem; display: flex; flex-direction: column; align-items: center;">
+                <span class="section-subtitle" style="color: var(--primary-color);">&mdash; CREDENTIALS</span>
+                <h2 class="section-title">Professional Certifications</h2>
+                <p style="font-family: var(--font-poppins), sans-serif; font-size: 0.95rem; color: var(--text-muted); margin-top: 8px; max-width: 600px; line-height: 1.5; text-align: center;">
+                    Industry-recognized certifications validating technical expertise and cloud infrastructure capabilities.
+                </p>
+            </div>
+
+            <div class="certifications-grid">
+                <!-- Certification Card 1: AWS -->
+                <div class="cert-card-premium">
+                    <div class="cert-card-left">
+                        <div class="cert-icon-aws">
+                            <i class="fab fa-aws"></i>
+                        </div>
+                        <div class="cert-details">
+                            <div class="cert-badge-tag">FOUNDATIONAL</div>
+                            <h3 class="cert-name">AWS Certified Cloud Practitioner</h3>
+                            <p class="cert-issuer">Issued by Amazon Web Services (AWS)</p>
+                            <p class="cert-meta">Issued: Dec 2024 &bull; Expires: Dec 2027</p>
+                        </div>
                     </div>
-                    
-                    <div class="certifications-list" style="display: flex; flex-direction: column; gap: 20px;">
-                        <a href="Certificate/aws.pdf" target="_blank" class="cert-card" style="width: 100%; box-sizing: border-box; display: block; text-decoration: none;">
-                            <div style="display: flex; gap: 20px; align-items: flex-start; position: relative; z-index: 2;">
-                                <div class="cert-icon-box aws-orange-bg">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS" loading="lazy">
-                                </div>
-                                <div>
-                                    <h3 style="margin-top: 0; margin-bottom: 4px; font-family: var(--font-syne), sans-serif; font-weight: 700; color: var(--text-color);">AWS Certificate</h3>
-                                    <p style="margin: 0 0 12px; color: var(--text-muted); font-size: 0.9rem;">Amazon Web Services</p>
-                                    <div class="cert-badge">
-                                        View Certificate <i class="fas fa-arrow-right"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
+                    <div class="cert-card-right">
+                        <a href="Certificate/aws.pdf" target="_blank" class="cert-verify-btn">View Certificate <i class="fas fa-external-link-alt" style="margin-left: 6px;"></i></a>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
 
     <!-- Featured Projects Section -->
     <section id="featured-projects" class="featured-projects">
-        <div class="max-w-[1200px] mx-auto px-5">
-            <div class="section-header">
-                <span class="section-subtitle">&mdash; PORTFOLIO</span>
-                <h2 class="section-title">Featured Projects</h2>
-                <a href="projects.html" class="view-all-link header-action-link">View All <i class="fas fa-arrow-right"></i></a>
+        <!-- Concentric Blue Arcs Backdrop -->
+        <div class="projects-arc-container">
+            <div class="projects-arc-outer">
+                <div class="projects-arc-middle">
+                    <div class="projects-arc-inner"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-[1200px] mx-auto px-5 relative z-10">
+            <div class="section-header text-center" style="margin-bottom: 4rem; display: flex; flex-direction: column; align-items: center; color: #ffffff;">
+                <span class="section-subtitle" style="color: #e2e8f0; opacity: 0.85;">&mdash; PORTFOLIO</span>
+                <h2 class="section-title" style="color: #ffffff;">Featured Projects</h2>
+                <p style="font-family: var(--font-poppins), sans-serif; font-size: 0.95rem; color: #f1f5f9; margin-top: 8px; max-width: 600px; line-height: 1.5; text-align: center; opacity: 0.9;">
+                    A curated selection of machine learning applications, data analytics platforms, and full-stack solutions.
+                </p>
             </div>
             
             <div class="featured-projects-slider-wrapper">
                 <div class="featured-projects-slider">
 
-
-                    <!-- Card 2: Solar Energy Analytics — Flip Card -->
-                    <div class="flip-card-container" onclick="flipCard(this)">
-                        <div class="flip-card-inner">
-
-                            <!-- FRONT -->
-                            <div class="flip-card-front project-card-ny" style="background: linear-gradient(145deg, rgba(251, 191, 36, 0.12) 0%, rgba(234, 88, 12, 0.10) 100%) !important;">
-                                <!-- Hint badge -->
-
-                                <!-- Media -->
-                                <div class="project-media-wrapper">
-                                    <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=600&q=80" alt="Solar Energy Analytics" class="project-ny-bg-image" loading="lazy">
-                                </div>
-                                <!-- Top-Right Actions -->
-                                <a href="https://github.com/patelom2810/Solar-Energy-Generation-Weather-Analytics" target="_blank" class="project-ny-heart-btn" title="GitHub Code" onclick="event.stopPropagation()">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                                <!-- Text -->
-                                <div class="project-ny-content">
-                                    <h3 class="project-ny-title">Solar Energy Analytics</h3>
-                                    <p class="project-ny-subtitle">Flask &bull; Scikit-learn &bull; MySQL &bull; Docker</p>
-                                    <div class="project-ny-meta-row">
-                                        <span class="project-ny-meta-item"><i class="fas fa-tag"></i> Data Analytics</span>
-                                        <span class="project-ny-meta-item"><i class="fas fa-chart-line"></i> Solar Gen</span>
-                                    </div>
-                                    <a href="projects.html#solar-energy" class="project-ny-btn-white" onclick="event.stopPropagation()">Explore Insights</a>
-                                </div>
-                            </div>
-
-                            <!-- BACK -->
-                            <div class="flip-card-back" style="background: linear-gradient(145deg, rgba(251, 191, 36, 0.22) 0%, rgba(234, 88, 12, 0.18) 100%);">
-                                <div class="flip-back-header">
-                                    <i class="fas fa-solar-panel" style="font-size: 1.6rem; color: #f59e0b;"></i>
-                                    <span class="flip-back-title" style="color: #92400e;">Solar Energy Analytics</span>
-                                </div>
-                                <ul class="flip-points">
-                                    <li class="flip-point">Developed a machine learning application using Gradient Boosting Regressor to predict solar energy generation from historical weather and solar datasets.</li>
-                                    <li class="flip-point">Built a responsive analytics dashboard with real-time KPIs, interactive charts, and weather insights using Flask, Chart.js, and MySQL.</li>
-                                    <li class="flip-point">Implemented REST APIs, Docker deployment, OpenAPI documentation, and automated testing to create a scalable and maintainable analytics platform.</li>
-                                </ul>
-                                <button class="flip-back-btn" style="border-color: #f59e0b; color: #92400e;" onclick="event.stopPropagation(); unflipCard(this)">
-                                    <i class="fas fa-arrow-left"></i> Back
-                                </button>
-                            </div>
-
+                    <!-- Project Card 1: Solar Energy Analytics -->
+                    <div class="project-glass-card">
+                        <div class="project-glass-body">
+                            <p class="project-glass-desc">
+                                Developed a machine learning application using Gradient Boosting Regressor to predict solar energy generation. Built a responsive web dashboard with real-time KPIs, interactive charts, and REST APIs.
+                            </p>
+                            <a href="projects.html#solar-energy" class="project-glass-readmore">Explore Insights <i class="fas fa-arrow-right"></i></a>
                         </div>
-                    </div>
-                    
-                    <!-- Card 2: E-Game Scout — Flip Card -->
-                    <div class="flip-card-container" onclick="flipCard(this)">
-                        <div class="flip-card-inner">
-
-                            <!-- FRONT -->
-                            <div class="flip-card-front project-card-ny" style="background: linear-gradient(145deg, rgba(139, 92, 246, 0.14) 0%, rgba(219, 39, 119, 0.12) 100%) !important;">
-                                <!-- Hint badge -->
-
-                                <!-- Media -->
-                                <div class="project-media-wrapper" style="background: linear-gradient(135deg, rgba(88, 28, 135, 0.08) 0%, rgba(59, 130, 246, 0.08) 100%); border: 1px solid rgba(88, 28, 135, 0.15);">
-                                    <img src="img/egs-logo.png" alt="E-Game Scout Logo" style="max-height: 120px; max-width: 120px; object-fit: contain; filter: drop-shadow(0 8px 16px rgba(0,0,0,0.15));" loading="lazy">
+                        
+                        <div class="project-glass-footer">
+                            <div class="project-glass-profile">
+                                <div class="project-glass-avatar">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
                                 </div>
-                                <!-- Top-Right Actions -->
-                                <a href="http://13.232.179.239:8000/" target="_blank" class="project-ny-heart-btn" title="Live Demo" onclick="event.stopPropagation()">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                                <a href="https://github.com/kachhadiyajanvi/E-GAMESCOUT" target="_blank" class="project-ny-heart-btn" style="right: 90px;" title="GitHub Code" onclick="event.stopPropagation()">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                                <!-- Text -->
-                                <div class="project-ny-content">
-                                    <h3 class="project-ny-title">E-Game Scout</h3>
-                                    <p class="project-ny-subtitle">Django &bull; AWS EC2 &bull; AI Analytics &bull; Tailwind</p>
-                                    <div class="project-ny-meta-row">
-                                        <span class="project-ny-meta-item"><i class="fas fa-tag"></i> Esports</span>
-                                        <span class="project-ny-meta-item"><i class="fas fa-brain"></i> AI Scout</span>
-                                    </div>
-                                    <a href="projects.html#egame-scout" class="project-ny-btn-white" onclick="event.stopPropagation()">Explore Insights</a>
+                                <div class="project-glass-meta">
+                                    <h4 class="project-glass-title">Solar Energy Analytics</h4>
+                                    <p class="project-glass-subtitle">Flask &bull; Scikit-learn &bull; MySQL</p>
                                 </div>
                             </div>
-
-                            <!-- BACK -->
-                            <div class="flip-card-back" style="background: linear-gradient(145deg, rgba(139, 92, 246, 0.22) 0%, rgba(219, 39, 119, 0.18) 100%);">
-                                <div class="flip-back-header">
-                                    <img src="img/egs-logo.png" alt="EGS" style="height:44px; object-fit:contain; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));">
-                                    <span class="flip-back-title">E-Game Scout</span>
-                                </div>
-                                <ul class="flip-points">
-                                    <li class="flip-point">Developed a full-stack esports platform with role-based dashboards for players, organizations, and administrators, enabling tournament management and player scouting.</li>
-                                    <li class="flip-point">Integrated Google Gemini AI and Groq API for AI-powered scorecard analysis, secure authentication (Email OTP &amp; 2FA), and automated PDF contract generation.</li>
-                                    <li class="flip-point">Deployed on AWS EC2 with AWS RDS (MySQL) using Django, delivering a scalable, cloud-hosted solution with email notifications.</li>
-                                </ul>
-                                <button class="flip-back-btn" onclick="event.stopPropagation(); unflipCard(this)">
-                                    <i class="fas fa-arrow-left"></i> Back
-                                </button>
+                            <div class="project-glass-actions">
+                                <a href="https://github.com/patelom2810/Solar-Energy-Generation-Weather-Analytics" target="_blank" class="project-glass-action-btn" title="GitHub Code"><i class="fab fa-github"></i></a>
                             </div>
-
                         </div>
                     </div>
 
-                    <!-- Card 3: ClipChain -->
-                    <!-- Card 3: ClipChain — Flip Card -->
-                    <div class="flip-card-container" onclick="flipCard(this)">
-                        <div class="flip-card-inner">
-
-                            <!-- FRONT -->
-                            <div class="flip-card-front project-card-ny" style="background: linear-gradient(145deg, rgba(15, 89, 47, 0.14) 0%, rgba(123, 193, 67, 0.12) 100%) !important;">
-                                <!-- Hint badge -->
-
-                                <!-- Media -->
-                                <div class="project-media-wrapper" style="background: linear-gradient(135deg, rgba(15, 89, 47, 0.08) 0%, rgba(123, 193, 67, 0.08) 100%); border: 1px solid rgba(15, 89, 47, 0.15);">
-                                    <div class="flex items-center select-none" style="font-family: 'Pacifico', cursive; font-size: 28px; font-weight: 400; line-height: 1; padding-bottom: 2px;">
-                                      <span style="color: #0f592f;">Clip</span><span style="color: #7bc143;">Chain</span><span style="color: #0f592f;">!</span>
-                                      <div style="color: #7bc143; margin-top: -4px; margin-left: 6px; position: relative; display: inline-flex;">
-                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
-                                          <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
-                                          <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-                                        </svg>
-                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" style="position: absolute; top: -12px; right: -8px; stroke-width: 4;">
-                                          <line x1="12" y1="2" x2="12" y2="7"></line>
-                                          <line x1="20" y1="6" x2="16" y2="9"></line>
-                                          <line x1="22" y1="14" x2="18" y2="14"></line>
-                                        </svg>
-                                      </div>
-                                    </div>
+                    <!-- Project Card 2: E-Game Scout -->
+                    <div class="project-glass-card">
+                        <div class="project-glass-body">
+                            <p class="project-glass-desc">
+                                Designed a full-stack esports platform with role-based dashboards. Integrated Google Gemini AI for gaming scorecard analysis, secure OTP/2FA, automated PDF contract drafting, and AWS RDS hosting.
+                            </p>
+                            <a href="projects.html#egame-scout" class="project-glass-readmore">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                        
+                        <div class="project-glass-footer">
+                            <div class="project-glass-profile">
+                                <div class="project-glass-avatar">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" alt="Django" style="filter: brightness(0) invert(1);">
                                 </div>
-                                <!-- Top-Right Actions -->
-                                <a href="https://github.com/patelom2810/clipchain" target="_blank" class="project-ny-heart-btn" title="GitHub Code" onclick="event.stopPropagation()">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                                <!-- Text -->
-                                <div class="project-ny-content">
-                                    <h3 class="project-ny-title">ClipChain</h3>
-                                    <p class="project-ny-subtitle">Firebase &bull; React &bull; Tailwind &bull; CSS3</p>
-                                    <div class="project-ny-meta-row">
-                                        <span class="project-ny-meta-item"><i class="fas fa-tag"></i> Clipboard</span>
-                                        <span class="project-ny-meta-item"><i class="fas fa-link"></i> Web Sync</span>
-                                    </div>
-                                    <a href="https://clipchain.netlify.app" target="_blank" class="project-ny-btn-white" onclick="event.stopPropagation()">View Live</a>
+                                <div class="project-glass-meta">
+                                    <h4 class="project-glass-title">E-Game Scout</h4>
+                                    <p class="project-glass-subtitle">Django &bull; AWS EC2 &bull; Gemini AI</p>
                                 </div>
                             </div>
-
-                            <!-- BACK -->
-                            <div class="flip-card-back" style="background: linear-gradient(145deg, rgba(15, 89, 47, 0.22) 0%, rgba(123, 193, 67, 0.18) 100%);">
-                                <div class="flip-back-header">
-                                    <span style="font-family: 'Pacifico', cursive; font-size: 22px; color: #0f592f;">Clip<span style="color: #7bc143;">Chain</span><span style="color: #0f592f;">!</span></span>
-                                </div>
-                                <ul class="flip-points">
-                                    <li class="flip-point">Developed a real-time clipboard synchronization platform using Firebase Realtime Database, enabling instant cross-device text sharing.</li>
-                                    <li class="flip-point">Implemented secure collaboration features including password-protected rooms, QR code sharing, self-destruct timers, and local clipboard history.</li>
-                                    <li class="flip-point">Built a responsive interface with live Markdown preview, search functionality, and light/dark themes for an intuitive user experience.</li>
-                                </ul>
-                                <button class="flip-back-btn" style="border-color: #7bc143; color: #0f592f;" onclick="event.stopPropagation(); unflipCard(this)">
-                                    <i class="fas fa-arrow-left"></i> Back
-                                </button>
+                            <div class="project-glass-actions">
+                                <a href="https://github.com/kachhadiyajanvi/E-GAMESCOUT" target="_blank" class="project-glass-action-btn" title="GitHub Code"><i class="fab fa-github"></i></a>
+                                <a href="http://13.232.179.239:8000/" target="_blank" class="project-glass-action-btn" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
                             </div>
-
                         </div>
                     </div>
 
-                    <!-- Card 4: Parking Management System — Flip Card -->
-                    <div class="flip-card-container" onclick="flipCard(this)">
-                        <div class="flip-card-inner">
-
-                            <!-- FRONT -->
-                            <div class="flip-card-front project-card-ny" style="background: linear-gradient(145deg, rgba(59, 130, 246, 0.14) 0%, rgba(99, 102, 241, 0.12) 100%) !important;">
-                                <!-- Media -->
-                                <div class="project-media-wrapper" style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(99, 102, 241, 0.08) 100%); border: 1px solid rgba(59, 130, 246, 0.15); display: flex; align-items: center; justify-content: center; height: 210px; box-sizing: border-box; position: relative;">
-                                    <div style="width: 90px; height: 90px; border-radius: 50%; background: #3b82f6; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(59, 130, 246, 0.35);">
-                                        <i class="fas fa-parking" style="font-size: 3rem; color: #ffffff;"></i>
-                                    </div>
+                    <!-- Project Card 3: ClipChain -->
+                    <div class="project-glass-card">
+                        <div class="project-glass-body">
+                            <p class="project-glass-desc">
+                                Developed a real-time clipboard sync platform using Firebase Realtime Database. Features password-protected collaboration rooms, secure QR code sharing, self-destruct timers, and markdown preview.
+                            </p>
+                            <a href="https://clipchain.netlify.app" target="_blank" class="project-glass-readmore">View Live Site <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                        
+                        <div class="project-glass-footer">
+                            <div class="project-glass-profile">
+                                <div class="project-glass-avatar" style="background: #ffffff; padding: 4px;">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-original.svg" alt="Firebase">
                                 </div>
-                                <!-- Top-Right Actions -->
-                                <a href="https://github.com/patelom2810/Parking-Management-System" target="_blank" class="project-ny-heart-btn" title="GitHub Code" onclick="event.stopPropagation()">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                                <!-- Text -->
-                                <div class="project-ny-content">
-                                    <h3 class="project-ny-title">Parking Management</h3>
-                                    <p class="project-ny-subtitle">VB.NET &bull; WinForms &bull; Offline Desktop App</p>
-                                    <div class="project-ny-meta-row">
-                                        <span class="project-ny-meta-item"><i class="fas fa-tag"></i> Desktop App</span>
-                                        <span class="project-ny-meta-item"><i class="fas fa-car"></i> Space Mgr</span>
-                                    </div>
-                                    <a href="projects.html#parking-system" class="project-ny-btn-white" onclick="event.stopPropagation()">View Details</a>
+                                <div class="project-glass-meta">
+                                    <h4 class="project-glass-title">ClipChain</h4>
+                                    <p class="project-glass-subtitle">HTML &bull; CSS &bull; JS &bull; Firebase</p>
                                 </div>
                             </div>
-
-                            <!-- BACK -->
-                            <div class="flip-card-back" style="background: linear-gradient(145deg, rgba(59, 130, 246, 0.22) 0%, rgba(99, 102, 241, 0.18) 100%);">
-                                <div class="flip-back-header">
-                                    <i class="fas fa-parking" style="font-size: 1.6rem; color: #3b82f6;"></i>
-                                    <span class="flip-back-title" style="color: #1e3a8a;">Parking System</span>
-                                </div>
-                                <ul class="flip-points">
-                                    <li class="flip-point">Developed an offline desktop application in VB.NET using Windows Forms for secure admin login, dashboard overview of parking capacity, and floor management.</li>
-                                    <li class="flip-point">Designed robust vehicle entry/exit flows supporting slot allocation, entry tokens generation, and vehicle checkouts with custom receipt printing.</li>
-                                    <li class="flip-point">Implemented advanced admin tools including user creation, vehicle search capabilities, and secure password reset options for offline authentication.</li>
-                                </ul>
-                                <button class="flip-back-btn" style="border-color: #3b82f6; color: #1e3a8a;" onclick="event.stopPropagation(); unflipCard(this)">
-                                    <i class="fas fa-arrow-left"></i> Back
-                                </button>
+                            <div class="project-glass-actions">
+                                <a href="https://github.com/patelom2810/clipchain" target="_blank" class="project-glass-action-btn" title="GitHub Code"><i class="fab fa-github"></i></a>
                             </div>
-
                         </div>
                     </div>
-                    
 
-
+                    <!-- Project Card 4: Parking Management System -->
+                    <div class="project-glass-card">
+                        <div class="project-glass-body">
+                            <p class="project-glass-desc">
+                                Developed an offline desktop application in VB.NET using Windows Forms. Designed entry/exit ticket generation flows, secure admin panels, parking slot capacity trackers, and receipt printing.
+                            </p>
+                            <a href="projects.html#parking-system" class="project-glass-readmore">View Details <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                        
+                        <div class="project-glass-footer">
+                            <div class="project-glass-profile">
+                                <div class="project-glass-avatar" style="background: #ffffff; padding: 4px;">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dot-net/dot-net-original.svg" alt=".NET">
+                                </div>
+                                <div class="project-glass-meta">
+                                    <h4 class="project-glass-title">Parking System</h4>
+                                    <p class="project-glass-subtitle">VB.NET &bull; WinForms &bull; SQL Server</p>
+                                </div>
+                            </div>
+                            <div class="project-glass-actions">
+                                <a href="https://github.com/patelom2810/Parking-Management-System" target="_blank" class="project-glass-action-btn" title="GitHub Code"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
+            </div>
+            
+            <div class="text-center" style="margin-top: 3.5rem; display: flex; justify-content: center; position: relative; z-index: 10;">
+                <a href="projects.html" class="view-all-projects-btn">View All Projects <i class="fas fa-arrow-right" style="margin-left: 8px;"></i></a>
             </div>
         </div>
     </section>
 
-
-
     <!-- Footer -->
     <footer id="contact">
+        <!-- Large Background Brand Logo (Clay Style) -->
+        <div class="footer-bg-logo">
+            <img src="img/ChatGPT Image Aug 14, 2026, 06_44_48 PM.png" alt="Om Patel Logo" loading="lazy">
+        </div>
         <div class="footer-container">
             <!-- Section Tag -->
             <div class="footer-tag">
@@ -876,6 +691,7 @@
                     </a>
                 </div>
             </div>
+
             <!-- Bottom Row -->
             <div class="footer-bottom">
                 <p class="footer-copy">&copy; 2026 Om Patel &bull; Data Analyst &amp; AI/ML Developer</p>
@@ -913,225 +729,7 @@
             container.querySelectorAll('.flip-point').forEach(p => p.classList.remove('visible'));
         }
 
-        /* =============================================================
-           HERO REVEAL OVERLAY — Pixel-Perfect Alignment System
-           Video plays over the hero image, then crossfades into it.
-        ============================================================= */
-        (function () {
-            'use strict';
 
-            /* ── Elements ── */
-            const overlay   = document.getElementById('hero-reveal-overlay');
-            const video     = document.getElementById('hero-reveal-video');
-            const videoWrap = document.getElementById('hero-reveal-video-wrap');
-            const skipBtn   = document.getElementById('hero-reveal-skip-btn');
-            const heroImg   = document.querySelector('.hero-avatar-new');
-
-            if (!overlay) return;
-
-            /* ── State ── */
-            let isRevealed   = false;
-            let alignAttempts = 0;
-
-            /* ── Lock scroll ── */
-            document.body.style.overflow = 'hidden';
-
-            /* ── Hide hero image immediately so the video can reveal it ── */
-            if (heroImg) {
-                heroImg.style.opacity    = '0';
-                heroImg.style.transition = 'none'; /* no transition yet; JS sets it later */
-            }
-
-            /* ================================================================
-               ALIGNMENT TUNING — adjust these 3 values if the outline
-               doesn't sit precisely over the hero photo.
-
-               SUBJECT_SCALE
-                 How wide the video wrapper is relative to the hero image.
-                 • Increase → wrapper gets bigger (use if person looks small)
-                 • Decrease → wrapper gets smaller (use if person looks large)
-
-               V_OFFSET_PX  (positive = shift video DOWN, negative = UP)
-               H_OFFSET_PX  (positive = shift video RIGHT, negative = LEFT)
-            ================================================================ */
-
-
-            /* ── Align video wrapper precisely over the hero image ── */
-            function alignVideoToHero() {
-                if (!videoWrap) return false;
-
-                const centerArea = document.querySelector('.hero-center-area');
-                const rect = (heroImg && heroImg.complete && heroImg.naturalWidth > 0) ? heroImg.getBoundingClientRect() : null;
-                const containerRect = centerArea ? centerArea.getBoundingClientRect() : null;
-
-                const isMobile = window.innerWidth <= 768;
-
-                if (!rect || rect.width <= 0 || rect.height <= 0 || rect.left <= 0) {
-                    /* Fallback: center in viewport perfectly */
-                    const defaultH = isMobile ? window.innerHeight * 0.55 : window.innerHeight * 0.65;
-                    const defaultW = defaultH * (9 / 16);
-                    Object.assign(videoWrap.style, {
-                        position  : 'fixed',
-                        left      : '50%',
-                        top       : isMobile ? '42%' : '45%',
-                        width     : defaultW + 'px',
-                        height    : defaultH + 'px',
-                        transform : 'translate(-50%, -50%)'
-                    });
-                    return true;
-                }
-
-                const SCALE = isMobile ? 1.0 : 1.02;
-                const wrapH = rect.height * SCALE;
-                const wrapW = wrapH * (9 / 16);
-
-                const imgCX = rect.left + rect.width / 2;
-                const imgCY = rect.top  + rect.height / 2;
-
-                const left = imgCX - wrapW / 2;
-                const top  = imgCY - wrapH / 2;
-
-                Object.assign(videoWrap.style, {
-                    position  : 'fixed',
-                    left      : left   + 'px',
-                    top       : top    + 'px',
-                    width     : wrapW  + 'px',
-                    height    : wrapH  + 'px',
-                    transform : 'none'
-                });
-
-                return true;
-            }
-
-            /* ── Keep retrying alignment as hero image renders ── */
-            function tryAlign() {
-                alignVideoToHero();
-                if (alignAttempts < 60) {
-                    alignAttempts++;
-                    requestAnimationFrame(tryAlign);
-                }
-            }
-
-            /* ── Create dynamic collapsing grid tiles for the reveal ── */
-            /* ── Create dynamic collapsing grid tiles for the reveal ── */
-            function triggerGridReveal(onComplete) {
-                const container = document.createElement('div');
-                container.className = 'hero-reveal-tile-container';
-
-                const isMobile = window.innerWidth <= 768;
-                const cols = isMobile ? 4 : 6;
-                const rows = 4;
-                container.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
-                container.style.gridTemplateRows = `repeat(${rows}, 1fr)`;
-
-                for (let r = 0; r < rows; r++) {
-                    for (let c = 0; c < cols; c++) {
-                        const tile = document.createElement('div');
-                        tile.className = 'hero-reveal-tile';
-
-                        /* Calculate distance from center to ripple out the grid collapse smoothly */
-                        const distFromCenter = Math.hypot(c - (cols - 1) / 2, r - (rows - 1) / 2);
-                        const delay = distFromCenter * 0.085;
-
-                        tile.style.animationDelay = `${delay}s`;
-                        container.appendChild(tile);
-                    }
-                }
-
-                document.body.appendChild(container);
-
-                const maxDelay = (Math.hypot(cols, rows) * 0.085 + 1.15) * 1000;
-                setTimeout(() => {
-                    if (container && container.parentNode) {
-                        container.remove();
-                    }
-                    if (onComplete) onComplete();
-                }, maxDelay);
-            }
-
-            /* ── Reveal: ultra-smooth grid reveal animation to hero page ── */
-            function revealSite() {
-                if (isRevealed) return;
-                isRevealed = true;
-
-                document.body.style.overflow = '';
-                document.body.classList.add('site-revealed');
-
-                /* Smoothly fade out video wrapper in sync with grid tiles */
-                if (videoWrap) {
-                    videoWrap.style.transition = 'opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
-                    videoWrap.style.opacity    = '0';
-                }
-
-                /* Trigger grid tile collapse transition */
-                triggerGridReveal(() => {
-                    if (overlay && overlay.parentNode) {
-                        overlay.remove();
-                    }
-                });
-
-                /* Start overlay backdrop fade-out */
-                overlay.classList.add('hero-reveal-done');
-
-                /* Ensure hero section is fully visible */
-                const heroSection = document.getElementById('home');
-                if (heroSection) {
-                    heroSection.classList.remove('section-hidden');
-                    heroSection.classList.add('visible');
-                    heroSection.style.opacity = '1';
-                    heroSection.style.transform = 'translateY(0)';
-                }
-
-                /* Hero image fades in smoothly in sync with grid reveal */
-                if (heroImg) {
-                    heroImg.style.transition = 'opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1)';
-                    heroImg.style.opacity    = '1';
-                }
-
-                setTimeout(() => {
-                    if (overlay && overlay.parentNode) {
-                        overlay.remove();
-                    }
-                }, 1300);
-            }
-
-            /* ── Bootstrap ── */
-            function init() {
-                tryAlign();
-                if (video) {
-                    video.playbackRate = 1.0;
-                    video.play().catch(() => setTimeout(revealSite, 600));
-
-                    /* Trigger smooth reveal near end of video outline animation */
-                    video.addEventListener('timeupdate', function () {
-                        if (video.duration && video.currentTime >= (video.duration - 0.5)) {
-                            revealSite();
-                        }
-                    });
-
-                    video.addEventListener('ended', revealSite, { once: true });
-                }
-                if (skipBtn) skipBtn.addEventListener('click', revealSite);
-                /* Safety fallback timer to prevent infinite wait */
-                setTimeout(revealSite, 5000);
-
-                /* If video stalls on slow connection, skip after short buffer wait */
-                video.addEventListener('stalled', () => setTimeout(revealSite, 2000));
-                video.addEventListener('error',   () => revealSite());
-            }
-
-            /* ── Re-align on window resize ── */
-            window.addEventListener('resize', () => requestAnimationFrame(alignVideoToHero));
-
-            /* ── Wait for DOM images to paint before first alignment ── */
-            if (document.readyState === 'complete') {
-                requestAnimationFrame(init);
-            } else {
-                window.addEventListener('load', () => requestAnimationFrame(init));
-                requestAnimationFrame(tryAlign);
-            }
-
-        }());
     </script>
 </body>
 
