@@ -8424,7 +8424,8 @@ body.dark-theme .hero-svg-bg .vector-fill-path {
 .section-title,
 .hero-title-new,
 .footer-heading,
-.about-title-large {
+.about-title-large,
+.section-subtitle {
     overflow: hidden;
     line-height: 1.25;
 }
@@ -8442,10 +8443,12 @@ body.dark-theme .hero-svg-bg .vector-fill-path {
 .hero-title-new.visible .anim-char,
 .footer-heading.visible .anim-char,
 .about-title-large.visible .anim-char,
+.section-subtitle.visible .anim-char,
 .visible .section-title .anim-char,
 .visible .hero-title-new .anim-char,
 .visible .footer-heading .anim-char,
-.visible .about-title-large .anim-char {
+.visible .about-title-large .anim-char,
+.visible .section-subtitle .anim-char {
     transform: translateY(0);
     opacity: 1;
 }

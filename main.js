@@ -349,7 +349,7 @@ document.addEventListener('DOMContentLoaded', () => {
        ========================================= */
     
     // Character Splitter for Headings
-    const animateHeadings = document.querySelectorAll('.section-title, .hero-title-new, .footer-heading, .about-title-large');
+    const animateHeadings = document.querySelectorAll('.section-title, .hero-title-new, .footer-heading, .about-title-large, .section-subtitle');
     animateHeadings.forEach(heading => {
         const nodes = Array.from(heading.childNodes);
         heading.innerHTML = '';
