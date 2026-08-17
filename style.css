@@ -5593,6 +5593,13 @@ body.dark-theme .section-title {
     -webkit-text-fill-color: transparent;
 }
 
+.section-title .anim-char {
+    background: inherit;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
 .header-action-link {
     position: absolute;
     right: 0;
