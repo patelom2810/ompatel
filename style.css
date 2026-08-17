@@ -5567,8 +5567,8 @@ body.dark-theme .folio-watermark-bottom {
     color: var(--text-muted) !important;
     font-family: var(--font-syne), sans-serif;
     font-weight: 800;
-    letter-spacing: -0.02em;
-    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+    font-size: 0.88rem;
     text-transform: uppercase;
     display: block;
 }
@@ -8434,7 +8434,7 @@ body.dark-theme .hero-svg-bg .vector-fill-path {
     transform: translateY(115%);
     opacity: 0;
     transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
-    transition-delay: calc(var(--char-index) * 35ms);
+    transition-delay: calc(var(--char-index) * 45ms);
 }
 
 /* Trigger character reveal when heading or section is visible */

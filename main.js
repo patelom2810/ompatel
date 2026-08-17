@@ -407,9 +407,9 @@ document.addEventListener('DOMContentLoaded', () => {
             if (originalChar.trim() === '') return;
             
             const charIndex = parseInt(char.style.getPropertyValue('--char-index') || 0);
-            const delay = charIndex * 35; // Match CSS transition-delay
-            const scrambleDuration = 300; // Scramble duration per character in ms
-            const intervalTime = 30; // Speed of scramble (update every 30ms)
+            const delay = charIndex * 45; // Match slower CSS transition-delay (45ms)
+            const scrambleDuration = 600; // Scramble duration per character (600ms)
+            const intervalTime = 50; // Slower scramble updates (every 50ms)
             
             setTimeout(() => {
                 char.style.color = 'var(--primary-color)'; // Highlight color during scramble
