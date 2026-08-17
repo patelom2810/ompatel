@@ -351,31 +351,44 @@ document.addEventListener('DOMContentLoaded', () => {
     // Character Splitter for Headings
     const animateHeadings = document.querySelectorAll('.section-title, .hero-title-new, .footer-heading, .about-title-large');
     animateHeadings.forEach(heading => {
-        const text = heading.textContent.trim();
+        const nodes = Array.from(heading.childNodes);
         heading.innerHTML = '';
         
-        const words = text.split(/\s+/);
-        words.forEach((word, wordIndex) => {
-            const wordSpan = document.createElement('span');
-            wordSpan.style.display = 'inline-block';
-            wordSpan.style.whiteSpace = 'nowrap';
-            
-            for (let char of word) {
-                const charSpan = document.createElement('span');
-                charSpan.className = 'anim-char';
-                charSpan.textContent = char;
-                wordSpan.appendChild(charSpan);
+        let charGlobalIndex = 0;
+        
+        nodes.forEach(node => {
+            if (node.nodeType === Node.TEXT_NODE) {
+                const text = node.textContent;
+                // Split by spaces, but preserve spaces in the output array
+                const words = text.split(/(\s+)/);
+                words.forEach(word => {
+                    if (word.trim() === '') {
+                        // Whitespace node, keep it as text
+                        heading.appendChild(document.createTextNode(word));
+                    } else {
+                        // Actual word, wrap in span
+                        const wordSpan = document.createElement('span');
+                        wordSpan.style.display = 'inline-block';
+                        wordSpan.style.whiteSpace = 'nowrap';
+                        
+                        for (let char of word) {
+                            const charSpan = document.createElement('span');
+                            charSpan.className = 'anim-char';
+                            charSpan.textContent = char;
+                            charSpan.style.setProperty('--char-index', charGlobalIndex++);
+                            wordSpan.appendChild(charSpan);
+                        }
+                        heading.appendChild(wordSpan);
+                    }
+                });
+            } else if (node.nodeType === Node.ELEMENT_NODE) {
+                if (node.tagName.toLowerCase() === 'br') {
+                    heading.appendChild(document.createElement('br'));
+                } else {
+                    // For any other element, clone it
+                    heading.appendChild(node.cloneNode(true));
+                }
             }
-            
-            heading.appendChild(wordSpan);
-            if (wordIndex < words.length - 1) {
-                heading.appendChild(document.createTextNode(' '));
-            }
-        });
-
-        const chars = heading.querySelectorAll('.anim-char');
-        chars.forEach((char, idx) => {
-            char.style.setProperty('--char-index', idx);
         });
     });
 
