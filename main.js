@@ -482,20 +482,49 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateParallax() {
         const scrollTop = window.scrollY;
 
-        // 1. Hero background curves slide up slightly on scroll
+        // 1. Hero background curves & circles slide up slightly on scroll
         if (heroSvg && scrollTop < window.innerHeight) {
             heroSvg.style.transform = `translateY(${scrollTop * -0.2}px)`;
         }
 
-        // 2. Featured Projects arcs slide up as section approaches viewport
-        if (projectsArc && projectsSection) {
+        const heroCircle1 = document.querySelector('.hero-circle-1');
+        const heroCircle2 = document.querySelector('.hero-circle-2');
+        const heroCircle3 = document.querySelector('.hero-circle-3');
+
+        if (heroCircle1 && scrollTop < window.innerHeight) {
+            heroCircle1.style.transform = `translateY(${scrollTop * -0.15}px)`;
+        }
+        if (heroCircle2 && scrollTop < window.innerHeight) {
+            heroCircle2.style.transform = `translateY(${scrollTop * -0.25}px)`;
+        }
+        if (heroCircle3 && scrollTop < window.innerHeight) {
+            heroCircle3.style.transform = `translateY(${scrollTop * -0.35}px)`;
+        }
+
+        // 2. Featured Projects nested circles slide up at different speeds on scroll
+        if (projectsSection) {
             const rect = projectsSection.getBoundingClientRect();
             const viewHeight = window.innerHeight;
             
             if (rect.top < viewHeight && rect.bottom > 0) {
                 const progress = (viewHeight - rect.top) / (viewHeight + rect.height);
-                const translateY = 80 - progress * 160; 
-                projectsArc.style.transform = `translateX(-50%) translateY(${translateY}px)`;
+                
+                const outerCircle = document.querySelector('.projects-arc-outer');
+                const middleCircle = document.querySelector('.projects-arc-middle');
+                const innerCircle = document.querySelector('.projects-arc-inner');
+                
+                if (outerCircle) {
+                    const yOuter = 40 - progress * 80;
+                    outerCircle.style.transform = `translateY(${yOuter}px)`;
+                }
+                if (middleCircle) {
+                    const yMiddle = 50 - progress * 100;
+                    middleCircle.style.transform = `translateY(${yMiddle}px)`;
+                }
+                if (innerCircle) {
+                    const yInner = 60 - progress * 120;
+                    innerCircle.style.transform = `translateY(${yInner}px)`;
+                }
             }
         }
 
@@ -507,6 +536,28 @@ document.addEventListener('DOMContentLoaded', () => {
             window.requestAnimationFrame(updateParallax);
             parallaxTicking = true;
         }
+    }, { passive: true });
+
+    // Project Cards Scroll Reveal Observer (Staggered slide-up)
+    const cardObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                // Remove transition delay after reveal completes to make hover transitions instant
+                const index = parseInt(entry.target.getAttribute('data-index') || 0);
+                setTimeout(() => {
+                    entry.target.style.transitionDelay = '';
+                }, 600 + (index * 100));
+                cardObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    const glassProjectCards = document.querySelectorAll('.project-glass-card');
+    glassProjectCards.forEach((card, index) => {
+        card.style.transitionDelay = `${index * 100}ms`;
+        card.setAttribute('data-index', index);
+        cardObserver.observe(card);
     });
 
     // Run once on load to initialize positions
