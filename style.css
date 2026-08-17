@@ -8073,6 +8073,44 @@ body.dark-theme .journey-timeline-content-card:hover {
     margin: 0;
 }
 
+/* Badge Container and Box style */
+.journey-badge-container {
+    margin-top: 12px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.journey-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-poppins), sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 6px;
+    background: rgba(79, 70, 229, 0.08);
+    color: #4f46e5;
+    border: 1px solid rgba(79, 70, 229, 0.12);
+    transition: all 0.3s ease;
+}
+
+.journey-badge i {
+    font-size: 0.85rem;
+}
+
+body.dark-theme .journey-badge {
+    background: rgba(96, 165, 250, 0.08);
+    color: #60a5fa;
+    border: 1px solid rgba(96, 165, 250, 0.12);
+}
+
+.journey-badge:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
 .journey-timeline-cert-link {
     display: inline-flex;
     align-items: center;
