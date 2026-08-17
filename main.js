@@ -392,11 +392,49 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Decrypt / Scramble Animation for Characters
+    function triggerDecryptAnimation(heading) {
+        const chars = heading.querySelectorAll('.anim-char');
+        const glyphs = '01XYZ$#@%&*?+=/<>[]{}';
+        
+        chars.forEach((char) => {
+            const originalChar = char.getAttribute('data-original') || char.textContent;
+            if (!char.getAttribute('data-original')) {
+                char.setAttribute('data-original', originalChar);
+            }
+            
+            // Skip whitespaces
+            if (originalChar.trim() === '') return;
+            
+            const charIndex = parseInt(char.style.getPropertyValue('--char-index') || 0);
+            const delay = charIndex * 35; // Match CSS transition-delay
+            const scrambleDuration = 300; // Scramble duration per character in ms
+            const intervalTime = 30; // Speed of scramble (update every 30ms)
+            
+            setTimeout(() => {
+                char.style.color = 'var(--primary-color)'; // Highlight color during scramble
+                
+                let elapsed = 0;
+                const interval = setInterval(() => {
+                    char.textContent = glyphs[Math.floor(Math.random() * glyphs.length)];
+                    elapsed += intervalTime;
+                    
+                    if (elapsed >= scrambleDuration) {
+                        clearInterval(interval);
+                        char.textContent = originalChar;
+                        char.style.color = ''; // Revert to CSS styled color / gradient
+                    }
+                }, intervalTime);
+            }, delay);
+        });
+    }
+
     // Heading Intersection Observer
     const headingObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
+                triggerDecryptAnimation(entry.target);
                 headingObserver.unobserve(entry.target);
             }
         });

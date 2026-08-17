@@ -8432,7 +8432,8 @@ body.dark-theme .hero-svg-bg .vector-fill-path {
 .anim-char {
     display: inline-block;
     transform: translateY(115%);
-    transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity: 0;
+    transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
     transition-delay: calc(var(--char-index) * 35ms);
 }
 
@@ -8446,6 +8447,7 @@ body.dark-theme .hero-svg-bg .vector-fill-path {
 .visible .footer-heading .anim-char,
 .visible .about-title-large .anim-char {
     transform: translateY(0);
+    opacity: 1;
 }
 
 /* Color Variations for Selection Highlights */
