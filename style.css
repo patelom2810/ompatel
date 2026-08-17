@@ -4085,10 +4085,14 @@ body:not(.dark-theme) .hero-watermark-bg {
 
 body:not(.dark-theme) .hero-sidebar-left .hero-services-heading {
     color: #0f172a !important;
-    background: linear-gradient(135deg, #0f172a 40%, #2563eb 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    background: none !important;
+    -webkit-background-clip: initial !important;
+    background-clip: initial !important;
+    -webkit-text-fill-color: initial !important;
+}
+
+body:not(.dark-theme) .hero-sidebar-left .hero-services-heading .hero-highlight {
+    color: #2563eb !important;
 }
 
 body:not(.dark-theme) .hero-sidebar-left .hero-services-more-link {
@@ -5890,10 +5894,14 @@ body.site-revealed .hero-reveal-word,
     font-family: var(--font-poppins) !important;
     max-width: 290px !important;
     font-style: normal !important;
-    background: linear-gradient(135deg, #ffffff 40%, #93c5fd 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    background: none !important;
+    -webkit-background-clip: initial !important;
+    background-clip: initial !important;
+    -webkit-text-fill-color: initial !important;
+}
+
+.hero-sidebar-left .hero-services-heading .hero-highlight {
+    color: #38bdf8 !important;
 }
 
 .hero-sidebar-left .hero-services-more-link {
