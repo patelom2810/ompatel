@@ -469,6 +469,48 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { threshold: 0.15 });
 
     highlightContainers.forEach(container => highlightObserver.observe(container));
+
+    /* =========================================
+       Scroll-driven Background Curves Parallax
+       ========================================= */
+    const heroSvg = document.querySelector('.hero-svg-bg');
+    const projectsArc = document.querySelector('.projects-arc-container');
+    const projectsSection = document.getElementById('featured-projects');
+
+    let parallaxTicking = false;
+
+    function updateParallax() {
+        const scrollTop = window.scrollY;
+
+        // 1. Hero background curves slide up slightly on scroll
+        if (heroSvg && scrollTop < window.innerHeight) {
+            heroSvg.style.transform = `translateY(${scrollTop * -0.2}px)`;
+        }
+
+        // 2. Featured Projects arcs slide up as section approaches viewport
+        if (projectsArc && projectsSection) {
+            const rect = projectsSection.getBoundingClientRect();
+            const viewHeight = window.innerHeight;
+            
+            if (rect.top < viewHeight && rect.bottom > 0) {
+                const progress = (viewHeight - rect.top) / (viewHeight + rect.height);
+                const translateY = 80 - progress * 160; 
+                projectsArc.style.transform = `translateX(-50%) translateY(${translateY}px)`;
+            }
+        }
+
+        parallaxTicking = false;
+    }
+
+    window.addEventListener('scroll', () => {
+        if (!parallaxTicking) {
+            window.requestAnimationFrame(updateParallax);
+            parallaxTicking = true;
+        }
+    });
+
+    // Run once on load to initialize positions
+    updateParallax();
 });
 
 // Toggle education tree nodes
