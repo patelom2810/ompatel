@@ -1,8 +1,69 @@
 // Main JS file
 console.log("Portfolio UI Loaded");
 
+/* =========================================
+   Intro Preloader Curtain Animation
+   ========================================= */
+function initIntroPreloader() {
+    const curtain = document.getElementById('intro-curtain');
+    const counterEl = document.getElementById('intro-counter');
+    const centerContent = document.querySelector('.intro-center-content');
+    const counterBox = document.querySelector('.intro-counter-box');
+
+    if (!curtain || !counterEl) return;
+
+    // Lock scrolling during intro
+    document.body.classList.add('intro-active');
+
+    let current = 0;
+    const target = 100;
+    const duration = 1800; // 1.8 seconds
+    const startTime = performance.now();
+
+    function updateCounter(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+
+        // Smooth cubic ease-out for realistic loading count
+        const ease = 1 - Math.pow(1 - progress, 2.5);
+        current = Math.floor(ease * target);
+
+        // Format to 3-digit padded string (000, 015, 046, 100)
+        counterEl.textContent = String(current).padStart(3, '0');
+
+        if (progress < 1) {
+            requestAnimationFrame(updateCounter);
+        } else {
+            counterEl.textContent = '100';
+
+            // Brief pause at 100 before smooth exit
+            setTimeout(() => {
+                if (centerContent) centerContent.classList.add('intro-fade-out');
+                if (counterBox) counterBox.classList.add('intro-fade-out');
+
+                setTimeout(() => {
+                    curtain.classList.add('intro-exit');
+                    document.body.classList.remove('intro-active');
+                    document.body.classList.add('intro-complete');
+
+                    setTimeout(() => {
+                        curtain.style.display = 'none';
+                        curtain.setAttribute('aria-hidden', 'true');
+                    }, 1000);
+                }, 200);
+            }, 200);
+        }
+    }
+
+    requestAnimationFrame(updateCounter);
+}
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Initialize intro preloader
+    initIntroPreloader();
+
+    // Initialize FAQ Accordion
+    initFaqAccordion();
 
     /* =========================================
        Scroll Reveal Animation (Sections Only)
@@ -345,102 +406,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* =========================================
-       Typography Reveal & Highlights Observer
+       Text Highlight Sweeper Observer
        ========================================= */
-    
-    // Character Splitter for Headings
-    const animateHeadings = document.querySelectorAll('.section-title, .hero-title-new, .footer-heading, .about-title-large, .section-subtitle');
-    animateHeadings.forEach(heading => {
-        const nodes = Array.from(heading.childNodes);
-        heading.innerHTML = '';
-        
-        let charGlobalIndex = 0;
-        
-        nodes.forEach(node => {
-            if (node.nodeType === Node.TEXT_NODE) {
-                const text = node.textContent;
-                // Split by spaces, but preserve spaces in the output array
-                const words = text.split(/(\s+)/);
-                words.forEach(word => {
-                    if (word.trim() === '') {
-                        // Whitespace node, keep it as text
-                        heading.appendChild(document.createTextNode(word));
-                    } else {
-                        // Actual word, wrap in span
-                        const wordSpan = document.createElement('span');
-                        wordSpan.style.display = 'inline-block';
-                        wordSpan.style.whiteSpace = 'nowrap';
-                        
-                        for (let char of word) {
-                            const charSpan = document.createElement('span');
-                            charSpan.className = 'anim-char';
-                            charSpan.textContent = char;
-                            charSpan.style.setProperty('--char-index', charGlobalIndex++);
-                            wordSpan.appendChild(charSpan);
-                        }
-                        heading.appendChild(wordSpan);
-                    }
-                });
-            } else if (node.nodeType === Node.ELEMENT_NODE) {
-                if (node.tagName.toLowerCase() === 'br') {
-                    heading.appendChild(document.createElement('br'));
-                } else {
-                    // For any other element, clone it
-                    heading.appendChild(node.cloneNode(true));
-                }
-            }
-        });
-    });
-
-    // Decrypt / Scramble Animation for Characters
-    function triggerDecryptAnimation(heading) {
-        const chars = heading.querySelectorAll('.anim-char');
-        const glyphs = '01XYZ$#@%&*?+=/<>[]{}';
-        
-        chars.forEach((char) => {
-            const originalChar = char.getAttribute('data-original') || char.textContent;
-            if (!char.getAttribute('data-original')) {
-                char.setAttribute('data-original', originalChar);
-            }
-            
-            // Skip whitespaces
-            if (originalChar.trim() === '') return;
-            
-            const charIndex = parseInt(char.style.getPropertyValue('--char-index') || 0);
-            const delay = charIndex * 45; // Match slower CSS transition-delay (45ms)
-            const scrambleDuration = 600; // Scramble duration per character (600ms)
-            const intervalTime = 50; // Slower scramble updates (every 50ms)
-            
-            setTimeout(() => {
-                char.style.color = 'var(--primary-color)'; // Highlight color during scramble
-                
-                let elapsed = 0;
-                const interval = setInterval(() => {
-                    char.textContent = glyphs[Math.floor(Math.random() * glyphs.length)];
-                    elapsed += intervalTime;
-                    
-                    if (elapsed >= scrambleDuration) {
-                        clearInterval(interval);
-                        char.textContent = originalChar;
-                        char.style.color = ''; // Revert to CSS styled color / gradient
-                    }
-                }, intervalTime);
-            }, delay);
-        });
-    }
-
-    // Heading Intersection Observer
-    const headingObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                triggerDecryptAnimation(entry.target);
-                headingObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.1 });
-
-    animateHeadings.forEach(h => headingObserver.observe(h));
 
     // Text Highlight Sweeper Observer
     const highlightContainers = document.querySelectorAll('.highlight-container');
@@ -568,3 +535,45 @@ document.addEventListener('DOMContentLoaded', () => {
 function toggleTreeNode(node) {
     node.classList.toggle('expanded');
 }
+
+/* =========================================
+   FAQ Accordion Functionality
+   ========================================= */
+function initFaqAccordion() {
+    const faqItems = document.querySelectorAll('.faq-item');
+    if (!faqItems.length) return;
+
+    faqItems.forEach(item => {
+        const btn = item.querySelector('.faq-question-btn');
+        const collapse = item.querySelector('.faq-answer-collapse');
+
+        if (!btn || !collapse) return;
+
+        btn.addEventListener('click', () => {
+            const isOpen = item.classList.contains('active');
+
+            // Close all other accordion items
+            faqItems.forEach(otherItem => {
+                if (otherItem !== item) {
+                    otherItem.classList.remove('active');
+                    const otherBtn = otherItem.querySelector('.faq-question-btn');
+                    const otherCollapse = otherItem.querySelector('.faq-answer-collapse');
+                    if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
+                    if (otherCollapse) otherCollapse.style.maxHeight = null;
+                }
+            });
+
+            // Toggle current item
+            if (isOpen) {
+                item.classList.remove('active');
+                btn.setAttribute('aria-expanded', 'false');
+                collapse.style.maxHeight = null;
+            } else {
+                item.classList.add('active');
+                btn.setAttribute('aria-expanded', 'true');
+                collapse.style.maxHeight = collapse.scrollHeight + 'px';
+            }
+        });
+    });
+}
+

@@ -12,9 +12,9 @@
     <!-- Preload hero image (LCP) -->
     <link rel="preload" as="image" href="img/profile-suit-transparent-opt.png" fetchpriority="high">
     <!-- Google Fonts (non-blocking display=swap already) -->
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500;600;700;800&family=Syne:wght@400..800&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Pacifico&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&family=Syne:wght@400..800&display=swap"
         rel="stylesheet" media="print" onload="this.media='all'">
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600;700;800&family=Syne:wght@400..800&display=swap" rel="stylesheet"></noscript>
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Pacifico&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Poppins:wght@400;600;700;800&family=Syne:wght@400..800&display=swap" rel="stylesheet"></noscript>
     <!-- FontAwesome — non-blocking -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
           media="print" onload="this.media='all'">
@@ -60,7 +60,22 @@
         })();
     </script>
 
+    <!-- Sleek Intro Preloader Curtain -->
+    <div id="intro-curtain" class="intro-curtain" aria-hidden="false">
+        <div class="intro-center-content">
+            <h1 class="intro-name">Om Patel</h1>
+            <p class="intro-tagline">PORTFOLIO &mdash; 2026</p>
+        </div>
 
+        <div class="intro-counter-box">
+            <span id="intro-counter" class="intro-counter-number">000</span>
+        </div>
+
+        <!-- Smooth Curved Bottom Arch for Curtain Pull-Up Reveal -->
+        <svg class="intro-curve-svg" viewBox="0 0 1440 160" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M 0,0 L 1440,0 L 1440,160 C 1040,10 400,10 0,160 Z" fill="#080808"></path>
+        </svg>
+    </div>
 
     <!-- Background Mesh Blobs -->
     <div class="mesh-blobs">
@@ -109,170 +124,108 @@
         </div>
     </div>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero-split">
-        <!-- Concentric Background Circles -->
-        <div class="hero-circle hero-circle-1"></div>
-        <div class="hero-circle hero-circle-2"></div>
-        <div class="hero-circle hero-circle-3"></div>
-        
-        <!-- Curved Vector Shapes Background -->
-        <div class="hero-svg-bg">
-            <svg width="100%" height="100%" viewBox="0 0 1440 900" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-                <defs>
-                    <filter id="shadow-curve" x="-20%" y="-20%" width="140%" height="140%">
-                        <feDropShadow dx="-8" dy="12" stdDeviation="15" flood-color="#4f46e5" flood-opacity="0.1" />
-                    </filter>
-                    <linearGradient id="grad-stroke-1" x1="0%" y1="100%" x2="100%" y2="0%">
-                        <stop offset="0%" stop-color="#818cf8" stop-opacity="0.7"/>
-                        <stop offset="60%" stop-color="#4f46e5" stop-opacity="0.5"/>
-                        <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.05"/>
-                    </linearGradient>
-                    <linearGradient id="grad-stroke-2" x1="0%" y1="100%" x2="100%" y2="0%">
-                        <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.8"/>
-                        <stop offset="60%" stop-color="#3b82f6" stop-opacity="0.4"/>
-                        <stop offset="100%" stop-color="#6366f1" stop-opacity="0.05"/>
-                    </linearGradient>
-                    <linearGradient id="grad-fill-1" x1="0%" y1="100%" x2="100%" y2="0%">
-                        <stop offset="0%" stop-color="#eef2ff" stop-opacity="0.45"/>
-                        <stop offset="100%" stop-color="#ffffff" stop-opacity="0.05"/>
-                    </linearGradient>
-                    <linearGradient id="grad-fill-dark" x1="0%" y1="100%" x2="100%" y2="0%">
-                        <stop offset="0%" stop-color="#090d16" stop-opacity="0.6"/>
-                        <stop offset="100%" stop-color="#030712" stop-opacity="0.1"/>
-                    </linearGradient>
-                </defs>
-                
-                <!-- Left Overlapping Curves -->
-                <path d="M-100 1000 C 150 720, 200 420, 120 -100 L -100 -100 Z" class="vector-fill-path" fill="url(#grad-fill-1)" stroke="url(#grad-stroke-1)" stroke-width="4" filter="url(#shadow-curve)" />
-                <path d="M-100 1000 C 280 670, 320 320, 180 -100 L -100 -100 Z" class="vector-fill-path" fill="url(#grad-fill-1)" stroke="url(#grad-stroke-2)" stroke-width="5" filter="url(#shadow-curve)" />
-                <path d="M-100 1000 C 400 620, 350 220, 220 -100" fill="none" stroke="url(#grad-stroke-1)" stroke-width="6" filter="url(#shadow-curve)" />
-                <path d="M-100 1000 C 480 520, 380 160, 250 -100" fill="none" stroke="url(#grad-stroke-2)" stroke-width="3" />
-                
-                <!-- Bottom Right Arch/Curve -->
-                <path d="M450 1000 C 700 480, 1150 480, 1450 1000" fill="none" stroke="url(#grad-stroke-2)" stroke-width="7" filter="url(#shadow-curve)" />
-                <path d="M550 1000 C 780 540, 1080 540, 1350 1000" fill="none" stroke="url(#grad-stroke-1)" stroke-width="4" filter="url(#shadow-curve)" />
-            </svg>
-        </div>
-        <!-- Top Header Pill (Static inside Hero) -->
-        <div class="hero-header-pill">
-            <div class="hero-logo-box">
-                <div class="hero-logo-square">OP</div>
-                <span class="hero-logo-text">OM PATEL</span>
-            </div>
-            <div class="hero-header-links">
-                <a href="#about" class="hero-header-link">ABOUT</a>
-                <span class="hero-header-slash">/</span>
-                <a href="#skills" class="hero-header-link">SKILLS</a>
-                <span class="hero-header-slash">/</span>
-                <a href="projects.html" class="hero-header-link">PROJECTS</a>
-                <span class="hero-header-slash">/</span>
-                <a href="#contact" class="hero-header-link">CONTACT</a>
-            </div>
-            <!-- Dynamic Search Bar -->
-            <div class="nav-search-wrapper">
+    <!-- Hero Section (Editorial Luxury - Pure Typography) -->
+    <section id="home" class="hero-editorial-section">
+
+        <!-- Top Minimalist Navbar -->
+        <header class="hero-editorial-navbar">
+            <!-- Left: Rounded Search Bar -->
+            <div class="hero-editorial-search">
                 <i class="fas fa-search search-icon"></i>
-                <input type="text" class="nav-search-input" id="nav-search" placeholder="Search projects...">
+                <input type="text" id="nav-search" placeholder="Search..." aria-label="Search">
             </div>
-            <button class="theme-toggle-btn" id="theme-toggle" title="Toggle Theme" aria-label="Toggle Theme">
-                <i class="fas fa-moon theme-icon"></i>
-            </button>
-            <a href="mailto:patelom2810@gmail.com" class="hero-header-btn">HIRE ME</a>
+
+            <!-- Center: Brand Name with Transparent Logo -->
+            <a href="#home" class="hero-editorial-brand" title="Om Patel">
+                <img src="img/op-logo-dark.png" alt="Om Patel Logo" class="hero-brand-logo-img">
+                <span>ompatel</span>
+            </a>
+
+            <!-- Right: Navigation Links + Theme Toggle -->
+            <div class="hero-editorial-links">
+                <nav class="flex items-center gap-6">
+                    <a href="#about" class="hero-editorial-link">About</a>
+                    <a href="#skills" class="hero-editorial-link">Skills</a>
+                    <a href="projects.html" class="hero-editorial-link">Projects</a>
+                    <a href="#contact" class="hero-editorial-link">Contact</a>
+                </nav>
+                <button class="hero-editorial-theme-btn" id="theme-toggle" title="Toggle Theme" aria-label="Toggle Theme">
+                    <i class="fas fa-moon theme-icon"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Center Editorial Stage (Zero Images) -->
+        <div class="hero-editorial-main">
+            <!-- 3-Line Large Heading with Sparkle -->
+            <h1 class="hero-editorial-title">
+                <span class="hero-line-wrap"><span class="hero-animate-in" style="animation-delay: 0.1s">Turn complex</span></span><br>
+                <span class="hero-line-wrap"><span class="hero-animate-in" style="animation-delay: 0.28s">data into intelligent<span class="hero-sparkle-star">*</span></span></span><br>
+                <span class="hero-line-wrap"><span class="hero-animate-in" style="animation-delay: 0.46s">solutions</span></span>
+            </h1>
+
+            <!-- Center Pill CTA Button -->
+            <div class="hero-editorial-cta-wrap hero-animate-in" style="animation-delay: 0.68s">
+                <a href="#about" class="hero-editorial-btn">Let's find</a>
+            </div>
+
+            <!-- Bottom Uppercase Tracked Summary -->
+            <p class="hero-editorial-subtext hero-animate-in" style="animation-delay: 0.86s">
+                WE ARE TURNING RAW DATA INTO INTELLIGENT PREDICTIVE MODELS.<br>
+                IF YOU LOVE HIGH-IMPACT DATA &amp; AI ENGINEERING, THEN YOU HAVE FOUND OM.
+            </p>
         </div>
 
-        <div class="hero-main-content">
-            <!-- Left Side Role & Services Widget -->
-            <div class="hero-sidebar-left">
-                <div class="hero-status-badge">
-                    <span class="status-dot"></span>
-                    Available for Internships
-                </div>
-                <h4 class="hero-services-heading">Let's build quality <span class="hero-highlight">models</span>, <span class="hero-highlight">pipelines</span>, and <span class="hero-highlight">insights</span></h4>
-                <a href="#about" class="hero-services-more-link">show more <i class="fas fa-arrow-right"></i></a>
-                
-                <div class="hero-services-socials">
-                    <a href="mailto:patelom2810@gmail.com" class="hero-services-social-btn" title="Gmail"><i class="fas fa-envelope"></i></a>
-                    <a href="https://www.linkedin.com/in/om-patel-1a929831b" target="_blank" class="hero-services-social-btn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="https://github.com/patelom2810" target="_blank" class="hero-services-social-btn" title="GitHub"><i class="fab fa-github"></i></a>
-                    <a href="https://www.instagram.com/patelom2810" target="_blank" class="hero-services-social-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-
-            <!-- Center Watermark & Avatar -->
-            <div class="hero-center-area">
-                <div class="hero-watermark-bg">OM PATEL</div>
-                <img src="img/profile-suit-transparent-opt.png" alt="Om Patel" class="hero-avatar-new">
-            </div>
-
-            <!-- Mobile-only: Role text below image -->
-            <div class="hero-mobile-role">
-                <div class="hero-status-badge" style="margin-left: auto; margin-right: auto;">
-                    <span class="status-dot"></span>
-                    Available for Internships
-                </div>
-                <h4 class="hero-role-heading">
-                    <span class="hero-reveal-word" style="animation-delay: 0.25s;">Data Analyst</span> 
-                    <span class="hero-reveal-word" style="animation-delay: 0.4s;">&amp;</span> 
-                    <span class="hero-reveal-word" style="animation-delay: 0.55s;">AI/ML Developer</span>
-                </h4>
-                <p class="hero-role-subtext">
-                    <span class="hero-reveal-word" style="animation-delay: 0.75s;">Building models, pipelines, and insights to turn complex data into clear, actionable stories.</span>
-                </p>
-            </div>
-
-            <!-- Mobile-only: Scroll indicator -->
-            <div class="hero-mobile-scroll">
-                <span>Scroll</span>
-                <i class="fas fa-arrow-down"></i>
-            </div>
-
-            <!-- Right Side Scroll -->
-            <div class="hero-sidebar-right">
-                <span class="hero-scroll-text">Scroll down</span>
-                <div class="hero-scroll-arrow">
-                    <i class="fas fa-arrow-down"></i>
-                </div>
-            </div>
+        <!-- Curved Transition Divider (Convex Arch) -->
+        <div class="hero-curved-divider" aria-hidden="true">
+            <svg class="hero-curve-svg" viewBox="0 0 1440 100" preserveAspectRatio="none">
+                <path class="hero-curve-fill" d="M0,100 L0,65 C400,0 1040,0 1440,65 L1440,100 Z"></path>
+                <path class="hero-curve-stroke" d="M0,65 C400,0 1040,0 1440,65"></path>
+            </svg>
         </div>
     </section>
 
-    <!-- About Me (Modern Split Grid Layout) -->
-    <section id="about" class="about-new-section">
-        <div class="about-new-container">
-            <div class="about-new-grid">
-                <!-- Left Column -->
-                <div class="about-new-left">
-                    <div class="about-avatar-row">
-                        <div class="about-avatar-pill" title="Toggle Theme">
-                            <div class="about-pill-knob">
-                                <img src="img/profile.jpg" alt="Om Patel">
-                            </div>
-                        </div>
-                        <h2 class="about-greeting">Hello, I'm <span class="highlight-white">Om</span></h2>
+    <!-- About Me (Designer/Developer Split Layout) -->
+    <section id="about" class="about-hero-section">
+        <div class="about-hero-container">
+            <div class="about-hero-grid">
+                <!-- Left Column: Portrait Photo Card -->
+                <div class="about-hero-photo-wrap">
+                    <div class="about-hero-photo-card">
+                        <img src="img/about-portrait.png" alt="Om Patel" class="about-hero-photo" loading="lazy">
                     </div>
-                    <h1 class="about-title-large">Data Analyst<br/>&amp; AI/ML Developer</h1>
                 </div>
                 
-                <!-- Right Column -->
-                <div class="about-new-right">
-                    <p class="about-intro-text">
-                        With experience in <span class="highlight-container highlight-pink"><span class="handle-left"></span>Data Analytics, Machine Learning pipelines, and Cloud technologies<span class="handle-right"></span></span>, I combine these fields to turn complex data into clear, actionable stories and intelligent predictive models.
+                <!-- Right Column: Content -->
+                <div class="about-hero-content">
+                    <div class="section-tag">
+                        <span>&mdash; ABOUT ME</span>
+                    </div>
+                    
+                    <h3 class="about-greeting-title">Hello there!</h3>
+                    
+                    <h1 class="about-hero-headline">
+                        My name is Om<br/>
+                        and I <span class="about-accent-yellow">analyze</span> and<br/>
+                        <span class="about-accent-orange">build</span> <span class="about-accent-italic">(most of the time)</span>.
+                    </h1>
+                    
+                    <p class="about-bio-text">
+                        My name is Om Patel, I am currently living and working in Gujarat, India as a Data Analyst &amp; AI/ML Developer. What can I say, I love my work! I combine machine learning pipelines, cloud engineering, and actionable data analytics to turn complex datasets into clear, compelling stories and intelligent predictive models.
                     </p>
-                    <p class="about-sub-text">
-                        I am currently pursuing my <span class="highlight-container highlight-blue"><span class="handle-left"></span>M.Sc. in Information Technology<span class="handle-right"></span></span> at <span class="highlight-container highlight-yellow"><span class="handle-left"></span>GLS University<span class="handle-right"></span></span>, building upon my <span class="highlight-container highlight-blue"><span class="handle-left"></span>B.Sc. in Computer Applications &amp; IT<span class="handle-right"></span></span>. I design end-to-end data pipelines, build scalable models, and create modern dashboards that drive business value.
-                    </p>
+                    
                     <div class="about-action-row">
                         <a href="mailto:patelom2810@gmail.com" class="about-msg-btn">
                             Write a message <i class="fas fa-paper-plane"></i>
                         </a>
                         <div class="about-social-links">
-                            <a href="mailto:patelom2810@gmail.com" class="about-social-link">
+                            <a href="mailto:patelom2810@gmail.com" class="about-social-link" title="Gmail">
                                 <i class="fas fa-envelope"></i> Gmail
                             </a>
-                            <a href="https://www.linkedin.com/in/om-patel-1a929831b" target="_blank" class="about-social-link">
+                            <a href="https://www.linkedin.com/in/om-patel-1a929831b" target="_blank" class="about-social-link" title="LinkedIn">
                                 <i class="fab fa-linkedin-in"></i> LinkedIn
                             </a>
-                            <a href="https://github.com/patelom2810" target="_blank" class="about-social-link">
+                            <a href="https://github.com/patelom2810" target="_blank" class="about-social-link" title="GitHub">
                                 <i class="fab fa-github"></i> GitHub
                             </a>
                         </div>
@@ -288,19 +241,21 @@
         <div class="skills-glow-bg"></div>
 
         <div class="max-w-[1200px] mx-auto px-5 relative z-10">
-            <div class="section-header">
-                <span class="section-subtitle" style="color: var(--primary-color);">&mdash; EXPERTISE</span>
+            <div class="section-header text-left" style="margin-bottom: 2.5rem;">
+                <div class="section-tag">
+                    <span>&mdash; SKILLS &amp; EXPERTISE</span>
+                </div>
                 <h2 class="section-title">Technical Skillset</h2>
-                <p style="font-family: var(--font-poppins), sans-serif; font-size: 0.95rem; color: #a0aec0; margin-top: 8px; max-width: 600px; line-height: 1.5; text-align: left;">
-                    Organized categories of tools, frameworks, and methodologies that I use daily.
+                <p style="font-family: var(--font-poppins), sans-serif; font-size: 0.95rem; color: var(--subtitle-color, #8da0b8); margin-top: 8px; max-width: 600px; line-height: 1.5; text-align: left;">
+                    A comprehensive stack of machine learning frameworks, data engineering tools, and cloud platforms.
                 </p>
             </div>
 
-            <div class="skills-split-container">
-                <!-- Row 1: Languages -->
-                <div class="skills-split-row">
-                    <div class="skills-split-label">Languages</div>
-                    <div class="skills-split-grid">
+            <!-- Right-to-Left Infinite Marquee Track 1 -->
+            <div class="skills-marquee-wrapper" aria-label="Languages and AI/ML Skills">
+                <div class="skills-marquee-track skills-track-rtl-fast">
+                    <!-- Set 1 -->
+                    <div class="skills-marquee-group">
                         <div class="skill-icon-card" data-tooltip="Python">
                             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" loading="lazy">
                         </div>
@@ -310,18 +265,8 @@
                         <div class="skill-icon-card" data-tooltip="R Language">
                             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/r/r-original.svg" alt="R" loading="lazy">
                         </div>
-                        <!-- Empty slots for alignment -->
-                        <div class="skill-icon-card empty-card"></div>
-                        <div class="skill-icon-card empty-card"></div>
-                    </div>
-                </div>
-
-                <!-- Row 2: AI & Machine Learning -->
-                <div class="skills-split-row">
-                    <div class="skills-split-label">AI & Machine Learning</div>
-                    <div class="skills-split-grid">
                         <div class="skill-icon-card" data-tooltip="scikit-learn">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg" alt="scikit-learn" loading="lazy">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scikitlearn/scikitlearn-original.svg" alt="scikit-learn" loading="lazy">
                         </div>
                         <div class="skill-icon-card" data-tooltip="Pandas">
                             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" alt="Pandas" loading="lazy">
@@ -330,39 +275,85 @@
                             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" alt="NumPy" loading="lazy">
                         </div>
                         <div class="skill-icon-card" data-tooltip="Matplotlib">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Matplotlib_logo.svg" alt="Matplotlib" loading="lazy">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/matplotlib/matplotlib-original.svg" alt="Matplotlib" loading="lazy">
                         </div>
                         <div class="skill-icon-card" data-tooltip="TensorFlow">
                             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="TensorFlow" loading="lazy">
                         </div>
+                        <div class="skill-icon-card" data-tooltip="PyTorch">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" alt="PyTorch" loading="lazy">
+                        </div>
+                        <div class="skill-icon-card" data-tooltip="Tableau">
+                            <img src="img/tableau.jpg" alt="Tableau" loading="lazy">
+                        </div>
+                        <div class="skill-icon-card" data-tooltip="Power BI">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg" alt="Power BI" loading="lazy">
+                        </div>
+                    </div>
+                    <!-- Duplicate Set 1 for Infinite Loop -->
+                    <div class="skills-marquee-group" aria-hidden="true">
+                        <div class="skill-icon-card" data-tooltip="Python">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" loading="lazy">
+                        </div>
+                        <div class="skill-icon-card" data-tooltip="SQL">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azuresqldatabase/azuresqldatabase-original.svg" alt="SQL" loading="lazy">
+                        </div>
+                        <div class="skill-icon-card" data-tooltip="R Language">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/r/r-original.svg" alt="R" loading="lazy">
+                        </div>
+                        <div class="skill-icon-card" data-tooltip="scikit-learn">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scikitlearn/scikitlearn-original.svg" alt="scikit-learn" loading="lazy">
+                        </div>
+                        <div class="skill-icon-card" data-tooltip="Pandas">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" alt="Pandas" loading="lazy">
+                        </div>
+                        <div class="skill-icon-card" data-tooltip="NumPy">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" alt="NumPy" loading="lazy">
+                        </div>
+                        <div class="skill-icon-card" data-tooltip="Matplotlib">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/matplotlib/matplotlib-original.svg" alt="Matplotlib" loading="lazy">
+                        </div>
+                        <div class="skill-icon-card" data-tooltip="TensorFlow">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="TensorFlow" loading="lazy">
+                        </div>
+                        <div class="skill-icon-card" data-tooltip="PyTorch">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" alt="PyTorch" loading="lazy">
+                        </div>
+                        <div class="skill-icon-card" data-tooltip="Tableau">
+                            <img src="img/tableau.jpg" alt="Tableau" loading="lazy">
+                        </div>
+                        <div class="skill-icon-card" data-tooltip="Power BI">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg" alt="Power BI" loading="lazy">
+                        </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- Row 3: Backend & Databases -->
-                <div class="skills-split-row">
-                    <div class="skills-split-label">Backend & Databases</div>
-                    <div class="skills-split-grid">
-                        <!-- Empty slots for alignment -->
-                        <div class="skill-icon-card empty-card"></div>
-                        <div class="skill-icon-card empty-card"></div>
+            <!-- Right-to-Left Infinite Marquee Track 2 -->
+            <div class="skills-marquee-wrapper" style="margin-top: 22px;" aria-label="Databases, Cloud and Tools">
+                <div class="skills-marquee-track skills-track-rtl-slow">
+                    <!-- Set 2 -->
+                    <div class="skills-marquee-group">
                         <div class="skill-icon-card" data-tooltip="FastAPI">
                             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg" alt="FastAPI" loading="lazy">
+                        </div>
+                        <div class="skill-icon-card" data-tooltip="Flask">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg" alt="Flask" loading="lazy">
                         </div>
                         <div class="skill-icon-card" data-tooltip="MySQL">
                             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" loading="lazy">
                         </div>
+                        <div class="skill-icon-card" data-tooltip="PostgreSQL">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" loading="lazy">
+                        </div>
                         <div class="skill-icon-card" data-tooltip="Supabase">
                             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg" alt="Supabase" loading="lazy">
                         </div>
-                    </div>
-                </div>
-
-                <!-- Row 4: Tools & Platforms -->
-                <div class="skills-split-row">
-                    <div class="skills-split-label">Tools & Platforms</div>
-                    <div class="skills-split-grid">
-                        <div class="skill-icon-card" data-tooltip="Git & GitHub">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="Git & GitHub" loading="lazy">
+                        <div class="skill-icon-card" data-tooltip="MongoDB">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" loading="lazy">
+                        </div>
+                        <div class="skill-icon-card" data-tooltip="Git &amp; GitHub">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="Git &amp; GitHub" loading="lazy">
                         </div>
                         <div class="skill-icon-card" data-tooltip="VS Code">
                             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code" loading="lazy">
@@ -376,41 +367,65 @@
                         <div class="skill-icon-card" data-tooltip="Firebase">
                             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" alt="Firebase" loading="lazy">
                         </div>
-                    </div>
-                </div>
-
-                <!-- Row 5: Cloud Infrastructure -->
-                <div class="skills-split-row">
-                    <div class="skills-split-label">Cloud Infrastructure</div>
-                    <div class="skills-split-grid">
-                        <!-- Empty slots for alignment -->
-                        <div class="skill-icon-card empty-card"></div>
-                        <div class="skill-icon-card empty-card"></div>
-                        <div class="skill-icon-card empty-card"></div>
                         <div class="skill-icon-card" data-tooltip="AWS">
                             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS" loading="lazy">
                         </div>
-                        <div class="skill-icon-card" data-tooltip="Google Cloud Platform">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" alt="GCP" loading="lazy">
+                        <div class="skill-icon-card" data-tooltip="Google Cloud">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" alt="Google Cloud" loading="lazy">
                         </div>
-                    </div>
-                </div>
-
-                <!-- Row 6: Web Hosting & DevOps -->
-                <div class="skills-split-row">
-                    <div class="skills-split-label">Web Hosting & DevOps</div>
-                    <div class="skills-split-grid">
-                        <!-- Empty slots for alignment -->
-                        <div class="skill-icon-card empty-card"></div>
-                        <div class="skill-icon-card empty-card"></div>
-                        <div class="skill-icon-card" data-tooltip="Railway">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/railway/railway-original.svg" alt="Railway" loading="lazy">
+                        <div class="skill-icon-card" data-tooltip="Docker">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" loading="lazy">
                         </div>
                         <div class="skill-icon-card" data-tooltip="Netlify">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/Netlify_logo.svg" alt="Netlify" loading="lazy">
                         </div>
+                    </div>
+                    <!-- Duplicate Set 2 for Infinite Loop -->
+                    <div class="skills-marquee-group" aria-hidden="true">
+                        <div class="skill-icon-card" data-tooltip="FastAPI">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg" alt="FastAPI" loading="lazy">
+                        </div>
+                        <div class="skill-icon-card" data-tooltip="Flask">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg" alt="Flask" loading="lazy">
+                        </div>
+                        <div class="skill-icon-card" data-tooltip="MySQL">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" loading="lazy">
+                        </div>
+                        <div class="skill-icon-card" data-tooltip="PostgreSQL">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" loading="lazy">
+                        </div>
+                        <div class="skill-icon-card" data-tooltip="Supabase">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg" alt="Supabase" loading="lazy">
+                        </div>
+                        <div class="skill-icon-card" data-tooltip="MongoDB">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" loading="lazy">
+                        </div>
+                        <div class="skill-icon-card" data-tooltip="Git &amp; GitHub">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="Git &amp; GitHub" loading="lazy">
+                        </div>
+                        <div class="skill-icon-card" data-tooltip="VS Code">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code" loading="lazy">
+                        </div>
+                        <div class="skill-icon-card" data-tooltip="Jupyter Notebook">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original.svg" alt="Jupyter Notebook" loading="lazy">
+                        </div>
+                        <div class="skill-icon-card" data-tooltip="Google Colab">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/Google_Colaboratory_SVG_Logo.svg" alt="Google Colab" loading="lazy">
+                        </div>
+                        <div class="skill-icon-card" data-tooltip="Firebase">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" alt="Firebase" loading="lazy">
+                        </div>
+                        <div class="skill-icon-card" data-tooltip="AWS">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS" loading="lazy">
+                        </div>
+                        <div class="skill-icon-card" data-tooltip="Google Cloud">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" alt="Google Cloud" loading="lazy">
+                        </div>
                         <div class="skill-icon-card" data-tooltip="Docker">
                             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" loading="lazy">
+                        </div>
+                        <div class="skill-icon-card" data-tooltip="Netlify">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/Netlify_logo.svg" alt="Netlify" loading="lazy">
                         </div>
                     </div>
                 </div>
@@ -422,9 +437,11 @@
     <section id="education" class="journey-timeline-section">
         <div class="max-w-[1200px] mx-auto px-5">
             <div class="section-header text-center" style="margin-bottom: 4rem; display: flex; flex-direction: column; align-items: center;">
-                <span class="section-subtitle" style="color: var(--primary-color);">&mdash; JOURNEY</span>
+                <div class="section-tag">
+                    <span>&mdash; JOURNEY</span>
+                </div>
                 <h2 class="section-title">Academic Journey</h2>
-                <p style="font-family: var(--font-poppins), sans-serif; font-size: 0.95rem; color: var(--text-muted); margin-top: 8px; max-width: 600px; line-height: 1.5; text-align: center;">
+                <p style="font-family: var(--font-poppins), sans-serif; font-size: 0.95rem; color: var(--subtitle-color, #8da0b8); margin-top: 8px; max-width: 600px; line-height: 1.5; text-align: center;">
                     A chronological track record of my academic milestones and educational foundation.
                 </p>
             </div>
@@ -491,9 +508,11 @@
     <section id="certifications" class="certifications-section">
         <div class="max-w-[1200px] mx-auto px-5">
             <div class="section-header text-center" style="margin-bottom: 3.5rem; display: flex; flex-direction: column; align-items: center;">
-                <span class="section-subtitle" style="color: var(--primary-color);">&mdash; CREDENTIALS</span>
+                <div class="section-tag">
+                    <span>&mdash; CREDENTIALS</span>
+                </div>
                 <h2 class="section-title">Professional Certifications</h2>
-                <p style="font-family: var(--font-poppins), sans-serif; font-size: 0.95rem; color: var(--text-muted); margin-top: 8px; max-width: 600px; line-height: 1.5; text-align: center;">
+                <p style="font-family: var(--font-poppins), sans-serif; font-size: 0.95rem; color: var(--subtitle-color, #8da0b8); margin-top: 8px; max-width: 600px; line-height: 1.5; text-align: center;">
                     Industry-recognized certifications validating technical expertise and cloud infrastructure capabilities.
                 </p>
             </div>
@@ -533,8 +552,10 @@
 
         <div class="max-w-[1200px] mx-auto px-5 relative z-10">
             <div class="section-header text-center" style="margin-bottom: 4rem; display: flex; flex-direction: column; align-items: center; color: #ffffff;">
-                <span class="section-subtitle" style="color: #e2e8f0; opacity: 0.85;">&mdash; PORTFOLIO</span>
-                <h2 class="section-title text-white" style="color: #ffffff;">Featured Projects</h2>
+                <div class="section-tag">
+                    <span style="color: #60a5fa !important;">&mdash; PORTFOLIO</span>
+                </div>
+                <h2 class="section-title text-white" style="color: #ffffff !important;">Featured Projects</h2>
                 <p style="font-family: var(--font-poppins), sans-serif; font-size: 0.95rem; color: #f1f5f9; margin-top: 8px; max-width: 600px; line-height: 1.5; text-align: center; opacity: 0.9;">
                     A curated selection of machine learning applications, data analytics platforms, and full-stack solutions.
                 </p>
@@ -649,6 +670,88 @@
             
             <div class="text-center" style="margin-top: 3.5rem; display: flex; justify-content: center; position: relative; z-index: 10;">
                 <a href="projects.html" class="view-all-projects-btn">View All Projects <i class="fas fa-arrow-right" style="margin-left: 8px;"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq-section">
+        <div class="faq-container">
+            <!-- Header -->
+            <div class="faq-header">
+                <div class="section-tag" style="justify-content: center;">
+                    <span>&mdash; QUICK ANSWERS</span>
+                </div>
+                <h2 class="section-title faq-title" style="text-align: center;">Frequently Asked Questions</h2>
+                <p class="faq-subtitle">Everything you need to know about my technical skillset, background, and project collaboration.</p>
+            </div>
+
+            <!-- Accordion List -->
+            <div class="faq-accordion-list">
+                <!-- Item 1 -->
+                <div class="faq-item">
+                    <button class="faq-question-btn" aria-expanded="false">
+                        <span class="faq-question-text">What are your primary areas of expertise?</span>
+                        <span class="faq-icon"><i class="fas fa-plus"></i></span>
+                    </button>
+                    <div class="faq-answer-collapse">
+                        <div class="faq-answer-content">
+                            <p>I specialize in <strong>Data Analytics</strong>, <strong>AI/Machine Learning</strong> pipelines, automated ETL workflows, SQL database architecture, and interactive business intelligence dashboards using Power BI, Tableau, and Python.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="faq-item">
+                    <button class="faq-question-btn" aria-expanded="false">
+                        <span class="faq-question-text">What is your current education and work availability?</span>
+                        <span class="faq-icon"><i class="fas fa-plus"></i></span>
+                    </button>
+                    <div class="faq-answer-collapse">
+                        <div class="faq-answer-content">
+                            <p>I am pursuing my <strong>M.Sc. in Information Technology</strong> at GLS University, building on my <strong>B.Sc. in Computer Applications &amp; IT</strong>. I am actively available for full-time roles, internships, and freelance projects.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="faq-item">
+                    <button class="faq-question-btn" aria-expanded="false">
+                        <span class="faq-question-text">What core technologies and frameworks do you use?</span>
+                        <span class="faq-icon"><i class="fas fa-plus"></i></span>
+                    </button>
+                    <div class="faq-answer-collapse">
+                        <div class="faq-answer-content">
+                            <p>My core toolkit includes <strong>Python</strong> (Pandas, NumPy, Scikit-Learn, PyTorch), <strong>SQL</strong> (PostgreSQL, MySQL, SQL Server), <strong>Power BI</strong>, <strong>Tableau</strong>, Git/GitHub, Cloud tools (AWS), and web development (HTML5, CSS3, JavaScript).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="faq-item">
+                    <button class="faq-question-btn" aria-expanded="false">
+                        <span class="faq-question-text">Are you open to remote roles or relocation?</span>
+                        <span class="faq-icon"><i class="fas fa-plus"></i></span>
+                    </button>
+                    <div class="faq-answer-collapse">
+                        <div class="faq-answer-content">
+                            <p>Yes! I am based in Gujarat, India, and open to remote work opportunities globally as well as on-site relocation for exciting opportunities.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 5 -->
+                <div class="faq-item">
+                    <button class="faq-question-btn" aria-expanded="false">
+                        <span class="faq-question-text">How can we get in touch or discuss an opportunity?</span>
+                        <span class="faq-icon"><i class="fas fa-plus"></i></span>
+                    </button>
+                    <div class="faq-answer-collapse">
+                        <div class="faq-answer-content">
+                            <p>You can reach me directly via email at <a href="mailto:patelom2810@gmail.com" class="faq-link">patelom2810@gmail.com</a> or connect with me on <a href="https://www.linkedin.com/in/om-patel-1a929831b" target="_blank" class="faq-link">LinkedIn</a>. I typically respond within 24 hours.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
