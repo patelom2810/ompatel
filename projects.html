@@ -123,6 +123,60 @@
             <input type="text" class="nav-search-input" id="nav-search" placeholder="Search projects...">
         </div>
         <a href="mailto:patelom2810@gmail.com" class="hero-header-btn">HIRE ME</a>
+        <button class="hero-editorial-theme-btn hero-pill-theme-btn" id="theme-toggle-header" title="Toggle Theme" aria-label="Toggle Theme">
+            <i class="fas fa-moon theme-icon"></i>
+        </button>
+        <button class="hero-editorial-menu-btn" id="mobile-menu-toggle" aria-label="Open Navigation Menu" aria-expanded="false">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
+    </div>
+
+    <!-- Dynamic Mobile Navigation Drawer Overlay -->
+    <div id="mobile-nav-overlay" class="mobile-nav-overlay" aria-hidden="true">
+        <div class="mobile-nav-backdrop" id="mobile-nav-backdrop"></div>
+        <div class="mobile-nav-sheet">
+            <div class="mobile-nav-top">
+                <a href="index.html#home" class="mobile-nav-brand">
+                    <img src="img/op-logo-dark.png" alt="Om Patel Logo" class="hero-brand-logo-img">
+                    <span>ompatel</span>
+                </a>
+                <button class="mobile-nav-close-btn" id="mobile-nav-close" aria-label="Close menu">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="mobile-nav-search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="mobile-nav-search" placeholder="Search projects..." aria-label="Search projects">
+            </div>
+
+            <nav class="mobile-nav-menu">
+                <a href="index.html#home" class="mobile-nav-item"><i class="fas fa-home"></i> <span>Home</span></a>
+                <a href="index.html#about" class="mobile-nav-item"><i class="fas fa-user"></i> <span>About Me</span></a>
+                <a href="index.html#skills" class="mobile-nav-item"><i class="fas fa-code"></i> <span>Skills &amp; Expertise</span></a>
+                <a href="index.html#education" class="mobile-nav-item"><i class="fas fa-graduation-cap"></i> <span>Academic Journey</span></a>
+                <a href="index.html#certifications" class="mobile-nav-item"><i class="fas fa-certificate"></i> <span>Certifications</span></a>
+                <a href="index.html#featured-projects" class="mobile-nav-item"><i class="fas fa-star"></i> <span>Featured Projects</span></a>
+                <a href="projects.html" class="mobile-nav-item active"><i class="fas fa-briefcase"></i> <span>All Projects</span></a>
+                <a href="index.html#faq" class="mobile-nav-item"><i class="fas fa-question-circle"></i> <span>FAQ</span></a>
+                <a href="index.html#contact" class="mobile-nav-item"><i class="fas fa-envelope"></i> <span>Contact</span></a>
+            </nav>
+
+            <div class="mobile-nav-bottom">
+                <div class="mobile-nav-theme-row">
+                    <span class="mobile-theme-text">Theme</span>
+                    <button class="mobile-theme-btn" id="mobile-theme-toggle" aria-label="Toggle Theme">
+                        <i class="fas fa-moon theme-icon"></i>
+                        <span class="mobile-theme-label">Switch Mode</span>
+                    </button>
+                </div>
+                <a href="mailto:patelom2810@gmail.com" class="mobile-nav-cta-btn">
+                    <i class="fas fa-paper-plane"></i> Get in Touch
+                </a>
+            </div>
+        </div>
     </div>
 
 

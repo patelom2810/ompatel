@@ -63,13 +63,22 @@
     <!-- Sleek Intro Preloader Curtain -->
     <div id="intro-curtain" class="intro-curtain" aria-hidden="false">
         <div class="intro-center-content">
-            <h1 class="intro-name">Om Patel</h1>
+            <!-- Each character wrapped for staggered bottom→top reveal -->
+            <h1 class="intro-name" aria-label="Om Patel">
+                <span class="intro-char-wrap"><span class="intro-char" style="--i:0">O</span></span><span class="intro-char-wrap"><span class="intro-char" style="--i:1">m</span></span><span class="intro-char-space"> </span><span class="intro-char-wrap"><span class="intro-char" style="--i:2">P</span></span><span class="intro-char-wrap"><span class="intro-char" style="--i:3">a</span></span><span class="intro-char-wrap"><span class="intro-char" style="--i:4">t</span></span><span class="intro-char-wrap"><span class="intro-char" style="--i:5">e</span></span><span class="intro-char-wrap"><span class="intro-char" style="--i:6">l</span></span>
+            </h1>
             <p class="intro-tagline">PORTFOLIO &mdash; 2026</p>
         </div>
 
         <div class="intro-counter-box">
             <span id="intro-counter" class="intro-counter-number">000</span>
         </div>
+
+        <!-- Glassmorphism Skip Button -->
+        <button id="intro-skip-btn" class="intro-skip-btn" aria-label="Skip intro">
+            <span class="intro-skip-label">Skip intro</span>
+            <span class="intro-skip-icon">&#8594;</span>
+        </button>
 
         <!-- Smooth Curved Bottom Arch for Curtain Pull-Up Reveal -->
         <svg class="intro-curve-svg" viewBox="0 0 1440 160" preserveAspectRatio="none" aria-hidden="true">
@@ -141,9 +150,9 @@
                 <span>ompatel</span>
             </a>
 
-            <!-- Right: Navigation Links + Theme Toggle -->
+            <!-- Right: Navigation Links + Theme Toggle + Mobile Menu -->
             <div class="hero-editorial-links">
-                <nav class="flex items-center gap-6">
+                <nav class="hero-desktop-nav flex items-center gap-6">
                     <a href="#about" class="hero-editorial-link">About</a>
                     <a href="#skills" class="hero-editorial-link">Skills</a>
                     <a href="projects.html" class="hero-editorial-link">Projects</a>
@@ -152,8 +161,59 @@
                 <button class="hero-editorial-theme-btn" id="theme-toggle" title="Toggle Theme" aria-label="Toggle Theme">
                     <i class="fas fa-moon theme-icon"></i>
                 </button>
+                <button class="hero-editorial-menu-btn" id="mobile-menu-toggle" aria-label="Open Navigation Menu" aria-expanded="false">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
             </div>
         </header>
+
+        <!-- Dynamic Mobile Navigation Drawer Overlay -->
+        <div id="mobile-nav-overlay" class="mobile-nav-overlay" aria-hidden="true">
+            <div class="mobile-nav-backdrop" id="mobile-nav-backdrop"></div>
+            <div class="mobile-nav-sheet">
+                <div class="mobile-nav-top">
+                    <a href="#home" class="mobile-nav-brand">
+                        <img src="img/op-logo-dark.png" alt="Om Patel Logo" class="hero-brand-logo-img">
+                        <span>ompatel</span>
+                    </a>
+                    <button class="mobile-nav-close-btn" id="mobile-nav-close" aria-label="Close menu">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <div class="mobile-nav-search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="mobile-nav-search" placeholder="Search portfolio..." aria-label="Search portfolio">
+                </div>
+
+                <nav class="mobile-nav-menu">
+                    <a href="#home" class="mobile-nav-item"><i class="fas fa-home"></i> <span>Home</span></a>
+                    <a href="#about" class="mobile-nav-item"><i class="fas fa-user"></i> <span>About Me</span></a>
+                    <a href="#skills" class="mobile-nav-item"><i class="fas fa-code"></i> <span>Skills &amp; Expertise</span></a>
+                    <a href="#education" class="mobile-nav-item"><i class="fas fa-graduation-cap"></i> <span>Academic Journey</span></a>
+                    <a href="#certifications" class="mobile-nav-item"><i class="fas fa-certificate"></i> <span>Certifications</span></a>
+                    <a href="#featured-projects" class="mobile-nav-item"><i class="fas fa-star"></i> <span>Featured Projects</span></a>
+                    <a href="projects.html" class="mobile-nav-item"><i class="fas fa-briefcase"></i> <span>All Projects</span></a>
+                    <a href="#faq" class="mobile-nav-item"><i class="fas fa-question-circle"></i> <span>FAQ</span></a>
+                    <a href="#contact" class="mobile-nav-item"><i class="fas fa-envelope"></i> <span>Contact</span></a>
+                </nav>
+
+                <div class="mobile-nav-bottom">
+                    <div class="mobile-nav-theme-row">
+                        <span class="mobile-theme-text">Theme</span>
+                        <button class="mobile-theme-btn" id="mobile-theme-toggle" aria-label="Toggle Theme">
+                            <i class="fas fa-moon theme-icon"></i>
+                            <span class="mobile-theme-label">Switch Mode</span>
+                        </button>
+                    </div>
+                    <a href="mailto:patelom2810@gmail.com" class="mobile-nav-cta-btn">
+                        <i class="fas fa-paper-plane"></i> Get in Touch
+                    </a>
+                </div>
+            </div>
+        </div>
 
         <!-- Main Center Editorial Stage (Zero Images) -->
         <div class="hero-editorial-main">
@@ -193,6 +253,11 @@
                 <div class="about-hero-photo-wrap">
                     <div class="about-hero-photo-card">
                         <img src="img/about-portrait.png" alt="Om Patel" class="about-hero-photo" loading="lazy">
+                    </div>
+                    <!-- Signature — switches between light and dark versions -->
+                    <div class="about-signature-wrap">
+                        <img src="img/signature-light.png" alt="Om Patel Signature" class="about-signature about-signature-light" loading="lazy">
+                        <img src="img/signature-dark.png"  alt="Om Patel Signature" class="about-signature about-signature-dark"  loading="lazy">
                     </div>
                 </div>
                 
@@ -760,7 +825,7 @@
     <footer id="contact">
         <!-- Large Background Brand Logo (Clay Style) -->
         <div class="footer-bg-logo">
-            <img src="img/logo.jpg" alt="Om Patel Logo" loading="lazy">
+            <img src="img/Puffy%203D%20OM%20PATEL%20Logo%20Transparent.png" alt="Om Patel 3D Logo" loading="lazy">
         </div>
         <div class="footer-container">
             <!-- Section Tag -->

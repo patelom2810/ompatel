@@ -9,6 +9,7 @@ function initIntroPreloader() {
     const counterEl = document.getElementById('intro-counter');
     const centerContent = document.querySelector('.intro-center-content');
     const counterBox = document.querySelector('.intro-counter-box');
+    const skipBtn = document.getElementById('intro-skip-btn');
 
     if (!curtain || !counterEl) return;
 
@@ -17,8 +18,39 @@ function initIntroPreloader() {
 
     let current = 0;
     const target = 100;
-    const duration = 1800; // 1.8 seconds
+    const duration = 3500; // slowed to 3.5 seconds
     const startTime = performance.now();
+    let animFrameId = null;
+    let dismissed = false;
+
+    // ── Dismiss helper (shared by counter finish & skip) ──
+    function dismissCurtain(instant) {
+        if (dismissed) return;
+        dismissed = true;
+        if (animFrameId) cancelAnimationFrame(animFrameId);
+
+        const delay = instant ? 0 : 200;
+
+        if (centerContent) centerContent.classList.add('intro-fade-out');
+        if (counterBox) counterBox.classList.add('intro-fade-out');
+        if (skipBtn) skipBtn.style.opacity = '0';
+
+        setTimeout(() => {
+            curtain.classList.add('intro-exit');
+            document.body.classList.remove('intro-active');
+            document.body.classList.add('intro-complete');
+
+            setTimeout(() => {
+                curtain.style.display = 'none';
+                curtain.setAttribute('aria-hidden', 'true');
+            }, 1700); // match CSS transition 1.6s + buffer
+        }, delay);
+    }
+
+    // ── Skip button ──
+    if (skipBtn) {
+        skipBtn.addEventListener('click', () => dismissCurtain(true));
+    }
 
     function updateCounter(currentTime) {
         const elapsed = currentTime - startTime;
@@ -32,30 +64,15 @@ function initIntroPreloader() {
         counterEl.textContent = String(current).padStart(3, '0');
 
         if (progress < 1) {
-            requestAnimationFrame(updateCounter);
+            animFrameId = requestAnimationFrame(updateCounter);
         } else {
             counterEl.textContent = '100';
-
             // Brief pause at 100 before smooth exit
-            setTimeout(() => {
-                if (centerContent) centerContent.classList.add('intro-fade-out');
-                if (counterBox) counterBox.classList.add('intro-fade-out');
-
-                setTimeout(() => {
-                    curtain.classList.add('intro-exit');
-                    document.body.classList.remove('intro-active');
-                    document.body.classList.add('intro-complete');
-
-                    setTimeout(() => {
-                        curtain.style.display = 'none';
-                        curtain.setAttribute('aria-hidden', 'true');
-                    }, 1000);
-                }, 200);
-            }, 200);
+            setTimeout(() => dismissCurtain(false), 200);
         }
     }
 
-    requestAnimationFrame(updateCounter);
+    animFrameId = requestAnimationFrame(updateCounter);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -64,6 +81,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize FAQ Accordion
     initFaqAccordion();
+
+    // Initialize Dynamic Mobile Navigation
+    initMobileMenu();
 
     /* =========================================
        Scroll Reveal Animation (Sections Only)
@@ -304,7 +324,7 @@ document.addEventListener('DOMContentLoaded', () => {
     /* =========================================
        Theme Toggle (Dark / Light Mode)
        ========================================= */
-    const themeToggles = document.querySelectorAll('.theme-toggle-btn, #theme-toggle');
+    const themeToggles = document.querySelectorAll('.theme-toggle-btn, #theme-toggle, #theme-toggle-dock, #theme-toggle-header, #mobile-theme-toggle');
     const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
 
     // Initialize theme based on local storage or system preference
@@ -319,12 +339,13 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.classList.add("dark-theme"); // Default to dark mode for portfolio theme
     }
 
-    // Function to update icon
+    // Function to update icon and labels
     const updateIcon = () => {
+        const isDark = document.body.classList.contains("dark-theme");
         themeToggles.forEach(toggle => {
             const icon = toggle.querySelector('.theme-icon');
             if (icon) {
-                if (document.body.classList.contains("dark-theme")) {
+                if (isDark) {
                     icon.classList.remove('fa-moon');
                     icon.classList.add('fa-sun');
                 } else {
@@ -333,6 +354,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         });
+
+        const mobileThemeLabel = document.querySelector('.mobile-theme-label');
+        if (mobileThemeLabel) {
+            mobileThemeLabel.textContent = isDark ? "Light Mode" : "Dark Mode";
+        }
     };
 
     // Initial icon update
@@ -575,5 +601,91 @@ function initFaqAccordion() {
             }
         });
     });
+}
+
+/* =========================================
+   Dynamic Mobile Navigation Drawer
+   ========================================= */
+function initMobileMenu() {
+    const mobileMenuToggles = document.querySelectorAll('#mobile-menu-toggle');
+    const mobileNavOverlay = document.getElementById('mobile-nav-overlay');
+    const mobileNavClose = document.getElementById('mobile-nav-close');
+    const mobileNavBackdrop = document.getElementById('mobile-nav-backdrop');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-item');
+    const mobileSearchInput = document.getElementById('mobile-nav-search');
+
+    if (!mobileNavOverlay) return;
+
+    const openMenu = () => {
+        mobileNavOverlay.classList.add('active');
+        mobileNavOverlay.setAttribute('aria-hidden', 'false');
+        mobileMenuToggles.forEach(btn => {
+            btn.classList.add('active');
+            btn.setAttribute('aria-expanded', 'true');
+        });
+        document.body.classList.add('no-scroll');
+    };
+
+    const closeMenu = () => {
+        mobileNavOverlay.classList.remove('active');
+        mobileNavOverlay.setAttribute('aria-hidden', 'true');
+        mobileMenuToggles.forEach(btn => {
+            btn.classList.remove('active');
+            btn.setAttribute('aria-expanded', 'false');
+        });
+        document.body.classList.remove('no-scroll');
+    };
+
+    mobileMenuToggles.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (mobileNavOverlay.classList.contains('active')) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
+        });
+    });
+
+    if (mobileNavClose) {
+        mobileNavClose.addEventListener('click', closeMenu);
+    }
+
+    if (mobileNavBackdrop) {
+        mobileNavBackdrop.addEventListener('click', closeMenu);
+    }
+
+    mobileNavLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            closeMenu();
+        });
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && mobileNavOverlay.classList.contains('active')) {
+            closeMenu();
+        }
+    });
+
+    // Mobile Search Input Enter Behavior
+    if (mobileSearchInput) {
+        mobileSearchInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                const query = mobileSearchInput.value.trim();
+                if (!query) return;
+                closeMenu();
+                if (window.location.pathname.includes('projects.html')) {
+                    const desktopSearch = document.getElementById('nav-search');
+                    if (desktopSearch) {
+                        desktopSearch.value = query;
+                        desktopSearch.dispatchEvent(new Event('input'));
+                    }
+                } else {
+                    window.location.href = `projects.html?search=${encodeURIComponent(query)}`;
+                }
+            }
+        });
+    }
 }
 
