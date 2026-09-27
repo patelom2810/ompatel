@@ -12,9 +12,9 @@
     <!-- Preload hero image (LCP) -->
     <link rel="preload" as="image" href="img/profile-suit-transparent-opt.png" fetchpriority="high">
     <!-- Google Fonts (non-blocking display=swap already) -->
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Pacifico&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&family=Syne:wght@400..800&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Dancing+Script:wght@500;700&family=Outfit:wght@400;500;600;700;800&family=Pacifico&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&family=Syne:wght@400..800&display=swap"
         rel="stylesheet" media="print" onload="this.media='all'">
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Pacifico&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Poppins:wght@400;600;700;800&family=Syne:wght@400..800&display=swap" rel="stylesheet"></noscript>
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Dancing+Script:wght@500;700&family=Outfit:wght@400;500;600;700;800&family=Pacifico&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Poppins:wght@400;600;700;800&family=Syne:wght@400..800&display=swap" rel="stylesheet"></noscript>
     <!-- FontAwesome — non-blocking -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
           media="print" onload="this.media='all'">
@@ -63,6 +63,7 @@
     <!-- Sleek Intro Preloader Curtain -->
     <div id="intro-curtain" class="intro-curtain" aria-hidden="false">
         <div class="intro-center-content">
+            <span class="intro-designed-by">designed by</span>
             <!-- Each character wrapped for staggered bottom→top reveal -->
             <h1 class="intro-name" aria-label="Om Patel">
                 <span class="intro-char-wrap"><span class="intro-char" style="--i:0">O</span></span><span class="intro-char-wrap"><span class="intro-char" style="--i:1">m</span></span><span class="intro-char-space"> </span><span class="intro-char-wrap"><span class="intro-char" style="--i:2">P</span></span><span class="intro-char-wrap"><span class="intro-char" style="--i:3">a</span></span><span class="intro-char-wrap"><span class="intro-char" style="--i:4">t</span></span><span class="intro-char-wrap"><span class="intro-char" style="--i:5">e</span></span><span class="intro-char-wrap"><span class="intro-char" style="--i:6">l</span></span>
@@ -74,8 +75,9 @@
             <span id="intro-counter" class="intro-counter-number">000</span>
         </div>
 
-        <!-- Glassmorphism Skip Button -->
+        <!-- Glassmorphism Skip Button with Brand Logo -->
         <button id="intro-skip-btn" class="intro-skip-btn" aria-label="Skip intro">
+            <img src="img/op-logo-dark.png" alt="Om Patel Logo" class="intro-skip-logo">
             <span class="intro-skip-label">Skip intro</span>
             <span class="intro-skip-icon">&#8594;</span>
         </button>
@@ -239,8 +241,8 @@
         <!-- Curved Transition Divider (Convex Arch) -->
         <div class="hero-curved-divider" aria-hidden="true">
             <svg class="hero-curve-svg" viewBox="0 0 1440 100" preserveAspectRatio="none">
-                <path class="hero-curve-fill" d="M0,100 L0,65 C400,0 1040,0 1440,65 L1440,100 Z"></path>
-                <path class="hero-curve-stroke" d="M0,65 C400,0 1040,0 1440,65"></path>
+                <path class="hero-curve-fill" d="M0,100 L0,75 Q720,12 1440,75 L1440,100 Z"></path>
+                <path class="hero-curve-stroke" d="M0,75 Q720,12 1440,75"></path>
             </svg>
         </div>
     </section>
@@ -249,15 +251,15 @@
     <section id="about" class="about-hero-section">
         <div class="about-hero-container">
             <div class="about-hero-grid">
-                <!-- Left Column: Portrait Photo Card -->
+                <!-- Left Column: Portrait Photo Card with Glassy Signature Overlay -->
                 <div class="about-hero-photo-wrap">
                     <div class="about-hero-photo-card">
                         <img src="img/about-portrait.png" alt="Om Patel" class="about-hero-photo" loading="lazy">
-                    </div>
-                    <!-- Signature — switches between light and dark versions -->
-                    <div class="about-signature-wrap">
-                        <img src="img/signature-light.png" alt="Om Patel Signature" class="about-signature about-signature-light" loading="lazy">
-                        <img src="img/signature-dark.png"  alt="Om Patel Signature" class="about-signature about-signature-dark"  loading="lazy">
+                        <!-- Glassy Signature Badge Overlay (Right Bottom Corner) -->
+                        <div class="about-photo-glass-signature" aria-label="Om Patel Signature">
+                            <img src="img/signature-light.png" alt="Om Patel Signature" class="about-signature about-signature-light" loading="lazy">
+                            <img src="img/signature-dark.png"  alt="Om Patel Signature" class="about-signature about-signature-dark"  loading="lazy">
+                        </div>
                     </div>
                 </div>
                 
@@ -395,7 +397,7 @@
             </div>
 
             <!-- Right-to-Left Infinite Marquee Track 2 -->
-            <div class="skills-marquee-wrapper" style="margin-top: 22px;" aria-label="Databases, Cloud and Tools">
+            <div class="skills-marquee-wrapper" style="margin-top: -10px;" aria-label="Databases, Cloud and Tools">
                 <div class="skills-marquee-track skills-track-rtl-slow">
                     <!-- Set 2 -->
                     <div class="skills-marquee-group">
@@ -583,17 +585,17 @@
             </div>
 
             <div class="certifications-grid">
-                <!-- Certification Card 1: AWS -->
+                <!-- Certification Card 1: AWS Workshop -->
                 <div class="cert-card-premium">
                     <div class="cert-card-left">
                         <div class="cert-icon-aws">
                             <i class="fab fa-aws"></i>
                         </div>
                         <div class="cert-details">
-                            <div class="cert-badge-tag">FOUNDATIONAL</div>
-                            <h3 class="cert-name">AWS Certified Cloud Practitioner</h3>
-                            <p class="cert-issuer">Issued by Amazon Web Services (AWS)</p>
-                            <p class="cert-meta">Issued: Dec 2024</p>
+                            <div class="cert-badge-tag">HANDS-ON WORKSHOP</div>
+                            <h3 class="cert-name">AWS S3 for Web Hosting and Automation</h3>
+                            <p class="cert-issuer">Organized by GLS University (FCAIT &ndash; PG)</p>
+                            <p class="cert-meta">Completed: 14th March 2026</p>
                         </div>
                     </div>
                     <div class="cert-card-right">
@@ -606,22 +608,16 @@
 
     <!-- Featured Projects Section -->
     <section id="featured-projects" class="featured-projects">
-        <!-- Concentric Blue Arcs Backdrop -->
-        <div class="projects-arc-container">
-            <div class="projects-arc-outer">
-                <div class="projects-arc-middle">
-                    <div class="projects-arc-inner"></div>
-                </div>
-            </div>
-        </div>
+        <!-- Ambient Luxury Radial Glow Backdrop -->
+        <div class="featured-projects-glow-bg" aria-hidden="true"></div>
 
         <div class="max-w-[1200px] mx-auto px-5 relative z-10">
-            <div class="section-header text-center" style="margin-bottom: 4rem; display: flex; flex-direction: column; align-items: center; color: #ffffff;">
+            <div class="section-header text-center" style="margin-bottom: 3.5rem; display: flex; flex-direction: column; align-items: center;">
                 <div class="section-tag">
-                    <span style="color: #60a5fa !important;">&mdash; PORTFOLIO</span>
+                    <span>&mdash; PORTFOLIO</span>
                 </div>
-                <h2 class="section-title text-white" style="color: #ffffff !important;">Featured Projects</h2>
-                <p style="font-family: var(--font-poppins), sans-serif; font-size: 0.95rem; color: #f1f5f9; margin-top: 8px; max-width: 600px; line-height: 1.5; text-align: center; opacity: 0.9;">
+                <h2 class="section-title">Featured Projects</h2>
+                <p class="section-desc" style="text-align: center;">
                     A curated selection of machine learning applications, data analytics platforms, and full-stack solutions.
                 </p>
             </div>
@@ -632,6 +628,9 @@
                     <!-- Project Card 1: Solar Energy Analytics -->
                     <div class="project-glass-card">
                         <div class="project-glass-body">
+                            <div class="project-glass-top">
+                                <span class="project-glass-badge">DATA ANALYTICS</span>
+                            </div>
                             <p class="project-glass-desc">
                                 Developed a machine learning application using Gradient Boosting Regressor to predict solar energy generation. Built a responsive web dashboard with real-time KPIs, interactive charts, and REST APIs.
                             </p>
@@ -640,8 +639,8 @@
                         
                         <div class="project-glass-footer">
                             <div class="project-glass-profile">
-                                <div class="project-glass-avatar">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
+                                <div class="project-glass-avatar project-logo-circle solar-logo">
+                                    <i class="fas fa-sun"></i>
                                 </div>
                                 <div class="project-glass-meta">
                                     <h4 class="project-glass-title">Solar Energy Analytics</h4>
@@ -657,6 +656,9 @@
                     <!-- Project Card 2: E-Game Scout -->
                     <div class="project-glass-card">
                         <div class="project-glass-body">
+                            <div class="project-glass-top">
+                                <span class="project-glass-badge">AI &amp; FULL-STACK</span>
+                            </div>
                             <p class="project-glass-desc">
                                 Designed a full-stack esports platform with role-based dashboards. Integrated Google Gemini AI for gaming scorecard analysis, secure OTP/2FA, automated PDF contract drafting, and AWS RDS hosting.
                             </p>
@@ -665,8 +667,8 @@
                         
                         <div class="project-glass-footer">
                             <div class="project-glass-profile">
-                                <div class="project-glass-avatar">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" alt="Django" style="filter: brightness(0) invert(1);">
+                                <div class="project-glass-avatar project-logo-circle esports-logo" style="padding: 0; overflow: hidden; background: transparent; border: none;">
+                                    <img src="img/egs-logo.png" alt="E-Game Scout Logo" style="width: 100%; height: 100%; object-fit: contain;">
                                 </div>
                                 <div class="project-glass-meta">
                                     <h4 class="project-glass-title">E-Game Scout</h4>
@@ -683,6 +685,9 @@
                     <!-- Project Card 3: ClipChain -->
                     <div class="project-glass-card">
                         <div class="project-glass-body">
+                            <div class="project-glass-top">
+                                <span class="project-glass-badge">CLOUD &amp; REALTIME</span>
+                            </div>
                             <p class="project-glass-desc">
                                 Developed a real-time clipboard sync platform using Firebase Realtime Database. Features password-protected collaboration rooms, secure QR code sharing, self-destruct timers, and markdown preview.
                             </p>
@@ -691,8 +696,11 @@
                         
                         <div class="project-glass-footer">
                             <div class="project-glass-profile">
-                                <div class="project-glass-avatar" style="background: #ffffff; padding: 4px;">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-original.svg" alt="Firebase">
+                                <div class="project-glass-avatar project-logo-circle clipchain-logo">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                                        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                                    </svg>
                                 </div>
                                 <div class="project-glass-meta">
                                     <h4 class="project-glass-title">ClipChain</h4>
@@ -708,6 +716,9 @@
                     <!-- Project Card 4: Parking Management System -->
                     <div class="project-glass-card">
                         <div class="project-glass-body">
+                            <div class="project-glass-top">
+                                <span class="project-glass-badge">DESKTOP SOFTWARE</span>
+                            </div>
                             <p class="project-glass-desc">
                                 Developed an offline desktop application in VB.NET using Windows Forms. Designed entry/exit ticket generation flows, secure admin panels, parking slot capacity trackers, and receipt printing.
                             </p>
@@ -716,8 +727,8 @@
                         
                         <div class="project-glass-footer">
                             <div class="project-glass-profile">
-                                <div class="project-glass-avatar" style="background: #ffffff; padding: 4px;">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dot-net/dot-net-original.svg" alt=".NET">
+                                <div class="project-glass-avatar project-logo-circle parking-logo" style="background: #3b82f6; border: none;">
+                                    <i class="fas fa-parking" style="font-size: 1.3rem; color: #ffffff;"></i>
                                 </div>
                                 <div class="project-glass-meta">
                                     <h4 class="project-glass-title">Parking System</h4>

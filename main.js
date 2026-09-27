@@ -75,6 +75,193 @@ function initIntroPreloader() {
     animFrameId = requestAnimationFrame(updateCounter);
 }
 
+/* =========================================
+   Section Heading Character Reveal Animations
+   (Matches Intro Page Staggered Down-to-Up Reveal)
+   ========================================= */
+function splitHeadingIntoChars(el) {
+    if (!el || el.dataset.charsSplit === 'true') return;
+    el.dataset.charsSplit = 'true';
+
+    const originalText = el.textContent.trim();
+    if (!originalText) return;
+    el.setAttribute('aria-label', originalText);
+
+    let charCounter = 0;
+
+    function processText(text) {
+        const words = text.split(/(\s+)/);
+        const fragment = document.createDocumentFragment();
+
+        words.forEach(word => {
+            if (/^\s+$/.test(word)) {
+                const spaceSpan = document.createElement('span');
+                spaceSpan.className = 'char-space';
+                spaceSpan.innerHTML = '&nbsp;';
+                fragment.appendChild(spaceSpan);
+            } else if (word.length > 0) {
+                const wordSpan = document.createElement('span');
+                wordSpan.className = 'char-word';
+                for (let i = 0; i < word.length; i++) {
+                    const charWrap = document.createElement('span');
+                    charWrap.className = 'title-char-wrap';
+                    const charSpan = document.createElement('span');
+                    charSpan.className = 'title-char';
+                    charSpan.style.setProperty('--i', charCounter++);
+                    charSpan.textContent = word[i];
+                    charWrap.appendChild(charSpan);
+                    wordSpan.appendChild(charWrap);
+                }
+                fragment.appendChild(wordSpan);
+            }
+        });
+        return fragment;
+    }
+
+    const childNodes = Array.from(el.childNodes);
+    el.innerHTML = '';
+
+    childNodes.forEach(node => {
+        if (node.nodeType === Node.TEXT_NODE) {
+            el.appendChild(processText(node.textContent));
+        } else if (node.nodeName === 'BR') {
+            el.appendChild(document.createElement('br'));
+        } else if (node.nodeType === Node.ELEMENT_NODE) {
+            const clone = node.cloneNode(false);
+            clone.appendChild(processText(node.textContent));
+            el.appendChild(clone);
+        }
+    });
+}
+
+function initSectionHeadingAnimations() {
+    const headings = document.querySelectorAll('.section-title, .footer-heading, .about-greeting-title');
+    const tags = document.querySelectorAll('.section-tag, .footer-tag');
+
+    // Split headings into animated character spans
+    headings.forEach(h => splitHeadingIntoChars(h));
+
+    // Mark tags for animation styling
+    tags.forEach(t => t.classList.add('anim-tag'));
+
+    if (!('IntersectionObserver' in window)) {
+        headings.forEach(h => h.classList.add('title-revealed'));
+        tags.forEach(t => t.classList.add('tag-revealed'));
+        return;
+    }
+
+    const observerOptions = {
+        threshold: 0.15,
+        rootMargin: '0px 0px -40px 0px'
+    };
+
+    const titleObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('title-revealed');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    headings.forEach(h => titleObserver.observe(h));
+
+    const tagObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('tag-revealed');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    tags.forEach(t => tagObserver.observe(t));
+}
+
+/* =========================================
+   Section Parts Staggered Scroll Reveal Animations
+   ========================================= */
+function initSectionPartsAnimation() {
+    // 1. Grouped selectors where siblings get automatic staggered delays
+    const siblingGroups = [
+        { selector: '.project-glass-card', step: 0.18, base: 0.05 },
+        { selector: '.journey-timeline-node', step: 0.12, base: 0.08 },
+        { selector: '.faq-item', step: 0.07, base: 0.04 },
+        { selector: '.skills-marquee-wrapper', step: 0.14, base: 0.06 },
+        { selector: '.project-card', step: 0.1, base: 0.05 }
+    ];
+
+    siblingGroups.forEach(group => {
+        const items = document.querySelectorAll(group.selector);
+        items.forEach((item, idx) => {
+            item.classList.add('scroll-part');
+            item.style.setProperty('--part-delay', `${(group.base + (idx % 6) * group.step).toFixed(2)}s`);
+        });
+    });
+
+    // 2. Singular content blocks that glide in as distinct parts
+    const individualParts = [
+        { sel: '.about-hero-photo-wrap', delay: '0s' },
+        { sel: '.about-hero-headline', delay: '0.08s' },
+        { sel: '.about-bio-text', delay: '0.16s' },
+        { sel: '.about-action-row', delay: '0.24s' },
+        { sel: '#skills .section-desc, #skills .section-header p', delay: '0.04s' },
+        { sel: '#education .section-header p', delay: '0.04s' },
+        { sel: '.journey-timeline-line', delay: '0.02s' },
+        { sel: '#certifications .section-header p', delay: '0.04s' },
+        { sel: '.cert-card-premium', delay: '0.08s' },
+        { sel: '#featured-projects .section-desc', delay: '0.04s' },
+        { sel: '.view-all-projects-btn', delay: '0.22s' },
+        { sel: '.faq-subtitle', delay: '0.04s' },
+        { sel: '.footer-subtext', delay: '0.04s' },
+        { sel: '.contact-card-new', delay: '0.12s' },
+        { sel: '.footer-bottom', delay: '0.22s' },
+        { sel: '.projects-filter', delay: '0.04s' }
+    ];
+
+    individualParts.forEach(item => {
+        const els = document.querySelectorAll(item.sel);
+        els.forEach(el => {
+            el.classList.add('scroll-part');
+            el.style.setProperty('--part-delay', item.delay);
+        });
+    });
+
+    const allParts = document.querySelectorAll('.scroll-part');
+
+    if (!('IntersectionObserver' in window)) {
+        allParts.forEach(p => {
+            p.classList.add('revealed', 'visible');
+        });
+        return;
+    }
+
+    const partObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+                entry.target.classList.add('visible');
+                // Clear delay after entrance completes so hover/focus reactions are instantaneous
+                setTimeout(() => {
+                    entry.target.style.transitionDelay = '0s';
+                }, 1400);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.08,
+        rootMargin: '0px 0px -40px 0px'
+    });
+
+    allParts.forEach(p => {
+        partObserver.observe(p);
+        const rect = p.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 30) {
+            p.classList.add('revealed', 'visible');
+        }
+    });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize intro preloader
     initIntroPreloader();
@@ -85,15 +272,28 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize Dynamic Mobile Navigation
     initMobileMenu();
 
+    // Initialize Section Heading Character Reveal Animations
+    initSectionHeadingAnimations();
+
+    // Initialize Staggered Scroll Animations for All Section Parts
+    initSectionPartsAnimation();
+
     /* =========================================
        Scroll Reveal Animation (Sections Only)
        ========================================= */
-    const sections = document.querySelectorAll('section');
+    const sections = document.querySelectorAll('section, footer');
 
     const revealSection = (entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
+                // Trigger any headings & tags inside this section
+                const headings = entry.target.querySelectorAll('.section-title, .footer-heading, .about-greeting-title');
+                headings.forEach(h => h.classList.add('title-revealed'));
+                const tags = entry.target.querySelectorAll('.section-tag, .footer-tag');
+                tags.forEach(t => t.classList.add('tag-revealed'));
+                const parts = entry.target.querySelectorAll('.scroll-part');
+                parts.forEach(p => p.classList.add('revealed'));
                 observer.unobserve(entry.target);
             }
         });
@@ -397,39 +597,77 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* =========================================
-       Drag-to-Scroll for Featured Projects
+       Smooth Manual Swiper for Featured Projects
        ========================================= */
-    const slider = document.querySelector('.featured-projects-slider-wrapper');
-    if (slider) {
-        let isDown = false;
-        let startX;
-        let scrollLeft;
+    function initFeaturedProjectsSlider() {
+        const sliderWrapper = document.querySelector('.featured-projects-slider-wrapper');
+        const sliderTrack = document.querySelector('.featured-projects-slider');
+        if (!sliderWrapper || !sliderTrack) return;
 
-        slider.addEventListener('mousedown', (e) => {
-            isDown = true;
-            slider.style.cursor = 'grabbing';
-            startX = e.pageX - slider.offsetLeft;
-            scrollLeft = slider.scrollLeft;
+        // Clean up any cloned elements from previous sessions
+        const clones = sliderTrack.querySelectorAll('[aria-hidden="true"]');
+        clones.forEach(c => c.remove());
+        delete sliderTrack.dataset.cloned;
+
+        let isDragging = false;
+        let startX = 0;
+        let scrollStart = 0;
+        let dragDist = 0;
+
+        // Mouse Drag Support
+        sliderWrapper.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            dragDist = 0;
+            startX = e.pageX - sliderWrapper.offsetLeft;
+            scrollStart = sliderWrapper.scrollLeft;
+            sliderWrapper.classList.add('is-dragging');
         });
 
-        slider.addEventListener('mouseleave', () => {
-            isDown = false;
-            slider.style.cursor = 'grab';
+        window.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            const x = e.pageX - sliderWrapper.offsetLeft;
+            const walk = (x - startX) * 1.4;
+            dragDist += Math.abs(walk);
+            sliderWrapper.scrollLeft = scrollStart - walk;
         });
 
-        slider.addEventListener('mouseup', () => {
-            isDown = false;
-            slider.style.cursor = 'grab';
+        window.addEventListener('mouseup', () => {
+            if (isDragging) {
+                isDragging = false;
+                sliderWrapper.classList.remove('is-dragging');
+            }
         });
 
-        slider.addEventListener('mousemove', (e) => {
-            if (!isDown) return;
-            e.preventDefault();
-            const x = e.pageX - slider.offsetLeft;
-            const walk = (x - startX) * 2; // scroll speed multiplier
-            slider.scrollLeft = scrollLeft - walk;
+        // Touch Swipe Support (Mobile & Tablet)
+        sliderWrapper.addEventListener('touchstart', (e) => {
+            isDragging = true;
+            dragDist = 0;
+            startX = e.touches[0].pageX - sliderWrapper.offsetLeft;
+            scrollStart = sliderWrapper.scrollLeft;
+        }, { passive: true });
+
+        sliderWrapper.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            const x = e.touches[0].pageX - sliderWrapper.offsetLeft;
+            const walk = (x - startX) * 1.4;
+            dragDist += Math.abs(walk);
+            sliderWrapper.scrollLeft = scrollStart - walk;
+        }, { passive: true });
+
+        sliderWrapper.addEventListener('touchend', () => {
+            isDragging = false;
         });
+
+        // Prevent accidental link opening while dragging
+        sliderWrapper.addEventListener('click', (e) => {
+            if (dragDist > 10) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+        }, true);
     }
+
+    initFeaturedProjectsSlider();
 
     /* =========================================
        Text Highlight Sweeper Observer
@@ -530,28 +768,6 @@ document.addEventListener('DOMContentLoaded', () => {
             parallaxTicking = true;
         }
     }, { passive: true });
-
-    // Project Cards Scroll Reveal Observer (Staggered slide-up)
-    const cardObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                // Remove transition delay after reveal completes to make hover transitions instant
-                const index = parseInt(entry.target.getAttribute('data-index') || 0);
-                setTimeout(() => {
-                    entry.target.style.transitionDelay = '';
-                }, 600 + (index * 100));
-                cardObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.1 });
-
-    const glassProjectCards = document.querySelectorAll('.project-glass-card');
-    glassProjectCards.forEach((card, index) => {
-        card.style.transitionDelay = `${index * 100}ms`;
-        card.setAttribute('data-index', index);
-        cardObserver.observe(card);
-    });
 
     // Run once on load to initialize positions
     updateParallax();
