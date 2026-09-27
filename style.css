@@ -150,25 +150,65 @@ body.intro-active {
     top: 0;
     left: 0;
     width: 100vw;
+    width: 100dvw;
     height: 100vh;
+    height: 100dvh;
     background-color: #080808;
     z-index: 999999;
     display: flex;
     justify-content: center;
     align-items: center;
-    /* Clean solid rectangle during counting - ZERO white leaks */
+    padding: 0 16px;
     border-radius: 0 !important;
     box-shadow: none;
     transform: translateY(0);
-    transition: transform 1.6s cubic-bezier(0.76, 0, 0.24, 1);
+    transition: transform 1.8s cubic-bezier(0.76, 0, 0.24, 1);
     will-change: transform;
     pointer-events: all;
     user-select: none;
+    overflow: visible; /* allow curved SVG to poke below */
 }
 
 .intro-curtain.intro-exit {
-    transform: translateY(calc(-100% - 130px));
+    transform: translateY(calc(-100% - 210px));
     pointer-events: none;
+}
+
+/* ── Sacred Invocation at Intro Center Top ── */
+.intro-top-invocation {
+    position: absolute;
+    top: max(22px, calc(env(safe-area-inset-top, 0px) + 16px));
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Noto Serif Devanagari', 'Kohinoor Devanagari', 'Georgia', serif;
+    font-size: clamp(1.05rem, 4vw, 1.55rem);
+    font-weight: 700;
+    color: #ff9933;
+    letter-spacing: 0.16em;
+    text-align: center;
+    white-space: nowrap;
+    z-index: 15;
+    pointer-events: none;
+    text-shadow: 0 0 16px rgba(255, 153, 51, 0.45), 0 0 35px rgba(255, 153, 51, 0.25);
+    opacity: 0;
+    animation: introInvocationFadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+    transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.intro-top-invocation.intro-fade-out {
+    opacity: 0;
+    transform: translate(-50%, -15px);
+}
+
+@keyframes introInvocationFadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -10px);
+    }
+    to {
+        opacity: 0.95;
+        transform: translate(-50%, 0);
+    }
 }
 
 /* ── Skip Intro Button ── */
@@ -195,9 +235,9 @@ body.intro-active {
     gap: 10px;
     white-space: nowrap;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.12);
-    /* Fade in after letters finish animating */
+    /* Fade in smoothly early so mobile users can skip immediately */
     opacity: 0;
-    animation: skipBtnFadeIn 0.6s ease 1.4s forwards;
+    animation: skipBtnFadeIn 0.5s ease 0.5s forwards;
     transition: background 0.25s ease, border-color 0.25s ease,
                 color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
     z-index: 10;
@@ -251,12 +291,21 @@ body.intro-active {
 /* Smooth Curved Bottom Arch for Curtain Pull-Up */
 .intro-curve-svg {
     position: absolute;
-    top: 99.4%;
+    top: 99.6%;
     left: 0;
     width: 100%;
-    height: 120px;
+    height: 200px;
     display: block;
     pointer-events: none;
+    /* Elastic bulge when curtain begins to lift */
+    transform-origin: top center;
+    transform: scaleY(1);
+    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s;
+}
+
+.intro-curtain.intro-exit .intro-curve-svg {
+    /* Slightly squish the curve as it accelerates upward */
+    transform: scaleY(0.65);
 }
 
 /* Center Typography */
@@ -305,7 +354,7 @@ body.intro-active {
 
 .intro-name {
     font-family: var(--font-heading), 'Plus Jakarta Sans', 'Outfit', sans-serif !important;
-    font-size: clamp(2.8rem, 7.5vw, 5.2rem);
+    font-size: clamp(2.4rem, 8vw, 5.2rem);
     font-weight: 800;
     color: #ffffff !important;
     letter-spacing: -0.035em;
@@ -315,6 +364,7 @@ body.intro-active {
     align-items: baseline;
     justify-content: center;
     flex-wrap: nowrap;
+    max-width: 100%;
 }
 
 /* Each character is clipped inside its wrapper — creates a slot reveal */
@@ -346,12 +396,13 @@ body.intro-active {
 
 .intro-tagline {
     font-family: 'JetBrains Mono', 'SF Mono', 'Courier New', monospace;
-    font-size: clamp(0.78rem, 1.8vw, 0.92rem);
+    font-size: clamp(0.72rem, 2.4vw, 0.92rem);
     font-weight: 500;
     color: rgba(255, 255, 255, 0.45);
-    letter-spacing: 0.32em;
+    letter-spacing: clamp(0.16em, 2.2vw, 0.32em);
     text-transform: uppercase;
     margin: 0;
+    white-space: nowrap;
     /* Fade up after all 7 chars finish (7 × 0.08s = 0.56s + 0.65s anim = ~1.2s total) */
     opacity: 0;
     animation: charSlideUp 0.55s ease 0.95s forwards;
@@ -384,14 +435,57 @@ body.intro-active {
 
 @media (max-width: 768px) {
     .intro-curve-svg {
-        height: 75px;
+        height: 120px;
     }
     .intro-curtain.intro-exit {
-        transform: translateY(calc(-100% - 85px));
+        transform: translateY(calc(-100% - 130px));
     }
+    /* Stack counter and skip button gracefully on mobile without collision */
     .intro-counter-box {
-        bottom: 30px;
-        right: 30px;
+        position: absolute;
+        bottom: max(86px, calc(env(safe-area-inset-bottom, 0px) + 76px));
+        right: auto;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        z-index: 5;
+    }
+    .intro-counter-box.intro-fade-out {
+        opacity: 0;
+        transform: translate(-50%, -15px);
+    }
+    .intro-counter-number {
+        font-size: clamp(2.4rem, 10vw, 3.6rem);
+        color: rgba(255, 255, 255, 0.22);
+        letter-spacing: -0.01em;
+    }
+    .intro-skip-btn {
+        bottom: max(22px, calc(env(safe-area-inset-bottom, 0px) + 16px));
+        padding: 9px 20px;
+        font-size: 0.72rem;
+        gap: 8px;
+    }
+    .intro-skip-logo {
+        height: 16px;
+        max-width: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .intro-name {
+        font-size: clamp(2.2rem, 10vw, 2.9rem) !important;
+        letter-spacing: -0.025em !important;
+    }
+    .intro-tagline {
+        font-size: clamp(0.68rem, 2.8vw, 0.82rem) !important;
+        letter-spacing: 0.16em !important;
+    }
+    .intro-counter-number {
+        font-size: 2.3rem !important;
+    }
+    .intro-skip-btn {
+        padding: 8px 18px !important;
+        font-size: 0.68rem !important;
     }
 }
 
@@ -2099,7 +2193,7 @@ footer {
     width: 100%;
     background: var(--bg-color);
     border-top: 1px solid rgba(0, 0, 0, 0.05);
-    padding: 80px 24px 260px;
+    padding: 80px 24px 70px;
     position: relative;
     z-index: 10;
     overflow: hidden;
@@ -5965,6 +6059,15 @@ body.dark-theme .about-msg-btn:hover {
     }
 }
 
+/* ── Mobile only: arch top on photo card matching hero curve ── */
+@media (max-width: 768px) {
+    .about-hero-photo-card {
+        clip-path: url(#photo-arch-clip);
+        border-radius: 0 0 16px 16px !important;
+        overflow: hidden;
+    }
+}
+
 /* About Me Folio Layout (Redesigned) */
 .about-folio {
     background: var(--hero-bg);
@@ -9007,35 +9110,73 @@ body.dark-theme .journey-badge {
 }
 
 /* =============================================
-   Footer Background Brand Logo
+   Footer Brand Showcase (Puffy 3D Logo)
    ============================================= */
-.footer-bg-logo {
-    position: absolute;
-    bottom: -60px; /* slightly cut off at bottom for depth */
-    left: 50%;
-    transform: translateX(-50%);
+.footer-brand-showcase {
     width: 100%;
-    max-width: 860px;
-    z-index: 1;
-    pointer-events: none;
+    margin-top: 55px;
+    padding-top: 35px;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+}
+
+body.dark-theme .footer-brand-showcase {
+    border-top-color: rgba(255, 255, 255, 0.06);
+}
+
+.footer-3d-logo-wrap {
+    width: 100%;
+    max-width: 680px;
     display: flex;
     justify-content: center;
-    mix-blend-mode: multiply; /* dissolves any remaining white fringe into light footer */
-    opacity: 1;
-    transition: opacity 0.3s ease, filter 0.3s ease;
+    align-items: center;
 }
 
-body.dark-theme .footer-bg-logo {
-    mix-blend-mode: screen; /* on dark bg, white becomes invisible; colours glow */
-    opacity: 0.9;
-    filter: brightness(1.1) saturate(1.15);
-}
-
-.footer-bg-logo img {
+.footer-3d-logo {
     width: 100%;
+    max-width: 620px;
     height: auto;
     object-fit: contain;
     display: block;
+    mix-blend-mode: multiply;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), filter 0.35s ease;
+    user-select: none;
+    pointer-events: none;
+}
+
+.footer-brand-showcase:hover .footer-3d-logo {
+    transform: scale(1.02) translateY(-4px);
+}
+
+body.dark-theme .footer-3d-logo {
+    mix-blend-mode: screen;
+    filter: brightness(1.1) saturate(1.15);
+}
+
+.footer-logo-credit {
+    margin-top: 14px;
+    font-family: var(--font-poppins), 'Poppins', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
+    text-align: center;
+}
+
+.footer-logo-hindi {
+    font-family: 'Noto Serif Devanagari', 'Kohinoor Devanagari', serif;
+    font-weight: 700;
+    color: var(--primary-color);
+    letter-spacing: 0.06em;
+}
+
+body.dark-theme .footer-logo-hindi {
+    color: #60a5fa;
 }
 
 /* =============================================
@@ -10768,10 +10909,9 @@ body.no-scroll {
         padding-right: 16px !important;
     }
 
-    /* Footer Watermark Logo on Mobile */
-    .footer-bg-logo {
-        max-width: 92vw !important;
-        bottom: -20px !important;
+    /* Footer Brand Logo on Mobile */
+    .footer-3d-logo {
+        max-width: 90vw !important;
     }
 
     .footer-heading {
@@ -10849,7 +10989,8 @@ body.no-scroll {
 
     /* About Section */
     .about-hero-photo-card {
-        border-radius: 16px !important;
+        clip-path: url(#photo-arch-clip) !important;
+        border-radius: 0 0 14px 14px !important;
         max-width: 320px !important;
     }
 

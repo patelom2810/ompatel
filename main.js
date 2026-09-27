@@ -31,6 +31,8 @@ function initIntroPreloader() {
 
         const delay = instant ? 0 : 200;
 
+        const topInvocation = document.querySelector('.intro-top-invocation');
+        if (topInvocation) topInvocation.classList.add('intro-fade-out');
         if (centerContent) centerContent.classList.add('intro-fade-out');
         if (counterBox) counterBox.classList.add('intro-fade-out');
         if (skipBtn) skipBtn.style.opacity = '0';

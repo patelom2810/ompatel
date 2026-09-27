@@ -12,9 +12,9 @@
     <!-- Preload hero image (LCP) -->
     <link rel="preload" as="image" href="img/profile-suit-transparent-opt.png" fetchpriority="high">
     <!-- Google Fonts (non-blocking display=swap already) -->
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Dancing+Script:wght@500;700&family=Outfit:wght@400;500;600;700;800&family=Pacifico&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&family=Syne:wght@400..800&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Dancing+Script:wght@500;700&family=Noto+Serif+Devanagari:wght@600;700&family=Outfit:wght@400;500;600;700;800&family=Pacifico&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&family=Syne:wght@400..800&display=swap"
         rel="stylesheet" media="print" onload="this.media='all'">
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Dancing+Script:wght@500;700&family=Outfit:wght@400;500;600;700;800&family=Pacifico&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Poppins:wght@400;600;700;800&family=Syne:wght@400..800&display=swap" rel="stylesheet"></noscript>
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Dancing+Script:wght@500;700&family=Noto+Serif+Devanagari:wght@600;700&family=Outfit:wght@400;500;600;700;800&family=Pacifico&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Poppins:wght@400;600;700;800&family=Syne:wght@400..800&display=swap" rel="stylesheet"></noscript>
     <!-- FontAwesome — non-blocking -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
           media="print" onload="this.media='all'">
@@ -62,8 +62,12 @@
 
     <!-- Sleek Intro Preloader Curtain -->
     <div id="intro-curtain" class="intro-curtain" aria-hidden="false">
+        <!-- Sacred Invocation at Intro Center Top -->
+        <div class="intro-top-invocation" aria-label="जय श्री राम">
+            ॥ जय श्री राम ॥
+        </div>
+
         <div class="intro-center-content">
-            <span class="intro-designed-by">designed by</span>
             <!-- Each character wrapped for staggered bottom→top reveal -->
             <h1 class="intro-name" aria-label="Om Patel">
                 <span class="intro-char-wrap"><span class="intro-char" style="--i:0">O</span></span><span class="intro-char-wrap"><span class="intro-char" style="--i:1">m</span></span><span class="intro-char-space"> </span><span class="intro-char-wrap"><span class="intro-char" style="--i:2">P</span></span><span class="intro-char-wrap"><span class="intro-char" style="--i:3">a</span></span><span class="intro-char-wrap"><span class="intro-char" style="--i:4">t</span></span><span class="intro-char-wrap"><span class="intro-char" style="--i:5">e</span></span><span class="intro-char-wrap"><span class="intro-char" style="--i:6">l</span></span>
@@ -83,8 +87,8 @@
         </button>
 
         <!-- Smooth Curved Bottom Arch for Curtain Pull-Up Reveal -->
-        <svg class="intro-curve-svg" viewBox="0 0 1440 160" preserveAspectRatio="none" aria-hidden="true">
-            <path d="M 0,0 L 1440,0 L 1440,160 C 1040,10 400,10 0,160 Z" fill="#080808"></path>
+        <svg class="intro-curve-svg" viewBox="0 0 1440 200" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M 0,0 L 1440,0 L 1440,60 C 1200,200 240,200 0,60 Z" fill="#080808"></path>
         </svg>
     </div>
 
@@ -252,6 +256,15 @@
         <div class="about-hero-container">
             <div class="about-hero-grid">
                 <!-- Left Column: Portrait Photo Card with Glassy Signature Overlay -->
+                <!-- SVG ClipPath: arch top matching hero curve (mobile only) -->
+                <svg width="0" height="0" style="position:absolute;overflow:hidden;" aria-hidden="true">
+                    <defs>
+                        <clipPath id="photo-arch-clip" clipPathUnits="objectBoundingBox">
+                            <!-- Convex arch at top (same shape as hero curve Q), straight sides, flat bottom -->
+                            <path d="M0,0.08 Q0.5,0 1,0.08 L1,1 L0,1 Z"/>
+                        </clipPath>
+                    </defs>
+                </svg>
                 <div class="about-hero-photo-wrap">
                     <div class="about-hero-photo-card">
                         <img src="img/about-portrait.png" alt="Om Patel" class="about-hero-photo" loading="lazy">
@@ -834,10 +847,6 @@
 
     <!-- Footer -->
     <footer id="contact">
-        <!-- Large Background Brand Logo (Clay Style) -->
-        <div class="footer-bg-logo">
-            <img src="img/Puffy%203D%20OM%20PATEL%20Logo%20Transparent.png" alt="Om Patel 3D Logo" loading="lazy">
-        </div>
         <div class="footer-container">
             <!-- Section Tag -->
             <div class="footer-tag">
@@ -882,6 +891,13 @@
                     <a href="https://github.com/patelom2810" target="_blank">GitHub</a>
                     <a href="https://www.linkedin.com/in/om-patel-1a929831b" target="_blank">LinkedIn</a>
                     <a href="mailto:patelom2810@gmail.com">Email</a>
+                </div>
+            </div>
+
+            <!-- Large 3D Brand Logo Showcase (Zero-Collision Flow) -->
+            <div class="footer-brand-showcase">
+                <div class="footer-3d-logo-wrap">
+                    <img src="img/Puffy%203D%20OM%20PATEL%20Logo%20Transparent.png" alt="Om Patel 3D Logo" class="footer-3d-logo" loading="lazy">
                 </div>
             </div>
         </div>
