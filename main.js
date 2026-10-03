@@ -281,6 +281,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize Hero Steam Train & Swaying Trees Scene
     initHeroTrain();
 
+    // Initialize Hero Snow / Star Particle Effect
+    initHeroSnow();
+
+    // Initialize Animated Brand Logo Replay Interaction
+    initAnimatedBrandLogo();
+
     /* =========================================
        Scroll Reveal Animation (Sections Only)
        ========================================= */
@@ -353,6 +359,37 @@ document.addEventListener('DOMContentLoaded', () => {
         window.addEventListener('scroll', handleScrollSpy);
         handleScrollSpy();
     }
+
+    /* =========================================
+       Glassy Dock Tooltip Interaction (Touch + Pointer)
+       ========================================= */
+    const dockTooltipItems = document.querySelectorAll('.glassy-nav [data-tooltip]');
+    let dockTooltipTimer = null;
+
+    dockTooltipItems.forEach(item => {
+        const triggerTooltip = () => {
+            dockTooltipItems.forEach(i => i.classList.remove('tooltip-active'));
+            item.classList.add('tooltip-active');
+            if (dockTooltipTimer) clearTimeout(dockTooltipTimer);
+            dockTooltipTimer = setTimeout(() => {
+                item.classList.remove('tooltip-active');
+            }, 1800);
+        };
+
+        item.addEventListener('touchstart', triggerTooltip, { passive: true });
+        item.addEventListener('pointerenter', () => {
+            item.classList.add('tooltip-active');
+        });
+        item.addEventListener('pointerleave', () => {
+            item.classList.remove('tooltip-active');
+        });
+    });
+
+    document.addEventListener('touchstart', (e) => {
+        if (!e.target.closest('.glassy-nav')) {
+            dockTooltipItems.forEach(i => i.classList.remove('tooltip-active'));
+        }
+    }, { passive: true });
 
     /* =========================================
        Project Filtering & Animation Logic
@@ -465,25 +502,42 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 100);
 
     /* =========================================
-       Back to Top Button
+       Glassy Dock Navigation & Back to Top
+       (Show dock ONLY after user scrolls past hero section)
        ========================================= */
+    const glassyNavContainer = document.querySelector('.glassy-nav-container');
     const backToTopBtn = document.querySelector('.back-to-top');
+    const heroSection = document.getElementById('home') || document.querySelector('.hero-editorial-section');
+
+    const updateDockAndBackToTop = () => {
+        const scrollPos = window.scrollY || document.documentElement.scrollTop;
+
+        // Determine if user has scrolled past the hero section
+        let isPastHero = false;
+        if (heroSection) {
+            const heroHeight = heroSection.offsetHeight;
+            // Dock appears smoothly as user leaves hero (past ~65% of hero height)
+            isPastHero = scrollPos >= (heroHeight * 0.65);
+        } else {
+            // On subpages without a hero, show when scrolled past top header
+            isPastHero = scrollPos > 80;
+        }
+
+        if (glassyNavContainer) {
+            glassyNavContainer.classList.toggle('dock-visible', isPastHero);
+        }
+        if (backToTopBtn) {
+            backToTopBtn.classList.toggle('visible', scrollPos > 300);
+        }
+    };
+
+    window.addEventListener('scroll', updateDockAndBackToTop, { passive: true });
+    window.addEventListener('resize', updateDockAndBackToTop, { passive: true });
+    window.addEventListener('load', updateDockAndBackToTop);
+    document.addEventListener('DOMContentLoaded', updateDockAndBackToTop);
+    updateDockAndBackToTop();
 
     if (backToTopBtn) {
-        const glassyNavContainer = document.querySelector('.glassy-nav-container');
-        const toggleBackToTop = () => {
-            const isScrolled = window.scrollY > 300;
-            backToTopBtn.classList.toggle('visible', isScrolled);
-            if (glassyNavContainer) {
-                glassyNavContainer.classList.toggle('dock-shrunk', isScrolled);
-            }
-        };
-
-        window.addEventListener('scroll', toggleBackToTop);
-        window.addEventListener('load', toggleBackToTop);
-        document.addEventListener('DOMContentLoaded', toggleBackToTop);
-        toggleBackToTop();
-
         backToTopBtn.addEventListener('click', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
@@ -1098,3 +1152,175 @@ function initHeroTrain() {
     }
 }
 
+/* =========================================
+   Hero Snow / Star Particle Effect
+   ========================================= */
+function initHeroSnow() {
+    const canvas = document.getElementById('hero-snow-canvas');
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    const section = canvas.closest('.hero-editorial-section') || canvas.parentElement;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const speedScale = prefersReducedMotion ? 0.35 : 1.0;
+
+    let W = 0, H = 0;
+    let dpr = 1;
+    let particles = [];
+    let rafId = null;
+
+    function resize() {
+        const rect = section ? section.getBoundingClientRect() : null;
+        W = (rect && rect.width > 0) ? rect.width : (section && section.offsetWidth > 0 ? section.offsetWidth : window.innerWidth);
+        H = (rect && rect.height > 0) ? rect.height : (section && section.offsetHeight > 0 ? section.offsetHeight : (window.innerHeight || 800));
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+        canvas.width = Math.round(W * dpr);
+        canvas.height = Math.round(H * dpr);
+        canvas.style.width = W + 'px';
+        canvas.style.height = H + 'px';
+    }
+
+    function makeParticle(initial) {
+        const isStar = Math.random() < 0.28;
+        return {
+            type      : isStar ? 'star' : 'dot',
+            x         : Math.random() * (W || window.innerWidth),
+            y         : initial ? Math.random() * (H || window.innerHeight) : -15 - Math.random() * 30,
+            r         : isStar ? 1.6 + Math.random() * 2.2 : 1.2 + Math.random() * 2.6,
+            speed     : (0.65 + Math.random() * 0.95) * speedScale,
+            swayAmp   : 0.5 + Math.random() * 0.8,
+            swaySpeed : 0.012 + Math.random() * 0.018,
+            drift     : (Math.random() - 0.5) * 0.35,
+            alpha     : 0.55 + Math.random() * 0.42,
+            twinkle   : 0.01 + Math.random() * 0.02,
+            phase     : Math.random() * Math.PI * 2,
+            rot       : Math.random() * Math.PI * 2,
+            rotSpeed  : (Math.random() - 0.5) * 0.018,
+        };
+    }
+
+    function drawStar(cx, cy, r, rot) {
+        ctx.save();
+        ctx.translate(cx, cy);
+        ctx.rotate(rot);
+        ctx.beginPath();
+        const pts = 4, inner = r * 0.38;
+        for (let i = 0; i < pts * 2; i++) {
+            const angle = (i * Math.PI) / pts - Math.PI / 2;
+            const radius = i % 2 === 0 ? r : inner;
+            i === 0
+                ? ctx.moveTo(Math.cos(angle) * radius, Math.sin(angle) * radius)
+                : ctx.lineTo(Math.cos(angle) * radius, Math.sin(angle) * radius);
+        }
+        ctx.closePath();
+        ctx.fill();
+        ctx.restore();
+    }
+
+    function init() {
+        resize();
+        const count = (W < 768) ? 65 : 110;
+        particles = Array.from({ length: count }, () => makeParticle(true));
+    }
+
+    function frame() {
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        ctx.clearRect(0, 0, W, H);
+        const isDark = document.body.classList.contains('dark-theme');
+
+        particles.forEach(p => {
+            p.phase += p.swaySpeed;
+            p.x += Math.sin(p.phase) * p.swayAmp + p.drift;
+            p.y += p.speed;
+            p.rot += p.rotSpeed;
+
+            const twinkledAlpha = Math.min(1, Math.max(0.2, p.alpha * (0.75 + 0.25 * Math.sin(p.phase))));
+
+            if (p.y > H + 20) {
+                Object.assign(p, makeParticle(false));
+                p.x = Math.random() * W;
+            }
+            if (p.x < -20) p.x = W + 10;
+            if (p.x > W + 20) p.x = -10;
+
+            ctx.globalAlpha = twinkledAlpha;
+
+            if (isDark) {
+                ctx.shadowColor = 'rgba(255, 255, 255, 0.85)';
+                ctx.shadowBlur = p.r > 2.2 ? 5 : 2;
+                ctx.fillStyle = '#ffffff';
+            } else {
+                ctx.shadowColor = 'rgba(65, 105, 225, 0.45)';
+                ctx.shadowBlur = p.r > 2 ? 4 : 2;
+                ctx.fillStyle = p.type === 'star' ? 'rgba(50, 95, 215, 0.95)' : 'rgba(65, 105, 225, 0.85)';
+            }
+
+            if (p.type === 'star') {
+                drawStar(p.x, p.y, p.r, p.rot);
+            } else {
+                const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r);
+                if (isDark) {
+                    grad.addColorStop(0,   'rgba(255, 255, 255, 1)');
+                    grad.addColorStop(0.7, 'rgba(220, 235, 255, 0.85)');
+                    grad.addColorStop(1,   'rgba(200, 220, 255, 0)');
+                } else {
+                    grad.addColorStop(0,   'rgba(55, 95, 215, 1)');
+                    grad.addColorStop(0.65,'rgba(75, 120, 235, 0.7)');
+                    grad.addColorStop(1,   'rgba(100, 150, 255, 0)');
+                }
+                ctx.fillStyle = grad;
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        });
+
+        ctx.shadowBlur = 0;
+        ctx.globalAlpha = 1;
+        rafId = requestAnimationFrame(frame);
+    }
+
+    // Pause when hero is scrolled out of view (saves GPU)
+    if ('IntersectionObserver' in window && section) {
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    if (!rafId) rafId = requestAnimationFrame(frame);
+                } else {
+                    if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
+                }
+            });
+        }, { threshold: 0 });
+        observer.observe(section);
+    }
+
+    window.addEventListener('resize', () => {
+        resize();
+    });
+    window.addEventListener('orientationchange', () => {
+        setTimeout(resize, 100);
+    });
+
+    init();
+    rafId = requestAnimationFrame(frame);
+}
+
+/* =========================================
+   Animated Brand Logo Interaction
+   ========================================= */
+function initAnimatedBrandLogo() {
+    const brandLinks = document.querySelectorAll('.hero-editorial-brand');
+    brandLinks.forEach(brand => {
+        brand.addEventListener('click', () => {
+            const svg = brand.querySelector('.hero-brand-svg');
+            if (svg) {
+                svg.classList.remove('play');
+                void svg.offsetWidth;
+                svg.classList.add('play');
+            }
+        });
+    });
+}
