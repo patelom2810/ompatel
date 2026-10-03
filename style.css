@@ -174,42 +174,6 @@ body.intro-active {
     pointer-events: none;
 }
 
-/* ── Sacred Invocation at Intro Center Top ── */
-.intro-top-invocation {
-    position: absolute;
-    top: max(22px, calc(env(safe-area-inset-top, 0px) + 16px));
-    left: 50%;
-    transform: translateX(-50%);
-    font-family: 'Noto Serif Devanagari', 'Kohinoor Devanagari', 'Georgia', serif;
-    font-size: clamp(1.05rem, 4vw, 1.55rem);
-    font-weight: 700;
-    color: #ff9933;
-    letter-spacing: 0.16em;
-    text-align: center;
-    white-space: nowrap;
-    z-index: 15;
-    pointer-events: none;
-    text-shadow: 0 0 16px rgba(255, 153, 51, 0.45), 0 0 35px rgba(255, 153, 51, 0.25);
-    opacity: 0;
-    animation: introInvocationFadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
-    transition: opacity 0.35s ease, transform 0.35s ease;
-}
-
-.intro-top-invocation.intro-fade-out {
-    opacity: 0;
-    transform: translate(-50%, -15px);
-}
-
-@keyframes introInvocationFadeIn {
-    from {
-        opacity: 0;
-        transform: translate(-50%, -10px);
-    }
-    to {
-        opacity: 0.95;
-        transform: translate(-50%, 0);
-    }
-}
 
 /* ── Skip Intro Button ── */
 .intro-skip-btn {
@@ -326,31 +290,6 @@ body.intro-active {
     transform: translateY(-24px);
 }
 
-.intro-designed-by {
-    font-family: 'Caveat', 'Dancing Script', 'Pacifico', cursive !important;
-    font-size: clamp(1.4rem, 3.4vw, 2.2rem);
-    font-weight: 500;
-    color: rgba(255, 255, 255, 0.72);
-    letter-spacing: 0.04em;
-    margin: 0 0 -8px 0;
-    line-height: 1.2;
-    display: block;
-    user-select: none;
-    opacity: 0;
-    transform: translateY(14px);
-    animation: designedByFadeIn 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards;
-}
-
-@keyframes designedByFadeIn {
-    0% {
-        opacity: 0;
-        transform: translateY(14px);
-    }
-    100% {
-        opacity: 0.75;
-        transform: translateY(0);
-    }
-}
 
 .intro-name {
     font-family: var(--font-heading), 'Plus Jakarta Sans', 'Outfit', sans-serif !important;
@@ -3881,15 +3820,19 @@ body.dark-theme .nav-item.active {
     display: none !important;
 }
 
+/* =========================================
+   Floating Glassmorphic Capsule Navbar (Mobile)
+   High-end frosted glass pill matching reference design
+   ========================================= */
 @media (max-width: 768px) {
     .glassy-nav-container {
         position: fixed !important;
-        bottom: 24px !important;
-        right: 24px !important;
-        left: auto !important;
-        transform: none !important;
+        bottom: max(18px, calc(env(safe-area-inset-bottom, 0px) + 12px)) !important;
+        left: 50% !important;
+        right: auto !important;
+        transform: translateX(-50%) !important;
         width: auto !important;
-        max-width: none !important;
+        max-width: calc(100vw - 28px) !important;
         height: auto !important;
         display: flex !important;
         align-items: center !important;
@@ -3899,48 +3842,159 @@ body.dark-theme .nav-item.active {
         border: none !important;
         backdrop-filter: none !important;
         -webkit-backdrop-filter: none !important;
-        z-index: 9999 !important;
+        z-index: 99999 !important;
+        pointer-events: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        opacity: 1 !important;
+        transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), bottom 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
     }
 
+    .glassy-nav-container.dock-shrunk {
+        bottom: max(18px, calc(env(safe-area-inset-bottom, 0px) + 12px)) !important;
+        transform: translateX(-50%) !important;
+        opacity: 1 !important;
+    }
+
+    /* The Ultra-Frosted Glass Capsule Pill */
     .glassy-nav {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-around !important;
+        gap: clamp(8px, 2.6vw, 16px) !important;
+        padding: 7px 18px !important;
+        border-radius: 9999px !important;
+        height: 52px !important;
+        box-sizing: border-box !important;
+        pointer-events: auto !important;
+        
+        /* Ultra-frosted blur & saturation */
+        background: rgba(255, 255, 255, 0.36) !important;
+        backdrop-filter: blur(28px) saturate(210%) !important;
+        -webkit-backdrop-filter: blur(28px) saturate(210%) !important;
+        border: 1.2px solid rgba(255, 255, 255, 0.6) !important;
+        
+        /* Specular rim highlight & soft ambient depth matching reference photo */
+        box-shadow: 
+            0 16px 38px -6px rgba(12, 30, 76, 0.18),
+            0 4px 14px rgba(0, 0, 0, 0.05),
+            inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.9),
+            inset 0 -1px 1.5px 0 rgba(0, 0, 0, 0.05) !important;
+        
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }
+
+    /* Dark Mode Glass Pill */
+    body.dark-theme .glassy-nav {
+        background: rgba(13, 20, 36, 0.58) !important;
+        border-color: rgba(255, 255, 255, 0.28) !important;
+        box-shadow: 
+            0 20px 45px -8px rgba(0, 0, 0, 0.7),
+            0 6px 18px rgba(0, 0, 0, 0.4),
+            inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.5),
+            inset 0 -1px 1px 0 rgba(255, 255, 255, 0.08) !important;
+    }
+
+    /* Navigation Items Inside Pill */
+    .glassy-nav .nav-item {
+        width: 38px !important;
+        height: 38px !important;
+        border-radius: 50% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        color: #0c1e4c !important;
+        font-size: 1.12rem !important;
+        position: relative !important;
+        text-decoration: none !important;
+        cursor: pointer !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        outline: none !important;
+        -webkit-tap-highlight-color: transparent !important;
+        transition: transform 0.22s ease, background 0.22s ease, color 0.22s ease, box-shadow 0.22s ease !important;
+    }
+
+    body.dark-theme .glassy-nav .nav-item {
+        color: rgba(255, 255, 255, 0.85) !important;
+    }
+
+    /* Hover & Active Feedback */
+    .glassy-nav .nav-item:hover {
+        background: rgba(65, 105, 225, 0.08) !important;
+        color: var(--primary-color, #4169E1) !important;
+        transform: scale(1.08) !important;
+    }
+
+    body.dark-theme .glassy-nav .nav-item:hover {
+        background: rgba(255, 255, 255, 0.12) !important;
+        color: #ffffff !important;
+    }
+
+    /* Active Highlight (Current Section) */
+    .glassy-nav .nav-item.active {
+        background: rgba(65, 105, 225, 0.14) !important;
+        color: var(--primary-color, #4169E1) !important;
+        transform: scale(1.08) !important;
+        box-shadow: 0 0 14px rgba(65, 105, 225, 0.22) !important;
+    }
+
+    body.dark-theme .glassy-nav .nav-item.active {
+        background: rgba(255, 255, 255, 0.18) !important;
+        color: #ffffff !important;
+        box-shadow: 0 0 16px rgba(255, 255, 255, 0.25) !important;
+        text-shadow: 0 0 10px rgba(96, 165, 250, 0.6) !important;
+    }
+
+    /* Tap feedback */
+    .glassy-nav .nav-item:active {
+        transform: scale(0.92) !important;
+    }
+
+    /* Pure Minimalist Icons — Hide Labels on Mobile */
+    .glassy-nav .nav-label {
         display: none !important;
     }
 
-    .nav-label {
-        font-family: var(--font-poppins), sans-serif;
-        font-size: 0.58rem !important;
-        font-weight: 600 !important;
-        text-transform: uppercase !important;
-        letter-spacing: 0.05em !important;
-        line-height: 1 !important;
-        opacity: 0.75 !important;
-        color: var(--text-color) !important;
-        transition: opacity 0.2s ease, color 0.2s ease !important;
-        display: block !important;
+    /* Reset Profile Wrapper for Flat Row Uniformity */
+    .glassy-nav .nav-profile-wrapper {
+        display: flex !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 38px !important;
+        height: 38px !important;
     }
 
-    .nav-item:hover, .nav-item.active {
-        transform: translateY(-2px) !important;
+    .glassy-nav .nav-profile {
+        width: 100% !important;
+        height: 100% !important;
+        border: none !important;
+        transform: none !important;
+        box-shadow: none !important;
+        border-radius: 50% !important;
+        background: transparent !important;
+        color: inherit !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        font-size: 1.12rem !important;
     }
 
-    .nav-item:hover .nav-label, .nav-item.active .nav-label {
-        opacity: 1 !important;
-        color: var(--primary-color) !important;
-    }
-
-    .nav-profile {
-        width: 48px;
-        height: 48px;
-        transform: translateY(-10px);
-    }
-
-    /* Tooltip hidden on mobile (no hover) */
-    .nav-item::after,
-    [data-tooltip]::before {
+    /* Tooltip hidden on mobile touch */
+    .glassy-nav [data-tooltip]::before,
+    .glassy-nav [data-tooltip]::after {
         display: none !important;
     }
 
     .hide-mobile {
+        display: none !important;
+    }
+
+    /* Hide up arrow button on mobile (Home icon in the floating dock already scrolls to top) */
+    .back-to-top {
         display: none !important;
     }
 
@@ -6626,6 +6680,16 @@ body.dark-theme .aws-orange-bg {
     gap: 12px;
 }
 
+.hero-header-pill .hero-editorial-brand {
+    font-size: 1.3rem !important;
+    text-decoration: none !important;
+    color: var(--heading-color, #0c1e4c) !important;
+}
+
+body.dark-theme .hero-header-pill .hero-editorial-brand {
+    color: #ffffff !important;
+}
+
 .hero-logo-square {
     background: #000000;
     color: #ffffff;
@@ -7553,66 +7617,6 @@ body.dark-theme .project-card-ny:hover {
     /* Hide scroll arrow on mobile to prevent overlapping with the navigation dock */
     .hero-mobile-scroll {
         display: none !important;
-    }
-
-    /* Hide home icon from glassy bottom navigation dock on mobile */
-    .nav-profile-wrapper {
-        display: none !important;
-    }
-
-    /* Adjust back-to-top button on mobile to align vertically with the bottom glassy dock as a companion circle */
-    /* Adjust back-to-top button on mobile to align vertically with the bottom glassy dock as a companion circle */
-    .back-to-top {
-        position: static !important;
-        transform-origin: center center !important;
-        
-        width: 44px !important;
-        height: 44px !important;
-        border-radius: 50% !important;
-        background: var(--nav-bg) !important;
-        backdrop-filter: blur(24px) saturate(180%) !important;
-        -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
-        border: 1px solid rgba(255, 255, 255, 0.25) !important;
-        color: var(--text-color) !important;
-        display: flex !important;
-        justify-content: center !important;
-        align-items: center !important;
-        cursor: pointer !important;
-        z-index: 9999 !important;
-        
-        opacity: 0 !important;
-        visibility: hidden !important;
-        pointer-events: none !important;
-        transform: scale(0.8) !important;
-        box-shadow: none !important;
-        
-        transition: 
-            opacity 0.4s ease, 
-            visibility 0.4s,
-            transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
-            box-shadow 0.4s ease,
-            background-color 0.3s !important;
-    }
-
-    .back-to-top.visible {
-        opacity: 1 !important;
-        visibility: visible !important;
-        pointer-events: auto !important;
-        transform: scale(1) !important;
-        box-shadow: var(--glass-shadow), 0 0 15px rgba(65, 105, 225, 0.25) !important;
-    }
-
-    /* Shrink and shift bottom glassy dock container when scrolled */
-    .dock-shrunk {
-        bottom: 48px !important;
-        transform: translateX(-50%) scale(0.92) !important;
-        opacity: 0.85 !important;
-    }
-
-    /* On mobile, also slightly adjust item gaps inside the shrunk dock for a tighter feel */
-    .dock-shrunk .glassy-nav {
-        gap: 16px !important;
-        padding: 12px 18px !important;
     }
 }
 
@@ -8719,6 +8723,38 @@ body.dark-theme .meta-badge-text {
     gap: 8px;
 }
 
+.skill-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 12px;
+    border-radius: 9999px;
+    font-family: var(--font-poppins), sans-serif;
+    font-size: 0.76rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    background: rgba(65, 105, 225, 0.07);
+    color: var(--primary-color, #4169E1);
+    border: 1px solid rgba(65, 105, 225, 0.16);
+    transition: all 0.25s ease;
+}
+
+.skill-badge:hover {
+    background: rgba(65, 105, 225, 0.14);
+    transform: translateY(-1px);
+}
+
+body.dark-theme .skill-badge {
+    background: rgba(96, 165, 250, 0.12);
+    color: #93c5fd;
+    border-color: rgba(96, 165, 250, 0.22);
+}
+
+body.dark-theme .skill-badge:hover {
+    background: rgba(96, 165, 250, 0.2);
+    color: #bfdbfe;
+    border-color: rgba(96, 165, 250, 0.35);
+}
+
 .project-header-right {
     display: flex;
     align-items: center;
@@ -9510,7 +9546,7 @@ body.dark-theme .highlight-container.highlight-yellow {
     justify-content: space-between;
     align-items: center;
     position: relative;
-    padding: 24px 20px 100px 20px !important;
+    padding: 24px 20px clamp(130px, 15vw, 190px) 20px !important;
     background-color: #f6faff;
     background-image: 
         radial-gradient(ellipse 80% 50% at 50% 92%, rgba(65, 105, 225, 0.15) 0%, rgba(99, 102, 241, 0.08) 45%, transparent 75%),
@@ -9650,9 +9686,19 @@ body.dark-theme .hero-editorial-link {
     color: rgba(255, 255, 255, 0.88);
 }
 
-.hero-editorial-link:hover {
+.hero-editorial-link:hover,
+.hero-editorial-link.active {
     color: var(--primary-color);
     transform: translateY(-1px);
+}
+
+.hero-editorial-link.active {
+    font-weight: 600;
+}
+
+.projects-page-navbar {
+    padding-top: clamp(14px, 2vh, 22px);
+    padding-bottom: clamp(10px, 1.5vh, 16px);
 }
 
 .hero-editorial-theme-btn {
@@ -10185,6 +10231,70 @@ body.dark-theme .hero-curved-divider .hero-curve-fill {
 
 body.dark-theme .hero-curved-divider .hero-curve-stroke {
     stroke: rgba(96, 165, 250, 0.25);
+}
+
+/* ── Hero Steam Train & Swaying Trees Curve Scene ── */
+.hero-curved-divider.hero-train-divider {
+    height: clamp(150px, 18vw, 250px);
+    overflow: visible;
+}
+
+.hero-train-svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: relative;
+    z-index: 2;
+    overflow: visible;
+}
+
+.hero-train-ground {
+    fill: var(--bg-color, #ffffff);
+    transition: fill 0.3s ease;
+}
+
+body.dark-theme .hero-train-ground {
+    fill: #0d1117;
+}
+
+.hero-rail-bed {
+    stroke: #d0dbe9;
+    transition: stroke 0.3s ease;
+}
+
+body.dark-theme .hero-rail-bed {
+    stroke: #151b28;
+}
+
+.hero-rail-ties {
+    stroke: #8b5a2b;
+    transition: stroke 0.3s ease;
+}
+
+body.dark-theme .hero-rail-ties {
+    stroke: #7a5238;
+}
+
+/* Tree Sway Micro-Animation */
+.tree {
+    transform-box: fill-box;
+    transform-origin: 50% 100%;
+    animation: treeSway 5s ease-in-out infinite alternate;
+}
+
+@keyframes treeSway {
+    from {
+        transform: rotate(-1.4deg);
+    }
+    to {
+        transform: rotate(1.4deg);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .tree {
+        animation: none;
+    }
 }
 
 /* ── Docked Frosted Center Card ── */
@@ -10837,63 +10947,84 @@ body.no-scroll {
         display: flex !important;
     }
 
-    /* Projects Page Header Pill Tablet/Mobile Adaptations */
-    .hero-header-pill {
-        width: calc(100% - 32px) !important;
-        margin: 14px auto !important;
-        padding: 10px 16px !important;
-        border-radius: 16px !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: space-between !important;
-        gap: 10px !important;
-        box-sizing: border-box !important;
-    }
-
-    .hero-header-links,
-    .nav-search-wrapper,
-    .hero-header-btn {
-        display: none !important;
-    }
-
-    .hero-logo-box {
-        gap: 8px !important;
-    }
-
-    .hero-logo-text {
-        font-size: 0.78rem !important;
-        letter-spacing: 0.08em !important;
-    }
-
-    .hero-pill-theme-btn {
-        display: flex !important;
-        width: 36px !important;
-        height: 36px !important;
-    }
 }
 
 /* Small Tablets & Mobile Devices (<= 768px) */
 @media (max-width: 768px) {
-    /* Featured Projects Touch Carousel */
+    /* Hero Editorial Mobile Refinement (Removes massive void gap & balances layout) */
+    .hero-editorial-section {
+        min-height: auto !important;
+        padding: 16px 16px 95px 16px !important;
+        justify-content: flex-start !important;
+        gap: 0 !important;
+    }
+
+    .hero-editorial-main {
+        margin: clamp(24px, 5vh, 48px) auto 16px auto !important;
+        width: 100% !important;
+    }
+
+    .hero-curved-divider {
+        height: 52px !important;
+    }
+
+    .hero-curved-divider.hero-train-divider {
+        height: 110px !important;
+    }
+
+    /* Featured Projects Touch Carousel (Smooth snap & appealing peek) */
     .featured-projects-slider-wrapper {
         padding: 16px 0 35px !important;
         overflow-x: auto !important;
         -webkit-overflow-scrolling: touch !important;
         scroll-snap-type: x mandatory !important;
+        scrollbar-width: none !important;
+    }
+
+    .featured-projects-slider-wrapper::-webkit-scrollbar {
+        display: none !important;
     }
 
     .featured-projects-slider {
-        padding: 0 16px !important;
+        padding: 0 20px !important;
         gap: 16px !important;
     }
 
     .project-glass-card {
-        width: min(340px, calc(100vw - 44px)) !important;
-        scroll-snap-align: center !important;
+        width: min(320px, calc(100vw - 64px)) !important;
+        scroll-snap-align: start !important;
         height: auto !important;
-        min-height: 370px !important;
-        padding: 24px !important;
+        min-height: 360px !important;
+        padding: 24px 20px !important;
         flex-shrink: 0 !important;
+    }
+
+    /* Expandable Project Cards (projects.html mobile layout) */
+    .project-expanded-card {
+        padding: 22px 18px !important;
+        border-radius: 20px !important;
+        margin-bottom: 20px !important;
+    }
+
+    .project-card-title {
+        font-size: 1.45rem !important;
+    }
+
+    .project-header-row {
+        flex-direction: column !important;
+        gap: 14px !important;
+    }
+
+    .project-header-right {
+        align-self: flex-end !important;
+        margin-top: -8px !important;
+    }
+
+    .project-detail-cols {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+        padding-top: 18px !important;
+        margin-top: 18px !important;
     }
 
     /* Skills Marquee Icons on Mobile */
@@ -10921,6 +11052,10 @@ body.no-scroll {
 
 /* Compact Smartphones (<= 480px) */
 @media (max-width: 480px) {
+    .hero-editorial-section {
+        padding: 14px 14px 75px 14px !important;
+    }
+
     .hero-editorial-navbar {
         padding: 10px 14px !important;
     }
@@ -10934,9 +11069,13 @@ body.no-scroll {
         height: 24px !important;
     }
 
+    .hero-editorial-main {
+        margin: 20px auto 14px auto !important;
+    }
+
     .hero-editorial-title {
-        font-size: clamp(1.95rem, 8.2vw, 2.6rem) !important;
-        margin-bottom: 22px !important;
+        font-size: clamp(1.95rem, 8.2vw, 2.5rem) !important;
+        margin-bottom: 20px !important;
         line-height: 1.1 !important;
     }
 
@@ -10946,10 +11085,30 @@ body.no-scroll {
     }
 
     .hero-editorial-subtext {
-        margin-top: 22px !important;
+        margin-top: 20px !important;
         font-size: 0.72rem !important;
         letter-spacing: 0.12em !important;
         padding: 0 10px !important;
+        line-height: 1.6 !important;
+    }
+
+    .hero-curved-divider {
+        height: 42px !important;
+    }
+
+    .project-glass-card {
+        width: min(290px, calc(100vw - 52px)) !important;
+        min-height: 350px !important;
+        padding: 20px 16px !important;
+    }
+
+    .project-expanded-card {
+        padding: 18px 14px !important;
+        border-radius: 18px !important;
+    }
+
+    .project-card-title {
+        font-size: 1.3rem !important;
     }
 
     .section-title {

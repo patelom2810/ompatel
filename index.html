@@ -62,10 +62,6 @@
 
     <!-- Sleek Intro Preloader Curtain -->
     <div id="intro-curtain" class="intro-curtain" aria-hidden="false">
-        <!-- Sacred Invocation at Intro Center Top -->
-        <div class="intro-top-invocation" aria-label="जय श्री राम">
-            ॥ जय श्री राम ॥
-        </div>
 
         <div class="intro-center-content">
             <!-- Each character wrapped for staggered bottom→top reveal -->
@@ -99,33 +95,26 @@
         <div class="blob blob-3"></div>
     </div>
 
-    <!-- Glassy Navigation Dock -->
+    <!-- Glassy Navigation Dock (Mobile Floating Capsule Navbar) -->
     <div class="glassy-nav-container">
-        <nav class="glassy-nav">
-            <a href="#about" class="nav-item nav-link-dock" data-tooltip="About">
+        <nav class="glassy-nav" aria-label="Mobile Navigation">
+            <a href="#home" class="nav-item nav-link-dock" data-tooltip="Home" aria-label="Home">
+                <i class="fas fa-home"></i>
+                <span class="nav-label">Home</span>
+            </a>
+            <a href="#about" class="nav-item nav-link-dock" data-tooltip="About" aria-label="About">
                 <i class="fas fa-user"></i>
                 <span class="nav-label">About</span>
             </a>
-            <a href="#skills" class="nav-item nav-link-dock" data-tooltip="Skills">
+            <a href="#skills" class="nav-item nav-link-dock" data-tooltip="Skills" aria-label="Skills">
                 <i class="fas fa-code"></i>
                 <span class="nav-label">Skills</span>
             </a>
-            
-            <a href="#home" class="nav-profile-wrapper nav-link-dock" data-tooltip="Home">
-                <div class="nav-profile nav-profile-home">
-                    <i class="fas fa-home"></i>
-                </div>
-            </a>
-
-            <a href="#education" class="nav-item nav-link-dock hide-mobile" data-tooltip="Education">
-                <i class="fas fa-graduation-cap"></i>
-                <span class="nav-label">Education</span>
-            </a>
-            <a href="projects.html" class="nav-item nav-link-dock" data-tooltip="Projects">
+            <a href="projects.html" class="nav-item nav-link-dock" data-tooltip="Projects" aria-label="Projects">
                 <i class="fas fa-briefcase"></i>
                 <span class="nav-label">Projects</span>
             </a>
-            <a href="#contact" class="nav-item nav-link-dock" data-tooltip="Contact">
+            <a href="#contact" class="nav-item nav-link-dock" data-tooltip="Contact" aria-label="Contact">
                 <i class="fas fa-envelope"></i>
                 <span class="nav-label">Contact</span>
             </a>
@@ -134,7 +123,7 @@
             </button>
         </nav>
         <!-- Back to Top Button -->
-        <div class="back-to-top">
+        <div class="back-to-top" aria-label="Back to top">
             <i class="fas fa-arrow-up"></i>
         </div>
     </div>
@@ -242,11 +231,26 @@
             </p>
         </div>
 
-        <!-- Curved Transition Divider (Convex Arch) -->
-        <div class="hero-curved-divider" aria-hidden="true">
-            <svg class="hero-curve-svg" viewBox="0 0 1440 100" preserveAspectRatio="none">
-                <path class="hero-curve-fill" d="M0,100 L0,75 Q720,12 1440,75 L1440,100 Z"></path>
-                <path class="hero-curve-stroke" d="M0,75 Q720,12 1440,75"></path>
+        <!-- Curved Transition Divider with Steam Train & Swaying Trees -->
+        <div class="hero-curved-divider hero-train-divider" aria-hidden="true">
+            <svg id="hero-train-scene" viewBox="0 0 1440 300" preserveAspectRatio="xMidYMax slice" class="hero-train-svg">
+              <defs>
+                <linearGradient id="whiteG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset=".6" stop-color="#eef1f6"/><stop offset="1" stop-color="#c3cbd8"/></linearGradient>
+                <linearGradient id="goldG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe58a"/><stop offset=".5" stop-color="#f0b932"/><stop offset="1" stop-color="#b97b12"/></linearGradient>
+                <linearGradient id="glassC" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#d6f1ff"/><stop offset="1" stop-color="#7fb9d6"/></linearGradient>
+                <linearGradient id="creamG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#e2e8f1"/></linearGradient>
+                <linearGradient id="roofG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#aeb8c8"/><stop offset="1" stop-color="#7a8599"/></linearGradient>
+                <linearGradient id="beamG"><stop offset="0" stop-color="#fff6c8" stop-opacity=".8"/><stop offset="1" stop-color="#fff6c8" stop-opacity="0"/></linearGradient>
+                <radialGradient id="glowW"><stop offset="0" stop-color="#fff" stop-opacity=".9"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+                <linearGradient id="edgeG" x1="0" x2="1"><stop offset="0" stop-color="#3b5bd6" stop-opacity="0"/><stop offset=".5" stop-color="#6f93ff"/><stop offset="1" stop-color="#3b5bd6" stop-opacity="0"/></linearGradient>
+              </defs>
+              <path class="hero-train-ground" d="M-200 190Q720 60 1640 190V300H-200Z"/>
+              <g id="hero-trees"></g>
+              <path d="M-200 193Q720 63 1640 193" fill="none" class="hero-rail-bed" stroke-width="7"/>
+              <path d="M-200 196Q720 66 1640 196" fill="none" class="hero-rail-ties" stroke-width="10" stroke-dasharray="5 15"/>
+              <path id="hero-track" d="M-200 190Q720 60 1640 190" fill="none" stroke="url(#edgeG)" stroke-width="2.5"/>
+              <g id="hero-train"></g>
+              <g id="hero-steam"></g>
             </svg>
         </div>
     </section>

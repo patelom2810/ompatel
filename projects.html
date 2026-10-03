@@ -62,33 +62,26 @@
         <div class="blob blob-3"></div>
     </div>
 
-    <!-- Glassy Navigation Dock -->
+    <!-- Glassy Navigation Dock (Mobile Floating Capsule Navbar) -->
     <div class="glassy-nav-container">
-        <nav class="glassy-nav">
-            <a href="index.html#about" class="nav-item nav-link-dock" data-tooltip="About">
+        <nav class="glassy-nav" aria-label="Mobile Navigation">
+            <a href="index.html#home" class="nav-item nav-link-dock" data-tooltip="Home" aria-label="Home">
+                <i class="fas fa-home"></i>
+                <span class="nav-label">Home</span>
+            </a>
+            <a href="index.html#about" class="nav-item nav-link-dock" data-tooltip="About" aria-label="About">
                 <i class="fas fa-user"></i>
                 <span class="nav-label">About</span>
             </a>
-            <a href="index.html#skills" class="nav-item nav-link-dock" data-tooltip="Skills">
+            <a href="index.html#skills" class="nav-item nav-link-dock" data-tooltip="Skills" aria-label="Skills">
                 <i class="fas fa-code"></i>
                 <span class="nav-label">Skills</span>
             </a>
-            
-            <a href="index.html#home" class="nav-profile-wrapper nav-link-dock" data-tooltip="Home">
-                <div class="nav-profile nav-profile-home">
-                    <i class="fas fa-home"></i>
-                </div>
-            </a>
-
-            <a href="index.html#education" class="nav-item nav-link-dock hide-mobile" data-tooltip="Education">
-                <i class="fas fa-graduation-cap"></i>
-                <span class="nav-label">Education</span>
-            </a>
-            <a href="projects.html" class="nav-item nav-link-dock active" data-tooltip="Projects">
+            <a href="projects.html" class="nav-item nav-link-dock active" data-tooltip="Projects" aria-label="Projects">
                 <i class="fas fa-briefcase"></i>
                 <span class="nav-label">Projects</span>
             </a>
-            <a href="index.html#contact" class="nav-item nav-link-dock" data-tooltip="Contact">
+            <a href="index.html#contact" class="nav-item nav-link-dock" data-tooltip="Contact" aria-label="Contact">
                 <i class="fas fa-envelope"></i>
                 <span class="nav-label">Contact</span>
             </a>
@@ -97,41 +90,43 @@
             </button>
         </nav>
         <!-- Back to Top Button -->
-        <div class="back-to-top">
+        <div class="back-to-top" aria-label="Back to top">
             <i class="fas fa-arrow-up"></i>
         </div>
     </div>
 
-    <!-- Top Header Pill (Static inside Projects page for Desktop) -->
-    <div class="hero-header-pill">
-        <a href="index.html#home" class="hero-logo-box">
-            <img src="img/op-logo-dark.png" alt="Om Patel Logo" class="hero-brand-logo-img">
-            <span class="hero-logo-text">DESIGN BY OM PATEL</span>
-        </a>
-        <div class="hero-header-links">
-            <a href="index.html#about" class="hero-header-link">ABOUT</a>
-            <span class="hero-header-slash">/</span>
-            <a href="index.html#skills" class="hero-header-link">SKILLS</a>
-            <span class="hero-header-slash">/</span>
-            <a href="projects.html" class="hero-header-link" style="color: var(--primary-color);">PROJECTS</a>
-            <span class="hero-header-slash">/</span>
-            <a href="index.html#contact" class="hero-header-link">CONTACT</a>
-        </div>
-        <!-- Dynamic Search Bar -->
-        <div class="nav-search-wrapper">
+    <!-- Top Minimalist Navbar (Same as index.html) -->
+    <header class="hero-editorial-navbar projects-page-navbar">
+        <!-- Left: Rounded Search Bar -->
+        <div class="hero-editorial-search">
             <i class="fas fa-search search-icon"></i>
-            <input type="text" class="nav-search-input" id="nav-search" placeholder="Search projects...">
+            <input type="text" id="nav-search" placeholder="Search projects..." aria-label="Search">
         </div>
-        <a href="mailto:patelom2810@gmail.com" class="hero-header-btn">HIRE ME</a>
-        <button class="hero-editorial-theme-btn hero-pill-theme-btn" id="theme-toggle-header" title="Toggle Theme" aria-label="Toggle Theme">
-            <i class="fas fa-moon theme-icon"></i>
-        </button>
-        <button class="hero-editorial-menu-btn" id="mobile-menu-toggle" aria-label="Open Navigation Menu" aria-expanded="false">
-            <span class="hamburger-line"></span>
-            <span class="hamburger-line"></span>
-            <span class="hamburger-line"></span>
-        </button>
-    </div>
+
+        <!-- Center: Brand Name with Transparent Logo -->
+        <a href="index.html#home" class="hero-editorial-brand" title="Om Patel">
+            <img src="img/op-logo-dark.png" alt="Om Patel Logo" class="hero-brand-logo-img">
+            <span>ompatel</span>
+        </a>
+
+        <!-- Right: Navigation Links + Theme Toggle + Mobile Menu -->
+        <div class="hero-editorial-links">
+            <nav class="hero-desktop-nav flex items-center gap-6">
+                <a href="index.html#about" class="hero-editorial-link">About</a>
+                <a href="index.html#skills" class="hero-editorial-link">Skills</a>
+                <a href="projects.html" class="hero-editorial-link active">Projects</a>
+                <a href="index.html#contact" class="hero-editorial-link">Contact</a>
+            </nav>
+            <button class="hero-editorial-theme-btn theme-toggle-btn" id="theme-toggle-header" title="Toggle Theme" aria-label="Toggle Theme">
+                <i class="fas fa-moon theme-icon"></i>
+            </button>
+            <button class="hero-editorial-menu-btn" id="mobile-menu-toggle" aria-label="Open Navigation Menu" aria-expanded="false">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </div>
+    </header>
 
     <!-- Dynamic Mobile Navigation Drawer Overlay -->
     <div id="mobile-nav-overlay" class="mobile-nav-overlay" aria-hidden="true">
@@ -230,8 +225,8 @@
                             <a href="https://github.com/patelom2810/Solar-Energy-Generation-Weather-Analytics" target="_blank" class="project-header-action-btn" title="GitHub Code">
                                 <i class="fab fa-github"></i>
                             </a>
-                            <button class="project-expand-toggle-btn" onclick="toggleProjectExpand(this)">
-                                <i class="fas fa-chevron-up"></i>
+                            <button class="project-expand-toggle-btn" onclick="toggleProjectExpand(this)" aria-label="Toggle project details">
+                                <i class="fas fa-chevron-down"></i>
                             </button>
                         </div>
                     </div>
@@ -298,8 +293,8 @@
                             <a href="https://github.com/kachhadiyajanvi/E-GAMESCOUT" target="_blank" class="project-header-action-btn" title="GitHub Code">
                                 <i class="fab fa-github"></i>
                             </a>
-                            <button class="project-expand-toggle-btn" onclick="toggleProjectExpand(this)">
-                                <i class="fas fa-chevron-up"></i>
+                            <button class="project-expand-toggle-btn" onclick="toggleProjectExpand(this)" aria-label="Toggle project details">
+                                <i class="fas fa-chevron-down"></i>
                             </button>
                         </div>
                     </div>
@@ -376,8 +371,8 @@
                             <a href="https://github.com/patelom2810/clipchain" target="_blank" class="project-header-action-btn" title="GitHub Code">
                                 <i class="fab fa-github"></i>
                             </a>
-                            <button class="project-expand-toggle-btn" onclick="toggleProjectExpand(this)">
-                                <i class="fas fa-chevron-up"></i>
+                            <button class="project-expand-toggle-btn" onclick="toggleProjectExpand(this)" aria-label="Toggle project details">
+                                <i class="fas fa-chevron-down"></i>
                             </button>
                         </div>
                     </div>
@@ -441,8 +436,8 @@
                             <a href="https://github.com/patelom2810/Parking-Management-System" target="_blank" class="project-header-action-btn" title="GitHub Code">
                                 <i class="fab fa-github"></i>
                             </a>
-                            <button class="project-expand-toggle-btn" onclick="toggleProjectExpand(this)">
-                                <i class="fas fa-chevron-up"></i>
+                            <button class="project-expand-toggle-btn" onclick="toggleProjectExpand(this)" aria-label="Toggle project details">
+                                <i class="fas fa-chevron-down"></i>
                             </button>
                         </div>
                     </div>
@@ -525,6 +520,13 @@
                     <a href="https://github.com/patelom2810" target="_blank">GitHub</a>
                     <a href="https://www.linkedin.com/in/om-patel-1a929831b" target="_blank">LinkedIn</a>
                     <a href="mailto:patelom2810@gmail.com">Email</a>
+                </div>
+            </div>
+
+            <!-- Large 3D Brand Logo Showcase -->
+            <div class="footer-brand-showcase">
+                <div class="footer-3d-logo-wrap">
+                    <img src="img/Puffy%203D%20OM%20PATEL%20Logo%20Transparent.png" alt="Om Patel 3D Logo" class="footer-3d-logo" loading="lazy">
                 </div>
             </div>
         </div>
