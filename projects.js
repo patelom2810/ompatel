@@ -317,18 +317,25 @@
     /* =========================================
        6. Animated Brand Logo Replay Interaction
        ========================================= */
+    function triggerBrandLogoAnimation() {
+        const svgs = document.querySelectorAll('.hero-brand-svg');
+        svgs.forEach(svg => {
+            svg.classList.remove('play');
+            void svg.offsetWidth;
+            svg.classList.add('play');
+        });
+    }
+
     function initAnimatedBrandLogo() {
         const brandLinks = document.querySelectorAll('.hero-editorial-brand');
         brandLinks.forEach(brand => {
             brand.addEventListener('click', () => {
-                const svg = brand.querySelector('.hero-brand-svg');
-                if (svg) {
-                    svg.classList.remove('play');
-                    void svg.offsetWidth;
-                    svg.classList.add('play');
-                }
+                triggerBrandLogoAnimation();
             });
         });
+
+        // Trigger on load / refresh
+        triggerBrandLogoAnimation();
     }
 
     /* =========================================

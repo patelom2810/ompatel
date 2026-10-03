@@ -40,6 +40,10 @@ function initIntroPreloader() {
             document.body.classList.remove('intro-active');
             document.body.classList.add('intro-complete');
 
+            if (typeof triggerBrandLogoAnimation === 'function') {
+                triggerBrandLogoAnimation();
+            }
+
             setTimeout(() => {
                 curtain.style.display = 'none';
                 curtain.setAttribute('aria-hidden', 'true');
@@ -1320,18 +1324,25 @@ function initHeroSnow() {
 /* =========================================
    Animated Brand Logo Interaction
    ========================================= */
+function triggerBrandLogoAnimation() {
+    const svgs = document.querySelectorAll('.hero-brand-svg');
+    svgs.forEach(svg => {
+        svg.classList.remove('play');
+        void svg.offsetWidth;
+        svg.classList.add('play');
+    });
+}
+
 function initAnimatedBrandLogo() {
+    // Re-play animation when the brand logo is clicked
     const brandLinks = document.querySelectorAll('.hero-editorial-brand');
     brandLinks.forEach(brand => {
         brand.addEventListener('click', () => {
-            const svg = brand.querySelector('.hero-brand-svg');
-            if (svg) {
-                svg.classList.remove('play');
-                void svg.offsetWidth;
-                svg.classList.add('play');
-            }
+            triggerBrandLogoAnimation();
         });
     });
+    // NOTE: The initial play is triggered exclusively by dismissCurtain()
+    // so the animation only runs once — after the intro curtain opens.
 }
 
 /* =========================================
