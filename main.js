@@ -262,6 +262,8 @@ function initSectionPartsAnimation() {
     });
 }
 
+let heroCloudsInstance = null;
+
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize intro preloader
     initIntroPreloader();
@@ -283,6 +285,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize Hero Snow / Star Particle Effect
     initHeroSnow();
+
+    // Initialize Hero Drifting Clouds Layer
+    initHeroClouds();
 
     // Initialize Animated Brand Logo Replay Interaction
     initAnimatedBrandLogo();
@@ -615,6 +620,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const mobileThemeLabel = document.querySelector('.mobile-theme-label');
         if (mobileThemeLabel) {
             mobileThemeLabel.textContent = isDark ? "Light Mode" : "Dark Mode";
+        }
+
+        if (heroCloudsInstance && typeof heroCloudsInstance.setMode === 'function') {
+            heroCloudsInstance.setMode(isDark ? 'night' : 'day');
         }
     };
 
@@ -1324,3 +1333,40 @@ function initAnimatedBrandLogo() {
         });
     });
 }
+
+/* =========================================
+   Hero WebGL Clouds Layer Effect
+   ========================================= */
+function initHeroClouds() {
+    const heroSection = document.querySelector('.hero-editorial-section') || document.querySelector('#home');
+    if (!heroSection) return;
+
+    function mountClouds() {
+        if (heroCloudsInstance) return;
+        if (typeof CloudsLayer === 'undefined' || !CloudsLayer.mount) return;
+
+        const isDark = document.body.classList.contains('dark-theme');
+        try {
+            heroCloudsInstance = CloudsLayer.mount(heroSection, {
+                mode: isDark ? 'night' : 'day',
+                opacity: 0.85,
+                speed: 1.0,
+                cover: 0.55,
+                scale: 0.5,
+                zIndex: 1
+            });
+            window.heroClouds = heroCloudsInstance;
+        } catch (err) {
+            console.warn('Could not initialize CloudsLayer:', err);
+        }
+    }
+
+    if (typeof CloudsLayer !== 'undefined' && CloudsLayer.mount) {
+        mountClouds();
+    } else {
+        window.addEventListener('load', () => {
+            mountClouds();
+        });
+    }
+}
+
