@@ -8970,7 +8970,7 @@ body.dark-theme .hero-pixel-title {
     font-weight: 400;
     line-height: 0;
     margin-left: 4px;
-    color: var(--heading-color, #0c1e4c);
+    color: var(--primary-color, #4169E1);
     animation: starTwinkle 4s ease-in-out infinite;
 }
 
@@ -9067,9 +9067,9 @@ body.dark-theme .hero-editorial-btn:hover {
     font-weight: 600;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--subtitle-color, #64748b);
+    color: #334155;
     max-width: 620px;
-    margin: 38px auto 0 auto;
+    margin: 32px auto 0 auto;
     line-height: 1.75;
     text-align: center;
 }
@@ -9172,6 +9172,172 @@ body.dark-theme .hero-rail-bed {
 
 body.dark-theme .hero-rail-ties {
     stroke: #7a5238;
+}
+
+/* ── Hero Train Theming (Light Mode: Blue Family / Dark Mode: Night Express) ── */
+
+/* 1. Light Mode (Default) - Royal Blue Family Livery */
+#hero-train .train-boiler,
+#hero-train .train-cab-body,
+#hero-train .train-cab-neck,
+#hero-train .train-stack,
+#hero-train .train-cylinder,
+#hero-train .train-cowcatcher-base,
+#hero-train .train-wheel-disc {
+    fill: url(#trainLocoLight);
+    transition: fill 0.3s ease;
+}
+
+#hero-train .train-coach-body {
+    fill: url(#trainCoachLight);
+    stroke: #1d4ed8;
+    transition: fill 0.3s ease, stroke 0.3s ease;
+}
+
+#hero-train .train-roof {
+    fill: url(#trainRoofLight);
+    transition: fill 0.3s ease;
+}
+
+#hero-train .train-smokebox {
+    fill: #0c1e4c;
+    transition: fill 0.3s ease;
+}
+
+#hero-train .train-cab-roof {
+    fill: #0a1532;
+    transition: fill 0.3s ease;
+}
+
+#hero-train .train-roof-trim,
+#hero-train .train-roof-vent {
+    fill: #0f172a;
+    transition: fill 0.3s ease;
+}
+
+#hero-train .train-chassis,
+#hero-train .train-bogie,
+#hero-train .train-coupler {
+    fill: #0a1128;
+    transition: fill 0.3s ease;
+}
+
+#hero-train .train-wheel-rim {
+    fill: #0a1128;
+    transition: fill 0.3s ease;
+}
+
+#hero-train .train-spoke,
+#hero-train .train-spoke-ring {
+    stroke: #1e40af;
+    transition: stroke 0.3s ease;
+}
+
+#hero-train .train-cowcatcher-base {
+    stroke: #1e3a8a;
+    transition: stroke 0.3s ease;
+}
+
+#hero-train .train-cowcatcher-bars {
+    stroke: #3b82f6;
+    transition: stroke 0.3s ease;
+}
+
+#hero-train .rod {
+    stroke: #bfdbfe;
+    transition: stroke 0.3s ease;
+}
+
+#hero-train .train-dome {
+    fill: url(#trainLocoLight);
+    stroke: #1e40af;
+    transition: fill 0.3s ease, stroke 0.3s ease;
+}
+
+#hero-train .train-crest {
+    stroke: #2563eb;
+    transition: stroke 0.3s ease;
+}
+
+#hero-steam {
+    filter: drop-shadow(0 2px 6px rgba(65, 105, 225, 0.16));
+    transition: filter 0.3s ease;
+}
+
+/* 2. Dark Mode - Classic Silver / White Night Express Livery */
+body.dark-theme #hero-train .train-boiler,
+body.dark-theme #hero-train .train-cab-body,
+body.dark-theme #hero-train .train-cab-neck,
+body.dark-theme #hero-train .train-stack,
+body.dark-theme #hero-train .train-cylinder,
+body.dark-theme #hero-train .train-cowcatcher-base,
+body.dark-theme #hero-train .train-wheel-disc {
+    fill: url(#trainLocoDark);
+}
+
+body.dark-theme #hero-train .train-coach-body {
+    fill: url(#trainCoachDark);
+    stroke: #c3cad6;
+}
+
+body.dark-theme #hero-train .train-roof {
+    fill: url(#trainRoofDark);
+}
+
+body.dark-theme #hero-train .train-smokebox {
+    fill: #2f3550;
+}
+
+body.dark-theme #hero-train .train-cab-roof {
+    fill: #c9d1de;
+}
+
+body.dark-theme #hero-train .train-roof-trim {
+    fill: #6f7b8e;
+}
+
+body.dark-theme #hero-train .train-roof-vent {
+    fill: #7c889b;
+}
+
+body.dark-theme #hero-train .train-chassis,
+body.dark-theme #hero-train .train-bogie,
+body.dark-theme #hero-train .train-coupler {
+    fill: #3a4150;
+}
+
+body.dark-theme #hero-train .train-wheel-rim {
+    fill: #1d2142;
+}
+
+body.dark-theme #hero-train .train-spoke,
+body.dark-theme #hero-train .train-spoke-ring {
+    stroke: #8d97a8;
+}
+
+body.dark-theme #hero-train .train-cowcatcher-base {
+    stroke: #8d97a8;
+}
+
+body.dark-theme #hero-train .train-cowcatcher-bars {
+    stroke: #8d97a8;
+}
+
+body.dark-theme #hero-train .rod {
+    stroke: #d6dae3;
+}
+
+body.dark-theme #hero-train .train-dome {
+    fill: url(#trainLocoDark);
+    stroke: #c3cad6;
+}
+
+body.dark-theme #hero-train .train-crest {
+    stroke: #3a6df0;
+}
+
+body.dark-theme #hero-steam {
+    filter: drop-shadow(0 2px 10px rgba(255, 255, 255, 0.18));
 }
 
 /* Tree Sway Micro-Animation */

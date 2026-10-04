@@ -979,45 +979,73 @@ function initMobileMenu() {
    Hero Steam Train & Swaying Trees Curve
    ========================================= */
 function wheelSVG(cx, cy, r, spokes) {
-    let s = `<g transform="translate(${cx} ${cy})"><g class="rot" data-r="${r}"><circle r="${r}" fill="#1d2142"/><circle r="${r - 2.6}" fill="url(#whiteG)"/><circle r="${r - 4.6}" fill="none" stroke="#8d97a8" stroke-width=".8"/>`;
+    let s = `<g transform="translate(${cx} ${cy})"><g class="rot" data-r="${r}">` +
+        `<circle class="train-wheel-rim" r="${r}" fill="#0a1128"/>` +
+        `<circle class="train-wheel-disc" r="${r - 2.6}" fill="url(#whiteG)"/>` +
+        `<circle class="train-spoke-ring" r="${r - 4.6}" fill="none" stroke="#1e40af" stroke-width=".8"/>`;
     for (let i = 0; i < spokes; i++) {
-        s += `<line y2="${-(r - 3)}" stroke="#8d97a8" stroke-width="${r > 10 ? 1.7 : 1.1}" transform="rotate(${i * 360 / spokes})"/>`;
+        s += `<line class="train-spoke" y2="${-(r - 3)}" stroke="#1e40af" stroke-width="${r > 10 ? 1.7 : 1.1}" transform="rotate(${i * 360 / spokes})"/>`;
     }
-    return s + `<circle r="${r * 0.28}" fill="url(#goldG)" stroke="#a96d10" stroke-width=".8"/><circle r="${r * 0.1}" fill="#e8631c"/></g></g>`;
+    return s + `<circle class="train-wheel-hub" r="${r * 0.28}" fill="url(#goldG)" stroke="#a96d10" stroke-width=".8"/>` +
+        `<circle class="train-wheel-pin" r="${r * 0.1}" fill="#e8631c"/></g></g>`;
 }
 
 function locoSVG() {
-    let s = '<polygon points="96,-46 330,-70 330,-12" fill="url(#beamG)" opacity=".45"/>';
-    s += '<rect x="-80" y="-27" width="198" height="9" rx="2" fill="#3a4150"/>';
-    s += '<rect x="0" y="-55" width="86" height="29" rx="9" fill="url(#whiteG)"/>';
-    s += '<rect x="16" y="-55" width="3" height="29" fill="#e8b130"/><rect x="42" y="-55" width="3" height="29" fill="#e8b130"/><rect x="64" y="-55" width="3" height="29" fill="#e8b130"/><rect x="6" y="-52" width="72" height="4" rx="2" fill="#fff" opacity=".4"/>';
-    s += '<rect x="72" y="-55" width="20" height="29" rx="8" fill="#2f3550"/><rect x="72" y="-55" width="3" height="29" fill="#f2b630"/>';
-    s += '<path d="M73 -55L76 -68L68 -77H94L86 -68L89 -55Z" fill="url(#whiteG)"/><rect x="66" y="-81" width="30" height="5" rx="2.5" fill="url(#goldG)"/>';
-    s += '<path d="M26 -55Q26 -68 37 -68Q48 -68 48 -55Z" fill="url(#whiteG)" stroke="#c3cad6" stroke-width=".8"/><circle cx="37" cy="-71" r="3.2" fill="#f2b630"/>';
-    s += '<path d="M50 -55Q50 -65 55 -65Q60 -65 60 -55Z" fill="url(#whiteG)" stroke="#a96d10" stroke-width=".7"/><circle cx="55" cy="-66.5" r="1.6" fill="#f2b630"/>';
-    s += '<rect x="-8" y="-56" width="14" height="30" fill="url(#whiteG)"/>';
-    s += '<rect x="-68" y="-70" width="64" height="44" rx="3" fill="url(#whiteG)"/><rect x="-75" y="-79" width="78" height="10" rx="3.5" fill="#c9d1de"/><rect x="-75" y="-79" width="78" height="3" rx="1.5" fill="#f2b630"/><rect x="-68" y="-31" width="64" height="3" fill="#f2b630"/>';
-    s += '<path d="M-60 -36V-54Q-60 -63 -52 -63Q-44 -63 -44 -54V-36Z" fill="url(#glassC)" stroke="#f2b630" stroke-width="2"/><path d="M-36 -36V-54Q-36 -63 -28 -63Q-20 -63 -20 -54V-36Z" fill="url(#glassC)" stroke="#f2b630" stroke-width="2"/>';
-    s += '<path d="M-56 -56l5 -4l-1 12z" fill="#fff" opacity=".4"/><path d="M-32 -56l5 -4l-1 12z" fill="#fff" opacity=".4"/>';
-    s += '<rect x="-14" y="-27.5" width="1" height="0" /><rect x="50" y="-30" width="26" height="12" rx="4" fill="url(#whiteG)" stroke="#c3cad6" stroke-width=".8"/>';
-    s += '<path d="M90 -28H100L124 -4V0H98Z" fill="url(#whiteG)" stroke="#8d97a8" stroke-width=".8"/><path d="M103 -22L112 -2M109 -24L118 -4" stroke="#8d97a8" stroke-width="1.2"/>';
+    let s = '<polygon class="train-beam" points="96,-46 330,-70 330,-12" fill="url(#beamG)" opacity=".45"/>';
+    s += '<rect class="train-chassis" x="-80" y="-27" width="198" height="9" rx="2" fill="#0a1128"/>';
+    s += '<rect class="train-boiler" x="0" y="-55" width="86" height="29" rx="9" fill="url(#whiteG)"/>';
+    s += '<rect class="train-band" x="16" y="-55" width="3" height="29" fill="#f59e0b"/>' +
+         '<rect class="train-band" x="42" y="-55" width="3" height="29" fill="#f59e0b"/>' +
+         '<rect class="train-band" x="64" y="-55" width="3" height="29" fill="#f59e0b"/>' +
+         '<rect class="train-highlight" x="6" y="-52" width="72" height="4" rx="2" fill="#ffffff" opacity=".35"/>';
+    s += '<rect class="train-smokebox" x="72" y="-55" width="20" height="29" rx="8" fill="#0c1e4c"/>' +
+         '<rect class="train-band" x="72" y="-55" width="3" height="29" fill="#f59e0b"/>';
+    s += '<path class="train-stack" d="M73 -55L76 -68L68 -77H94L86 -68L89 -55Z" fill="url(#whiteG)"/>' +
+         '<rect class="train-cap" x="66" y="-81" width="30" height="5" rx="2.5" fill="url(#goldG)"/>';
+    s += '<path class="train-dome" d="M26 -55Q26 -68 37 -68Q48 -68 48 -55Z" fill="url(#whiteG)" stroke="#1e40af" stroke-width=".8"/>' +
+         '<circle class="train-finial" cx="37" cy="-71" r="3.2" fill="#f59e0b"/>';
+    s += '<path class="train-dome" d="M50 -55Q50 -65 55 -65Q60 -65 60 -55Z" fill="url(#whiteG)" stroke="#a96d10" stroke-width=".7"/>' +
+         '<circle class="train-finial" cx="55" cy="-66.5" r="1.6" fill="#f59e0b"/>';
+    s += '<rect class="train-cab-neck" x="-8" y="-56" width="14" height="30" fill="url(#whiteG)"/>';
+    s += '<rect class="train-cab-body" x="-68" y="-70" width="64" height="44" rx="3" fill="url(#whiteG)"/>' +
+         '<rect class="train-cab-roof" x="-75" y="-79" width="78" height="10" rx="3.5" fill="#0a1532"/>' +
+         '<rect class="train-cab-gutter" x="-75" y="-79" width="78" height="3" rx="1.5" fill="#f59e0b"/>' +
+         '<rect class="train-cab-trim" x="-68" y="-31" width="64" height="3" fill="#f59e0b"/>';
+    s += '<path class="train-window" d="M-60 -36V-54Q-60 -63 -52 -63Q-44 -63 -44 -54V-36Z" fill="url(#glassC)" stroke="#f59e0b" stroke-width="2"/>' +
+         '<path class="train-window" d="M-36 -36V-54Q-36 -63 -28 -63Q-20 -63 -20 -54V-36Z" fill="url(#glassC)" stroke="#f59e0b" stroke-width="2"/>';
+    s += '<path d="M-56 -56l5 -4l-1 12z" fill="#fff" opacity=".4"/>' +
+         '<path d="M-32 -56l5 -4l-1 12z" fill="#fff" opacity=".4"/>';
+    s += '<rect x="-14" y="-27.5" width="1" height="0" />' +
+         '<rect class="train-cylinder" x="50" y="-30" width="26" height="12" rx="4" fill="url(#whiteG)" stroke="#1e40af" stroke-width=".8"/>';
+    s += '<path class="train-cowcatcher-base" d="M90 -28H100L124 -4V0H98Z" fill="url(#whiteG)" stroke="#1e3a8a" stroke-width=".8"/>' +
+         '<path class="train-cowcatcher-bars" d="M103 -22L112 -2M109 -24L118 -4" stroke="#3b82f6" stroke-width="1.2"/>';
     s += wheelSVG(-30, -17, 17, 12) + wheelSVG(4, -17, 17, 12) + wheelSVG(38, -17, 17, 12) + wheelSVG(78, -9, 9, 8);
-    s += '<line class="rod" stroke="#d6dae3" stroke-width="3.2" stroke-linecap="round"/><circle class="pin" r="2.4" fill="#f2b630"/><circle class="pin" r="2.4" fill="#f2b630"/><circle class="pin" r="2.4" fill="#f2b630"/>';
-    s += '<circle cx="94" cy="-41" r="9" fill="url(#glowW)"/><circle cx="92.5" cy="-41" r="4.6" fill="#fff8d6" stroke="#f2b630" stroke-width="1.6"/>';
+    s += '<line class="rod" stroke="#bfdbfe" stroke-width="3.2" stroke-linecap="round"/>' +
+         '<circle class="pin" r="2.4" fill="#f59e0b"/>' +
+         '<circle class="pin" r="2.4" fill="#f59e0b"/>' +
+         '<circle class="pin" r="2.4" fill="#f59e0b"/>';
+    s += '<circle class="train-lamp-glow" cx="94" cy="-41" r="9" fill="url(#glowW)"/>' +
+         '<circle class="train-lamp-lens" cx="92.5" cy="-41" r="4.6" fill="#fff8d6" stroke="#f59e0b" stroke-width="1.6"/>';
     return s;
 }
 
 function coachSVG() {
-    let s = '<rect x="-64" y="-9" width="8" height="3" fill="#3a2a22"/><rect x="56" y="-9" width="8" height="3" fill="#3a2a22"/>';
-    s += '<rect x="-56" y="-13" width="112" height="7" rx="1.5" fill="#3a4150"/><rect x="-54" y="-52" width="108" height="40" rx="2" fill="url(#creamG)" stroke="#c3cad6" stroke-width=".8"/>';
-    s += '<path d="M-59 -50Q-59 -60 -49 -62H49Q59 -60 59 -50Z" fill="url(#roofG)"/><rect x="-60" y="-51" width="120" height="3.2" rx="1.6" fill="#6f7b8e"/>';
-    [-34, 0, 34].forEach(x => { s += `<rect x="${x - 5}" y="-66" width="10" height="5" rx="1.6" fill="#7c889b"/>`; });
+    let s = '<rect class="train-coupler" x="-64" y="-9" width="8" height="3" fill="#0a1128"/>' +
+            '<rect class="train-coupler" x="56" y="-9" width="8" height="3" fill="#0a1128"/>';
+    s += '<rect class="train-chassis" x="-56" y="-13" width="112" height="7" rx="1.5" fill="#0a1128"/>';
+    s += '<rect class="train-coach-body" x="-54" y="-52" width="108" height="40" rx="2" fill="url(#creamG)" stroke="#1d4ed8" stroke-width=".8"/>';
+    s += '<path class="train-roof" d="M-59 -50Q-59 -60 -49 -62H49Q59 -60 59 -50Z" fill="url(#roofG)"/>' +
+         '<rect class="train-roof-trim" x="-60" y="-51" width="120" height="3.2" rx="1.6" fill="#0f172a"/>';
+    [-34, 0, 34].forEach(x => { s += `<rect class="train-roof-vent" x="${x - 5}" y="-66" width="10" height="5" rx="1.6" fill="#1e293b"/>`; });
     for (let i = 0; i < 5; i++) {
         let x = -46 + i * 19.4;
-        s += `<path d="M${x} -26V-39Q${x} -46 ${x + 6.5} -46Q${x + 13} -46 ${x + 13} -39V-26Z" fill="url(#glassC)" stroke="#d09a2a" stroke-width="1.4"/><rect x="${x - 1.5}" y="-26" width="16" height="2.6" rx="1" fill="#d8a437"/><path d="M${x + 1.5} -42l4 -3l-1 11z" fill="#fff" opacity=".4"/>`;
-        s += `<path d="M${x + 0.5} -15A6 6 0 0 1 ${x + 12.5} -15Z" fill="url(#goldG)" stroke="#3a6df0" stroke-width="1.2"/>`;
+        s += `<path class="train-window" d="M${x} -26V-39Q${x} -46 ${x + 6.5} -46Q${x + 13} -46 ${x + 13} -39V-26Z" fill="url(#glassC)" stroke="#f59e0b" stroke-width="1.4"/>` +
+             `<rect class="train-sill" x="${x - 1.5}" y="-26" width="16" height="2.6" rx="1" fill="#f59e0b"/>` +
+             `<path d="M${x + 1.5} -42l4 -3l-1 11z" fill="#fff" opacity=".4"/>`;
+        s += `<path class="train-crest" d="M${x + 0.5} -15A6 6 0 0 1 ${x + 12.5} -15Z" fill="url(#goldG)" stroke="#2563eb" stroke-width="1.2"/>`;
     }
-    s += '<rect x="-36" y="-10" width="24" height="5" rx="2" fill="#2a2230"/><rect x="12" y="-10" width="24" height="5" rx="2" fill="#2a2230"/>';
+    s += '<rect class="train-bogie" x="-36" y="-10" width="24" height="5" rx="2" fill="#0a1128"/>' +
+         '<rect class="train-bogie" x="12" y="-10" width="24" height="5" rx="2" fill="#0a1128"/>';
     s += wheelSVG(-30, -7, 7, 6) + wheelSVG(-18, -7, 7, 6) + wheelSVG(18, -7, 7, 6) + wheelSVG(30, -7, 7, 6);
     return s;
 }
@@ -1117,9 +1145,15 @@ function initHeroTrain() {
 
     function puff(x, y) {
         const g = document.createElementNS(NS, 'g');
+        const isDark = document.body.classList.contains('dark-theme');
         const k = [[0, 0, 1], [-7, 3, 0.8], [6, 2, 0.75]].map(o => {
             const e = document.createElementNS(NS, 'circle');
-            e.setAttribute('fill', '#f4f6fa');
+            e.setAttribute('class', 'train-steam-circle');
+            e.setAttribute('fill', isDark ? '#f4f6fa' : '#ffffff');
+            if (!isDark) {
+                e.setAttribute('stroke', 'rgba(65, 105, 225, 0.20)');
+                e.setAttribute('stroke-width', '0.6');
+            }
             g.appendChild(e);
             return { e, o };
         });
