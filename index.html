@@ -20,11 +20,10 @@
           media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
     <!-- Main stylesheet -->
-    <link rel="stylesheet" href="style.css?v=4.0">
+    <link rel="stylesheet" href="style.css?v=5.0">
     <!-- Tailwind (only used for utility classes) -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="clouds-layer.js" defer></script>
-    <script src="main.js" defer></script>
+    <script src="main.js?v=5.0" defer></script>
     <script>
       tailwind.config = {
         corePlugins: {
@@ -49,13 +48,14 @@
     </script>
 </head>
 
-<body>
+<body class="dark-theme">
     <script>
-        // Prevent theme flashing on page load
+        // Default mode is dark; only switch to light if user explicitly chose it
         (function() {
             const savedTheme = localStorage.getItem('theme');
-            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+            if (savedTheme === 'light') {
+                document.body.classList.remove('dark-theme');
+            } else {
                 document.body.classList.add('dark-theme');
             }
         })();
@@ -170,13 +170,10 @@
             <div class="hero-editorial-cta-wrap hero-animate-in" style="animation-delay: 0.68s">
                 <a href="#about" class="hero-editorial-btn">Let's find</a>
             </div>
-
-            <!-- Bottom Uppercase Tracked Summary -->
-            <p class="hero-editorial-subtext hero-animate-in" style="animation-delay: 0.86s">
-                WE ARE TURNING RAW DATA INTO INTELLIGENT PREDICTIVE MODELS.<br class="hero-subtext-br">
-                IF YOU LOVE HIGH-IMPACT DATA &amp; AI ENGINEERING, THEN YOU HAVE FOUND OM.
-            </p>
         </div>
+
+        <!-- Procedural Parallax Hills & Drifting Clouds Canvas (Real Hills) -->
+        <canvas id="hero-hills-canvas" class="hero-hills-canvas" aria-hidden="true"></canvas>
 
         <!-- Snow / Starfield Canvas -->
         <canvas id="hero-snow-canvas" aria-hidden="true"></canvas>
@@ -233,11 +230,6 @@
                 <div class="about-hero-photo-wrap">
                     <div class="about-hero-photo-card">
                         <img src="img/about-portrait.png" alt="Om Patel" class="about-hero-photo" loading="lazy">
-                        <!-- Glassy Signature Badge Overlay (Right Bottom Corner) -->
-                        <div class="about-photo-glass-signature" aria-label="Om Patel Signature">
-                            <img src="img/signature-light.png" alt="Om Patel Signature" class="about-signature about-signature-light" loading="lazy">
-                            <img src="img/signature-dark.png"  alt="Om Patel Signature" class="about-signature about-signature-dark"  loading="lazy">
-                        </div>
                     </div>
                 </div>
                 

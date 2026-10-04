@@ -1422,7 +1422,7 @@ body.dark-theme .footer-bottom {
 
 @media (max-width: 768px) {
     footer {
-        padding: 60px 16px 120px !important;
+        padding: 50px 16px clamp(160px, 20vh, 185px) !important;
     }
 }
 
@@ -8954,7 +8954,8 @@ body.dark-theme .mobile-theme-btn {
     color: var(--heading-color, #0c1e4c) !important;
     margin: 0 auto 38px auto !important;
     text-align: center !important;
-    user-select: none;
+    user-select: text;
+    -webkit-user-select: text;
 }
 
 body.dark-theme .hero-editorial-title,
@@ -9032,51 +9033,58 @@ body.dark-theme .hero-sparkle-star {
     padding: 14px 44px;
     border-radius: 9999px;
     border: 1.5px solid var(--heading-color, #0c1e4c);
-    background: transparent;
+    background: rgba(255, 255, 255, 0.78);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     color: var(--heading-color, #0c1e4c) !important;
     font-family: var(--font-poppins), sans-serif;
     font-size: 1.02rem;
-    font-weight: 500;
+    font-weight: 600;
     text-decoration: none;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     letter-spacing: -0.01em;
+    box-shadow: 0 4px 18px rgba(12, 30, 76, 0.08);
 }
 
 .hero-editorial-btn:hover {
     background: var(--heading-color, #0c1e4c);
     color: #ffffff !important;
     transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(12, 30, 76, 0.15);
+    box-shadow: 0 10px 25px rgba(12, 30, 76, 0.2);
 }
 
 body.dark-theme .hero-editorial-btn {
-    border-color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.6);
+    background: rgba(15, 23, 42, 0.65);
     color: #ffffff !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
 body.dark-theme .hero-editorial-btn:hover {
     background: #ffffff;
     color: #0c1e4c !important;
-    box-shadow: 0 10px 28px rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 28px rgba(255, 255, 255, 0.25);
 }
 
 .hero-editorial-subtext,
 .hero-main-subtext {
     font-family: var(--font-poppins), sans-serif;
     font-size: clamp(0.74rem, 1.4vw, 0.84rem);
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: #334155;
+    color: #1e293b;
     max-width: 620px;
-    margin: 32px auto 0 auto;
+    margin: 28px auto 0 auto;
     line-height: 1.75;
     text-align: center;
+    text-shadow: 0 1px 12px rgba(255, 255, 255, 0.85);
 }
 
 body.dark-theme .hero-editorial-subtext,
 body.dark-theme .hero-main-subtext {
-    color: #94a3b8;
+    color: #cbd5e1;
+    text-shadow: 0 1px 12px rgba(0, 0, 0, 0.9);
 }
 
 /* ── Hero Curved Transition Divider (Convex Arch) ── */
@@ -9120,10 +9128,15 @@ body.dark-theme .hero-curved-divider .hero-curve-stroke {
     stroke: rgba(96, 165, 250, 0.25);
 }
 
-/* ── Hero Steam Train & Swaying Trees Curve Scene ── */
-.hero-curved-divider.hero-train-divider {
-    height: clamp(150px, 18vw, 250px);
-    overflow: visible;
+/* ── Hero Real Hills Canvas (Procedural Parallax Background) ── */
+.hero-hills-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    display: block !important;
 }
 
 /* ── Hero Snow / Starfield Canvas ── */
@@ -9133,9 +9146,16 @@ body.dark-theme .hero-curved-divider .hero-curve-stroke {
     width: 100%;
     height: 100%;
     pointer-events: none;
-    z-index: 0;
-    opacity: 0.95;
+    z-index: 2;
+    opacity: 0.75;
     display: block !important;
+}
+
+/* ── Hero Steam Train & Swaying Trees Curve Scene ── */
+.hero-curved-divider.hero-train-divider {
+    height: clamp(150px, 18vw, 250px);
+    overflow: visible;
+    z-index: 5;
 }
 
 .hero-train-svg {
@@ -10037,13 +10057,19 @@ body.no-scroll {
     }
 
     .hero-editorial-subtext {
-        margin: clamp(16px, 2.8vh, 26px) auto 0 auto !important;
-        font-size: clamp(0.68rem, 2.2vw, 0.78rem) !important;
-        letter-spacing: 0.1em !important;
+        margin: clamp(14px, 2.5vh, 22px) auto 0 auto !important;
+        font-size: clamp(0.70rem, 2.4vw, 0.78rem) !important;
+        letter-spacing: 0.08em !important;
         line-height: 1.55 !important;
-        max-width: 430px !important;
-        padding: 0 16px !important;
+        max-width: 380px !important;
+        padding: 9px 18px !important;
         box-sizing: border-box !important;
+        background: rgba(255, 255, 255, 0.52) !important;
+        backdrop-filter: blur(12px) !important;
+        -webkit-backdrop-filter: blur(12px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.75) !important;
+        border-radius: 14px !important;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03) !important;
     }
 
     .hero-subtext-br {
@@ -10051,8 +10077,11 @@ body.no-scroll {
     }
 
     body.dark-theme .hero-editorial-subtext {
-        color: rgba(226, 232, 240, 0.9) !important;
+        background: rgba(15, 23, 42, 0.55) !important;
+        border: 1px solid rgba(255, 255, 255, 0.12) !important;
+        color: rgba(226, 232, 240, 0.95) !important;
         text-shadow: 0 1px 10px rgba(0, 0, 0, 0.6) !important;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35) !important;
     }
 
     .projects-page-navbar {
@@ -10064,7 +10093,7 @@ body.no-scroll {
     }
 
     .hero-curved-divider.hero-train-divider {
-        height: 110px !important;
+        height: clamp(115px, 16vw, 135px) !important;
     }
 
     /* Featured Projects Touch Carousel (Smooth snap & appealing peek) */
@@ -10135,9 +10164,28 @@ body.no-scroll {
         padding-right: 16px !important;
     }
 
-    /* Footer Brand Logo on Mobile */
+    /* Footer Brand Logo & Spacing on Mobile */
+    footer {
+        padding: 50px 16px clamp(160px, 20vh, 185px) !important;
+    }
+
+    .contact-card-new {
+        margin-bottom: 2rem !important;
+    }
+
+    .footer-bottom {
+        padding-top: 1.25rem !important;
+        gap: 12px !important;
+    }
+
+    .footer-brand-showcase {
+        margin-top: 32px !important;
+        padding-top: 24px !important;
+    }
+
     .footer-3d-logo {
-        max-width: 90vw !important;
+        max-width: min(480px, 86vw) !important;
+        margin: 0 auto !important;
     }
 
     .footer-heading {
@@ -10192,15 +10240,21 @@ body.no-scroll {
     }
 
     .hero-editorial-subtext {
-        margin-top: 16px !important;
-        font-size: 0.68rem !important;
-        letter-spacing: 0.08em !important;
-        padding: 0 10px !important;
+        margin-top: 14px !important;
+        font-size: 0.69rem !important;
+        letter-spacing: 0.07em !important;
+        padding: 8px 14px !important;
         line-height: 1.5 !important;
+        max-width: 330px !important;
+        border-radius: 12px !important;
     }
 
     .hero-curved-divider {
         height: 42px !important;
+    }
+
+    .hero-curved-divider.hero-train-divider {
+        height: clamp(110px, 26vw, 125px) !important;
     }
 
     .project-glass-card {
@@ -10273,5 +10327,18 @@ body.no-scroll {
 
     .footer-heading {
         font-size: clamp(1.75rem, 7vw, 2.15rem) !important;
+    }
+
+    footer {
+        padding: 42px 14px clamp(165px, 22vh, 195px) !important;
+    }
+
+    .footer-3d-logo {
+        max-width: min(390px, 88vw) !important;
+    }
+
+    .footer-brand-showcase {
+        margin-top: 26px !important;
+        padding-top: 20px !important;
     }
 }

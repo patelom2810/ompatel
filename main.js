@@ -290,8 +290,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize Hero Snow / Star Particle Effect
     initHeroSnow();
 
-    // Initialize Hero Drifting Clouds Layer
-    initHeroClouds();
+    // Initialize Hero Real Hills & Clouds Engine
+    initHeroHills();
 
     // Initialize Animated Brand Logo Replay Interaction
     initAnimatedBrandLogo();
@@ -593,16 +593,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const themeToggles = document.querySelectorAll('.theme-toggle-btn, #theme-toggle, #theme-toggle-dock, #theme-toggle-header, #mobile-theme-toggle');
     const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
 
-    // Initialize theme based on local storage or system preference
+    // Initialize theme based on local storage (default is dark mode)
     const currentTheme = localStorage.getItem("theme");
-    if (currentTheme === "dark") {
-        document.body.classList.add("dark-theme");
-    } else if (currentTheme === "light") {
+    if (currentTheme === "light") {
         document.body.classList.remove("dark-theme");
-    } else if (prefersDarkScheme.matches) {
-        document.body.classList.add("dark-theme");
     } else {
-        document.body.classList.add("dark-theme"); // Default to dark mode for portfolio theme
+        document.body.classList.add("dark-theme"); // Default mode is dark
     }
 
     // Function to update icon and labels
@@ -626,8 +622,8 @@ document.addEventListener('DOMContentLoaded', () => {
             mobileThemeLabel.textContent = isDark ? "Light Mode" : "Dark Mode";
         }
 
-        if (heroCloudsInstance && typeof heroCloudsInstance.setMode === 'function') {
-            heroCloudsInstance.setMode(isDark ? 'night' : 'day');
+        if (heroHillsInstance && typeof heroHillsInstance.setMode === 'function') {
+            heroHillsInstance.setMode(isDark ? 'night' : 'day');
         }
     };
 
@@ -1166,7 +1162,10 @@ function initHeroTrain() {
         last = t;
         pos += SPEED * dt;
         acc += dt;
-        if (pos > total + 500) pos = -450;
+        const isNarrow = window.innerWidth < 768;
+        const resetMax = isNarrow ? total + 260 : total + 500;
+        const resetMin = isNarrow ? -200 : -450;
+        if (pos > resetMax) pos = resetMin;
         const spawn = acc > 0.16 && pos > -100 && pos < total + 100;
         if (spawn) acc = 0;
         cars.forEach(c => { place(c, pos, t, spawn); });
@@ -1380,38 +1379,331 @@ function initAnimatedBrandLogo() {
 }
 
 /* =========================================
-   Hero WebGL Clouds Layer Effect
+   Procedural Real Hills & Drifting Clouds Engine
+   (Integrated from Real Hills into Hero)
    ========================================= */
-function initHeroClouds() {
-    const heroSection = document.querySelector('.hero-editorial-section') || document.querySelector('#home');
-    if (!heroSection) return;
+let heroHillsInstance = null;
 
-    function mountClouds() {
-        if (heroCloudsInstance) return;
-        if (typeof CloudsLayer === 'undefined' || !CloudsLayer.mount) return;
+function initHeroHills() {
+    const cv = document.getElementById('hero-hills-canvas');
+    if (!cv) return;
+    const cx = cv.getContext('2d');
+    if (!cx) return;
 
-        const isDark = document.body.classList.contains('dark-theme');
-        try {
-            heroCloudsInstance = CloudsLayer.mount(heroSection, {
-                mode: isDark ? 'night' : 'day',
-                opacity: 0.85,
-                speed: 1.0,
-                cover: 0.55,
-                scale: 0.5,
-                zIndex: 1
-            });
-            window.heroClouds = heroCloudsInstance;
-        } catch (err) {
-            console.warn('Could not initialize CloudsLayer:', err);
+    const section = cv.closest('.hero-editorial-section') || cv.parentElement;
+    const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const P = {
+        day: {
+            sky: [[0, '#ffffff'], [0.35, '#edf5fe'], [0.7, '#c6ddf7'], [1, '#eaf4fb']],
+            sun: [0.74, 0.26, '255,246,218'],
+            hill: ['#a7bfd8', '#8aaac6', '#74a08e', '#55904f', '#3e7c36', '#2a602b'],
+            haze: '#d3e4f2',
+            cloud: '255,255,255',
+            vignette: 0
+        },
+        night: {
+            sky: [[0, '#060a14'], [0.45, '#0e1832'], [0.8, '#18274d'], [1, '#223666']],
+            sun: [0.8, 0.32, '210,230,255'],
+            hill: ['#3b4860', '#2d3b50', '#233042', '#1a2535', '#121c2a', '#0a111b'],
+            haze: '#0e1830',
+            cloud: '190,210,240',
+            vignette: 0.28
+        }
+    };
+
+    function Rn(s) {
+        return function() {
+            s |= 0;
+            s = (s + 0x6D2B79F5) | 0;
+            let t = Math.imul(s ^ (s >>> 15), 1 | s);
+            t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+            return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+        };
+    }
+
+    function rgb(h) {
+        return [parseInt(h.slice(1, 3), 16), parseInt(h.slice(3, 5), 16), parseInt(h.slice(5, 7), 16)];
+    }
+
+    function mix(a, b, t) {
+        const x = rgb(a), y = rgb(b);
+        return 'rgb(' + x.map((v, i) => Math.round(v + (y[i] - v) * t)).join(',') + ')';
+    }
+
+    function mk(w, h) {
+        const c = document.createElement('canvas');
+        c.width = Math.ceil(w);
+        c.height = Math.ceil(h);
+        return c;
+    }
+
+    // Lowered hill anchors to keep text in clear sky
+    const Y0 = [0.52, 0.59, 0.66, 0.73, 0.81, 0.90];
+    const AM = [0.065, 0.07, 0.075, 0.085, 0.09, 0.07];
+    const SP = [1.6, 3.2, 5.8, 10, 17, 28];
+
+    let S = null;
+    let animId = null;
+    const t0 = performance.now();
+
+    function make(tod) {
+        const D = Math.min(window.devicePixelRatio || 1, 1.5);
+        const rect = section ? section.getBoundingClientRect() : null;
+        const W = Math.round((rect && rect.width > 0) ? rect.width : (cv.clientWidth || window.innerWidth));
+        const H = Math.round((rect && rect.height > 0) ? rect.height : (cv.clientHeight || window.innerHeight || 800));
+        const p = P[tod] || P.day;
+        const Wt = Math.max(1100, Math.round(W * 1.25));
+
+        const isPortrait = H > W * 1.05 || W < 650;
+        const Y0 = isPortrait
+            ? [0.63, 0.69, 0.75, 0.81, 0.87, 0.93]
+            : [0.52, 0.59, 0.66, 0.73, 0.81, 0.90];
+        const AM = isPortrait
+            ? [0.034, 0.038, 0.044, 0.050, 0.054, 0.042]
+            : [0.065, 0.07, 0.075, 0.085, 0.09, 0.07];
+
+        cv.width = Math.round(W * D);
+        cv.height = Math.round(H * D);
+
+        const state = { D, W, H, Wt, p, L: [], cl: [], Y0, AM, isPortrait };
+        const dir = p.sun[0] > 0.5 ? 1 : -1;
+        const R = Rn(7);
+
+        // Sky
+        const sk = mk(W * D, H * D);
+        const g = sk.getContext('2d');
+        g.scale(D, D);
+        const gr = g.createLinearGradient(0, 0, 0, H * 0.65);
+        p.sky.forEach(s => gr.addColorStop(s[0], s[1]));
+        g.fillStyle = gr;
+        g.fillRect(0, 0, W, H);
+
+        const sx = p.sun[0] * W, sy = p.sun[1] * H;
+        const rg = g.createRadialGradient(sx, sy, 0, sx, sy, H * 0.75);
+        rg.addColorStop(0, 'rgba(' + p.sun[2] + ',.95)');
+        rg.addColorStop(0.06, 'rgba(' + p.sun[2] + ',.55)');
+        rg.addColorStop(0.3, 'rgba(' + p.sun[2] + ',.16)');
+        rg.addColorStop(1, 'rgba(' + p.sun[2] + ',0)');
+        g.fillStyle = rg;
+        g.fillRect(0, 0, W, H);
+        state.sky = sk;
+
+        // Clouds (adapted for mobile portrait)
+        for (let k = 0; k < 7; k++) {
+            const cw = (isPortrait ? 180 : 260) + R() * (isPortrait ? 220 : 340);
+            const ch = cw * 0.34;
+            const c = mk(cw * D, ch * D);
+            const q = c.getContext('2d');
+            q.scale(D, D);
+            for (let b = 0; b < 46; b++) {
+                const x = cw * (0.5 + (R() + R() + R() - 1.5) * 0.3);
+                const y = ch * (0.58 + (R() - 0.5) * 0.28);
+                const r = ch * (0.12 + R() * 0.26);
+                const m = q.createRadialGradient(x, y, 0, x, y, r);
+                m.addColorStop(0, 'rgba(' + p.cloud + ',.22)');
+                m.addColorStop(1, 'rgba(' + p.cloud + ',0)');
+                q.fillStyle = m;
+                q.fillRect(x - r, y - r, r * 2, r * 2);
+            }
+            const cloudY = isPortrait ? H * (0.04 + R() * 0.18) : H * (0.07 + R() * 0.26);
+            state.cl.push({ c, w: cw, h: ch, x: R() * (W + cw), y: cloudY, v: 4 + R() * 7 });
+        }
+
+        // Hills
+        for (let i = 0; i < 6; i++) {
+            const y0 = Y0[i] * H, am = AM[i] * H;
+            const ph = [], fr = [1, 2, 3, 5, 8, 13, 21, 34], ap = [];
+            let tot = 0;
+            const r = Rn(100 + i * 13);
+            const ys = new Float32Array(Wt + 16);
+
+            for (let o = 0; o < (i < 2 ? 6 : fr.length); o++) {
+                ph.push(r() * 6.283);
+                ap.push(Math.pow(0.56, o));
+                tot += ap[o];
+            }
+            for (let x = 0; x < Wt + 16; x++) {
+                let s = 0;
+                for (let o = 0; o < ph.length; o++) {
+                    s += ap[o] * Math.sin(6.2832 * fr[o] * (x % Wt) / Wt + ph[o]);
+                }
+                ys[x] = y0 - am * (s / tot * 1.6);
+            }
+
+            const base = p.hill[i];
+            const lc = mk(Wt * D, H * D);
+            const a = lc.getContext('2d');
+            a.scale(D, D);
+            const top = y0 - am * 1.6;
+            const gg = a.createLinearGradient(0, top, 0, H);
+            gg.addColorStop(0, mix(base, '#ffffff', i < 3 ? 0.1 : 0.04));
+            gg.addColorStop(1, i < 3 ? mix(base, p.haze, 0.65) : mix(base, '#000000', 0.42));
+            a.fillStyle = gg;
+            a.beginPath();
+            a.moveTo(0, H);
+            for (let x = 0; x <= Wt; x++) a.lineTo(x, ys[x]);
+            a.lineTo(Wt, H);
+            a.closePath();
+            a.fill();
+
+            // Trees on hills
+            if (i >= 2) {
+                const f1 = r() * 6.28, f2 = r() * 6.28;
+                const dk = mix(base, '#04120a', 0.55);
+                const lt = mix(base, '#cfe89a', 0.25);
+                const nt = Math.round(Wt * (isPortrait ? (0.35 + i * 0.22) : (0.5 + i * 0.35)));
+                for (let j = 0; j < nt; j++) {
+                    const tx = Math.floor(r() * Wt);
+                    const mk2 = (Math.sin(6.283 * 5 * tx / Wt + f1) + Math.sin(6.283 * 11 * tx / Wt + f2)) / 2;
+                    if (mk2 < 0.05) continue;
+                    const dp = Math.pow(r(), 2.2) * (10 + i * 9);
+                    const ty = ys[tx] + dp;
+                    const ts = (1.6 + i * 1.05) * (0.65 + r() * 0.7) * (1 + dp / 160);
+                    a.fillStyle = r() < 0.5 ? dk : mix(base, '#06180c', 0.4 + r() * 0.2);
+                    if (r() < 0.62) {
+                        a.beginPath();
+                        a.moveTo(tx, ty - ts * 3.1);
+                        a.lineTo(tx - ts * 0.75, ty);
+                        a.lineTo(tx + ts * 0.75, ty);
+                        a.fill();
+                        a.fillStyle = lt;
+                        a.globalAlpha = 0.22;
+                        a.beginPath();
+                        a.moveTo(tx, ty - ts * 3.1);
+                        a.lineTo(tx + dir * ts * 0.75, ty);
+                        a.lineTo(tx, ty);
+                        a.fill();
+                        a.globalAlpha = 1;
+                    } else {
+                        a.beginPath();
+                        a.ellipse(tx, ty - ts * 0.9, ts * 0.85, ts * 0.95, 0, 0, 6.3);
+                        a.fill();
+                        a.fillStyle = lt;
+                        a.globalAlpha = 0.2;
+                        a.beginPath();
+                        a.ellipse(tx + dir * ts * 0.3, ty - ts * 1.15, ts * 0.5, ts * 0.5, 0, 0, 6.3);
+                        a.fill();
+                        a.globalAlpha = 1;
+                    }
+                }
+            }
+
+            // Slope lighting
+            const sc = mk(Wt * D, H * D);
+            const h = sc.getContext('2d');
+            h.scale(D, D);
+            const len = 70 + i * 30;
+            for (let x = 0; x < Wt; x++) {
+                const sl = (ys[(x + 12) % Wt] - ys[(x + Wt - 12) % Wt]) / 24 * dir;
+                h.fillStyle = sl > 0 ? 'rgba(255,240,200,' + Math.min(0.5, sl * 0.4) + ')' : 'rgba(8,16,40,' + Math.min(0.6, -sl * 0.5) + ')';
+                h.fillRect(x, ys[x], 1.3, len);
+            }
+            h.globalCompositeOperation = 'destination-in';
+            const mg = h.createLinearGradient(0, top, 0, top + am * 3.2 + len);
+            mg.addColorStop(0, '#000');
+            mg.addColorStop(1, 'rgba(0,0,0,0)');
+            h.fillStyle = mg;
+            h.fillRect(0, 0, Wt, H);
+            a.globalCompositeOperation = 'source-atop';
+            a.drawImage(sc, 0, 0, Wt, H);
+
+            // Grass textures
+            if (i >= 2) {
+                const n = Wt * (i - 1) * 0.7;
+                for (let j = 0; j < n; j++) {
+                    const gx = r() * Wt, gy = ys[Math.floor(gx)] + Math.pow(r(), 1.6) * (60 + i * 40), l = 2 + r() * (2 + i);
+                    a.strokeStyle = r() < 0.5 ? mix(base, '#0a1a08', 0.5) : mix(base, '#e8f2b0', 0.35);
+                    a.globalAlpha = 0.22;
+                    a.lineWidth = 0.8;
+                    a.beginPath();
+                    a.moveTo(gx, gy);
+                    a.lineTo(gx + (r() - 0.5) * 2, gy - l);
+                    a.stroke();
+                }
+                a.globalAlpha = 1;
+            }
+            a.globalCompositeOperation = 'source-over';
+            state.L.push({ c: lc, y0, v: SP[i] });
+        }
+        return state;
+    }
+
+    function draw(state, t) {
+        if (!state) return;
+        const { D, W, H, p } = state;
+        cx.setTransform(D, 0, 0, D, 0, 0);
+        cx.drawImage(state.sky, 0, 0, W, H);
+
+        state.cl.forEach(q => {
+            const x = ((q.x + t * q.v) % (W + q.w)) - q.w;
+            cx.drawImage(q.c, x, q.y, q.w, q.h);
+        });
+
+        state.L.forEach((l, i) => {
+            const off = (t * l.v) % state.Wt;
+            cx.drawImage(l.c, -off, 0, state.Wt, H);
+            cx.drawImage(l.c, state.Wt - off, 0, state.Wt, H);
+            if (i < 5) {
+                const nextY = (state.Y0[i + 1] !== undefined ? state.Y0[i + 1] : 1) * H + H * 0.03;
+                const f = cx.createLinearGradient(0, l.y0, 0, nextY);
+                const c = rgb(p.haze).join(',');
+                f.addColorStop(0, 'rgba(' + c + ',0)');
+                f.addColorStop(1, 'rgba(' + c + ',' + (0.5 - i * 0.07) + ')');
+                cx.fillStyle = f;
+                cx.fillRect(0, l.y0 - H * 0.1, W, H);
+            }
+        });
+
+        if (p.vignette > 0) {
+            const v = cx.createRadialGradient(W / 2, H / 2, Math.min(W, H) * 0.45, W / 2, H / 2, Math.max(W, H) * 0.85);
+            v.addColorStop(0, 'rgba(0,0,0,0)');
+            v.addColorStop(1, 'rgba(0,0,0,' + p.vignette + ')');
+            cx.fillStyle = v;
+            cx.fillRect(0, 0, W, H);
         }
     }
 
-    if (typeof CloudsLayer !== 'undefined' && CloudsLayer.mount) {
-        mountClouds();
-    } else {
-        window.addEventListener('load', () => {
-            mountClouds();
-        });
+    function currentMode() {
+        return document.body.classList.contains('dark-theme') ? 'night' : 'day';
     }
+
+    function rebuild(mode) {
+        S = make(mode || currentMode());
+        if (still) draw(S, 20);
+    }
+
+    function loop(n) {
+        if (!document.hidden) {
+            draw(S, (n - t0) / 1000 + 20);
+        }
+        animId = requestAnimationFrame(loop);
+    }
+
+    rebuild();
+    if (still) {
+        draw(S, 20);
+    } else {
+        animId = requestAnimationFrame(loop);
+    }
+
+    let rz;
+    let lastW = window.innerWidth;
+    window.addEventListener('resize', () => {
+        clearTimeout(rz);
+        rz = setTimeout(() => {
+            const curW = window.innerWidth;
+            if (Math.abs(curW - lastW) > 10 || Math.abs(window.innerHeight - (S ? S.H : 0)) > 120) {
+                lastW = curW;
+                rebuild();
+            }
+        }, 180);
+    });
+
+    heroHillsInstance = {
+        rebuild: rebuild,
+        setMode: (mode) => { rebuild(mode); }
+    };
+    window.heroHills = heroHillsInstance;
 }
 
